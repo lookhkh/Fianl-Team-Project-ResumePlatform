@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script id="lzutf8" src="https://cdn.jsdelivr.net/npm/lzutf8/build/production/lzutf8.js"></script>
+
+    <style>
+        .wrapper{
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header{
+            width: 100%;
+            height: 10%;
+            background-color: blue;
+        }
+
+        footer{
+            width: 100%;
+            height: 10%;
+            background-color: blue;
+        }
+
+        aside{
+            width: 10%;
+            height: 80%;
+            top: 12%;
+            left: 90%;
+            background-color: brown;
+            position: absolute;
+        }
+
+
+
+       
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header></header>
+        
+        <aside></aside>
+            <div class="area">
+                <style>
+        .area{
+            display: flex;
+            flex-direction: column;
+            width: 90%;
+            height: 80%;
+            background-color: burlywood;
+        }
+
+        .test{
+            color: coral;
+        }
+                </style>
+                <h1>hi</h1>
+                <form>
+                    <input type="text">
+                </form>
+
+                <br/>
+
+               
+                
+            </div>
+            <button>전송</button>
+            <button class="get">받기</button>
+
+        <footer></footer>
+    </div>
+</body>
+</html>
+<script>
+    window.addEventListener('load',function(){
+
+        const area = document.querySelector('.area');
+        const button = document.querySelector('button');
+        const getBtn = document.querySelector('.get');
+
+    
+        
+
+        button.onclick=(e)=>{
+            let stringfiedHtml = area.innerHTML;
+
+            const ajax = new XMLHttpRequest();
+            ajax.open('POST','http://localhost:8080/upload');
+            ajax.setRequestHeader('Content-type','application/octet-stream')
+            ajax.send(LZUTF8.compress(stringfiedHtml,{
+   outputEncoding: 'BinaryString'
+  }));
+
+            ajax.onreadystatechange=()=>{
+                if(ajax.readyState===XMLHttpRequest.DONE&&ajax.status===200){
+                    console.log(ajax.response);
+                }
+            }
+
+            area.innerHTML='';
+
+        }
+
+        getBtn.addEventListener('dblclick',function(){
+            console.log('hi');
+            
+            const ajax = new XMLHttpRequest();
+            ajax.open('GET','http://localhost:8080/upload');
+            ajax.setRequestHeader('Content-Type','application/octet-stream');
+            ajax.send(null);
+
+            ajax.onreadystatechange=()=>{
+                if(ajax.readyState===XMLHttpRequest.DONE&&ajax.status===200){
+                    console.log(typeof ajax.response);
+                    area.innerHTML=LZUTF8.decompress(ajax.response,{
+   inputEncoding: 'BinaryString'
+  });
+                }
+            }
+
+        })
+
+        
+    })
+</script>
