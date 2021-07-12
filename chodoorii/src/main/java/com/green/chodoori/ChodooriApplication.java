@@ -8,6 +8,7 @@ public class ChodooriApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ChodooriApplication.class, args);
+	
 	}
 
 }
