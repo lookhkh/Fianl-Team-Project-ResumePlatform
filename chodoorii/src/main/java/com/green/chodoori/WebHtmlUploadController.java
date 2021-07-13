@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class WebHtmlUploadController {
 
 	
-	@GetMapping("/hi")
+	@GetMapping
 	public String test() {
 		System.out.println("호출");
-		return "test";
+		return "index";
 	}
 
 }
