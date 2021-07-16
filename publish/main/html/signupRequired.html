@@ -93,6 +93,31 @@
             margin-top: 50px;
         }
 
+        .email-auth {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .email-auth .input-group.mb-3:last-child{
+            margin-top: 0px;
+            
+        }
+
+        .password-set{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .password-set .input-group.mb-3:last-child{
+            margin-top: 0px;
+
+        }
+
         
      
 
@@ -122,18 +147,25 @@
                         <input data-target="required"  type="text" class="form-control" placeholder="이름을 입력해주세요" name="name" aria-label="Example text with button addon" aria-describedby="button-addon1">
                     </div>
 
+                    <div class="password-set">
                       <div class="input-group mb-3">
                         <input data-target="required"  type="text" class="form-control" placeholder="패스워드를 입력해주세요" aria-label="Username" aria-describedby="basic-addon1" name="pw">
                       </div>
                       <div class="input-group mb-3">
                         <input data-target="required"  type="text" class="form-control" placeholder="패스워드를 확인해주세요" aria-label="Username" aria-describedby="basic-addon1" name="confirmedPw">
                       </div>
-                      
-                      <div class="input-group mb-3">
-                        <input data-target="required"  type="email" class="form-control" placeholder="이메일을 입력해주세요" name="email" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon1">인증하기</button>
                     </div>
-                    
+
+                      <div class="email-auth">
+                        <div class="input-group mb-3">
+                            <input data-target="required"  type="email" class="form-control" placeholder="이메일을 입력해주세요" name="email" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                            <button class="emailAuth btn btn-outline-secondary" type="button" id="button-addon1">인증하기</button>    
+                        </div>
+                        <div style="display: none;" class="emailCheck input-group mb-3">
+                            <input data-target="required"  type="email" class="form-control" placeholder="인증번호를 입력해주세요" name="email" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                            <button class="btn btn-outline-secondary" type="button" id="button-addon1">확인하기</button>    
+                        </div>
+                    </div>     
                     <div class="input-group mb-3">
                         <input data-target="required"  type="tel" class="form-control" placeholder="전화번호를 입력해주세요" name="contactInfo" aria-label="Example text with button addon" aria-describedby="button-addon1">
                     </div>
@@ -211,8 +243,15 @@
             }
         })
 
+        const emailAuthBtn = document.querySelector('.emailAuth')
 
-
+        emailAuthBtn.addEventListener('click',function(){
+            alert('인터넷 상황에 따라 인증번호 수신에 수 분이 걸릴 수 있습니다')
+            const emailCheck = document.querySelector('.emailCheck');
+            emailCheck.style.display = '';
+            emailAuthBtn.style.backgroundColor = 'blue'
+            emailAuthBtn.style.color ='white';
+        })
     })
 
 </script>
