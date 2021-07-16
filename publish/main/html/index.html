@@ -22,10 +22,40 @@
 
         <nav>
             <ul class="nav">
-                <li><a href="">About Us</a></li>
-                <li><a href="">기업홍보관</a></li>
-                <li><a href="">이력서관리</a></li>
-                <li><a href="">자유게시판</a></li>
+              <div class="dropdown">
+                <li><a class="target-a" href="">About Us</a></li>
+                <div class="dropdown-content">
+                  <a>MyResume란?</a>  
+                  <a>MyResume란?</a>
+                  <a>MyResume란?</a>  
+                  <a>MyResume란?</a>  
+  
+                </div>
+              </div> 
+
+              <div class="dropdown">
+                <li><a class="target-a" href="">기업홍보관</a></li>
+                <div class="dropdown-content">
+                  <a>MyResume란?</a>  
+                  <a>MyResume란?</a>  
+                </div>
+              </div>
+
+              <div class="dropdown">
+                <li><a class="target-a" href="">이력서관리</a></li>
+                <div class="dropdown-content">
+                  <a>MyResume란?</a>  
+                  <a>MyResume란?</a>  
+                </div>
+              </div>
+
+              <div class="dropdown">
+                <li><a class="target-a" href="">자유게시판</a></li>
+                <div class="dropdown-content">
+                  <a>MyResume란?</a>  
+                  <a>MyResume란?</a>  
+                </div>
+              </div>
             </ul>
         </nav>
 
@@ -166,3 +196,37 @@
 
 
 
+<script>
+  window.addEventListener('load',function(){
+    let target = document.querySelector('.nav')
+    let dropdowncheck =document.querySelectorAll('.dropdown-content');
+    let header = document.querySelector('#header');
+
+    target.onmouseover = function(e){
+      let target = e.target;
+
+      if(target.className!=='target-a') return;
+
+      dropdowncheck.forEach(a=>{
+        if(a.classList.contains('show')){
+          a.classList.remove('show');
+        }
+      })
+      
+      target.parentNode.parentNode.lastElementChild.classList.toggle('show');
+      
+    }
+
+    header.onmouseleave=()=>{
+
+      dropdowncheck.forEach(a=>{
+        if(a.classList.contains('show')){
+          a.classList.remove('show');
+        }
+      })
+    }
+
+    
+    
+  })
+</script>
