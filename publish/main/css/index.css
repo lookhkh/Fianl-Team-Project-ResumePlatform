@@ -13,22 +13,7 @@
 }
 
 
-footer{
-    width: 100vw;
-    height: 80px;
-    border-top: 0.3px groove;
-    background-color: gray;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
-}
 
-footer a{
-    color: white;
-}
 
 .wrapper .row{
     width: 100vw;
