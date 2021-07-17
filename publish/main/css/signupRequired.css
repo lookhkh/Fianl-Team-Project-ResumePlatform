@@ -1,0 +1,120 @@
+*{
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrapper{
+    width: 100vw;
+    height: 100vh;
+    background-color: gray;
+    margin: 0 auto;
+}
+
+.content{
+    width: 900px;
+    height: 100%;
+}
+
+.progressWhere{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 0.4px solid;
+    background-color: white;
+}
+
+.progressWhere span{
+    width: 140px;
+    height: 40px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.content .form{
+    width: 100%;
+    height: 790px;
+    display: none;
+    background-color: white;
+}
+
+.content .form.show{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.sort.show .choice{
+    
+    width: 300px;
+    height: 200px;
+
+}
+
+.choice.selected{
+    background-color: red;
+}
+
+.actions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.actions input{
+    margin-right: 20px;
+    width: 150px;
+    height: 50px;
+}
+
+.form-control.required{
+    border-color: red;
+}
+
+
+
+.input-group{
+    margin-top: 50px;
+}
+
+.email-auth {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.email-auth .input-group.mb-3:last-child{
+    margin-top: 0px;
+    
+}
+
+.password-set{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.password-set .input-group.mb-3:last-child{
+    margin-top: 0px;
+
+}
+
+.emailAuthCheck.checked{
+    background-color: blue;
+    color: white;
+    pointer-events: none;
+}
+
+.emailAuth.checked{
+    pointer-events: none;
+
+}
+
