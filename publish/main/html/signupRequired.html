@@ -81,7 +81,7 @@
     
                 <div class="actions">
                     <button class="next btn btn-primary">다음으로</button>
-                    <button class="back btn btn-primary">이전으로</button>
+                    <button class="back btn btn-primary" >이전으로</button>
                 </div>
         
     </div>
@@ -119,10 +119,11 @@
 
                 if(check.value==='0'){
                     console.log(document.querySelector('form'))
-                    document.querySelector('form').submit()
+                    check.value=0;
+
+                    document.querySelector('form').submit();
                 }
 
-                check.value=0;
                 
 
             
