@@ -28,7 +28,7 @@
                 <form method="POST" enctype="multipart/form-data" action="./signupMetadata.html">
                      <div class="input-group" style="display: flex; flex-direction: row;">
                         <img src="../img/defaultpic.png" class="img-thumbnail userpic" alt="..." width="150px" height="100px">
-                        <input style="display: none;" type="file" class="form-control" id="inputGroupFile04" height="50px" aria-describedby="inputGroupFileAddon04" aria-label="Upload">  
+                        <input style="display: none;" name="file" type="file" class="form-control" id="inputGroupFile04" height="50px" aria-describedby="inputGroupFileAddon04" aria-label="Upload">  
                         <button style="width: 170px;" class="uploadbtn btn btn-primary" type="button" onclick="console.log('hi')">프로필 사진 업로드</button>
                     </div>
 
@@ -157,8 +157,6 @@
 
         const imgIploadBtn = document.querySelector('.uploadbtn');
         imgIploadBtn.onclick=()=>{
-            const click = new Event('click');
-            console.log(picInput)
             picInput.click();
         }
         
