@@ -19,7 +19,7 @@
 
             <div class="progressWhere">
                 <span data-target="sort" ><img src="../img/2025986.svg" style="visibility:hidden ;" width="30px" height="10px" alt="">회원유형선택</span>
-                <span data-target="required"><img src="../img/2025986.svg" style="visibility: ;" width="30px" height="10px" alt="">필수정보입력</span>
+                <span data-target="required"><img src="../img/2025986.svg"  width="30px" height="10px" alt="">필수정보입력</span>
                 <span data-target="metadata"><img src="../img/2025986.svg" style="visibility: hidden;" width="30px" height="10px" alt="">메타정보입력</span>
             </div>
 
@@ -81,7 +81,7 @@
     
                 <div class="actions">
                     <button class="next btn btn-primary">다음으로</button>
-                    <button class="back btn btn-primary">이전으로</button>
+                    <button class="back btn btn-primary" >이전으로</button>
                 </div>
         
     </div>
@@ -119,10 +119,11 @@
 
                 if(check.value==='0'){
                     console.log(document.querySelector('form'))
-                    document.querySelector('form').submit()
+                    check.value=0;
+
+                    document.querySelector('form').submit();
                 }
 
-                check.value=0;
                 
 
             
