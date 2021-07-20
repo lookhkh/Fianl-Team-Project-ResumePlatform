@@ -25,7 +25,13 @@
 
                 <div class="form sort show ">
 
-                <form method="POST" action="./signupMetadata.html">
+                <form method="POST" enctype="multipart/form-data" action="./signupMetadata.html">
+                     <div class="input-group" style="display: flex; flex-direction: row;">
+                        <img src="../img/defaultpic.png" class="img-thumbnail userpic" alt="..." width="150px" height="100px">
+                        <input style="display: none;" name="file" type="file" class="form-control" id="inputGroupFile04" height="50px" aria-describedby="inputGroupFileAddon04" aria-label="Upload">  
+                        <button style="width: 170px;" class="uploadbtn btn btn-primary" type="button" onclick="console.log('hi')">프로필 사진 업로드</button>
+                    </div>
+
                     <div class="input-group mb-3">
                         <input data-target="required" type="text" class="form-control" placeholder="ID를 입력해주세요" name="id" aria-label="Example text with button addon" aria-describedby="button-addon1">
                         <button class="btn btn-outline-secondary" type="button" id="button-addon1">중복확인</button>
@@ -70,7 +76,7 @@
                         <input type="text" class="form-control" placeholder="Server" aria-label="Server">
                       </div>
                       
-                      <div style="visibility: hidden;" class="input-group">
+                      <div style="display: none; margin-bottom: 0px;" class="input-group">
                         <span class="input-group-text">With textarea</span>
                         <textarea class="form-control" aria-label="With textarea"></textarea>
                       </div>
@@ -133,7 +139,28 @@
             }
         })
 
-      
+
+        const userPic = document.querySelector('.userpic');
+        const picInput = document.querySelector('input[type="file"]');
+        
+        picInput.addEventListener('input',function(e){
+            let input = picInput.files[0];
+            console.log(input)
+            let fReader = new FileReader();
+            fReader.readAsDataURL(input);
+            fReader.onloadend=function(e){
+                userPic.src=e.target.result;
+            }
+         
+
+        })
+
+        const imgIploadBtn = document.querySelector('.uploadbtn');
+        imgIploadBtn.onclick=()=>{
+            picInput.click();
+        }
+        
+        
     })
 
 </script>
