@@ -19,7 +19,7 @@ public class WebHtmlUploadController {
 	
 	@GetMapping
 	public String test() {
-		System.out.println("호출");
+		System.out.println("인덱스 페이지 호출");
 		return "index";
 	}
 

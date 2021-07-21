@@ -25,7 +25,7 @@
 
                 <div class="form sort show ">
 
-                <form method="POST" enctype="multipart/form-data" action="./signupMetadata.html">
+                <form method="POST" enctype="multipart/form-data" action="http://localhost:8088/signup">
                      <div class="input-group" style="display: flex; flex-direction: row;">
                         <img src="../img/defaultpic.png" class="img-thumbnail userpic" alt="..." width="150px" height="100px">
                         <input style="display: none;" name="file" type="file" class="form-control" id="inputGroupFile04" height="50px" aria-describedby="inputGroupFileAddon04" aria-label="Upload">  
@@ -56,7 +56,7 @@
                             <button class="emailAuth btn btn-outline-secondary" type="button" id="button-addon1">인증하기</button>    
                         </div>
                         <div style="display: none;" class="emailCheck input-group mb-3">
-                            <input data-target="required"  type="email" class="form-control" placeholder="인증번호를 입력해주세요" name="email" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                            <input data-target="required"  type="email" class="form-control" placeholder="인증번호를 입력해주세요"  aria-label="Example text with button addon" aria-describedby="button-addon1">
                             <button class="emailAuthCheck btn btn-outline-secondary " type="button" id="button-addon1">확인하기</button> 
                             <input class="authResult" type="hidden" value="0">
                         </div>

@@ -22,9 +22,23 @@ public class MailService {
 	
 	   @Autowired
 	   private JavaMailSender mailSender;
-	   @Autowired
-	   private MailAuthManageRepository repo;
-	   private static final String FROM_ADDRESS = "lookhkh37@gmail.com";
+	   private HashMap<String, MailAuthInfoDto> store;
+	   
+	   public MailService() {
+		   this.store=new HashMap();
+	   }
+	   
+	   
+
+
+	   public HashMap<String, MailAuthInfoDto> getStore() {
+		return store;
+	}
+
+
+
+
+	private static final String FROM_ADDRESS = "lookhkh37@gmail.com";
 
 	   	@ExceptionHandler(Exception.class)
 	   	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -51,39 +65,14 @@ public class MailService {
 	   
  
 	       // session.setAttribute("auth", dto);
-	        repo.getStore().put("auth", dto);
+	        store.put("auth", dto);
 	        
 	        mailSender.send(message);
 	        
 	        
 	    }
 	    
-	    public HashMap testMailSend(String address) {
-	        SimpleMailMessage message = new SimpleMailMessage();
-	        message.setTo(address);
-	        message.setFrom(MailService.FROM_ADDRESS);
-	        message.setSubject("인증정보");
-	        message.setText("인증번호 : "+randomNumberGenerator());
 
-	        
-	        Date currentTime = new Date();
-	        currentTime.getTime();
-	        String num = randomNumberGenerator();
-	        
-	        HashMap<String, MailAuthInfoDto> authInfo = new HashMap<>();
-	        
-	        MailAuthInfoDto dto = new MailAuthInfoDto(num);
-
-	   
-	        authInfo.put("authTime",dto);
-	   
-	        
-	        
-	        mailSender.send(message);
-	        
-	        return authInfo;
-	        
-	    }
 	    
 	    public String randomNumberGenerator() {
 	    	Random rd = new Random();

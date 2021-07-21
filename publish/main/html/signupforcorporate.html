@@ -65,28 +65,32 @@
 
                     <form  method="POST" action="./signupRequired.html">
 
-                        <div class="row agreement" style="margin-bottom: 60px;">
-                            <div class="col 6" style="height: 100px;"> 
-                                <button style="width: 80%;height: 100%;" type="button"class="btn btn-primary">이용약관</button>
-                            </div>
-                            <div class="col 6">
-                                <button style="width: 80%; height: 100%;" type="button"class="btn btn-primary">개인정보 수집 및 이용동의</button>
-                            </div>
-                        </div>
+                        <div class="input-group" style="display: flex; flex-direction: row;  justify-content: center;">
+                          <img src="../img/defaultpic.png" class="img-thumbnail userpic" alt="..." style="margin-left: 0; margin-right: 0;" width="150px" height="100px">
+                          <input style="display: none;" name="file" type="file" class="form-control" id="inputGroupFile04" height="50px" aria-describedby="inputGroupFileAddon04" aria-label="Upload">  
+                          <button style="width: 170px;" class="uploadbtn btn btn-primary" type="button" onclick="console.log('hi')">로고 사진 업로드</button>
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon1">ID</button>
+                        <input type="text" class="form-control" placeholder="ID를 입력해주세요" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon1">중복확인</button>
+
+                    </div>
+
+                      <div class="input-group mb-3">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon1">비밀번호</button>
+                        <input type="password" class="form-control" placeholder="비밀번호를 작성해주세요" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon1">비밀번호 확인</button>
+                        <input type="password" class="form-control" placeholder="비밀번호를 확인해주세요" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                      </div>
 
                         <div class="input-group mb-3">
                             <button class="btn btn-outline-secondary" type="button" id="button-addon1">사업자번호</button>
                             <input type="text" class="form-control" placeholder="사업자 번호를 입력해주세요" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                          </div>
-
-                          <div class="input-group mb-3">
-                            <button class="btn btn-outline-secondary" type="button" id="button-addon1">사업자명</button>
-                            <input type="text" class="form-control" placeholder="사업자명을 입력해주세요" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                          </div>
-
-                          <div class="input-group mb-3">
-                            <button class="btn btn-outline-secondary" type="button" id="button-addon1">대표자</button>
-                            <input type="text" class="form-control" placeholder="대표자 이름을 입력해주세요" aria-label="Example text with button addon" aria-describedby="button-addon1">
                           </div>
 
                           <div class="input-group mb-3">
@@ -99,22 +103,13 @@
                             <input type="tel" class="form-control" placeholder="-를 빼고 숫자만 입력해주세요" aria-label="Example text with button addon" aria-describedby="button-addon1">
                           </div>
 
-                          <div class="input-group mb-3">
-                            <button class="btn btn-outline-secondary" type="button" id="button-addon1">ID</button>
-                            <input type="text" class="form-control" placeholder="ID를 입력해주세요" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                            <button class="btn btn-outline-secondary" type="button" id="button-addon1">중복확인</button>
-
-                        </div>
+                      
 
                           <div class="input-group mb-3">
-                            <button class="btn btn-outline-secondary" type="button" id="button-addon1">비밀번호</button>
-                            <input type="password" class="form-control" placeholder="비밀번호를 작성해주세요" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                            <button class="btn btn-outline-secondary" type="button" id="button-addon1">대표 메일</button>
+                            <input type="email" class="form-control" placeholder="대표 메일을 입력해주세요" aria-label="Example text with button addon" aria-describedby="button-addon1">
                           </div>
 
-                          <div class="input-group mb-3">
-                            <button class="btn btn-outline-secondary" type="button" id="button-addon1">비밀번호 확인</button>
-                            <input type="password" class="form-control" placeholder="비밀번호를 확인해주세요" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                          </div>
 
                           <div class="seperator" style="border-bottom: 1px solid; margin-top: 50px; margin-bottom: 40px;"></div>
 
@@ -123,11 +118,7 @@
                             <input type="text" class="form-control" placeholder="담당자 이름을 입력해주세요" aria-label="Example text with button addon" aria-describedby="button-addon1">
                           
                         </div> 
-                          <div class="input-group mb-3">
-                            <button class="btn btn-outline-secondary" type="button" id="button-addon1">담당자 메일</button>
-                            <input type="email" class="form-control" placeholder="담당자 메일을 입력해주세요" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                          </div>
-
+                    
                           <div class="input-group mb-3">
                             <button class="btn btn-outline-secondary" type="button" id="button-addon1">담당자 연락처</button>
                             <input type="email" class="form-control" placeholder="담당자 연락처를 입력해주세요" aria-label="Example text with button addon" aria-describedby="button-addon1">
