@@ -134,32 +134,40 @@
                 <span data-target="metadata"><img src="../img/2025986.svg"  width="30px" height="10px" alt="">메타정보입력</span>
             </div>
 
+            <form method="post" action="http://localhost:8088/signup/users/metadata">
+
                 <div class="form metadata show ">
-                    <input data-target="userid" type="hidden" name="userId" value=`${location.search.userid}`>
+
+                    <input data-target="userid" type="hidden" name="userId">
                     
-                    <div class="row position">
+                    <div class="valuepicker row position">
                         <h2>포지션 구분</h2>
                         <div class='col'>
                             <button class="position btn btn-primary">백엔드</button>
+                            <input  class="hidden-value position" type="hidden" name="position" >
                         </div>
                         <div class='col'>
                             <div class='col'>
                                 <button class="position btn btn-primary">프론트엔드</button>
+                                <input  class="hidden-value position" type="hidden" name="position" >
                             </div>
                         </div>
                         <div class='col'>
                             <div class='col'>
                                 <button class="position btn btn-primary">DBA</button>
+                                <input  class="hidden-value position" type="hidden" name="position" >
                             </div>
                         </div>
                         <div class='col'>
                             <div class='col'>
                                 <button class="position btn btn-primary">퍼블리셔</button>
+                                <input  class="hidden-value position" type="hidden" name="position" >
                             </div>
                         </div>
                         <div class='col'>
                             <div class='col'>
                                 <button class="position btn btn-primary">풀스택</button>
+                                <input  class="hidden-value position" type="hidden" name="position" >
                             </div>
                         </div>
                     </div>
@@ -195,12 +203,15 @@
                         </div>
                     </div>
 
-                    <div class="row carrer">
+                    <div class="valuepicker row carrer">
                         <div class="col carrer-choice">
                             <h2>경력사항 선택</h2>
                                 <button style="width: 40%;" class="btn btn-primary veteran" onclick="{document.querySelector('.col.range').classList.add('show');}">경력</button>
                                 <button style="width: 40%;" class="btn btn-primary rookie" onclick="{if(document.querySelector('.col.range').classList.contains('show')) document.querySelector('.col.range').classList.remove('show')  }">신입</button>
-                        </div>
+                                <input  class="hidden-value carrer" type="hidden" name="exp" >
+                            </div>
+
+
                         <br/>
                         <div class="col range">
                             <button class="btn btn-primary">0~1년</button>
@@ -208,6 +219,8 @@
                             <button class="btn btn-primary">4~7년</button>
                             <button class="btn btn-primary">7~10년</button>
                             <button class="btn btn-primary">10년 이상</button>
+                            <input  class="hidden-value carrer period" type="hidden" name="period" >
+
                         </div>
 
                     </div>
@@ -215,9 +228,11 @@
 
                 </div>
 
+            </form>
+
     
                 <div class="actions">
-                    <button class="next btn btn-primary" onclick="location.href='index.html'">다음으로</button>
+                    <button class="next btn btn-primary" >다음으로</button>
                     <button class="back btn btn-primary" onclick="location.href='index.html'">메인으로</button>
                 </div>
         
@@ -231,6 +246,11 @@
 <script>
     window.addEventListener('load',function(){
 
+        const nextBtn = document.querySelector('.next');
+        nextBtn.onclick=()=>{
+            const form = document.querySelector('form');
+            form.submit();
+        }
     
 
       const allButton = document.querySelector('.form.metadata.show');
@@ -239,6 +259,8 @@
       let languageRange = document.querySelector('.language-range');
       let frameworkRange = document.querySelector('.framework-range');
       let dbRange = document.querySelector('.db-range');
+    
+
 
         languageRange.addEventListener('click',function(e){
             return countCheckboxLength(e,"language-range","language");
@@ -311,17 +333,63 @@
  
 
     allButton.addEventListener('click',function(e){
-        
+
         let target = e.target;
         if(e.target.nodeName==="BUTTON"){
+            e.preventDefault();
+
             target.classList.toggle('selected')
         }
+
+        
     })
+
+
       
        
+//리팩토링 필요//////////////////////////// 우선 임시로 이대로 진행
 
+    let position_row = document.querySelectorAll('.valuepicker')
 
+    position_row[1].addEventListener('click',function(e){
 
+        console.log(position_row)
+
+        const target = e.target;
+
+        if(target.nodeName!=="BUTTON") return;
+        const input_=target.parentNode.lastElementChild;
+
+        if(!target.classList.contains('selected')){
+        input_.setAttribute("value",target.textContent) 
+        }
+        
+        else{
+            input_.removeAttribute("value");
+    }
+  
+    })
+
+    position_row[0].addEventListener('click',function(e){
+
+        console.log(position_row)
+
+        const target = e.target;
+
+        if(target.nodeName!=="BUTTON") return;
+        const input_=target.parentNode.lastElementChild;
+
+        if(!target.classList.contains('selected')){
+        input_.setAttribute("value",target.textContent) 
+        }
+
+        else{
+            input_.removeAttribute("value");
+        }
+
+        })
+
+//리팩토링 필요//////////////////////////// 우선 임시로 이대로 진행
 
 
 

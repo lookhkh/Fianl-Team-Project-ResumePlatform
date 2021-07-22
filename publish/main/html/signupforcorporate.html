@@ -65,7 +65,7 @@
         <div class="container">
 
 
-                    <form  method="POST" action="./signupRequired.html">
+                <form method="POST" enctype="multipart/form-data" action="http://localhost:8088/signup?sort=1">
 
                         <div class="input-group" style="display: flex; flex-direction: row;  justify-content: center;">
                           <img src="../img/defaultpic.png" class="img-thumbnail userpic" alt="..." style="margin-left: 0; margin-right: 0;" width="150px" height="100px">
@@ -74,42 +74,47 @@
                       </div>
 
                       <div class="input-group mb-3">
-                        <input data-target="required" type="text" class="form-control" placeholder="ID를 입력해주세요" name="id" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                        <input type="hidden" id="id-duplicate-check-flag" value=0/>
                         <button class="idcheck btn btn-outline-secondary" type="button" id="button-addon1">중복확인</button>
+                        <input data-target="required" type="text" class="form-control" placeholder="ID를 입력해주세요" name="id" aria-label="Example text with button addon" aria-describedby="button-addon1">
                     </div>
+
+                    <div class="input-group mb-3">
+                      <button class="idcheck btn btn-outline-secondary" type="button" id="button-addon1">회사명</button>
+                      <input data-target="required" type="text" class="form-control" placeholder="이름을 입력해주세요" name="name" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                  </div>
+
 
 
                       <div class="input-group mb-3">
                         <button class="btn btn-outline-secondary" type="button">비밀번호</button>
-                        <input type="password" class="form-control" placeholder="비밀번호를 작성해주세요" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                        <input type="password" name="pw" class="form-control" placeholder="비밀번호를 작성해주세요" aria-label="Example text with button addon" aria-describedby="button-addon1">
                       </div>
 
                       <div class="input-group mb-3">
                         <button class="btn btn-outline-secondary" type="button">비밀번호 확인</button>
-                        <input type="password" class="form-control" placeholder="비밀번호를 확인해주세요" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                        <input type="password" name="confirmedPw" class="form-control" placeholder="비밀번호를 확인해주세요" aria-label="Example text with button addon" aria-describedby="button-addon1">
                       </div>
 
                         <div class="input-group mb-3">
                             <button class="btn btn-outline-secondary" type="button">사업자번호</button>
-                            <input type="text" class="form-control" placeholder="사업자 번호를 입력해주세요" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                            <input type="text" name="bussinessNum" class="form-control" placeholder="사업자 번호를 입력해주세요" aria-label="Example text with button addon" aria-describedby="button-addon1">
                           </div>
 
                           <div class="input-group mb-3">
                             <button class="btn btn-outline-secondary" type="button">주소</button>
-                            <input type="text" class="form-control" placeholder="상세주소를 입력해주세요" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                            <input type="text" name="address" class="form-control" placeholder="상세주소를 입력해주세요" aria-label="Example text with button addon" aria-describedby="button-addon1">
                           </div>
 
                           <div class="input-group mb-3">
-                            <button class="btn btn-outline-secondary" type="button">연락처</button>
-                            <input type="tel" class="form-control" placeholder="-를 빼고 숫자만 입력해주세요" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                            <button class="btn btn-outline-secondary" type="button">대표 연락처</button>
+                            <input type="tel" class="form-control" name="contactInfo" placeholder="-를 빼고 숫자만 입력해주세요" aria-label="Example text with button addon" aria-describedby="button-addon1">
                           </div>
 
                       
 
                           <div class="input-group mb-3">
                             <button class="btn btn-outline-secondary" type="button">대표 메일</button>
-                            <input type="email" class="form-control" placeholder="대표 메일을 입력해주세요" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                            <input type="email"  name="email" class="form-control" placeholder="대표 메일을 입력해주세요" aria-label="Example text with button addon" aria-describedby="button-addon1">
                           </div>
 
 
@@ -117,13 +122,13 @@
 
                           <div class="input-group mb-3">
                             <button class="btn btn-outline-secondary" type="button">담당자 이름</button>
-                            <input type="text" class="form-control" placeholder="담당자 이름을 입력해주세요" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                            <input type="text" class="form-control" name="managerName" placeholder="담당자 이름을 입력해주세요" aria-label="Example text with button addon" aria-describedby="button-addon1">
                           
                         </div> 
                     
                           <div class="input-group mb-3">
                             <button class="btn btn-outline-secondary" type="button">담당자 연락처</button>
-                            <input type="email" class="form-control" placeholder="담당자 연락처를 입력해주세요" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                            <input type="email" name="managerContactNum" class="form-control" placeholder="담당자 연락처를 입력해주세요" aria-label="Example text with button addon" aria-describedby="button-addon1">
                           </div>
 
                           <div class="seperator" style="border-bottom: 1px solid; margin-top: 50px; margin-bottom: 40px;"></div>
@@ -134,8 +139,8 @@
                     
 
                     <div class="actions">
-                        <button class="next btn btn-primary">가입완료</button>
-                        <button class="back btn btn-primary">메인으로</button>
+                        <button class="nextbtn btn btn-primary">가입완료</button>
+                        <button class="backbtn btn btn-primary">메인으로</button>
                     </div>
         
         </div>
@@ -147,6 +152,12 @@
 </body>
 </html>
 <script>
-       
+       window.addEventListener("load",function(){
+         const submitBtn = document.querySelector('.nextbtn');
+         submitBtn.onclick=()=>{
+           const form = document.querySelector('form');
+           form.submit();
+         }
+       })
 
 </script>

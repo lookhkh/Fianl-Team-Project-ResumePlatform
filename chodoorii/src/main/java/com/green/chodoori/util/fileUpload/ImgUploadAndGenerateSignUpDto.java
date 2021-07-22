@@ -40,7 +40,7 @@ public class ImgUploadAndGenerateSignUpDto {
 		UserInfoDto dto = new UserInfoDto();
 		dto.setEmail(vo.getEmail());
 		dto.setId(vo.getId());
-		dto.setImgPath(convertedItemName);
+		dto.setImgPath("/img/"+convertedItemName);
 		dto.setPw(vo.getPw());
 		dto.setName(vo.getName());
 		dto.setSort(1);
