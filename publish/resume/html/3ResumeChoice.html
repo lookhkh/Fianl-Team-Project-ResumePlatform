@@ -15,32 +15,21 @@
 
     <style>
 
-        *{
-          margin: 5;
-          box-sizing: border-box;
-          text-align: center;
-        }
+        .wrapper{width: 100vw; height: 900px;}
+        .gallerylist {max-width:1200px;width:100%;margin:0 auto; text-align: center;}
+        .gallerylist > ul {font-size:0;}
+        .gallerylist > ul > li {display:inline-block;vertical-align:top;width:33.3%;}
+        .gallerylist > ul > li > a {display:block;width:auto;text-decoration: none;margin:5px;}
+        .gallerylist > ul > li > a .screen {position:relative;overflow:hidden;}
+        .gallerylist > ul > li > a .screen .top {position:absolute;bottom:150%;left:30px;z-index:2;color:#fff;font-size:26px;font-weight:900;transition:all .35s;}
+        .gallerylist > ul > li > a .screen .bottom {position:absolute;top:150%;left:30px;z-index:2;color:#fff;font-size:12px;transition:all .35s;}
+        .gallerylist > ul > li > a .screen img {width:50%;}
+        .gallerylist > ul > li > a .screen::after {content:'';display:block;position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:1;opacity:0;transition:all .35s;}
+        .gallerylist > ul > li > a:hover .top {bottom:52%;}
+        .gallerylist > ul > li > a:hover .bottom {top:52%;}
+        .gallerylist > ul > li > a:hover .screen::after {opacity:1;}
+        .gallerylist > ul > li > a h3 {font-size:14px;text-align:center;padding:20px;color:#666;}
 
-        .wrapper{    
-          width: 100vw;
-          height: 900px;
-        }
-
-         
-        .resumeTem{
-                    display: inline-block;
-                    margin-left: 80px;
-        }
-        
-        div.resumeTem img{
-              width: 150px;
-              height: 150px;
-        }
-
-        .button{
-            margin-left: 10px;
-            float: right;
-        }
      
     </style>
 </head>
@@ -95,48 +84,92 @@
             <button type="button" class="signup btn signupAndLoginBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 회원가입/로그인
               </button>        </div>
-    </div>
-    <!--공통 헤더부분-->
+             </div>
+
+               <!--공통 헤더부분-->
 
     <div class="wrapper">
-        <div class="row first">
-            <h1>원하는 이력서 양식을 선택하세요.</h1>
-            <div class="content">
-              <div class="resumeTem">
-               <img src="..//Img/sam.JPG" alt="템플릿1">
-               <p></p>
-              </div>
-              <div class="resumeTem">
-               <img src="..//Img/sam.JPG" alt="템플릿2">
-              </div>
-              <div class="resumeTem">
-                <img src="..//Img/sam.JPG" alt="템플릿3">
-              </div>
-              <div class="resumeTem">
-                <img src="..//Img/sam.JPG" alt="템플릿4">
-              </div>
-              <div class="resumeTem">
-                <img src="..//Img/sam.JPG" alt="템플릿5">
-              </div>
-              <div class="resumeTem">
-                <img src="..//Img/sam.JPG" alt="템플릿6">
-              </div>
-              <div class="resumeTem">
-                <img src="..//Img/sam.JPG" alt="템플릿7">
-              </div>
-              <div class="resumeTem">
-                <img src="..//Img/sam.JPG" alt="템플릿8">
-              </div>        
-             <div class="button">   
-              <button type="button" class="signup btn btn-primary">
-              선택완료
-              </button>
-              <button type="button" class="signup btn btn-primary">
-              다시선택
-              </button>
-            </div>
+      <div class="row first">
+            <div class="gallerylist">
+              <h2>원하는 이력서 양식을 선택하세요.</h2>
+              <ul>
+                <li>
+                  <a href="">
+                    <div class="screen">
+                      <div class="top">퍼블리셔를 위한 이력서</div>
+                      <div class="bottom">이력서 완성:)</div>
+                      <img src="..//Img/sam.JPG" alt="템플릿1">
+                    </div>
+                    <div>
+                      <h3>템플릿1</h3>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="">
+                    <div class="screen">
+                      <div class="top">백엔드 개발자를 위한 이력서</div>
+                      <div class="bottom">기술중심이력서</div>
+                      <img src="..//Img/sam.JPG" alt="템플릿2">
+                    </div>
+                    <div>
+                      <h3>템플릿2</h3>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="">
+                    <div class="screen">
+                      <div class="top">풀스택을 위한 이력서</div>
+                      <div class="bottom">당신은 만능 개발자</div>
+                      <img src="..//Img/sam.JPG" alt="템플릿3">
+                    </div>
+                    <div>
+                      <h3>만능 개발자 당신을 위한 이력서:)</h3>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="">
+                    <div class="screen">
+                      <div class="top">퍼블리셔를 위한 이력서</div>
+                      <div class="bottom">이력서 완성:)</div>
+                      <img src="..//Img/sam.JPG" alt="템플릿1">
+                    </div>
+                    <div>
+                      <h3>템플릿1</h3>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="">
+                    <div class="screen">
+                      <div class="top">백엔드 개발자를 위한 이력서</div>
+                      <div class="bottom">기술중심이력서</div>
+                      <img src="..//Img/sam.JPG" alt="템플릿2">
+                    </div>
+                    <div>
+                      <h3>템플릿2</h3>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="">
+                    <div class="screen">
+                      <div class="top">풀스택을 위한 이력서</div>
+                      <div class="bottom">당신은 만능 개발자</div>
+                      <img src="..//Img/sam.JPG" alt="템플릿3">
+                    </div>
+                    <div>
+                      <h3>만능 개발자 당신을 위한 이력서:)</h3>
+                    </div>
+                  </a>
+                </li>        
+              </ul>    
+          </div>
         </div>
-    </div>
+       </div>      
+            
 
         <!--공통 Footer-->
 
