@@ -100,11 +100,9 @@
 
                 <div class="form sort show ">
 
-                <form method="POST" action="./signupRequired.html">
                     <button  class="choice btn btn-primary" >일반회원</button>
                     <button  class="choice btn btn-primary" >기업회원</button>
                     <input type="hidden" name="sort"/>
-                </form>
 
                 </div>
                 <div class="actions">
@@ -135,16 +133,14 @@
 
             if(btn.textContent==="다음으로"){
 
-                let formTag = form.querySelector('form');
 
                     if(sortValue.value==="기업회원"){
-                        formTag.action="./signupforcorporate.html"
+                        location.href="./signupforcorporate.html"
 
                     }else{
-                        formTag.action="./signupRequired.html"
+                        location.href="./signupRequired.html"
                     }
 
-                    form.querySelector('form').submit();
                
                 }else{
                     location.href="./index.html"
