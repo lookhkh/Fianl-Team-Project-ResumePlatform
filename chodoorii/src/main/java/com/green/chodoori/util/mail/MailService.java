@@ -42,7 +42,7 @@ public class MailService {
 
 	   	@ExceptionHandler(Exception.class)
 	   	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-	   	public String emailErrorHandler(Exception ex) {
+	   	private String emailErrorHandler(Exception ex) {
 	   		return "알 수 없는 오류가 발생했습니다";
 	   	}
 	   
@@ -71,6 +71,32 @@ public class MailService {
 	        
 	        
 	    }
+	    
+	   public void sendMailForIdLookUp(String email, String id) {
+		   SimpleMailMessage message = new SimpleMailMessage();
+	        message.setTo(email);
+	        message.setFrom(MailService.FROM_ADDRESS);
+	        message.setSubject("아이디 찾기");
+	        message.setText("찾고자 하는 아이디 : "+id);
+	        
+	        mailSender.send(message);
+
+
+	   }
+	   
+	   public void sendMailForPasswordLookUp(String email,String id ,String pw) {
+		   SimpleMailMessage message = new SimpleMailMessage();
+	        message.setTo(email);
+	        message.setFrom(MailService.FROM_ADDRESS);
+	        message.setSubject("비밀번호 찾기");
+	        message.setText(
+	        		"ID : "+id+
+	        		"찾고자 하는 비밀번호 : "+pw);
+	        
+	        mailSender.send(message);
+
+
+	   }
 	    
 
 	    
