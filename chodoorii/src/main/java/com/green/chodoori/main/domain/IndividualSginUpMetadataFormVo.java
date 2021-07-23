@@ -1,5 +1,8 @@
 package com.green.chodoori.main.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import lombok.Data;
 
 @Data
@@ -7,25 +10,18 @@ public class IndividualSginUpMetadataFormVo {
 
 	private String id;
 	
-	private String position_1;
-	private String position_2;
-	private String position_3;
-	private String position_4;
-	private String positions_5;
-
-	private String language_1;
-	private String language_2;
-	private String language_3;
-
-	private String framework_1;
-	private String framework_2;
-	private String framework_3;
+	private List<String> position = new ArrayList<>();
 	
-	private String db_1;
-	private String db_2;
-	private String db_3;
+	private List<String> language = new ArrayList<>();
 
-	private Integer exp; //0 신입, 1 경력
+
+	private List<String> framework = new ArrayList<>();
+
+	
+	private List<String> db = new ArrayList<>();
+
+
+	private String exp; //0 신입, 1 경력
 	private String period;
 	
 }

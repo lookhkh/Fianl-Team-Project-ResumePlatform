@@ -144,30 +144,30 @@
                         <h2>포지션 구분</h2>
                         <div class='col'>
                             <button class="position btn btn-primary">백엔드</button>
-                            <input  class="hidden-value position" type="hidden" name="position" >
+                            <input  class="hidden-value position" type="hidden"  >
                         </div>
                         <div class='col'>
                             <div class='col'>
                                 <button class="position btn btn-primary">프론트엔드</button>
-                                <input  class="hidden-value position" type="hidden" name="position" >
+                                <input  class="hidden-value position" type="hidden" >
                             </div>
                         </div>
                         <div class='col'>
                             <div class='col'>
                                 <button class="position btn btn-primary">DBA</button>
-                                <input  class="hidden-value position" type="hidden" name="position" >
+                                <input  class="hidden-value position" type="hidden"  >
                             </div>
                         </div>
                         <div class='col'>
                             <div class='col'>
                                 <button class="position btn btn-primary">퍼블리셔</button>
-                                <input  class="hidden-value position" type="hidden" name="position" >
+                                <input  class="hidden-value position" type="hidden" >
                             </div>
                         </div>
                         <div class='col'>
                             <div class='col'>
                                 <button class="position btn btn-primary">풀스택</button>
-                                <input  class="hidden-value position" type="hidden" name="position" >
+                                <input  class="hidden-value position" type="hidden"  >
                             </div>
                         </div>
                     </div>
@@ -362,6 +362,7 @@
 
         if(!target.classList.contains('selected')){
         input_.setAttribute("value",target.textContent) 
+        
         }
         
         else{
@@ -381,10 +382,14 @@
 
         if(!target.classList.contains('selected')){
         input_.setAttribute("value",target.textContent) 
+        input_.setAttribute("name","position") 
+
         }
 
         else{
             input_.removeAttribute("value");
+
+            input_.removeAttribute("name");
         }
 
         })

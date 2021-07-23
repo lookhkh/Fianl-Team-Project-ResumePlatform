@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<img src='/img/${info.imgPath}' />
+<img src=${info.imgPath} />
 <h1>this is additional signup form for individual for the project</h1>
 </body>
 </html>

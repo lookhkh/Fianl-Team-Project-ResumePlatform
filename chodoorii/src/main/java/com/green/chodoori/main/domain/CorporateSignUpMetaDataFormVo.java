@@ -10,6 +10,7 @@ import lombok.Data;
 @Data
 public class CorporateSignUpMetaDataFormVo {
 
+	private String id;
 	@NotNull @NotEmpty
 	private String bussinessNum;
 	@NotNull @NotEmpty
