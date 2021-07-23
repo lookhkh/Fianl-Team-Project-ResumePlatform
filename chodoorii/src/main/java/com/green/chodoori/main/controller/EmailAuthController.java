@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.green.chodoori.util.mail.MailAuthInfoDto;
 import com.green.chodoori.util.mail.MailService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/email")
@@ -27,7 +30,7 @@ public class EmailAuthController {
 	
 	@PostMapping
 	public ResponseEntity<String> generateAuthNum(@RequestBody String email, HttpSession session){
-		System.out.println(" 메일 서비스 호출");
+		log.info(" 메일 서비스 호출");
 		service.mailSend(email, session);
 
 		
@@ -41,8 +44,8 @@ public class EmailAuthController {
 		
 		String storedAuthNum = dto.getAuthInfo();
 		
-		System.out.println("저장된 인증번호 : "+storedAuthNum);
-		System.out.println("입력된 인증번호 : "+authNum);
+		log.info("저장된 인증번호 : {}",storedAuthNum);
+		log.info("입력된 인증번호 : {}",authNum);
 		
 		
 		return storedAuthNum.equals(authNum)?new ResponseEntity<String>(HttpStatus.OK):new ResponseEntity<String>(HttpStatus.BAD_REQUEST);

@@ -1,7 +1,6 @@
 package com.green.chodoori.main.controller;
 
 import java.io.IOException;
-import java.util.Set;
 
 import javax.validation.Valid;
 
@@ -9,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
-import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,9 +18,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.green.chodoori.main.domain.CorporateSignUpMetaDataFormVo;
+import com.green.chodoori.main.domain.IndividualSginUpMetadataFormVo;
 import com.green.chodoori.main.domain.SignUpFormVO;
 import com.green.chodoori.main.domain.UserInfoDto;
 import com.green.chodoori.util.fileUpload.ImgUploadAndGenerateSignUpDto;
+import com.green.chodoori.util.signup.UserMetaDataSeparatorService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -34,6 +35,9 @@ public class SignupController {
 
 	@Autowired
 	ImgUploadAndGenerateSignUpDto service;
+	
+	@Autowired
+	UserMetaDataSeparatorService separator;
 	
 	@PostMapping
 	public String signupPhaseTwoRequireUserInfo(@RequestParam("sort") Integer sort, @Valid @ModelAttribute SignUpFormVO vo, BindingResult error, Model model) throws IllegalStateException, IOException {
@@ -92,18 +96,24 @@ public class SignupController {
 		
 	}
 	
+	
+	//프론트 단에서 UserId 값도 함께 전달할 수 있도록 하여, 유저객체에서 set할 수 있도록 한다.
 	@ResponseBody
 	@PostMapping("/users/metadata")
-	public void test(@RequestBody MultiValueMap<String,String> map) {
-		System.out.println(map);
-		
-		Set<String> keys = map.keySet();
-		System.out.println(keys);
-		
-		System.out.println(map.get("position"));
-
-
+	public void getUserMetadata(@RequestBody MultiValueMap<String,String> map) {
+		log.info("들어온 메타데이터 정보 : {}",map);
+		IndividualSginUpMetadataFormVo vo = separator.separatorForUserMetadata(map);
+		log.info("메타데이터 객체 정보 : {}",vo.toString());
 	}
+	
+	//프론트 단에서 Id도 같이 보내줘서 나중에 합치기
+	@ResponseBody
+	@PostMapping("/corporate/metadata")
+	public void getCorporateMetadata(@ModelAttribute CorporateSignUpMetaDataFormVo dto) {
+		System.out.println(dto.toString());
+	}
+	
+	
 	
 	
 	
