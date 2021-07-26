@@ -23,7 +23,47 @@
           width: 100vw;
           height: 900px;
         }
-
+        
+        .ResumeRegistrationForm {
+        position:absolute;
+        padding: 30px, 20px;
+        background-color:#FFFFFF;
+        text-align:center;
+        top:50%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        border-radius: 15px;
+        }
+    
+       .ResumeRegistrationForm h2{
+        text-align: center;
+        margin: 30px;
+        }
+        
+        .ResumeRegistrationBtn {
+        position:relative;
+        left:40%;
+        transform: translateX(-50%);
+        margin-bottom: 40px;
+        width:80%;
+        height:40px;
+        background: linear-gradient(125deg,#81ecec,#6c5ce7,#81ecec);
+        background-position: left;
+        background-size: 200%;
+        color:white;
+        font-weight: bold;
+        border:none;
+        cursor:pointer;
+        
+        transition: 0.4s;
+        display:inline;
+        }
+    
+        .ResumeRegistrationBtn:hover {
+        background-position: right;
+        }
+    
+    
        
     </style>
 </head>
@@ -81,17 +121,16 @@
     </div>
     <!--공통 헤더부분-->
 
-    <div class="wrapper">
-        <div class="row first">
-            <div class="content">
-                <h1>당신을 잘 표현할 수 있는 이력서<br> 지금 바로 만들어보세요.</h1>
-                <br><br>
-                <button type="button" class="signup btn btn-primary">
-                    이력서 등록하기
-                </button>
-            </div>
-          
-        </div>
+             <div class="wrapper">
+                <div class="row first">
+                  <form action="#" method="post" class="ResumeRegistrationForm">
+                    <h2>당신을 잘 표현할 수 있는 이력서<br> 지금 바로 만들어보세요.</h2>
+                    <button type="button" class="ResumeRegistrationBtn" onclick="button()">
+                      이력서등록하기
+                    </button>                    
+                  </form>
+                  </div>
+                  </div>         
 
 
         <!--공통 Footer-->
