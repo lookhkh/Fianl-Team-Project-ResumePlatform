@@ -32,7 +32,65 @@
           text-align: center;
           display: inline-block;
         }
-  
+
+        .resumePwdForm {
+        position:absolute;
+        padding: 30px, 20px;
+        background-color:#FFFFFF;
+        text-align:center;
+        top:50%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        border-radius: 15px;
+    }
+    
+    .resumePwdForm h2{
+        text-align: center;
+        margin: 30px;
+    }
+    
+    
+    
+    .passForm{
+        border-bottom: 2px solid #adadad;
+        margin: 30px;
+        padding: 10px 10px;
+    }
+    
+    
+    .resumePw {
+        width: 100%;
+        border:none;
+        outline:none;
+        color: #636e72;
+        font-size:16px;
+        height:25px;
+        background: none;
+        text-align: center;
+    }
+    .resumePwBtn {
+        position:relative;
+        left:40%;
+        transform: translateX(-50%);
+        margin-bottom: 40px;
+        width:80%;
+        height:40px;
+        background: linear-gradient(125deg,#81ecec,#6c5ce7,#81ecec);
+        background-position: left;
+        background-size: 200%;
+        color:white;
+        font-weight: bold;
+        border:none;
+        cursor:pointer;
+        
+        transition: 0.4s;
+        display:inline;
+    }
+    
+    .resumePwBtn:hover {
+        background-position: right;
+    }
+    
        
     </style>
 </head>
@@ -90,23 +148,21 @@
     </div>
     <!--공통 헤더부분-->
 
-    <div class="wrapper">
-        <div class="row first">
-            <div class="resumePwd">
-                <form>
-                <h2>이력서 비밀번호 찾기</h2>
-                <input type="text" class="form-control" placeholder="이름" name="userName" maxlength="20"/><br>
-                <input type="text" class="form-control" placeholder="휴대폰번호(-포함 입력)" name="userTel" maxlength="20"/><br>
-                <input type="text" class="form-control" placeholder="비밀번호(숫자4자리)" name="userPwd" maxlength="4"/><br>
-                </form>  
-                <br><br>
-                <div class="button">   
-                  <button type="button" class="signup btn btn-primary">
-                  확인
-                  </button>              
+             <div class="wrapper">
+              <div class="row first">
+                <form action="#" method="post" class="resumePwdForm">
+                  <h2>이력서 비밀번호 찾기</h2>
+                  <div class="passForm">
+                    <input type="text" class="form-control" placeholder="이름" name="userName" maxlength="20"/><br>
+                    <input type="text" class="form-control" placeholder="휴대폰번호(-포함 입력)" name="userTel" maxlength="20"/><br>
+                    <input type="text" class="form-control" placeholder="비밀번호(숫자4자리)" name="userPwd" maxlength="4"/><br>
+                  </div>
+                  <button type="button" class="resumePwBtn" onclick="button()">
+                    확인
+                  </button>
+                </form>
                 </div>
                 </div>
-             </div>
 
 
         <!--공통 Footer-->
@@ -215,6 +271,7 @@
  
 </body>
 </html>
+<script >
 <script >
 	
   var check2 = "${findpw_checkt}";
