@@ -93,20 +93,16 @@
         <div class="content">
 
             <div class="progressWhere">
-                <span data-target="sort" ><img src="../img/2025986.svg" style="visibility: ;" width="30px" height="10px" alt="">회원유형선택</span>
-                <span data-target="required"><img src="../img/2025986.svg" style="visibility: hidden;" width="30px" height="10px" alt="">필수정보입력</span>
-                <span data-target="metadata"><img src="../img/2025986.svg" style="visibility: hidden;" width="30px" height="10px" alt="">메타정보입력</span>
+                <span data-target="sort" ><img src="../img/2025986.svg"  width="30px" height="10px" alt=" ">회원유형선택</span>
+                <span data-target="required"><img src="../img/2025986.svg" style="visibility: hidden;" width="30px" height="10px" alt=" ">필수정보입력</span>
+                <span data-target="metadata"><img src="../img/2025986.svg" style="visibility: hidden;" width="30px" height="10px" alt=" ">메타정보입력</span>
             </div>
 
                 <div class="form sort show ">
 
-                <form method="POST" action="./signupRequired.html"
-                ">
                     <button  class="choice btn btn-primary" >일반회원</button>
-
                     <button  class="choice btn btn-primary" >기업회원</button>
                     <input type="hidden" name="sort"/>
-                </form>
 
                 </div>
                 <div class="actions">
@@ -127,20 +123,27 @@
         let form = document.querySelector('.show');
         const formBtn = form.querySelectorAll('button')
         const actionBtn = document.querySelector('.actions');
-
+        const sortValue = document.querySelector('input[name="sort"]');
 
         actionBtn.addEventListener('click',function(e){
             if(e.target.nodeName!=="BUTTON") return;
             
-
             let btn = e.target;
 
 
-
             if(btn.textContent==="다음으로"){
-                console.log(form.querySelector('form').submit())
-            }else{
-                location.href="./index.html"
+
+
+                    if(sortValue.value==="기업회원"){
+                        location.href="./signupfomrForCorporateRequired.html"
+
+                    }else{
+                        location.href="./signupRequired.html"
+                    }
+
+               
+                }else{
+                    location.href="./index.html"
             }
         })
 
