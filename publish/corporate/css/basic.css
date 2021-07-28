@@ -21,6 +21,8 @@ body{
     justify-content: center;
     align-items: center;
     position: relative;
+    min-width: 1700px;
+
 }
 a {
     text-decoration: none;
@@ -249,4 +251,83 @@ a{
   width: 800px;
   text-align: center;
   padding: 20px 0px;
+}
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 회사 상세보기페이지@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+.Detail-info{
+  width: 100%;
+  height: 77vh;
+  max-width: 1500px;
+  margin: 50px auto;
+}
+.Detail-info .Summary{
+  clear: both;
+  /* 아래에서 침범 할 수 없는 영역 */
+}
+.Detail-info .Summary .content,
+
+.Detail-info .Summary .co-img{
+  width: 50%;
+  box-sizing: border-box;
+  min-height: 330px;
+}
+.Detail-info .Summary .content{
+  float: right;
+  padding-left: 5%;
+}
+.Detail-info .Summary .content dl{
+  margin-top: 25px;
+}
+.Detail-info .Summary .content dt{
+    font-size: 20px;
+}
+.Detail-info .Summary .content dd{
+
+}
+.rest{
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  min-width: 500px;
+
+}
+.rest > img{
+  padding: 10px;
+}
+.Detail-info .Summary .co-img{
+  float: left;
+  padding-right: 5%;
+}
+.Detail-info .Summary .co-img img{
+  width: 100%;
+  min-height: 330px;
+  border-radius: 20px;
+}
+.SI .content{
+  display:inline-block;
+  height: 300px;
+}
+.SI .content dt{
+  font-size: 30px;
+}
+.SI-btn{
+  text-align: center;
+  padding-top: 10px;
+}
+.SI-btn button{
+  display: inline-block;
+  margin-top: -10px ;
+  padding:5px 10px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10%;
+  font-size: 17px;
+  letter-spacing: -1px;
+  transition: 0.2s ease ;
+  position: fixed;
+  bottom: 100px;
+}
+.Detail-info .SI-btn button:hover{
+  background: #325cb2;
+  color: #ddd;
 }
