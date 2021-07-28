@@ -3,7 +3,7 @@ window.addEventListener('load',()=>{
     const current_page_lists = ["first","second","third"];
     let current_page_num = 0;
     let allSection = document.querySelectorAll('section');
-
+    const progressBar = document.querySelectorAll('header span');
 
     const formTag = document.querySelector('form');
 
@@ -45,6 +45,17 @@ window.addEventListener('load',()=>{
                 allSection.forEach(a=>{
                     if(a!==current_section&&!a.classList.contains('hidden')){
                         a.classList.add("hidden")
+                    }
+                })
+                progressBar.forEach(a=>{
+                    if(current_section.classList.contains(a.dataset.target)){
+                        a.classList.remove('bg-secondary')
+                        a.classList.add('bg-primary')
+                    }else{
+                        a.classList.remove('bg-primary')
+
+                        a.classList.add('bg-secondary')
+
                     }
                 })
         })
