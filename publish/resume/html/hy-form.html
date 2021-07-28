@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="../js/resumeform-pagejump.js"></script>
+    <style>
+
+        *{
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        .wrapper{
+            width: 100vw;
+            height: 100vh;
+        }
+
+        form{
+            width: 90%;
+            height: 90%;
+            position: relative;
+        }
+
+        section{
+            width: 100%;
+            height: 100%;
+            transition: 0.5s;
+        }
+
+        section.hidden{
+          display: none;
+
+        }
+
+        button{
+            width: 100px;
+            height: 100%;
+        }
+
+        header{
+            height: 7%;
+            margin-bottom: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid;
+        }
+
+        .form-section{
+            width: 100%;
+            height: 92%;
+        }
+
+        .button-wrapper{
+            width: 400px;
+            height: 6%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+       
+        
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+     
+        <header>
+            <h2>자기소개 입력</h2>
+            <h2>기술스택 입력</h2>
+            <h2>포트폴리오 입력</h2>
+        </header>
+        <form method="POST">
+            <div class="meta-data-set" style="display: none;">
+                <input type="hidden" name="background-color" value="">
+                <input type="hidden" name="font-family" value="">
+                <input type="hidden" name="font-color" value="">
+                <input type="hidden" name="template-kind" value="">
+            </div>
+            <section class="first-form">
+
+                <div class="form-section">
+                    <h2 style="text-align: center;">자기소개에 사용될 사진을 올려주세요</h2>
+                    <img src="../img/defaultpic.png" class="rounded mx-auto d-block" alt="...">
+                    <input type="file" name="introduction_img_path" style="display: none;">
+                    <div class="input-group" style="width: 800px; margin-top: 50px;">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">제목</span>
+                        <input name="introduction_header" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                      </div>
+                      <div class="input-group" style="width: 800px; margin-top: 50px;">
+                        <span class="input-group-text">자기소개</span>
+                        <textarea name="introduction_main" class="form-control" aria-label="With textarea" rows="10"></textarea>
+                      </div>
+
+                </div>
+                
+                <div class="button-wrapper">
+                    <button class="next-btn btn btn-primary">다음으로</button>
+                    <button class="backtolist-btn btn btn-primary">목록으로</button>
+                </div>
+
+            </section>
+            <section class="second-form hidden">
+                <div class="form-section">
+                  
+                    <div class="language" style="margin-bottom: 150px;width: 100%; height: 100px; display: flex; flex-direction: column; justify-content: center;align-items: center;">
+                        <h2>사용가능한 기술을 선택해주세요. 최대 8개까지 선택 가능합니다</h2>
+                        <div class="check">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox1" value="java">
+                                <label class="form-check-label" for="inlineCheckbox1">자바</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox2" value="python">
+                                <label class="form-check-label" for="inlineCheckbox2">파이썬</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox3" value="html">
+                                <label class="form-check-label" for="inlineCheckbox3">HTML</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox3" value="css" >
+                                <label class="form-check-label" for="inlineCheckbox3">CSS</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox3" value="javascript">
+                                <label class="form-check-label" for="inlineCheckbox3">JavaScript</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox3" value="spring">
+                                <label class="form-check-label" for="inlineCheckbox3">Spring</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox3" value="oracle">
+                                <label class="form-check-label" for="inlineCheckbox3">Oracle</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox3" value="servlet">
+                                <label class="form-check-label" for="inlineCheckbox3">JSP&Servlet</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sns-form" style="width: 100%; height: 300px; margin-top: 40px; display: flex; justify-content: center; flex-direction: column; align-items: center;">
+                        <h2>SNS 주소를 입력해주세요. 없을 시 공백으로 남겨주세요</h2>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1"><img src="../img/블로그.png" width="40px" height="40px"></span>
+                            <input type="text" class="form-control" name="BLOG_ADDRESS" placeholder="블로그 주소를 적어주세요" aria-label="Username" name="github_address" aria-describedby="basic-addon1">
+                          </div>
+                          <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1"><img src="../img/20210727_143131.png" width="40px" height="40px"></span>
+                            <input type="text" class="form-control" placeholder="깃허브 주소를 적어주세요" aria-label="Username" aria-describedby="basic-addon1">
+                          </div>
+                          <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1"><img src="../img/인스타.png" width="40px" height="40px"></span>
+                            <input type="text" class="form-control" placeholder="인스타 주소를 적어주세요" aria-label="Username" aria-describedby="basic-addon1">
+                          </div>
+                          <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1"><img src="../img/페이스북.png" width="40px" height="40px"></span>
+                            <input type="text" class="form-control" placeholder="페이스북 주소를 적어주세요" aria-label="Username" aria-describedby="basic-addon1">
+                          </div>
+                    </div>
+
+                </div>
+
+                    
+                
+                
+                <div class="button-wrapper">
+                    <button class="previous-btn btn btn-primary">이전으로</button>
+                    <button class="next-btn btn btn-primary">다음으로</button>
+                </div>
+
+            </section>
+            <section class="third-form hidden">
+                <div class="form-section">
+                    
+                    
+                </div>
+                <div class="button-wrapper">
+                    <button class="previous-btn btn btn-primary">이전으로</button>
+                    <button class="submit-btn btn btn-primary">제출하기</button>
+                    <button class="preview-btn btn btn-primary">미리보기</button>
+                </div>
+
+            </section>
+
+
+        </form>
+
+    </div>
+</body>
+</html>
+<script>
+ 
+</script>
