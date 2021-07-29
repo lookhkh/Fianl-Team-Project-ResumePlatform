@@ -1,7 +1,5 @@
 package com.green.chodoori;
 
-import java.text.SimpleDateFormat;
-
 import javax.sql.DataSource;
 
 import org.junit.jupiter.api.Test;
