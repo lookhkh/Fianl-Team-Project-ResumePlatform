@@ -29,7 +29,7 @@
 
                 <form method="POST" enctype="multipart/form-data" action="http://localhost:8088/signup?sort=0">
                      <div class="input-group" style="display: flex; flex-direction: row;">
-                        <img src="../img/defaultpic.png" class="img-thumbnail userpic" alt="..." width="150px" height="100px">
+                        <img src="../img/defaultpic.png" class="img-thumbnail userpic" alt="..." width="150px" height="80px">
                         <input style="display: none;" name="file" type="file" class="form-control" id="inputGroupFile04" height="50px" aria-describedby="inputGroupFileAddon04" aria-label="Upload">  
                         <button style="width: 170px;" class="uploadbtn btn btn-primary" type="button">프로필 사진 업로드</button>
                     </div>
@@ -65,7 +65,15 @@
                         </div>
                     </div>     
                     <div class="input-group mb-3">
-                        <input data-target="required"  type="tel" class="form-control" placeholder="전화번호를 입력해주세요" name="contactInfo" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                        <input data-target="required"  type="tel" class="form-control" placeholder="전화번호를 입력해주세요(-제외)" name="contactInfo" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <input data-target="required"  type="text" class="form-control" placeholder="사는 지역을 입력해주세요(ex 서울)" name="address" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <input data-target="required"  type="text" class="form-control" placeholder="생년월일을 입력해주세요(ex 92년 5월)" name="birth" aria-label="Example text with button addon" aria-describedby="button-addon1">
                     </div>
                     
                     <input type="hidden" class="check" value="0" />
