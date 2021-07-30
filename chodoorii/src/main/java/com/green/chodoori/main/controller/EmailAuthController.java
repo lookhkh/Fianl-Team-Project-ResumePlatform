@@ -52,6 +52,8 @@ public class EmailAuthController {
 		return storedAuthNum.equals(authNum)?new ResponseEntity<String>(HttpStatus.OK):new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
 	}
 	
+	
+	
 	@GetMapping("/lookupid/{email}")
 	public ResponseEntity<String> sendIdtoGivenEmail(@PathVariable String email){
 		//email을 통하여 유저 정보 가져오는 로직 작성

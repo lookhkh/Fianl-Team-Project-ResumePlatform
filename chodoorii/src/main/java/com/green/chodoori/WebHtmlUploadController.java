@@ -1,16 +1,15 @@
 package com.green.chodoori;
 
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 @CrossOrigin("*")
 @RequestMapping("/")
@@ -18,8 +17,13 @@ public class WebHtmlUploadController {
 
 	
 	@GetMapping
-	public String test() {
-		System.out.println("인덱스 페이지 호출");
+	public String test(@RequestParam(name = "name",required = false,defaultValue = "Stranger")String name, Model model) {
+		 
+		model.addAttribute("name",name);
+		 
+		 
+		 log.info("요청  : 인덱스 페이지 호출");
+
 		return "index";
 	}
 

@@ -1,0 +1,181 @@
+@charset "utf-8";
+ 
+*,
+*::before,
+*::after {
+  /* 테두리를 기준으로 크기를 정합니다. */
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+body{
+   height: 900px; 
+}
+
+
+#header{
+    width: 100vw;
+    height: 50px;
+    border-bottom: 0.3px groove;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    }
+
+li{
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    cursor: pointer;
+
+}
+
+
+#header ul{
+
+    display: flex;
+    flex-direction: row;
+
+     }
+     
+#header li{
+    margin-right: 40px;
+    transition: 0.5s;
+}
+
+#header li:hover{
+    transform: scale(1.3);
+}
+
+#header .logo{
+    position: relative;
+    left: 200px;
+}
+
+#header .signupAndLogin{
+    position: relative;
+    left: -230px;
+}
+#header .signupAndLoginBtn{
+    transition: 0.8s;
+}
+#header .signupAndLoginBtn:hover{
+    transform: scale(1.3);
+}
+
+.wrapper{
+    width: 100vw;
+    height: 1800px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+footer{
+    width: 100vw;
+    height: 80px;
+    border-top: 0.3px groove;
+    background-color: gray;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+footer a{
+    color: white;
+}
+
+.wrapper .row{
+    width: 100vw;
+    height: 1000px;
+    border: 0.5px solid;
+}
+
+.wrapper .row.first{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper .row.first .content{
+    width: 60%;
+    height: 60%;
+
+    
+}
+
+
+.modal-content{
+    height: 800px;
+    margin: 0 auto;
+}
+
+.modal-body{
+    margin: 0;
+    margin-top: 70px;
+}
+
+.modal-body .actions{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.modal-body .actions button{
+    margin-top: 50px;
+    height: 70px;
+    font-size: larger;
+}
+
+.lookup .modal-body .actions button{
+    margin-top: 10px;
+    height: 70px;
+    font-size: larger;
+}
+
+.id-lookupForm{
+    display: none;
+}
+
+.pw-lookupForm{
+    display: none;
+}
+
+.id-lookupForm.show{
+    display: block;
+}
+
+.pw-lookupForm.show{
+    display: block;
+}
+.btn-res > button{
+    width: 90px;
+    height: 130px;
+    font-size: 15px;
+    font-weight: bold;
+}
+.program{
+    display: flex; flex-wrap: nowrap;
+    width: 300px;
+}
+.program > p{
+    font-size: 20px;
+    line-height: 10px;
+}
+.one{
+    display: flex;
+    width: 800px;
+    text-align: center;
+    padding: 20px 0px;
+}
