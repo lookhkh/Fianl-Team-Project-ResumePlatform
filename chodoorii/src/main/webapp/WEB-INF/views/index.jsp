@@ -1,9 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
 <jsp:include page="./header/header.jsp"></jsp:include>
 <body>
 
+
+
     <div class="wrapper">
+    
+		
     
         <div class="row first">
             <div class="content">
@@ -36,7 +42,8 @@
 <script>
   window.addEventListener('load',function(){
     
-	  
+	 
+	console.log(name+"님 안녕하세요");
 	 
 	  
     const lookupForm = document.querySelector('.id-lookup');
