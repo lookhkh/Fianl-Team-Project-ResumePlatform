@@ -79,6 +79,8 @@ public class MailService {
 	        message.setSubject("아이디 찾기");
 	        message.setText("찾고자 하는 아이디 : "+id);
 	        
+
+	        
 	        mailSender.send(message);
 
 
@@ -92,6 +94,7 @@ public class MailService {
 	        message.setText(
 	        		"ID : "+id+
 	        		"찾고자 하는 비밀번호 : "+pw);
+	        
 	        
 	        mailSender.send(message);
 

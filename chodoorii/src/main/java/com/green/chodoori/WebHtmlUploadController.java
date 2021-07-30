@@ -1,16 +1,18 @@
 package com.green.chodoori;
 
-import javax.servlet.http.HttpServletResponse;
+import java.text.DateFormat;
+import java.util.Calendar;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 @CrossOrigin("*")
 @RequestMapping("/")
@@ -18,8 +20,13 @@ public class WebHtmlUploadController {
 
 	
 	@GetMapping
-	public String test() {
-		System.out.println("인덱스 페이지 호출");
+	public String test(HttpServletRequest req) {
+		 
+		 String client_id = req.getRemoteAddr();
+		 
+		 
+		 log.info("요청  : 인덱스 페이지 호출");
+
 		return "index";
 	}
 

@@ -1,0 +1,333 @@
+@charset "utf-8";
+ 
+*,
+*::before,
+*::after {
+  /* 테두리를 기준으로 크기를 정합니다. */
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+body{
+   height: 900px; 
+}
+
+
+#header{
+    width: 100vw;
+    height: 50px;
+    border-bottom: 0.3px groove;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    min-width: 1700px;
+
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    cursor: pointer;
+
+}
+
+
+#header ul{
+
+    display: flex;
+    flex-direction: row;
+
+     }
+     
+#header li{
+    margin-right: 40px;
+    transition: 0.5s;
+}
+
+#header li:hover{
+    transform: scale(1.3);
+}
+
+#header .logo{
+    position: relative;
+    left: 200px;
+}
+
+#header .signupAndLogin{
+    position: relative;
+    left: -230px;
+}
+#header .signupAndLoginBtn{
+    transition: 0.8s;
+}
+#header .signupAndLoginBtn:hover{
+    transform: scale(1.3);
+}
+
+.wrapper{
+    width: 100vw;
+    height: 1800px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+footer{
+    width: 100vw;
+    height: 80px;
+    border-top: 0.3px groove;
+    background-color: gray;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+footer a{
+    color: white;
+}
+
+.wrapper .row{
+    width: 100vw;
+    height: 1000px;
+    border: 0.5px solid;
+}
+
+.wrapper .row.first{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper .row.first .content{
+    width: 60%;
+    height: 60%;
+
+    
+}
+
+
+.modal-content{
+    height: 800px;
+    margin: 0 auto;
+}
+
+.modal-body{
+    margin: 0;
+    margin-top: 70px;
+}
+
+.modal-body .actions{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.modal-body .actions button{
+    margin-top: 50px;
+    height: 70px;
+    font-size: larger;
+}
+
+.lookup .modal-body .actions button{
+    margin-top: 10px;
+    height: 70px;
+    font-size: larger;
+}
+
+.id-lookupForm{
+    display: none;
+}
+
+.pw-lookupForm{
+    display: none;
+}
+
+.id-lookupForm.show{
+    display: block;
+}
+
+.pw-lookupForm.show{
+    display: block;
+}
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 회사목록.html입니다.@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+ul, li{
+  list-style: none;
+  /* 글머리없애기 */
+}
+a{
+  text-decoration: none;
+  /* 밑줄제거 */
+  color:inherit
+}
+.list-wrap{
+  width: 90%;
+  min-width: 1500px;
+  max-width: 1700px;
+  margin: 0 auto;
+  padding: 100px;
+}
+.list-wrap ul{
+  font-size: 0;
+}
+.list-wrap .photo{
+  display: inline-block;
+  /* 세로로 배치되어있는 배치를 가로로 변경 */
+  width: 20%;
+  margin-top: 40px;
+  margin-left: 5%;
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+  /* li태그에 박스테두리 적용 */
+}
+.list-wrap .photo:nth-child(4n-3){
+  margin-left: 0;
+  /* 각 열의 첫번째 사진은 왼쪽마진 0 */
+}
+.list-wrap  .photo img{
+  width: 100%;
+  height: 160px;
+  background: #ddd;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+.list-wrap .photo .co-info{
+  padding: 20px;
+}
+.list-wrap .photo strong {
+  display: block;
+  /* strong태그는 인라인형식이므로 마진적용이 안되므로 block로 교체 */
+  margin: 0 0 10px 0;
+  font-size: 16px;
+  letter-spacing: -1px;
+  /* 글자 내 간격 줄이기 */
+}
+.list-wrap .photo p {
+  font-size: 13px;
+  letter-spacing: -1px;
+}
+.list-wrap .photo a {
+  display: inline-block;
+  margin-top: -10px ;
+  padding:5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 10%;
+  font-size: 13px;
+  letter-spacing: -1px;
+  transition: 0.2s ease ;
+}
+.list-wrap .photo a:hover{
+  background: #325cb2;
+  color: #ddd;
+}
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 이력서.html @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+/* 부분입니다 */
+.program strong{
+  padding-top: 8px;
+}
+.btn-res > button{
+  width: 90px;
+  height: 130px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.program{
+  display: flex; flex-wrap: nowrap;
+  width: 300px;
+}
+.program > p{
+  font-size: 20px;
+  line-height: 10px;
+}
+.one{
+  display: flex;
+  width: 800px;
+  text-align: center;
+  padding: 20px 0px;
+}
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 회사 상세보기페이지@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+.Detail-info{
+  width: 100%;
+  height: 77vh;
+  max-width: 1500px;
+  margin: 50px auto;
+}
+.Detail-info .Summary{
+  clear: both;
+  /* 아래에서 침범 할 수 없는 영역 */
+}
+.Detail-info .Summary .content,
+
+.Detail-info .Summary .co-img{
+  width: 50%;
+  box-sizing: border-box;
+  min-height: 330px;
+}
+.Detail-info .Summary .content{
+  float: right;
+  padding-left: 5%;
+}
+.Detail-info .Summary .content dl{
+  margin-top: 25px;
+}
+.Detail-info .Summary .content dt{
+    font-size: 20px;
+}
+.Detail-info .Summary .content dd{
+
+}
+.rest{
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  min-width: 500px;
+
+}
+.rest > img{
+  padding: 10px;
+}
+.Detail-info .Summary .co-img{
+  float: left;
+  padding-right: 5%;
+}
+.Detail-info .Summary .co-img img{
+  width: 100%;
+  min-height: 330px;
+  border-radius: 20px;
+}
+.SI .content{
+  display:inline-block;
+  height: 300px;
+}
+.SI .content dt{
+  font-size: 30px;
+}
+.SI-btn{
+  text-align: center;
+  padding-top: 10px;
+}
+.SI-btn button{
+  display: inline-block;
+  margin-top: -10px ;
+  padding:5px 10px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10%;
+  font-size: 17px;
+  letter-spacing: -1px;
+  transition: 0.2s ease ;
+  position: fixed;
+  bottom: 100px;
+}
+.Detail-info .SI-btn button:hover{
+  background: #325cb2;
+  color: #ddd;
+}

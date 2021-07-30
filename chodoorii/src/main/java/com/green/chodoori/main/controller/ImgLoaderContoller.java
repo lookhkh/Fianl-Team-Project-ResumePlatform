@@ -36,7 +36,7 @@ public class ImgLoaderContoller {
 		}
 		
 		if(req.checkNotModified(resource.lastModified())) {
-			System.out.println("requested Resource is Not Modified");
+			System.out.println("Requested Resource name : "+imgName+" requested Resource is Not Modified");
 			return new ResponseEntity<Resource>(HttpStatus.NOT_MODIFIED);
 		};
 
