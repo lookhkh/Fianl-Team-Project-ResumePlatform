@@ -1,14 +1,11 @@
 package com.green.chodoori;
 
-import java.text.DateFormat;
-import java.util.Calendar;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,9 +17,9 @@ public class WebHtmlUploadController {
 
 	
 	@GetMapping
-	public String test(HttpServletRequest req) {
+	public String test(@RequestParam(name = "name",required = false,defaultValue = "Stranger")String name, Model model) {
 		 
-		 String client_id = req.getRemoteAddr();
+		model.addAttribute("name",name);
 		 
 		 
 		 log.info("요청  : 인덱스 페이지 호출");

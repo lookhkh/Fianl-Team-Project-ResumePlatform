@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:include page="./header/header.jsp"></jsp:include>
-
 <body>
-  
 
     <div class="wrapper">
+    
         <div class="row first">
             <div class="content">
                 <h1 style="font-weight: 700;">당신의 처음을 응원합니다.</h1>
@@ -24,7 +23,7 @@
 
         </div>
     </div>
-
+	
 
         <!--공통 Footer-->
 
@@ -37,6 +36,9 @@
 <script>
   window.addEventListener('load',function(){
     
+	  
+	 
+	  
     const lookupForm = document.querySelector('.id-lookup');
     const lookUpBtn = lookupForm.querySelector('button');
     const pwlookupForm = document.querySelector('.pw-lookupForm');
