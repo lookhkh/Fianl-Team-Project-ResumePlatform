@@ -211,6 +211,7 @@ a{
 .list-wrap .photo p {
   font-size: 13px;
   letter-spacing: -1px;
+  color: #325cb2;
 }
 .list-wrap .photo a {
   display: inline-block;
