@@ -60,15 +60,15 @@
 
 
                     if(sortValue.value==="기업회원"){
-                        location.href="./signupfomrForCorporateRequired.html"
+                        location.href="/signup/corporate"
 
                     }else{
-                        location.href="./signupRequired.html"
+                        location.href="/signup/individual";
                     }
 
                
                 }else{
-                    location.href="./index.html"
+                    location.href="/"
             }
         })
 

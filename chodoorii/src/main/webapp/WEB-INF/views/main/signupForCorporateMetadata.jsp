@@ -27,7 +27,8 @@
 
                 <div class="form sort show ">
 
-                <form method="POST" action="http://localhost:8088/signup/corporate/metadata">
+                <form method="POST" action="/signup/corporate/metadata">
+                    <input data-target="id" type="hidden" name="id" value="${userId}">
                   
                     <div class="input-group mb-3">
                         <button class="btn btn-outline-secondary" type="button">사업자번호</button>

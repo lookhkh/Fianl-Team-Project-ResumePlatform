@@ -23,11 +23,11 @@
                 <span data-target="metadata"><img src="/publish/main/img/2025986.svg" style="visibility: hidden;" width="30px" height="10px" alt="">메타정보입력</span>
             </div>
 
-            <form method="post" action="http://localhost:8088/signup/users/metadata">
+            <form method="post" action="/signup/users/metadata">
 
                 <div class="form metadata show ">
 
-                    <input data-target="userid" type="hidden" name="userId">
+                    <input data-target="id" type="hidden" name="id" value="${userId}">
                     
                     <div class="valuepicker row position">
                         <h2>포지션 구분</h2>
@@ -291,3 +291,4 @@
       
     })
 
+    </script>
