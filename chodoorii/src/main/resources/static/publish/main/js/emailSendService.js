@@ -22,7 +22,7 @@ window.addEventListener('load',function(){
 
     function requestEmailSend(address){
     
-        const url = "/email/";
+        const url = "http://localhost:8088/email";
 
         const xhr = new XMLHttpRequest();
         
@@ -47,7 +47,7 @@ window.addEventListener('load',function(){
 
     emailAuthCheckBtn.addEventListener('click',function(){
 
-        const url = "/email/"+emailInput[1].value;
+        const url = "http://localhost:8088/email/"+emailInput[1].value;
 
         const xhr = new XMLHttpRequest();
         
