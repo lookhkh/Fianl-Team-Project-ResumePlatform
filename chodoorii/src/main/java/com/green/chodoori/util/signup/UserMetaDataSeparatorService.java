@@ -16,8 +16,17 @@ public class UserMetaDataSeparatorService {
 	
 		IndividualSginUpMetadataFormVo dto = new IndividualSginUpMetadataFormVo();
 		
+	
+		
 		for(String key : keys) {
 			switch(key) {
+				
+				case "id":{
+					dto.setId(map.get(key).get(0));
+					break;
+				}
+						
+			
 				case "position" :{
 					
 					List<String> list = map.get(key);

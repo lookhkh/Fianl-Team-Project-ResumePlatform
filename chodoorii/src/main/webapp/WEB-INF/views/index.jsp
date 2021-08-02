@@ -40,7 +40,7 @@
 </body>
 </html>
 <script>
-  window.addEventListener('load',function(){
+window.addEventListener('load',()=>{
     
 	 
 	console.log(name+"님 안녕하세요");

@@ -87,21 +87,25 @@
           <h5 class="modal-title" id="exampleModalLabel">MyResueme</h5>
         </div>
         <div class="modal-body">
-            <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">ID</label>
-              </div>
-              <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Password</label>
-              </div>
+               <form id="loginForm" method="POST" action="/login">
+	            <div class="form-floating mb-3">
+		                <input name="id" type="text" class="id-input form-control" id="floatingInput" placeholder="name@example.com">
+		                <label for="floatingInput">ID</label>
+		              </div>
+		              <div class="form-floating">
+		                <input name="pw" type="password" class="pw-input form-control" id="floatingPassword" placeholder="Password">
+		                <label for="floatingPassword">Password</label>
+		              </div>
+              </form>
               <div class="actions">
-                <button type="button" class="btn btn-primary">로그인</button>
-                <button type="button" class="btn btn-primary" onclick="location.href='./signupSort.html'">회원가입</button>
+                <button type="button" class="login-btn btn btn-primary">로그인</button>
+                <button type="button" class="btn btn-primary" onclick="location.href='/signup'">회원가입</button>
                 <button type="button" class="lookup btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     회원정보 찾기
                 </button>
              </div>
+             
+  
             
         </div>
         <div class="modal-footer">
@@ -136,11 +140,11 @@
             <div class="pw-lookupForm"> 
                 <div class="pw-lookup">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="floatingInput" placeholder="ID">
+                        <input  type="text" class="form-control" id="floatingInput" placeholder="ID">
                         <label for="floatingInput">ID를 입력해주세요</label>
                     </div>     
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <input  type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                         <label for="floatingInput">등록 시 입력한 Email을 입력해주세요</label>
                     </div>     
                     <button type="button" class="btn btn-primary">비밀번호 찾기</button>
@@ -155,7 +159,7 @@
                 <button type="button" class="signupinstatic btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     로그인하기
                 </button>                
-                <button type="button" class="btn btn-primary" onclick="location.href='./signupSort.html'">회원가입</button>
+                <button type="button" class="btn btn-primary" onclick="location.href='/signup'">회원가입</button>
 
              </div>
         </div>
@@ -167,3 +171,13 @@
     </div>
   </div>
     <!-- lookUp Modal -->
+               <script>
+               window.addEventListener('load',function(){
+             		const loginBtn = document.querySelector(".login-btn");
+             		loginBtn.addEventListener('click',(e)=>{
+             			document.querySelector('#loginForm').submit();
+
+
+             		})
+             	})
+             </script>
