@@ -1,0 +1,59 @@
+    *{
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        .wrapper{
+            width: 100vw;
+            height: 100vh;
+        }
+
+        form{
+            width: 90%;
+            height: 90%;
+            position: relative;
+        }
+
+        section{
+            width: 100%;
+            height: 100%;
+            transition: 0.5s;
+        }
+
+        section.hidden{
+          display: none;
+
+        }
+
+        button{
+            width: 100px;
+            height: 100%;
+        }
+
+        header{
+            height: 7%;
+            margin-bottom: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid;
+        }
+
+        .form-section{
+            width: 100%;
+            height: 92%;
+        }
+
+        .button-wrapper{
+            width: 400px;
+            height: 6%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        button.checked{
+            background-color: red;
+        }
+
+       

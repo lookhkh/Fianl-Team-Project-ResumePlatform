@@ -32,5 +32,16 @@ public class WebHtmlUploadController {
 
 		return "index";
 	}
+	
+	@GetMapping("/sort")
+	public String test2() {
+		
+		
+	
+		
+		return "corporate/detail";
+	}
+	
+	
 
 }
