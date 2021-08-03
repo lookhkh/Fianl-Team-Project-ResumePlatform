@@ -179,3 +179,6 @@ footer a{
     text-align: center;
     padding: 20px 0px;
 }
+.introduce form{
+    height: 80vh;
+}

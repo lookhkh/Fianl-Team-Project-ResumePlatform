@@ -156,6 +156,17 @@ footer a{
 .pw-lookupForm.show{
     display: block;
 }
+/* @@@@@@@@@@@@@@@@@페이징버튼@@@@@@@@@@@@@@@@@ */
+ol.paging{
+  text-align: center;
+  display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    width: 400px;
+}
+.paging li{
+  display: inline-block;
+}
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 회사목록.html입니다.@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 ul, li{
   list-style: none;
