@@ -1,4 +1,4 @@
-package com.green.chodoori.main.domain;
+package com.green.chodoori.main.web.domain;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
