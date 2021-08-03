@@ -2,6 +2,7 @@ package com.green.chodoori.main.controller;
 
 import java.io.IOException;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +22,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.green.chodoori.main.domain.CorporateSignUpMetaDataFormVo;
+import com.green.chodoori.main.domain.CorporateSignUpMetaDataFormVoRepo;
 import com.green.chodoori.main.domain.IndividualSginUpMetadataFormVo;
-import com.green.chodoori.main.domain.SignUpFormVO;
+import com.green.chodoori.main.domain.IndividualSginUpMetadataFormVoRepo;
 import com.green.chodoori.main.domain.UserInfoDto;
+import com.green.chodoori.main.domain.UserInfoRepo;
+import com.green.chodoori.main.service.SignUpService;
+import com.green.chodoori.main.web.domain.SignUpFormVO;
 import com.green.chodoori.util.fileUpload.ImgUploadAndGenerateSignUpDto;
 import com.green.chodoori.util.signup.UserMetaDataSeparatorService;
 
@@ -37,10 +42,10 @@ public class SignupController {
 
 	@Autowired
 	ImgUploadAndGenerateSignUpDto service;
-	
+
 	@Autowired
-	UserMetaDataSeparatorService separator;
-	
+	SignUpService signUpService;
+
 	@GetMapping
 	public String gettingSignupForm() {
 		
@@ -94,6 +99,7 @@ public class SignupController {
 				 dto.setSort(0);
 				log.info("회원가입 정보 : {}",dto.toString());
 				model.addAttribute("userId",dto.getId());
+				signUpService.signUpProcessor(dto);
 				 
 				return "/main/signupMetaData";
 			}
@@ -101,7 +107,7 @@ public class SignupController {
 				 dto = service.imgUploadAndGenerateSignUpDto(vo.getFile(), vo);
 				 dto.setSort(1);
 					log.info("회원가입 정보 : {}",dto.toString());
-					
+					signUpService.signUpProcessor(dto);
 					model.addAttribute("userId",dto.getId());
 					
 					return "/main/signupForCorporateMetadata";
@@ -118,15 +124,21 @@ public class SignupController {
 	@ResponseBody
 	@PostMapping("/users/metadata")
 	public void getUserMetadata(@RequestBody MultiValueMap<String,String> map) {
-		log.info("들어온 메타데이터 정보 : {}",map);
-		IndividualSginUpMetadataFormVo vo = separator.separatorForUserMetadata(map);
-		log.info("메타데이터 객체 정보 : {}",vo.toString());
+
+		signUpService.individualMetaDataService(map);
+		
 	}
 	
+	
+	@Transactional
 	@ResponseBody
 	@PostMapping("/corporate/metadata")
 	public void getCorporateMetadata(@ModelAttribute CorporateSignUpMetaDataFormVo dto) {
-		System.out.println(dto.toString());
+		
+		
+		signUpService.corporateMetaDataService(dto);
+		
+		
 	}
 	
 	

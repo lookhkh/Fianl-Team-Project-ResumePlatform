@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.green.chodoori.main.domain.SignUpFormVO;
 import com.green.chodoori.main.domain.UserInfoDto;
+import com.green.chodoori.main.web.domain.SignUpFormVO;
 
 import lombok.extern.slf4j.Slf4j;
 
