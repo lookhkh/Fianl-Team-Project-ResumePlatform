@@ -38,6 +38,6 @@ public class LoginService {
 	public SessionUserInfo createSessionUserInfoDto(String userId) {
 		UserInfoDto dto = repo.findById(userId).get();
 		
-		return new SessionUserInfo(userId,dto.getImgPath(),dto.getSort());
+		return new SessionUserInfo(userId,dto.getImgPath(),dto.getSort(),dto.getCheck_detail());
 	}
 }
