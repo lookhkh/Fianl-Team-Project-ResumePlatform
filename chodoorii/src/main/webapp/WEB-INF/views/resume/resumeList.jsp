@@ -5,13 +5,18 @@
 <jsp:include page="../header/header.jsp"></jsp:include>
   <style>
 
-      *{
+     *{
         text-align: center;
+        
       }    
       
       .wrapper{    
           width: 100vw;
           height: 900px;
+          
+          background-image: url('/publish/resume/img/이력서등록하기.png');
+          background-position: center;
+          background-repeat: no-repeat;
         }
     </style>
 <body>
@@ -20,31 +25,27 @@
 
     
 		
-    <div class="wrapper">
-        <div class="row first">
-                <div class="resumebox">
-                    <h2>등록된 이력서 목록입니다.</h2><br>
-                    <img src="/publish/resume/img/sam.JPG" alt="등록된 이력서" height="400px" width="300px">
-                       <P class="title">개발자를 꿈꾸는 나를 소개합니다.
-                       <br>
-                        전공 : OO <br>
-                        학과 : oo <br>
-                        개발을 시작한 이유 : oo <br>
-                        실제 프로젝트 수행한 경험 등 <br>
-                       <br>
-                       <button type="button" class="signup btn btn-primary" style="margin-top: 10px;" onclick="location.href='./6ResumeEdit.html'">
-                        수정
-                       </button>
-                       <button type="button" class="signup btn btn-primary" style="margin-top: 10px;"> <!--삭제하시겠습니까? 화면 뜨고 삭제-->
-                        삭제
-                       </button>
-                       <button type="button" class="signup btn btn-primary" style="margin-top: 10px;" onclick="location.href='./8ResumeShare.html'">
-                        공유
-                       </button>
-                       </P> 
-            </div>
+        <div class="wrapper">
+          <div class="row first">
+            <div class="resumebox">
+                <div class="resumeUp" style="float:center;"  >
+                   <input type="button" class="btn btn-primary" style="height: 100px; width: 300px; font-size:40px; margin-top: -10%;" value="이력서 보기">
+                </div>
+                <div class="resumeTotal" style="padding-top: 20px;">
+                  <div class="resumeEdit" style="display: inline;">
+                    <input type="button" class="btn btn-primary" value="수정">
+                  </div>
+                  <div class="resumeDelete" style="display: inline;">
+                  <input type="button"  class="btn btn-primary" value="삭제">
+                   </div>
+                   <div class="resumeShare" style="display: inline;">
+                    <input type="button" class="btn btn-primary" value="공유">
+                    </div>
+                  </div>     
         </div>
-    
+    </div>
+
+
      
 
  

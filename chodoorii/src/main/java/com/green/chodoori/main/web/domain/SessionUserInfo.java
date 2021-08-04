@@ -10,4 +10,5 @@ public class SessionUserInfo {
 	private String id;
 	private String imgPath;
 	private Integer sort;
+	private Integer check;
 }
