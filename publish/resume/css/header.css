@@ -5,7 +5,7 @@
 
 #header{
     width: 100vw;
-    height: 50px;
+    height: 100px;
     border-bottom: 0.3px groove;
     display: flex;
     flex-direction: row;
