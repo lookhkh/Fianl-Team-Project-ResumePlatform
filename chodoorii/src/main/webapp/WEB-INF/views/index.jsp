@@ -5,11 +5,11 @@
 <jsp:include page="./header/header.jsp"></jsp:include>
 <body>
 
-
+	
 
     <div class="wrapper">
-    
-		
+
+
     
         <div class="row first">
             <div class="content">
@@ -42,8 +42,15 @@
 <script>
 window.addEventListener('load',()=>{
     
-	 
-	console.log(name+"님 안녕하세요");
+	const query = new URL(location.href).searchParams
+
+	if(query.get("error")){
+		document.querySelector('.signup').click();
+		
+	}
+
+	
+
 	 
 	  
     const lookupForm = document.querySelector('.id-lookup');
