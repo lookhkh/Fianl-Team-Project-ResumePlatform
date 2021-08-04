@@ -9,5 +9,5 @@ public class SessionUserInfo {
 	
 	private String id;
 	private String imgPath;
-	private String sort;
+	private Integer sort;
 }

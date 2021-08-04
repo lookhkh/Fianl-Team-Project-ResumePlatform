@@ -24,6 +24,7 @@
 
 <body>
 
+
     <!--공통 헤더부분-->
     <div id="header">
         <div class="logo">
@@ -68,12 +69,11 @@
               </div>
             </ul>
         </nav>
-
         <div class="signupAndLogin">
             <button type="button" class="signup btn signupAndLoginBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 회원가입/로그인
               </button>        </div>
-    </div>
+    	</div>
     <!--공통 헤더부분-->
     
     <!-- Button trigger modal -->

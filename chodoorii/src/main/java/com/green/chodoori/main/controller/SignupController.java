@@ -121,23 +121,24 @@ public class SignupController {
 	}
 	
 	
-	@ResponseBody
+	
 	@PostMapping("/users/metadata")
-	public void getUserMetadata(@RequestBody MultiValueMap<String,String> map) {
+	public String getUserMetadata(@RequestBody MultiValueMap<String,String> map) {
 
 		signUpService.individualMetaDataService(map);
+		return "redirect:/";
 		
 	}
 	
 	
 	@Transactional
-	@ResponseBody
 	@PostMapping("/corporate/metadata")
-	public void getCorporateMetadata(@ModelAttribute CorporateSignUpMetaDataFormVo dto) {
+	public String getCorporateMetadata(@ModelAttribute CorporateSignUpMetaDataFormVo dto) {
 		
 		
 		signUpService.corporateMetaDataService(dto);
-		
+		return "redirect:/";
+
 		
 	}
 	
