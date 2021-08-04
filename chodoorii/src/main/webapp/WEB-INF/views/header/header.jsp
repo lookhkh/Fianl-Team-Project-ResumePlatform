@@ -17,7 +17,7 @@
     <script src="/publish/main/js/dropdown.js"></script>
 
     <style>
-
+a { text-decoration:none } 
      
     </style>
 </head>
@@ -56,7 +56,6 @@
                 <li><a class="target-a" href="">이력서관리</a></li>
                 <div class="dropdown-content">
                   <a href="/resume">이력서관리</a>  
-                  <a href="/">MyResume란?</a>  
                 </div>
               </div>
 

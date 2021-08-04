@@ -91,11 +91,23 @@ public class SignupController {
 			return "index";
 		}
 		
-		UserInfoDto dto = null;
+		UserInfoDto dto = new UserInfoDto();
 		
 		switch(sort) {
 			case 0:{
-				 dto = service.imgUploadAndGenerateSignUpDto(vo.getFile(), vo);
+				 String imgPath =  service.imgUploadAndGenerateSignUpDto(vo.getFile());
+				
+				 dto.setBirth(vo.getBirth());
+				 dto.setCity(vo.getCity());
+				 dto.setContact_num(vo.getContact_num());
+				 dto.setEmail(vo.getEmail());
+				 dto.setName(vo.getName());
+				 dto.setPw(vo.getPw());
+				 dto.setImgPath(imgPath);
+				 dto.setId(vo.getId());
+				
+				 
+				 
 				 dto.setSort(0);
 				log.info("회원가입 정보 : {}",dto.toString());
 				model.addAttribute("userId",dto.getId());
@@ -104,8 +116,19 @@ public class SignupController {
 				return "/main/signupMetaData";
 			}
 			case 1:{
-				 dto = service.imgUploadAndGenerateSignUpDto(vo.getFile(), vo);
-				 dto.setSort(1);
+				 String imgPath =  service.imgUploadAndGenerateSignUpDto(vo.getFile());
+				 
+				 dto.setContact_num(vo.getContact_num());
+				 dto.setEmail(vo.getEmail());
+				 dto.setName(vo.getName());
+				 dto.setPw(vo.getPw());
+				 dto.setImgPath(imgPath);
+				 dto.setId(vo.getId());
+				 
+				
+				 
+				 
+				 	dto.setSort(1);
 					log.info("회원가입 정보 : {}",dto.toString());
 					signUpService.signUpProcessor(dto);
 					model.addAttribute("userId",dto.getId());
@@ -124,7 +147,8 @@ public class SignupController {
 	
 	@PostMapping("/users/metadata")
 	public String getUserMetadata(@RequestBody MultiValueMap<String,String> map) {
-
+ 
+		
 		signUpService.individualMetaDataService(map);
 		return "redirect:/";
 		

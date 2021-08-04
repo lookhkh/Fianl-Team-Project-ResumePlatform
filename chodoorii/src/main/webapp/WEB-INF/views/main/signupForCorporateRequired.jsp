@@ -68,7 +68,7 @@
                         </div>
                     </div>     
                     <div class="input-group mb-3">
-                        <input data-target="required"  type="tel" class="form-control" placeholder="대표 전화번호를 입력해주세요" name="contactInfo" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                        <input data-target="required"  type="tel" class="form-control" placeholder="대표 전화번호를 입력해주세요" name="contact_num" aria-label="Example text with button addon" aria-describedby="button-addon1">
                     </div>
                     
                     <input type="hidden" class="check" value="0" />
