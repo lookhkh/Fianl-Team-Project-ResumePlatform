@@ -68,11 +68,11 @@
                         </div>
                     </div>     
                     <div class="input-group mb-3">
-                        <input data-target="required"  type="tel" class="form-control" placeholder="전화번호를 입력해주세요(-제외)" name="contactInfo" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                        <input data-target="required"  type="tel" class="form-control" placeholder="전화번호를 입력해주세요(-제외)" name="contact_num" aria-label="Example text with button addon" aria-describedby="button-addon1">
                     </div>
 
                     <div class="input-group mb-3">
-                        <input data-target="required"  type="text" class="form-control" placeholder="사는 지역을 입력해주세요(ex 서울)" name="address" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                        <input data-target="required"  type="text" class="form-control" placeholder="사는 지역을 입력해주세요(ex 서울)" name="city" aria-label="Example text with button addon" aria-describedby="button-addon1">
                     </div>
 
                     <div class="input-group mb-3">

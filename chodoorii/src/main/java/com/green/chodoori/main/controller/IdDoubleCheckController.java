@@ -1,5 +1,8 @@
 package com.green.chodoori.main.controller;
 
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -8,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.green.chodoori.main.domain.UserInfoDto;
+import com.green.chodoori.main.domain.UserInfoRepo;
+
 @Controller
 @RequestMapping("/idcheck")
 @CrossOrigin("*")
@@ -15,14 +21,24 @@ public class IdDoubleCheckController {
 
 	//추후 디비 테이블 제작 후에는, 연동할 예정
 	
+	@Autowired
+	UserInfoRepo repo;
+	
 	@ResponseBody
 	@GetMapping
 	public ResponseEntity<String> idCheck(@RequestParam String id){
-		System.out.println(id);
+		System.out.println("요청 아이디 정보 : "+id);
+		
+		Optional<UserInfoDto> dto = repo.findById(id);
 		
 		if(id.length()<5) {
 			return ResponseEntity.badRequest().body("아이디는 5글자 이상");
 		}
-		return ResponseEntity.ok("ok");
+		
+		if(dto.isPresent()) {
+		return ResponseEntity.badRequest().body("이미 존재하는 아이디입니다");
 	}
+		
+		return ResponseEntity.ok("사용 가능한 아이디입니다");
+}
 }

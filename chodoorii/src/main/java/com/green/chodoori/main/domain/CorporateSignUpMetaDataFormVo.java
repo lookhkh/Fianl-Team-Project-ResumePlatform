@@ -1,22 +1,38 @@
 package com.green.chodoori.main.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-
-import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
 
 @Data
+@Entity
+@Table(name="CORPORTAE_USER_METADATA")
 public class CorporateSignUpMetaDataFormVo {
 
+	
+	
+	public CorporateSignUpMetaDataFormVo() {
+		super();
+	}
+
+	@Id
 	private String id;
-	@NotNull @NotEmpty
+	
 	private String bussinessNum;
-	@NotNull @NotEmpty
 	private String address;
-	@NotNull @NotEmpty
 	private String managerName;
 	private String managerContactNum;
+	
+	@MapsId
+	@OneToOne
+	@JoinColumn(name="USER_ID")
+	private UserInfoDto user_info_corp;
 	
 } 
