@@ -4,7 +4,21 @@
     
 <jsp:include page="../header/header.jsp"></jsp:include>
 <link href="/publish/resume/css/resumeRegistration.css" rel="stylesheet">
+<style>
+ *{
+        text-align: center;
+      }
 
+      .wrapper{    
+          width: 100vw;
+          height: 900px;
+          background-image: url('/publish/resume/img/이력서등록하기.png');
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+        
+        
+    </style>
 <body>
 
 
@@ -13,16 +27,14 @@
   
     <!--공통 헤더부분-->
 
-             <div class="wrapper">
-                <div class="row first">
-                  <form action="#" method="post" class="ResumeRegistrationForm">
-                    <h2>당신을 잘 표현할 수 있는 이력서<br> 지금 바로 만들어보세요.</h2>
-                    <button type="button" class="ResumeRegistrationBtn" onclick="location.href='./3ResumeChoice.html'">
-                      이력서등록하기
-                    </button>                    
-                  </form>
-                  </div>
-                  </div>         
+            <div class="wrapper">
+      <div class="row first">
+        <div class="resumebox">
+            <div class="resumeUp" style="float:center;"  >
+               <button type="button" class="btn btn-primary" style="height: 100px; width: 400px; font-size:50px; margin-top:-10%;" onclick="location.href='/resume/template'" >이력서 등록</button>
+            </div>
+       </div>
+    </div>   
 
 
         <!--공통 Footer-->

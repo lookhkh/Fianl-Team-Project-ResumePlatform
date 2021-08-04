@@ -2,15 +2,79 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     
-<jsp:include page="../header/header.jsp"></jsp:include>
-<link href="/publish/resume/css/resumeform.css" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="/publish/resume/js/resumeform-pagejump.js"></script>
+    <style>
 
+        *{
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        .wrapper{
+            width: 100vw;
+            height: 100vh;
+        }
+
+        form{
+            width: 90%;
+            height: 90%;
+            position: relative;
+        }
+
+        section{
+            width: 100%;
+            height: 100%;
+            transition: 0.5s;
+        }
+
+        section.hidden{
+          display: none;
+
+        }
+
+        button{
+            width: 100px;
+            height: 100%;
+        }
+
+        header{
+            height: 7%;
+            margin-bottom: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid;
+        }
+
+        .form-section{
+            width: 100%;
+            height: 92%;
+        }
+
+        .button-wrapper{
+            width: 400px;
+            height: 6%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        button.checked{
+            background-color: red;
+        }
+
+       
+        
+    </style>
+</head>
 <body>
-
-
-
-   <body>
     <div class="wrapper">
      
         <header>
@@ -18,15 +82,12 @@
             <span data-target="second-form" style="width: 200px; height: 50px; display: flex; justify-content: center; align-items: center; font-size: 1.2rem;"class="badge rounded-pill bg-secondary ">기술스택 및 SNS</span>
             <span data-target="third-form" style="width: 200px; height: 50px; display: flex; justify-content: center; align-items: center; font-size: 1.2rem;" class="badge rounded-pill bg-secondary ">포트폴리오</span>
         </header>
-        <form method="POST" enctype="multipart/form-data" >
-            <div class="meta-data-set" style="display: none;">
-                <input type="hidden" name="background-color" value="">
-                <input type="hidden" name="font-family" value="">
-                <input type="hidden" name="font-color" value="">
-                <input type="hidden" name="template-kind" value="">
-            </div>
+        <form method="POST" enctype="multipart/form-data" action="/resume/form" >
+            
             <section class="first-form">
-
+				<div class="meta-data-set" style="display: none;">
+				     <input type="hidden" name="template_kind" value="5">
+				</div>
                 <div class="form-section">
                     <h2 style="text-align: center;">자기소개에 사용될 사진을 올려주세요</h2>
                     <img src="/publish/resume/img/defaultpic.png" class="img-pic rounded mx-auto d-block" alt="...">
@@ -55,7 +116,7 @@
                         <h2>사용가능한 기술을 선택해주세요. 최대 8개까지 선택 가능합니다</h2>
                         <div class="check">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox1" value="java">
+                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox1" value="/자바.png">
                                 <label class="form-check-label" for="inlineCheckbox1">자바</label>
                             </div>
                             <div class="form-check form-check-inline">
@@ -92,7 +153,7 @@
                         <h2>SNS 주소를 입력해주세요.</h2>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><img src="/publish/resume/img/블로그.png" width="40px" height="40px"></span>
-                            <input type="text" class="form-control" name="BLOG_ADDRESS" placeholder="블로그 주소를 적어주세요" aria-label="Username" name="blog_address" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" name="blog_address" placeholder="블로그 주소를 적어주세요" aria-label="Username" name="blog_address" aria-describedby="basic-addon1">
                           </div>
                           <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><img src="/publish/resume/img/20210727_143131.png" width="40px" height="40px"></span>
@@ -159,11 +220,20 @@
                                 <textarea name="portfolio_third_desc"  rows="5" cols="70" style="margin-left: 0;" placeholder="내용을 입력해주세요"></textarea>
                             </div>
                         </div>
-                    </div>
-                        
-                        
-                        
+                    </div>   
+                    <div class="resume-openform" style="display: flex; font-size: 20px;">
+                        <div class="form-check form-switch"  style="margin: 0 auto;">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="disclosure" >
+                            <label class="form-check-label" for="flexSwitchCheckDefault">이력서 공개</label>
+                          </div>
+                        </div>  
                 </div>
+                
+                        
+                    
+               
+
+                    
                 <div class="button-wrapper">
                     <button class="previous-btn btn btn-primary">이전으로</button>
                     <button class="submit-btn btn btn-primary" >제출하기</button>
@@ -180,6 +250,12 @@
 </html>
 <script>
     window.addEventListener('load',function(){
+        const query = location.href.substring(location.href.indexOf("=")+1)
+		const inputvalue= document.getElementsByName("template-kind");
+        inputvalue.value=query
+    	
+        console.log(inputvalue.value)
+        
         const form = document.querySelector('form');
         form.addEventListener('click',(e)=>{
             const target = e.target;
@@ -201,18 +277,7 @@
             })
         })
 
+
     })
  
 </script>
-		
-    
-     
-
- 
-<jsp:include page="../header/footer.jsp"></jsp:include>
-
- 
-</body>
-</html>
-
-

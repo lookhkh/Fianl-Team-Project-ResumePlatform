@@ -4,7 +4,6 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,6 +17,10 @@ import com.green.chodoori.main.domain.IndividualSginUpMetadataFormVo;
 import com.green.chodoori.main.domain.IndividualSginUpMetadataFormVoRepo;
 import com.green.chodoori.main.domain.UserInfoDto;
 import com.green.chodoori.main.domain.UserInfoRepo;
+import com.green.chodoori.resume.domain.IntroductionDto;
+import com.green.chodoori.resume.domain.ResumeDto;
+import com.green.chodoori.resume.domain.ResumeDtoRepo;
+import com.green.chodoori.resume.domain.SkillSetDto;
 import com.green.chodoori.util.signup.UserMetaDataSeparatorService;
 
 @Rollback(value = false)
@@ -37,7 +40,10 @@ public class JpaTest {
 	@Autowired
 	UserMetaDataSeparatorService service;
 	
-	@BeforeEach
+	@Autowired
+	ResumeDtoRepo resumeRepo;
+	
+	//@BeforeEach
 	public void init() {
 		UserInfoDto dto = new UserInfoDto();
 		dto.setId("testId2");
@@ -115,7 +121,7 @@ public class JpaTest {
 		
 		
 	}
-	@Test
+	//@Test
 	@Transactional
 	public void hi() {
 		String userId = "testId2";
@@ -130,6 +136,31 @@ public class JpaTest {
 		metaRepo.save(meta);
 		
 	}
+	
+	@Test
+	@Transactional
+	public void 이력서관리테스트() {
+		UserInfoDto user = userRepo.findById("kim123").get();
+		ResumeDto dto = ResumeDto.builder()
+				.user(user)
+				.disclosurestatus(0)
+				.template_kind("first")
+				.portfolio_first_desc("tset")
+				.portfolio_first_github("test")
+				.portfolio_first_img("test")
+				.portfolio_first_name("test")
+				.intro_dto(new IntroductionDto("test_intro","test_header","test_img"))
+				.skill_dto(new SkillSetDto("1","2","3","4",null,null,null,null))
+				.build();
+			
+
+		resumeRepo.save(dto);
+		
+		ResumeDto resume = resumeRepo.findById(user.getId()).get();
+		System.out.println(resume.toString());
+		
+	}
+	
 	
 	
 	

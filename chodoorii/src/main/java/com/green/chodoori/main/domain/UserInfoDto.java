@@ -14,6 +14,7 @@ import lombok.Data;
 public class UserInfoDto {
 	
 	public UserInfoDto() {
+		this.check_detail=1;
 	}
 	
 	@Id @Column(name = "USER_ID")
@@ -33,7 +34,11 @@ public class UserInfoDto {
 	private Integer sort;
 	private String contact_num;
 	
+	@Column(name="check_")
+	private Integer check_detail;
 
+	
+	
 
 
 }
