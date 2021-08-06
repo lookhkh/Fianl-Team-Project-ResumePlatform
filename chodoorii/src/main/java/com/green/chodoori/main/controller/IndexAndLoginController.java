@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.green.chodoori.error.PasswordIsNotSameError;
 import com.green.chodoori.error.RequestedUserNotFound;
 import com.green.chodoori.main.service.LoginService;
+import com.green.chodoori.main.service.SessionCreateService;
 import com.green.chodoori.main.web.domain.LoginForm;
 import com.green.chodoori.main.web.domain.SessionUserInfo;
 
@@ -30,6 +31,9 @@ public class IndexAndLoginController {
 	@Autowired
 	LoginService service;
 	
+	@Autowired
+	SessionCreateService sessionService;
+	
 	@GetMapping
 	public String IndexGetter() {
 		log.info("인덱스 페이지 유청 수신");
@@ -37,7 +41,7 @@ public class IndexAndLoginController {
 	}
 	
 	@PostMapping("/login")
-	public String loginRequestedDataValidation(@ModelAttribute LoginForm form, HttpServletRequest req, @CookieValue(name = "JSESSIONID")Cookie sessionId, Model model) {
+	public String loginRequestedDataValidation(@ModelAttribute LoginForm form, HttpServletRequest req, Model model) {
 	
 		
 		log.info("새로운 유저가 로그인을 시도함 : {}",form.toString());
@@ -48,21 +52,7 @@ public class IndexAndLoginController {
 		
 		if(service.userInfoMationCheck(form)) {
 			
-			HttpSession session = req.getSession();
-			session.setMaxInactiveInterval(60*30);
-			//세션 생성 및, 세션에 로그인 정보 삽입.
-			
-			log.info("{}가 로그인 시도에 성공함.",form.getId());
-			
-			log.info("session 정보"
-					+ "세션 아이디 : {}"
-					+ "쿠키 아이디 : {}",session.getId(),sessionId.getValue());
-			
-
-			SessionUserInfo sessionDto = service.createSessionUserInfoDto(form.getId());
-			
-			session.setAttribute("userInfo", sessionDto);
-
+			sessionService.sessionCreate(form.getId(), req);
 
 			
 			return "redirect:/?login=true";
@@ -93,9 +83,6 @@ public class IndexAndLoginController {
 		session.invalidate();
 		return "redirect:"+redirect;
 	}
-	
-	
-
 	
 	
 	

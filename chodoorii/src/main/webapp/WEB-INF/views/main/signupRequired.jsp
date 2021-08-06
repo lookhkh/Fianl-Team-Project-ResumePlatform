@@ -49,10 +49,10 @@
 
                     <div class="password-set">
                       <div class="input-group mb-3">
-                        <input data-target="required"  type="text" class="form-control" placeholder="패스워드를 입력해주세요" aria-label="Username" aria-describedby="basic-addon1" name="pw">
+                        <input data-target="required"  type="password" class="form-control" placeholder="패스워드를 입력해주세요" aria-label="Username" aria-describedby="basic-addon1" name="pw">
                       </div>
                       <div class="input-group mb-3">
-                        <input data-target="required"  type="text" class="form-control" placeholder="패스워드를 확인해주세요" aria-label="Username" aria-describedby="basic-addon1" name="confirmedPw">
+                        <input data-target="required"  type="password" class="form-control" placeholder="패스워드를 확인해주세요" aria-label="Username" aria-describedby="basic-addon1" name="confirmedPw">
                       </div>
                     </div>
 

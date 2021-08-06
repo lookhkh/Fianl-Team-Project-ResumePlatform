@@ -2,10 +2,12 @@ package com.green.chodoori.main.controller;
 
 import java.io.IOException;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
@@ -19,18 +21,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.green.chodoori.main.domain.CorporateSignUpMetaDataFormVo;
-import com.green.chodoori.main.domain.CorporateSignUpMetaDataFormVoRepo;
-import com.green.chodoori.main.domain.IndividualSginUpMetadataFormVo;
-import com.green.chodoori.main.domain.IndividualSginUpMetadataFormVoRepo;
 import com.green.chodoori.main.domain.UserInfoDto;
-import com.green.chodoori.main.domain.UserInfoRepo;
+import com.green.chodoori.main.service.SessionCreateService;
 import com.green.chodoori.main.service.SignUpService;
 import com.green.chodoori.main.web.domain.SignUpFormVO;
 import com.green.chodoori.util.fileUpload.ImgUploadAndGenerateSignUpDto;
-import com.green.chodoori.util.signup.UserMetaDataSeparatorService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -41,6 +38,9 @@ import lombok.extern.slf4j.Slf4j;
 public class SignupController {
 
 	@Autowired
+	SessionCreateService sessionService;
+	
+	@Autowired
 	ImgUploadAndGenerateSignUpDto service;
 
 	@Autowired
@@ -50,7 +50,7 @@ public class SignupController {
 	public String gettingSignupForm() {
 		
 		log.info("회원가입 기업/일반회원 선택 폼 호출 요청 수신");
-		
+		log.info("내용 {}","hi");
 		return "/main/signupSort";
 	}
 	
@@ -69,7 +69,7 @@ public class SignupController {
 	
 	
 	@PostMapping
-	public String signupPhaseTwoRequireUserInfo(@RequestParam("sort") Integer sort, @Valid @ModelAttribute SignUpFormVO vo, BindingResult error, Model model) throws IllegalStateException, IOException {
+	public String signupPhaseTwoRequireUserInfo(HttpServletRequest req ,@RequestParam("sort") Integer sort, @Valid @ModelAttribute SignUpFormVO vo, BindingResult error, Model model) throws IllegalStateException, IOException {
 		log.info("받은 인수 : {},{}",vo.getFile().getOriginalFilename(), vo.toString());
 		log.info("가입 유형  : {}",(sort==0?"일반회원":"기업회원"));
 
@@ -90,7 +90,7 @@ public class SignupController {
 			
 			return "index";
 		}
-		
+
 		UserInfoDto dto = new UserInfoDto();
 		
 		switch(sort) {
@@ -112,6 +112,8 @@ public class SignupController {
 				log.info("회원가입 정보 : {}",dto.toString());
 				model.addAttribute("userId",dto.getId());
 				signUpService.signUpProcessor(dto);
+				sessionService.sessionCreate(vo.getId(), req);
+				
 				 
 				return "/main/signupMetaData";
 			}
@@ -132,6 +134,8 @@ public class SignupController {
 					log.info("회원가입 정보 : {}",dto.toString());
 					signUpService.signUpProcessor(dto);
 					model.addAttribute("userId",dto.getId());
+					sessionService.sessionCreate(vo.getId(), req);
+
 					
 					return "/main/signupForCorporateMetadata";
 				 
@@ -147,8 +151,7 @@ public class SignupController {
 	
 	@PostMapping("/users/metadata")
 	public String getUserMetadata(@RequestBody MultiValueMap<String,String> map) {
- 
-		
+
 		signUpService.individualMetaDataService(map);
 		return "redirect:/";
 		
