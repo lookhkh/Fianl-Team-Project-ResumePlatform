@@ -176,14 +176,14 @@ public class ResumeRegisterController {
 		resume.setUser(user);
 		sessionUser.setCheck(0);
 		session.setAttribute("userInfo", sessionUser);
-		userRepo.save(user);
-		resumeRepo.save(resume);
+		//userRepo.save(user);
+		//resumeRepo.save(resume);
 		
-		session.setAttribute("temp", resume);
+		//session.setAttribute("temp", resume);
 		
 		System.out.println(resumeRepo.findById(user.getId()).toString());
 		
-		model.addAttribute("temp",resume);
+		model.addAttribute("resume",resume);
 		
 		String templateName = "/resume/template/templateSample"+template_kind;
 		
