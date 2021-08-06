@@ -45,12 +45,12 @@ public class ResumeRegisterController {
 	}
 	
 	@GetMapping("/form")
-	public String templateFormPage() {
+	public String templateFormPage(@RequestParam("template")String template,Model model) {
+		model.addAttribute("template",template);
 		return "/resume/resumeForm";
 	}
 	
 	@Transactional
-	@ResponseBody
 	@PostMapping("/form")
 	public String templageFormInputCheck(HttpSession session,
 										@RequestParam(required = false) String template_kind, 
@@ -172,9 +172,11 @@ public class ResumeRegisterController {
 		
 		SessionUserInfo sessionUser = (SessionUserInfo) session.getAttribute("userInfo");
 		UserInfoDto user = userRepo.getById(sessionUser.getId());
-		
+		user.setCheck_detail(0);
 		resume.setUser(user);
-		
+		sessionUser.setCheck(0);
+		session.setAttribute("userInfo", sessionUser);
+		userRepo.save(user);
 		resumeRepo.save(resume);
 		
 		session.setAttribute("temp", resume);
@@ -184,6 +186,8 @@ public class ResumeRegisterController {
 		model.addAttribute("temp",resume);
 		
 		String templateName = "/resume/template/templateSample"+template_kind;
+		
+		System.out.println(templateName);
 		
 		return templateName;
 	}

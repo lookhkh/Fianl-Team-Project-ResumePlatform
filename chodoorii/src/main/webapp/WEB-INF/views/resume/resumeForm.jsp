@@ -86,7 +86,7 @@
             
             <section class="first-form">
 				<div class="meta-data-set" style="display: none;">
-				     <input type="hidden" name="template_kind" value="5">
+				     <input type="hidden" name="template_kind" value="${template}">
 				</div>
                 <div class="form-section">
                     <h2 style="text-align: center;">자기소개에 사용될 사진을 올려주세요</h2>
