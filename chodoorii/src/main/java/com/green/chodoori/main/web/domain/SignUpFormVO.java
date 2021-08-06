@@ -28,7 +28,11 @@ public class SignUpFormVO {
 	@Email
 	private String email;
 	
-	private String contactInfo;
+	private String contact_num;
+	
+	private String birth;
+	
+	private String city;
 
 	
 	

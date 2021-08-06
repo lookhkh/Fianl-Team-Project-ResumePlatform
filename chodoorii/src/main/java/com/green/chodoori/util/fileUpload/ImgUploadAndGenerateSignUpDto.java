@@ -23,9 +23,12 @@ public class ImgUploadAndGenerateSignUpDto {
 	@Value("${upload.path}")
 	String path;
 	
-	public UserInfoDto imgUploadAndGenerateSignUpDto(MultipartFile fileVo, SignUpFormVO vo) throws IllegalStateException, IOException {
+	public String imgUploadAndGenerateSignUpDto(MultipartFile fileVo) throws IllegalStateException, IOException {
 		String fileName = fileVo.getOriginalFilename();
 		String convertedItemName = UUID.randomUUID().toString()+"."+fileName.substring(fileName.lastIndexOf(".")+1);
+		
+		
+		
 		
 		log.info(path+convertedItemName);
 		
@@ -37,20 +40,11 @@ public class ImgUploadAndGenerateSignUpDto {
 		
 		fileVo.transferTo(file);
 		
-		UserInfoDto dto = new UserInfoDto();
-		dto.setEmail(vo.getEmail());
-		dto.setId(vo.getId());
-		dto.setImgPath("/img/"+convertedItemName);
-		dto.setPw(vo.getPw());
-		dto.setName(vo.getName());
-		dto.setSort(1);
-		
-		tempStore.put(vo.getId(), dto);//데이터베이스 사용 후 삭제 예정
 		
 		
-		log.info("회원가입 정보 : {}",dto.toString());
 		
-		return dto;
+			
+		return "/img/"+convertedItemName;
 		
 	}
 
