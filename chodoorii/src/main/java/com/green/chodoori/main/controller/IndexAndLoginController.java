@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.green.chodoori.error.PasswordIsNotSameError;
 import com.green.chodoori.error.RequestedUserNotFound;
@@ -86,6 +87,15 @@ public class IndexAndLoginController {
 		
 		
 	}
+	
+	@GetMapping("/logout")
+	public String logout(@RequestParam(defaultValue = "/") String redirect, HttpSession session) {
+		session.invalidate();
+		return "redirect:"+redirect;
+	}
+	
+	
+
 	
 	
 	

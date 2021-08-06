@@ -141,7 +141,7 @@
             
 
             }else{
-                location.href="./signupSort.html"
+                if(confirm("가입을 중단하시겠습니까?"))location.href="/"
             }
         })
 
