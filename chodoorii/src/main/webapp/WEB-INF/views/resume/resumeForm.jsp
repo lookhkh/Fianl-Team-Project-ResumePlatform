@@ -236,8 +236,7 @@
                     
                 <div class="button-wrapper">
                     <button class="previous-btn btn btn-primary">이전으로</button>
-                    <button class="submit-btn btn btn-primary" >제출하기</button>
-                    <button class="preview-btn btn btn-primary">미리보기</button>
+                    <button class="submit-btn btn btn-primary" >미리보기</button>
                 </div>
 
             </section>

@@ -51,7 +51,7 @@ public class ResumeRegisterController {
 	}
 	
 	@Transactional
-	@PostMapping("/form")
+	@PostMapping({"/form"})
 	public String templageFormInputCheck(HttpSession session,
 										@RequestParam(required = false) String template_kind, 
 										@RequestParam(required = false) String introduction_header,
@@ -176,10 +176,10 @@ public class ResumeRegisterController {
 		resume.setUser(user);
 		sessionUser.setCheck(0);
 		session.setAttribute("userInfo", sessionUser);
-		//userRepo.save(user);
-		//resumeRepo.save(resume);
+		userRepo.save(user);
+		resumeRepo.save(resume);
 		
-		//session.setAttribute("temp", resume);
+		session.setAttribute("temp", resume);
 		
 		System.out.println(resumeRepo.findById(user.getId()).toString());
 		
