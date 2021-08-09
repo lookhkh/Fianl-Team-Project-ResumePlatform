@@ -31,7 +31,7 @@ window.addEventListener('load',()=>{
             }
 
             if(target.classList.contains("submit-btn")){
-                if(confirm("이력서를 최종 제출하시겠습니까?")) formTag.submit();
+                if(confirm("이력서를 미리 보시겠습니까?")) formTag.submit();
             }
 
             if(target.classList.contains("preview-btn")){
