@@ -45,7 +45,7 @@
               </div> 
 
               <div class="dropdown">
-                <li><a class="target-a" href="">기업홍보관</a></li>
+                <li><a class="target-a" href="/corporate/cpinfo">기업홍보관</a></li>
                 <div class="dropdown-content">
                   <a>MyResume란?</a>  
                   <a>MyResume란?</a>  
@@ -53,7 +53,7 @@
               </div>
 
               <div class="dropdown">
-                <li><a class="target-a" href="">이력서관리</a></li>
+                <li><a class="target-a" href="/read/resume">이력서관리</a></li>
                 <div class="dropdown-content">
                   <a href="/resume">이력서관리</a>  
                   <a href="/">MyResume란?</a>  
