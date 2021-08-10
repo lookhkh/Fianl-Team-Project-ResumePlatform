@@ -298,7 +298,8 @@
 		<c:if test="${!empty resume.portfolio_first_name&&resume.portfolio_first_name ne null}">
           <div class="PORTFOLIO">
             <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_first_img}" alt="" width="400px" height="300px">
-            <a href="${resume.portfolio_first_github}" target=_blank><p class="PORTFOLIO_FIRST_GITHUB">깃허브 </p></a>
+            <a href="${resume.portfolio_first_github}" target=_blank>
+            <p class="PORTFOLIO_FIRST_GITHUB">깃허브 </p></a>
 			<p>${resume.portfolio_first_name }</p>
            <p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_first_desc}</p>
           </div>
@@ -306,7 +307,8 @@
 		<c:if test="${!empty resume.portfolio_second_name&&resume.portfolio_second_name ne null}">
           <div class="PORTFOLIO">
             <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_second_img}" alt="" width="400px" height="300px">
-            <a href="${resume.portfolio_second_github}" target=_blank><p class="PORTFOLIO_FIRST_GITHUB">깃허브 </p></a>
+            <a href="${resume.portfolio_second_github}" target=_blank>
+            <p class="PORTFOLIO_FIRST_GITHUB">깃허브 </p></a>
 			<p>${resume.portfolio_second_name }</p>
            <p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_second_desc}</p>
           </div>
