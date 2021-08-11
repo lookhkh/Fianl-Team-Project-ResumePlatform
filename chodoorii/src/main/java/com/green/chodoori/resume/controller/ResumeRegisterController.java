@@ -184,6 +184,7 @@ public class ResumeRegisterController {
 		System.out.println(resumeRepo.findById(user.getId()).toString());
 		
 		model.addAttribute("resume",resume);
+
 		
 		String templateName = "/resume/template/templateSample"+template_kind;
 		
