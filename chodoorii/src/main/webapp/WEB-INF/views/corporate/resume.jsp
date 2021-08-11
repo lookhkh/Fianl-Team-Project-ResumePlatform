@@ -18,7 +18,7 @@
             <h3> 이력서 제목이 입력되는 부분입니다</h3>
           </div>
           <div class="btn-res">
-            <button type="button" class="btn btn-primary"onclick="location.href=''">열람하기</button>
+            <button type="button" class="btn btn-primary"onclick="location.href='각각의 이력서 페이지로 이동'">열람하기</button>
           </div>
           </div>
           <div class="one">
@@ -28,7 +28,7 @@
             <h3> 이력서 제목이 입력되는 부분입니다</h3>
           </div>
           <div class="btn-res">
-            <button type="button" class="btn btn-primary"onclick="location.href=''">열람하기</button>
+            <button type="button" class="btn btn-primary"onclick="location.href='각각의 이력서 페이지로 이동'">열람하기</button>
           </div>
           </div>
           <div class="one">
@@ -61,7 +61,17 @@
             <button type="button" class="btn btn-primary"onclick="location.href=''">열람하기</button>
           </div>
           </div>  
-          
+          <ol class="paging">
+      <li><a href="#"><<</a></li>
+      <li><a href="#"><</a></li>
+      <li><a href="#">1</a></li>
+      <li><a href="#">2</a></li>
+      <li><a href="#">3</a></li>
+      <li><a href="#">4</a></li>
+      <li><a href="#">5</a></li>
+      <li><a href="#">></a></li>
+      <li><a href="#">>></a></li>
+    </ol>
         </div>
         </div>
       </div>

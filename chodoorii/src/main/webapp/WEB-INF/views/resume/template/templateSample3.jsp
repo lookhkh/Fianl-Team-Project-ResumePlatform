@@ -215,7 +215,7 @@
 </head>
 <body>
     <ul>
-        <li><img id="INTRODUCTION_IMG_PATH" src="/publish/resume/img/사진.JPG" alt=""></li>
+        <li><img id="INTRODUCTION_IMG_PATH" src="${resume.intro_dto.introduction_img_path}" alt=""></li>
       </ul>
       
       <div class="cd1">
@@ -223,19 +223,10 @@
       <div id="resumeTemBox1">
         
         <div id="INTRODUCTION_HEADER">
-          <h1>프론트 개발자를 위한</h1>
+          <h1>${resume.intro_dto.introduction_header}</h1>
         </div>  
         <div id="INTRODUCTION_MAIN">
-        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quis aspernatur quae hic doloremque ad officiis autem deserunt, <br>
-            tempora et tenetur sunt dolorem cupiditate voluptate qui perferendis quam quisquam molestiae.<br>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quis aspernatur quae hic doloremque ad officiis autem deserunt, <br>
-            tempora et tenetur sunt dolorem cupiditate voluptate qui perferendis quam quisquam molestiae.<br> 
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quis aspernatur quae hic doloremque ad officiis autem deserunt, <br>
-            tempora et tenetur sunt dolorem cupiditate voluptate qui perferendis quam quisquam molestiae.<br> 
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quis aspernatur quae hic doloremque ad officiis autem deserunt, <br>
-            tempora et tenetur sunt dolorem cupiditate voluptate qui perferendis quam quisquam molestiae.<br>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quis aspernatur quae hic doloremque ad officiis autem deserunt, <br>
-            tempora et tenetur sunt dolorem cupiditate voluptate qui perferendis quam quisquam molestiae.<br>   </p>
+        <p>${resume.intro_dto.introduction_main}</p>
         
         </div>
         
@@ -295,22 +286,32 @@
       <div id="resumeTemBox5">
       <div class="PORTFOLIOTem">
           <div class="PORTFOLIO">
-            <img class="PORTFOLIO_FIRST_IMG" src="/publish/resume/img/회사.JPG" alt="">
-            <a href="#"><p class="PORTFOLIO_FIRST_GITHUB">깃허브 </p></a>
-            <a href="#"><p class="PORTFOLIO_FIRST_URL">URL</p></a>
-            <p class="PORTFOLIO_FIRST_NAME"> 이름</p>
-          </div>
+            <c:if test="${!empty resume.portfolio_first_name&&resume.portfolio_first_name ne null}">
           <div class="PORTFOLIO">
-            <img class="PORTFOLIO_FIRST_IMG" src="/publish/resume/img/회사.JPG" alt="">
-            <a href="#"><p class="PORTFOLIO_FIRST_GITHUB">깃허브 </p></a>
-            <a href="#"><p class="PORTFOLIO_FIRST_URL">URL</p></a>
-            <p class="PORTFOLIO_FIRST_NAME"> 이름</p>
+            <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_first_img}" alt="" width="400px" height="300px">
+            <a href="${resume.portfolio_first_github}" target=_blank>
+            <p class="PORTFOLIO_FIRST_GITHUB">깃허브 </p></a>
+			<p>${resume.portfolio_first_name }</p>
+           <p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_first_desc}</p>
           </div>
+        </c:if>
+		<c:if test="${!empty resume.portfolio_second_name&&resume.portfolio_second_name ne null}">
           <div class="PORTFOLIO">
-            <img class="PORTFOLIO_FIRST_IMG" src="/publish/resume/img/회사.JPG" alt="">
-            <a href="#"><p class="PORTFOLIO_FIRST_GITHUB">깃허브 </p></a>
-            <a href="#"><p class="PORTFOLIO_FIRST_URL">URL</p></a>
-           <p class="PORTFOLIO_FIRST_NAME"> 이름</p>
+            <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_second_img}" alt="" width="400px" height="300px">
+            <a href="${resume.portfolio_second_github}" target=_blank>
+            <p class="PORTFOLIO_FIRST_GITHUB">깃허브 </p></a>
+			<p>${resume.portfolio_second_name }</p>
+           <p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_second_desc}</p>
+          </div>
+         </c:if>
+		<c:if test="${!empty resume.portfolio_third_name&&resume.portfolio_third_name ne null}">
+          <div class="PORTFOLIO">
+            <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_third_img}" alt="" width="400px" height="300px">
+            <a href="${resume.portfolio_third_github}" target=_blank><p class="PORTFOLIO_FIRST_GITHUB">깃허브 </p></a>
+			<p>${resume.portfolio_third_name }</p>
+           <p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_third_desc}</p>
+          </div>
+         </c:if>
           </div>
         </div>   
       </div>
@@ -320,19 +321,19 @@
       <div id="resumeTemBox6">
     
         <div class="imglist">
-          <a href="#">
+          <a href="${resume.sns_dto.blog_address}">
             <img src="/publish/resume/img/블로그.png" alt="">
           </a>
-          <a href="#">
+          <a href="${resume.sns_dto.instagram_address}">
             <img src="/publish/resume/img/인스타.png" alt="">
           </a>
           <a href="#">
             <img src="/publish/resume/img/카카오톡.JPG" alt="">
           </a>
-          <a href="#">
+          <a href="${resume.sns_dto.facebook_address}">
             <img src="/publish/resume/img/깃허브.JPG" alt="">
           </a>
         </div>
       </div> 
 </body>
-</html>l>
+</html>
