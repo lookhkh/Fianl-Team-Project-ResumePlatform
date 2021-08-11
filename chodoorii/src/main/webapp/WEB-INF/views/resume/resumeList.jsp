@@ -39,7 +39,7 @@
                   <input type="button"  class="btn btn-primary" value="삭제">
                    </div>
                    <div class="resumeShare" style="display: inline;">
-                    <input type="button" class="btn btn-primary" value="공유">
+                    <input type="button" class="btn btn-primary" value="공유" onclick="location.href='/resume/share'">
                     </div>
                   </div>     
         </div>
@@ -56,14 +56,17 @@
 </html>
 <script>
 	window.addEventListener('load',function(){
+		
 		const removeBtn = document.querySelector("input[value='삭제']");
 		removeBtn.onclick=()=>{
 			if(confirm("정말로 삭제하시겠습니까?")){
 				location.href="/resume/remove";
+				alert("성공적으로 삭제하였습니다")
+
 			}
-			
-			alert("성공적으로 삭제하였습니다")
 		}
+		
+
 
 	});
 </script>
