@@ -1,14 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>자기소개템플릿4</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<jsp:include page="./templateHeader.jsp"></jsp:include>
+
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
     <style>
         
         /*1페이지 메인 개발자를 꿈꾸는 나*/
@@ -318,6 +311,10 @@
   </div> 
 
     </div>
+       <div data-input="${preview=='on'?'on':'none'}" class="action_btn" style="position: fixed; top: 0px; left: 50%; display: none;">
+        <button class="btn btn-primary">진행하기</button>
+        <button class="btn btn-primary">뒤로가기</button>
+      </div>
     
 </body>
 </html>
