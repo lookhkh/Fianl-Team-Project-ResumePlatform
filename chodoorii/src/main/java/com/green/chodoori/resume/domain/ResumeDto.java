@@ -60,6 +60,7 @@ public class ResumeDto {
 	@OneToOne
 	@JoinColumn(name="RESUME_ID")
 	private UserInfoDto user;
+	// 변수로 user 의미를 둠으로써
 	
 	@Embedded
 	private SkillSetDto skill_dto;

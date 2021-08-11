@@ -54,11 +54,24 @@
           </div>
         </div>
         <div class="SI-btn">
-        <button>이력서 보내기</button>
-      </div>
-    </div>    
+        <c:choose>
+         <c:when test="${userInfo.id eq null}">
+   			 <div class="signupAndLogin">
+            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                이력서보내기
+             </button>        
+          </div>    
+          </c:when>
+          <c:otherwise>
+        <div class="signupAndLogin">
+           <button type="button" onclick="resumesubmission()">이력서 보내기</button>
+            </div>        
+           </div> 
+         </div>
+    </c:otherwise>
+</c:choose>  
 		
-    
+
      
 
  
@@ -67,5 +80,8 @@
  
 </body>
 </html>
-
-
+<script>
+	function resumesubmission(){
+		alert("이력서보내기 성공");
+	}
+</script>

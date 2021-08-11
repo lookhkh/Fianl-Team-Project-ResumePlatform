@@ -10,12 +10,18 @@
 
  <div class="list-wrap">
       <h2>회사 목록</h2>
+       <div class="btn-list">
+        <a href="">등록하기</a>
+      </div>
         <ul>  
           <li class="photo">
             <img src="/publish/corporate/img/자연.jpg" alt="">
               <div class="co-info">
-                <strong>회사명</strong>
-                <p>복지</p>
+                <strong>${dto.userName}</strong>
+                <p>${dto.welare_first}
+                	${dto.welare_second}
+                	${dto.welare_third}
+                </p>
                 <a href="/corporate/detail">바로가기</a>
               </div>
           </li>
