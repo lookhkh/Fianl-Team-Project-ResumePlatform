@@ -2,40 +2,41 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>자기소개템플릿2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <style>
 
-     /*메인 왼쪽 고정 이미지 박스*/
-        *{margin: 0;}
-        ul {
-           list-style-type: none;
-           padding: 0px;
-           margin: 0px;
-           width: 40%;
-           background: rgb(7, 107, 7);
-           height: 100%;
-           overflow: auto;
-           position: fixed;
-        }
-       .cd1 {
-           margin-left: 40%;
-       }
-
-       #INTRODUCTION_IMG_PATH {
-        max-width: 500px;
-        margin-left: 10px;
-        display: block; margin: 0px auto; 
-        margin-top: 40%;
-       }
+       /*애니메이션*/   
+       @keyframes rolling {
+             0% {
+                 transform: translateY(0);
+             }
+             25% {
+                transform: translateY(-20%);
+             }
+             50%{
+                transform: translateY(-40%);
+             }
+             75%{
+                transform: translateY(-60%);
+             }
+             100% {
+                transform: translateY(-80%);
+             }
+         }
+      * {margin: 0; padding: 0;background-color: black; color: white;}
       
      
     /* resumeTemBox1 */
+    #INTRODUCTION_IMG_PATH {
+      float: left;
+      width: 50%;
+      height: 20%;
+      
+    }
     #INTRODUCTION_HEADER {
       -webkit-flex: 1;
       flex: 1;
@@ -93,13 +94,20 @@
             animation-iteration-count: infinite;
             animation-direction: reverse;
         }
-    
 
     /* resumeTemBox2 */
+   
+    
     .SKIL_SET {
+      font-family: "Apple SD Gothic Neo", sans-serif;
+      font-weight: 400;
+      font-size: 64px;
+      line-height: 1.5;
+     
+      text-align: center;
       display: -webkit-flex;
       display: flex;
-      margin-top: 150px;
+      
     }
     .SKIL_SET_BOX {
       -webkit-flex: 1;
@@ -111,75 +119,40 @@
       justify-content: center;
     }
     .SKIL_SET_BOX_img {
-      max-width: 100px;
+      max-width: 50px;
       display : inline;
     }
     
     
     /* resumeTemBox3 */
+    #resumeTemBox3 {
+      
+      text-align: center;
+    }
     #resumeTemBox3 h1 {
-      padding-top: 80px;
+      padding-top: 200px;
+      font-family: "Apple SD Gothic Neo", sans-serif;
+      font-weight: 700;
+      font-size: 64px;
+      text-align: center;
+      line-height: 100px;
+    }
+    
+
+     /* resumeTemBox5 */
+    
+    .PORTFOLIOTem h1 {
+     
+      padding-top: 200px;
+      padding-left: 50px;
       font-family: "Apple SD Gothic Neo", sans-serif;
       font-weight: 700;
       font-size: 64px;
       line-height: 1.5;
-      color: black;
+      
       text-align: center;
     }
-    #resumeTemBox3 h1 span {
-      font-family: 'Palanquin Dark', sans-serif;
-      font-weight: 400;
-    }
-    .tmicontainer {
-      display: -webkit-flex;
-      display: flex;
-      margin-top: 80px;
-    }
-    .tmilist {
-      -webkit-flex: 1;
-      flex: 1;
-      text-align: center;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-    }
-    .tmilist p {
-      font-family: "Apple SD Gothic Neo", sans-serif;
-      font-weight: 400;
-      color: black;
-      font-size: 25px;
-      line-height: 5.5;
-    }
-    .tmilist p:hover {
-      font-size: 0;
-    }
-    .tmilist p:hover::before {
-      font-size: 25px;
-      font-weight: bold;
-      
-    }
-    .tmilist #tmi1:hover:before {    
-      content: '이미숙';
-    }
-    .tmilist #tmi2:hover:before {
-      content: '010-0000-0000';
-    }
-    .tmilist #tmi3:hover:before {
-      content: 'misugar_@gamail.com';
-    }
-    .tmilist #tmi4:hover:before {
-      content: '1993.09.18';
-    }
-    .tmilist #tmi5:hover:before {
-      content: '수원';
-    }
-
-     /* resumeTemBox5 */
-    .PORTFOLIOTem {
-      display: -webkit-flex;
-      
-    }
+    
     .PORTFOLIO {
       -webkit-flex: 1;
       flex: 1;
@@ -188,9 +161,9 @@
       align-items: center;
       -webkit-justify-content: center;
       justify-content: center;
-      padding-top: 5%;
+      padding-top: 100px;
+      padding-bottom: 50px;
       text-align: center;
-      padding-bottom: 5%;
     }
     .PORTFOLIO_FIRST_IMG {
       max-width: 300px;
@@ -198,128 +171,136 @@
     }
 
     /* resumeTemBox6 */
-
+    #resumeTemBox6 {
    
+      height: 100%;
+    }
+    
     .imglist {
       text-align: center;
     }
     .imglist img {
       width: 100px;
-
+      margin-top: 140px;
       padding: 50px;
     }
     .imglist a {
       text-decoration: none;
     }
-    </style>
-</head>
-<body>
-    <ul>
-        <li><img id="INTRODUCTION_IMG_PATH" src="${resume.intro_dto.introduction_img_path}" alt=""></li>
-      </ul>
-      
-      <div class="cd1">
-        <!--메인 1페이지-->
+  </style>  
+  
+  </head>
+  <body>
+    
+      <!--메인 1페이지-->
       <div id="resumeTemBox1">
-        
+        <img id="INTRODUCTION_IMG_PATH" src="${resume.intro_dto.introduction_img_path}" alt="">
         <div id="INTRODUCTION_HEADER">
-          <h1>${resume.intro_dto.introduction_header}</h1>
+        	<h1>${resume.intro_dto.introduction_header}</h1>
+          <div class="name">
+            I`m a 
+            <div class="name-job">
+                <ul class="name-job-list">
+                    <li>Desinger</li>
+                    <li>Developer</li>
+                    <li>Tutor</li>
+                    <li>Creator</li>
+                    <li>Desinger</li>
+                </ul>
+
+            </div>
         </div>  
         <div id="INTRODUCTION_MAIN">
-        <p>${resume.intro_dto.introduction_main}</p>
+        <p> ${resume.intro_dto.introduction_main}</p>
         
         </div>
-        
       </div>
 
 
       <!--메인 2페이지-->
-      <div id="resumeTemBox2">
-   
-        <div class="SKIL_SET">
-          <div class="SKIL_SET_BOX">
-            <img class="SKIL_SET_BOX_img" src="/publish/resume/img/스프링.JPG" alt="">    
-          </div>
-          <div class="SKIL_SET_BOX">
-            <img class="SKIL_SET_BOX_img" src="/publish/resume/img/오라클.JPG" alt="">
-          </div>
-          <div class="SKIL_SET_BOX">
-            <img class="SKIL_SET_BOX_img" src="/publish/resume/img/자바.JPG" alt="">
-          </div>
-          <div class="SKIL_SET_BOX">
-            <img class="SKIL_SET_BOX_img" src="/publish/resume/img/자바서블릿.JPG" alt="">    
-          </div>
-          <div class="SKIL_SET_BOX">
-            <img class="SKIL_SET_BOX_img" src="/publish/resume/img/자바스크립트.JPG" alt="">
-          </div>
-          <div class="SKIL_SET_BOX">
-            <img class="SKIL_SET_BOX_img" src="/publish/resume/img/파이썬.JPG" alt="">
-          </div>
-          <div class="SKIL_SET_BOX">
-            <img class="SKIL_SET_BOX_img" src="/publish/resume/img/HTML.JPG" alt="">    
-          </div>
-          <div class="SKIL_SET_BOX">
-            <img class="SKIL_SET_BOX_img" src="/publish/resume/img/CSS.JPG" alt="">
-          </div>
+      <div class="SKIL_SET">
+        <div class="SKIL_SET_BOX">
+          <img class="SKIL_SET_BOX_img" src="/publish/resume/img/스프링.JPG" alt="">    
+        </div>
+        <div class="SKIL_SET_BOX">
+          <img class="SKIL_SET_BOX_img" src="/publish/resume/img/오라클.JPG" alt="">
+        </div>
+        <div class="SKIL_SET_BOX">
+          <img class="SKIL_SET_BOX_img" src="/publish/resume/img/자바.JPG" alt="">
+        </div>
+        <div class="SKIL_SET_BOX">
+          <img class="SKIL_SET_BOX_img" src="/publish/resume/img/자바서블릿.JPG" alt="">    
+        </div>
+        <div class="SKIL_SET_BOX">
+          <img class="SKIL_SET_BOX_img" src="/publish/resume/img/자바스크립트.JPG" alt="">
+        </div>
+        <div class="SKIL_SET_BOX">
+          <img class="SKIL_SET_BOX_img" src="/publish/resume/img/파이썬.JPG" alt="">
+        </div>
+        <div class="SKIL_SET_BOX">
+          <img class="SKIL_SET_BOX_img" src="/publish/resume/img/HTML.JPG" alt="">    
+        </div>
+        <div class="SKIL_SET_BOX">
+          <img class="SKIL_SET_BOX_img" src="/publish/resume/img/CSS.JPG" alt="">
         </div>
       </div>
+    </div>
 
       <!--메인 3페이지-->
       <div id="resumeTemBox3">
-     
+        <h1><span>My Self</span></h1>
         <div class="tmicontainer">
           <div class="tmilist">
-            <p id="tmi1">이름</p>     
-            <p id="tmi2">전화번호</p>
-            <p id="tmi3">메일</p>
-            <p id="tmi4">생일</p>
-            <p id="tmi5">거주지</p>
+            <p class="CONTACT_INFO_NAME"> 이름 </p> 
+            <p class="CONTACT_INFO_NUMBER">전화번호</p>   
+            <p class="CONTACT_INFO_EMAIL">메일</p>  
+            <p class="CONTACT_INFO_BIRTH">생일</p> 
+            <p class="CONTACT_INFO_CITY">거주지</p>
+            <br><br>  
           </div>
           
         </div>
       </div>
       
       
-      
 
-      <!--메인 4페이지-->
+      <!--메인 5페이지-->
       <div id="resumeTemBox5">
       <div class="PORTFOLIOTem">
+        <h1>PORTFOLIO</h1>
+        <c:if test="${!empty resume.portfolio_first_name&&resume.portfolio_first_name ne null}">
           <div class="PORTFOLIO">
-            <c:if test="${!empty resume.portfolio_first_name&&resume.portfolio_first_name ne null}">
-          <div class="PORTFOLIO">
-            <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_first_img}" alt="" width="400px" height="300px">
-            <a href="${resume.portfolio_first_github}" target=_blank>
+            <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_first_img}" alt="">
+            <a href="${resume.portfolio_first_github}">
             <p class="PORTFOLIO_FIRST_GITHUB">깃허브 </p></a>
-			<p>${resume.portfolio_first_name }</p>
-           <p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_first_desc}</p>
+            <p>${resume.portfolio_first_name }</p>
+            <p class="PORTFOLIO_FIRST_NAME"> ${resume.portfolio_first_desc}</p>
           </div>
-        </c:if>
-		<c:if test="${!empty resume.portfolio_second_name&&resume.portfolio_second_name ne null}">
+          </c:if>
+          <c:if test="${!empty resume.portfolio_second_name&&resume.portfolio_second_name ne null}">
           <div class="PORTFOLIO">
-            <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_second_img}" alt="" width="400px" height="300px">
-            <a href="${resume.portfolio_second_github}" target=_blank>
-            <p class="PORTFOLIO_FIRST_GITHUB">깃허브 </p></a>
-			<p>${resume.portfolio_second_name }</p>
-           <p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_second_desc}</p>
+            <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_second_img}" alt="">
+            <a href="${resume.portfolio_first_github}">
+            <a href="#"><p class="PORTFOLIO_FIRST_GITHUB">깃허브 </p></a>
+            <p>${resume.portfolio_first_name }</p>
+            <p class="PORTFOLIO_FIRST_NAME"> ${resume.portfolio_first_desc}</p>
           </div>
-         </c:if>
-		<c:if test="${!empty resume.portfolio_third_name&&resume.portfolio_third_name ne null}">
+          </c:if>
+           <c:if test="${!empty resume.portfolio_third_name&&resume.portfolio_third_name ne null}">
           <div class="PORTFOLIO">
-            <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_third_img}" alt="" width="400px" height="300px">
-            <a href="${resume.portfolio_third_github}" target=_blank><p class="PORTFOLIO_FIRST_GITHUB">깃허브 </p></a>
-			<p>${resume.portfolio_third_name }</p>
-           <p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_third_desc}</p>
+            <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_third_img}" alt="">
+            <a href="${resume.portfolio_third_github}">
+            <a href="#"><p class="PORTFOLIO_FIRST_GITHUB">깃허브 </p></a>
+            <p>${resume.portfolio_third_name }</p>
+            <p class="PORTFOLIO_FIRST_NAME"> ${resume.portfolio_third_desc}</p>
           </div>
-         </c:if>
-          </div>
+          </c:if>
         </div>   
       </div>
 
       
-      <!--메인 5페이지-->
+      <!--메인 6페이지-->
       <div id="resumeTemBox6">
-    
         <div class="imglist">
           <a href="${resume.sns_dto.blog_address}">
             <img src="/publish/resume/img/블로그.png" alt="">
@@ -334,6 +315,6 @@
             <img src="/publish/resume/img/깃허브.JPG" alt="">
           </a>
         </div>
-      </div> 
-</body>
+      </div>  
+  </body>
 </html>

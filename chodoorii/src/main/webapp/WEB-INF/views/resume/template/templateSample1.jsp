@@ -1,344 +1,316 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>자기소개템플릿1</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <style>
-      * {margin: 0; padding: 0;}
-      div {width: 100vw; height: 100vh;}
-     
-    /* resumeTemBox1 */
-    #resumeTemBox1 {
-      background: #FEAC5E;
-      background: -webkit-linear-gradient(to right, #4BC0C8, #C779D0, #FEAC5E);
-      background: linear-gradient(to right, #4BC0C8, #C779D0, #FEAC5E);
-      display: -webkit-flex;
-      display: flex;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-    }
-    #INTRODUCTION_IMG_PATH {
-      max-width: 800px;
-      margin-left: 70px;
-      -webkit-flex: 1;
-      flex: 1
-    }
-    #INTRODUCTION_HEADER {
-      -webkit-flex: 1;
-      flex: 1;
-      margin-top: auto;
-      margin-left: 100px;
-      vertical-align: middle;
-    }
-    #INTRODUCTION_HEADER h1 {
-      margin-top: 50%;
-      font-family: "Apple SD Gothic Neo", sans-serif;
-      font-weight: 700;
-      font-size: 64px;
-      line-height: 1.5;
-      color: #fff;
-      text-align: center;
-    }
-    #INTRODUCTION_MAIN p {
-      font-family: "Apple SD Gothic Neo", sans-serif;
-      font-weight: 400;
-      font-size: 18px;
-      line-height: 1.5;
-      color: #fff;
-      text-align: center;
-      margin-top: 30%;
-    }
-    #portfoliosite {
-      text-decoration: none;
-      color: #7319F3;
-      font-weight: 600;
-    }
-    #portfoliosite:hover {
-      color: yellow;
-    }
-    /* resumeTemBox2 */
-    #resumeTemBox2 {
-      background: #70e1f5;
-      background: -webkit-linear-gradient(to right, #ffd194, #70e1f5);
-      background: linear-gradient(to right, #ffd194, #70e1f5);
-    }
-    #resumeTemBox2 h1 {
-        padding-top: 200px;
-      font-family: "Apple SD Gothic Neo", sans-serif;
-      font-weight: 400;
-      font-size: 64px;
-      line-height: 1.5;
-      color: white;
-      text-align: center;
-    }
-    .SKIL_SET {
-      display: -webkit-flex;
-      display: flex;
-      margin-top: 150px;
-    }
-    .SKIL_SET_BOX {
-      -webkit-flex: 1;
-      flex: 1;
-      text-align: center;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-    }
-    .SKIL_SET_BOX_img {
-      max-width: 100px;
-      display : inline;
-    }
-    
-    
-    /* resumeTemBox3 */
-    #resumeTemBox3 {
-      background: #eee;
-    }
-    #resumeTemBox3 h1 {
-      padding-top: 80px;
-      font-family: "Apple SD Gothic Neo", sans-serif;
-      font-weight: 700;
-      font-size: 64px;
-      line-height: 1.5;
-      color: black;
-      text-align: center;
-    }
-    #resumeTemBox3 h1 span {
-      font-family: 'Palanquin Dark', sans-serif;
-      font-weight: 400;
-    }
-    .tmicontainer {
-      display: -webkit-flex;
-      display: flex;
-      margin-top: 80px;
-    }
-    .tmilist {
-      -webkit-flex: 1;
-      flex: 1;
-      text-align: center;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-    }
-    .tmilist p {
-      font-family: "Apple SD Gothic Neo", sans-serif;
-      font-weight: 400;
-      color: black;
-      font-size: 25px;
-      line-height: 5.5;
-    }
-    .tmilist p:hover {
-      font-size: 0;
-    }
-    .tmilist p:hover::before {
-      font-size: 25px;
-      font-weight: bold;
-      color: #7319F3;
-    }
-    .tmilist #tmi1:hover:before {    
-      content: '${resume.user.name}';
-    }
-    .tmilist #tmi2:hover:before {
-      content: '${resume.user.contact_num}';
-    }
-    .tmilist #tmi3:hover:before {
-      content: '${resume.user.email}';
-    }
-    .tmilist #tmi4:hover:before {
-      content: '${resume.user.birth}';
-    }
-    .tmilist #tmi5:hover:before {
-      content: '${resume.user.city}';
-    }
-    
+        input{
+    background-color: transparent;
+    border: 0px solid;
+    height: 20px;
+    width: 160px;
+    color:black;
+        }
+
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: fantasy
+        }
+
+        textarea {
+    border: none;
+    overflow: auto;
+    outline: none;
+
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+
+    resize: none; /*remove the resize handle on the bottom right*/
+}
+
+        .wrapper{
+            width: 99vw;
+            height: 110vh;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        section{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            opacity: 1;
+            z-index: 1;
+            transition: 0.8s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #F3F3F3;
+        }
+
+        section.hidden{
+            opacity: 0;
+            z-index: 100;
+            visibility: hidden;
+        }
+
+        .intro img{
+            width: 450px; 
+            height: 450px; 
+            border-radius: 300px;
+            position: absolute;
+            left: 500px;
+            top: 240px;
+        }
+
+        .jump-btn{
+            position: absolute;
+            top: 50px;
+            left: 780px;
+        }
+
+        .btn{
+            width: 120px;
+        }
+
+        .btn.selected{
+            background-color: rosybrown;
+        }
+
+        .self-desciption{
+            position: absolute;
+            left: 1060px;
+            top: 310px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+        }
+
+        header{
+            width: 100%;
+            height: 30px;
+            position: absolute;
+            z-index: 2;
+            left: 27px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        header h4{
+            margin: 0;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+
+        footer{
+            width: 100%;
+            height: 90px;
+            border-top: 1px solid;
+            top: 93%;
+            position: absolute;
+            z-index: 1;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        footer .contact-info{
+            display: flex;
+            flex-direction: column;
+            z-index: 1;
+        }
+
  
 
-     /* resumeTemBox5 */
-     #resumeTemBox5 {
-      background: #70e1f5;
-      background: -webkit-linear-gradient(to right, #ffd194, #70e1f5);
-      background: linear-gradient(to right, #ffd194, #70e1f5);
-    }
-    .PORTFOLIOTem h1 {
-     
-      padding-top: 140px;
-      padding-left: 50px;
-      font-family: "Apple SD Gothic Neo", sans-serif;
-      font-weight: 700;
-      font-size: 64px;
-      line-height: 1.5;
-      color: white;
-      text-align: center;
-    }
-    .PORTFOLIOTem {
-      display: -webkit-flex;
-      
-    }
-    .PORTFOLIO {
-      -webkit-flex: 1;
-      flex: 1;
-      text-align: center;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      padding-top: 20%;
-      text-align: center;
-    }
-    .PORTFOLIO_FIRST_IMG {
-      max-width: 300px;
-      display : inline;
-    }
+        .portfolios{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+            position: relative;
+            top: 55px;
+        }
 
-    /* resumeTemBox6 */
-    #resumeTemBox6 {
-      background: #B993D6;
-      background: -webkit-linear-gradient(to right, #8CA6DB, #B993D6);
-      background: linear-gradient(to right, #8CA6DB, #B993D6);
-      height: 100%;
-    }
-    #resumeTemBox6 h1 {
-      padding-top: 140px;
-      font-family: "Apple SD Gothic Neo", sans-serif;
-      font-weight: 700;
-      font-size: 64px;
-      line-height: 1.5;
-      color: white;
-      text-align: center;
-    }
-    .imglist {
-      text-align: center;
-    }
-    .imglist img {
-      width: 100px;
-      margin-top: 140px;
-      padding: 50px;
-    }
-    .imglist a {
-      text-decoration: none;
-    }
-  </style>  
-  
-  </head>
-  <body>
-    
-      <!--메인 1페이지-->
-      <div id="resumeTemBox1">
-        <img id="INTRODUCTION_IMG_PATH" src="${resume.intro_dto.introduction_img_path}" width="556px" height="742px" alt="">
-        <div id="INTRODUCTION_HEADER">
-          <h1>${resume.intro_dto.introduction_header}</h1>
-        </div>  
-        <div id="INTRODUCTION_MAIN">
-        <p>	${resume.intro_dto.introduction_main} </p>
         
+
+
+
+
+    </style>
+</head>
+<body>
+
+            <div class="wrapper btn-area">
+              
+                <section class="intro">
+                    <div  class="jump-btn">
+                        <button id="intro-btn" class="btn btn-secondary selected">Intro</button>
+                        <button id="skil-stack-btn" class="btn btn-secondary">Skill Stack</button>
+                        <button id="portfolio-btn" class="btn btn-secondary">Portfolio</button>
+                    </div>
+                        <img src="/publish/resume/img/defaultpic.png" alt="">
+                        <input type="file" name="introduction_img_path" style="display: none;">
+                        <div class="self-desciption">
+                            <input placeholder="텍스트를 입력해주세요" style="font-size: 2rem; height: 150px; width: 600px; font-weight: 700;"; name="introduction_header">
+                            <textarea name="introduction_main" style="background-color: #F3F3F3;
+                            ;" rows="12" cols="80" placeholder="내용을 입력해주세요"></textarea>
+                    
+                    </div>
+                     
+                </section>
+
+                <section class="skil-stack hidden">
+
+
+                    <div class="jump-btn">
+                        <button id="intro-btn" class="btn btn-secondary">Intro</button>
+                        <button id="skil-stack-btn" class="btn btn-secondary selected">Skill Stack</button>
+                        <button id="portfolio-btn" class="btn btn-secondary">Portfolio</button>
+
+                    </div>
+                    <div class="skill-stack-set">
+                        <img src="/publish/resume/img/스프링.JPG">
+                        <img src="/publish/resume/img/오라클.JPG">
+                        <img src="/publish/resume/img/자바.JPG">
+                        <img src="/publish/resume/img/자바스크립트.JPG">
+                        <img src="/publish/resume/img/파이썬.JPG">
+                        <img src="/publish/resume/img/HTML.JPG">
+                        <img src="/publish/resume/img/css.JPG">
+                    </div>
+                 </section>
+
+
+                <section class="portfolio hidden" style=" display: flex; flex-direction: row; justify-content: space-around; align-items: center;">
+
+                    <div class="portfolios">
+                        <div class="portfolio-description" style="display: flex; flex-direction: column; align-items: center;">
+                            <img src="/publish/resume/img/카카오톡.JPG" width="300px" height="280px">
+                            <input type="file" name="introduction_img_path" style="display: none;">
+                            <input placeholder="프로젝트 이름을 적어주세요" style="font-size: 1.3rem; height: 150px; overflow: hidden; width: 300px; font-weight: 700;"; name="introduction_header">
+                            <textarea name="introduction_main" style="background-color: #F3F3F3;;" rows="12" cols="47" placeholder="프로젝트에 대하여 설명해주세요"></textarea>
+                            <img onclick="" src="/publish/resume/img/20210727_143131.png" width="30px" height="30px">
+                        </div>
+                    </div>
+
+                    <div class="portfolios">
+                        <div class="portfolio-description" style="display: flex; flex-direction: column; align-items: center">
+                            <img src="/publish/resume/img/카카오톡.JPG" width="300px" height="280px">
+                            <input type="file" name="introduction_img_path" style="display: none;">
+                            <input placeholder="프로젝트 이름을 적어주세요" style="font-size: 1.3rem; height: 150px; overflow: hidden; width: 300px; font-weight: 700;"; name="introduction_header">
+                            <textarea name="introduction_main" style="background-color: #F3F3F3;;" rows="12" cols="47" placeholder="프로젝트에 대하여 설명해주세요"></textarea>
+                        </div>
+                    </div>
+
+
+                    <div class="portfolios">
+                        <div class="portfolio-description" style="display: flex; flex-direction: column; align-items: center">
+                            <img src="/publish/resume/img/카카오톡.JPG" width="300px" height="280px">
+                            <input type="file" name="introduction_img_path" style="display: none;">
+                            <input placeholder="프로젝트 이름을 적어주세요" style="font-size: 1.3rem; height: 150px; overflow: hidden; width: 300px; font-weight: 700;"; name="introduction_header">
+                            <textarea name="introduction_main" style="background-color: #F3F3F3;;" rows="12" cols="47" placeholder="프로젝트에 대하여 설명해주세요"></textarea>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="jump-btn">
+                        <button id="intro-btn" class="btn btn-secondary">Intro</button>
+                        <button id="skil-stack-btn" class="btn btn-secondary">Skill Stack</button>
+                        <button id="portfolio-btn" class="btn btn-secondary selected">Portfolio</button>
+                    </div>
+                </section>
+
+            <footer>
+                <div class="contact-info">
+                    <span style="font-weight: 600;">Phone</span>
+                    <span>010-9932-1967</span>
+                </div>
+                <div class="contact-info">
+                    <span  style="font-weight: 600;">Email</span>
+                    <span>lookhkh37@gmail.com</span>
+                </div>
+                <div class="contact-info">
+                   <img onclick="location.href='#'" src="/publish/resume/img/20210727_143131.png" width="50px" height="50px">
+            </footer>
         </div>
-      </div>
-
-
-      <!--메인 2페이지-->
-      <div id="resumeTemBox2">
-        <h1>이런 프로그램을 공부했어요. &#128154;</h1>
-        <div class="SKIL_SET">
-          <div class="SKIL_SET_BOX">
-            <img class="SKIL_SET_BOX_img" src="/publish/resume/img/스프링.JPG" alt="">    
-          </div>
-          <div class="SKIL_SET_BOX">
-            <img class="SKIL_SET_BOX_img" src="/publish/resume/img/오라클.JPG" alt="">
-          </div>
-          <div class="SKIL_SET_BOX">
-            <img class="SKIL_SET_BOX_img" src="/publish/resume/img/자바.JPG" alt="">
-          </div>
-          <div class="SKIL_SET_BOX">
-            <img class="SKIL_SET_BOX_img" src="/publish/resume/img/자바서블릿.JPG" alt="">    
-          </div>
-          <div class="SKIL_SET_BOX">
-            <img class="SKIL_SET_BOX_img" src="/publish/resume/img/자바스크립트.JPG" alt="">
-          </div>
-          <div class="SKIL_SET_BOX">
-            <img class="SKIL_SET_BOX_img" src="/publish/resume/img/파이썬.JPG" alt="">
-          </div>
-          <div class="SKIL_SET_BOX">
-            <img class="SKIL_SET_BOX_img" src="/publish/resume/img/HTML.JPG" alt="">    
-          </div>
-          <div class="SKIL_SET_BOX">
-            <img class="SKIL_SET_BOX_img" src="/publish/resume/img/CSS.JPG" alt="">
-          </div>
-        </div>
-      </div>
-
-      <!--메인 3페이지-->
-      <div id="resumeTemBox3">
-        <h1><span>필독항목</span>  &#128221;</h1>
-        <div class="tmicontainer">
-          <div class="tmilist">
-            <p id="tmi1">이름</p>     
-            <p id="tmi2">전화번호</p>
-            <p id="tmi3">메일</p>
-            <p id="tmi4">생일</p>
-            <p id="tmi5">거주지</p>
-          </div>
-        </div>
-      </div>
-      
-      
-
-      <!--메인 4페이지-->
-      <div id="resumeTemBox5">
-      <div class="PORTFOLIOTem">
-        <h1>PORTFOLIO</h1>        
-		<c:if test="${!empty resume.portfolio_first_name&&resume.portfolio_first_name ne null}">
-          <div class="PORTFOLIO">
-            <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_first_img}" alt="" width="400px" height="300px">
-            <a href="${resume.portfolio_first_github}" target=_blank>
-            <p class="PORTFOLIO_FIRST_GITHUB">깃허브 </p></a>
-			<p>${resume.portfolio_first_name }</p>
-           <p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_first_desc}</p>
-          </div>
-        </c:if>
-		<c:if test="${!empty resume.portfolio_second_name&&resume.portfolio_second_name ne null}">
-          <div class="PORTFOLIO">
-            <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_second_img}" alt="" width="400px" height="300px">
-            <a href="${resume.portfolio_second_github}" target=_blank>
-            <p class="PORTFOLIO_FIRST_GITHUB">깃허브 </p></a>
-			<p>${resume.portfolio_second_name }</p>
-           <p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_second_desc}</p>
-          </div>
-         </c:if>
-		<c:if test="${!empty resume.portfolio_third_name&&resume.portfolio_third_name ne null}">
-          <div class="PORTFOLIO">
-            <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_third_img}" alt="" width="400px" height="300px">
-            <a href="${resume.portfolio_third_github}" target=_blank><p class="PORTFOLIO_FIRST_GITHUB">깃허브 </p></a>
-			<p>${resume.portfolio_third_name }</p>
-           <p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_third_desc}</p>
-          </div>
-         </c:if>
-        </div>   
-      </div>
-
-      
-      <!--메인 5페이지-->
-      <div id="resumeTemBox6">
-        <h1>저에 대해 더 궁금하시다면?&#129303;</h1>
-        <div class="imglist">
-          <a href="${resume.sns_dto.blog_address}" target=_blank>
-            <img src="/publish/resume/img/블로그.png" alt="">
-          </a>
-          <a href="${resume.sns_dto.instagram_address}" target=_blank>
-            <img src="/publish/resume/img/인스타.png" alt="">
-          </a>
-          <a href="${resume.sns_dto.facebook_address} target=_blank">
-            <img src="/publish/resume/img/깃허브.JPG" alt="">
-          </a>
-        </div>
-      </div> 
-  </body>
+</body>
 </html>
+
+<script>
+    window.addEventListener('load',function(){
+
+ //버튼 클릭 시 이동하도록!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
+        const btn_area = document.querySelector(".btn-area");
+
+        btn_area.addEventListener('click',(e)=>{
+            const target = e.target;
+            const target_name = target.id;
+            const target_section_name = "."+target_name.substring(0,target_name.lastIndexOf("-"));
+
+
+             //버튼 클릭 시 이동하도록!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
+
+            if(target.nodeName==="BUTTON"){
+
+
+            const target_class_hidden = document.querySelector(target_section_name)
+
+            setTimeout(()=>{target_class_hidden.classList.remove('hidden');},500);
+            target.parentElement.parentElement.classList.add('hidden');
+            }
+
+
+             //버튼 클릭 시 이동하도록!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
+
+
+             //이미지 업로드///////////////////////////////////////////////////////////////////
+
+
+            else if(target.nodeName==="IMG"){
+                const parent = target.parentElement;
+                const hidden_input = parent.querySelector('input[type="file"]')
+                hidden_input.click();
+                hidden_input.addEventListener('input',function(e){
+                let input = hidden_input.files[0];
+
+                let fReader = new FileReader();
+                fReader.readAsDataURL(input);
+                fReader.onloadend=function(e){
+                    target.src=e.target.result;
+                  
+
+                }
+                console.log(input)
+                console.log(target.src)
+
+ 
+            //이미지 업로드///////////////////////////////////////////////////////////////////
+
+})
+
+            }
+
+     })
+
+
+
+       
+    })
+</script>l>
