@@ -111,7 +111,7 @@ public class ResumeController {
 	
 	
 		
-		return "redirect:/resume/template";
+		return "redirect:/resume/edit/template";
 		
 	}
 	
@@ -135,12 +135,7 @@ public class ResumeController {
 		
 		myInfo.setRegisterDate(new Date());
 		myInfo.setUserInfoDto(userRepo.getById(sessionInfo.getId()));
-		
-		
-		System.out.println(to);
-		System.out.println(what);
 
-		
 		mail.sendMailForSharingMyResume(to, what, sessionInfo.getId());
 		
 		
