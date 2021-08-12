@@ -1,4 +1,4 @@
-package com.green.chodoori.util.signup;
+package com.green.chodoori.main.service;
 
 import java.util.List;
 import java.util.Set;

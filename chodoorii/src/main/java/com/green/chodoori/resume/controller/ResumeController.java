@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.green.chodoori.error.ResumeNotFoundError;
+import com.green.chodoori.main.domain.UserInfoDto;
 import com.green.chodoori.main.domain.UserInfoRepo;
 import com.green.chodoori.main.service.ExtractSessionInfoService;
 import com.green.chodoori.main.web.domain.SessionUserInfo;
@@ -25,6 +26,7 @@ import com.green.chodoori.resume.domain.ResumeDto;
 import com.green.chodoori.resume.domain.ResumeDtoRepo;
 import com.green.chodoori.resume.domain.SharedMyResumeInfoDto;
 import com.green.chodoori.resume.domain.SharedMyResumeInfoDtoRepo;
+import com.green.chodoori.resume.service.ChangeUsersResumeStatusService;
 import com.green.chodoori.util.mail.MailService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -48,6 +50,9 @@ public class ResumeController {
 	
 	@Autowired
 	MailService mail;
+	
+	@Autowired
+	ChangeUsersResumeStatusService userStatusService;
 	
 	
 	@GetMapping("/display")
@@ -99,11 +104,20 @@ public class ResumeController {
 	}
 	
 	@GetMapping("/edit")
+	@Transactional
 	public String editMyResume(HttpSession session) {
-
-		return "/resume/resumeChoice";
+		
+		userStatusService.changeStatus(1, session);
+	
+	
+		
+		return "redirect:/resume/template";
 		
 	}
+	
+	
+	
+	
 	
 	@GetMapping("/share")
 	public String shareForm() {

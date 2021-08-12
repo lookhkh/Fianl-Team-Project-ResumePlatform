@@ -9,9 +9,9 @@ import org.springframework.data.jpa.repository.Query;
 public interface SharedMyResumeInfoDtoRepo extends JpaRepository<SharedMyResumeInfoDto, Long> {
 	
 	
-	List<SharedMyResumeInfoDtoRepo> findByRegisterDateAfter(Date date);
+	//List<SharedMyResumeInfoDtoRepo> findByRegisterDateAfter(Date date);
 
-	@Query("SELECT o from SharedMyResumeInfoDto o"
-		+  "join o.userInfoDto u where u.name=:userId")
-	SharedMyResumeInfoDtoRepo findbyUserName(String userId);
+	//@Query("SELECT o from SharedMyResumeInfoDto o"
+	//	+  "join o.userInfoDto u where u.name=:userId")
+	//SharedMyResumeInfoDtoRepo findbyUserName(String userId);
 }

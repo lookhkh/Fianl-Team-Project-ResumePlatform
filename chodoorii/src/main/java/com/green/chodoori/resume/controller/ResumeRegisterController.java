@@ -3,7 +3,6 @@ package com.green.chodoori.resume.controller;
 import java.io.IOException;
 
 import javax.servlet.http.HttpSession;
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,10 +15,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.green.chodoori.main.domain.UserInfoDto;
 import com.green.chodoori.main.domain.UserInfoRepo;
-import com.green.chodoori.main.service.ExtractSessionInfoService;
 import com.green.chodoori.main.web.domain.SessionUserInfo;
 import com.green.chodoori.resume.domain.ResumeDto;
 import com.green.chodoori.resume.domain.ResumeDtoRepo;
+import com.green.chodoori.resume.service.ChangeUsersResumeStatusService;
 import com.green.chodoori.resume.service.ResumeDtoCreator;
 import com.green.chodoori.util.fileUpload.ImgUploadAndGenerateSignUpDto;
 
@@ -33,13 +32,15 @@ public class ResumeRegisterController {
 	@Autowired
 	ResumeDtoCreator resumeCreator;
 	
-
 	
 	@Autowired
 	ResumeDtoRepo resumeRepo;
 	
 	@Autowired
 	UserInfoRepo userRepo;
+	
+	@Autowired
+	ChangeUsersResumeStatusService userStatusService;
 	
 	
 	@GetMapping("/template")
@@ -115,21 +116,9 @@ public class ResumeRegisterController {
 	@GetMapping("/form/confirm")
 	public String confirmResume(HttpSession session) {
 		
+		userStatusService.changeStatus(0, session);
 		
-		SessionUserInfo sessionUser = (SessionUserInfo) session.getAttribute("userInfo");
-		UserInfoDto user = userRepo.getById(sessionUser.getId());
-		ResumeDto resume = (ResumeDto) session.getAttribute("temp");
-		
-		user.setCheck_detail(0);
-		resume.setUser(user);
-		sessionUser.setCheck(0);
-		session.setAttribute("userInfo", sessionUser);
 	
-		
-		
-		
-		userRepo.save(user);
-		resumeRepo.save(resume);
 				
 		
 		return "redirect:/resume?register=on";
