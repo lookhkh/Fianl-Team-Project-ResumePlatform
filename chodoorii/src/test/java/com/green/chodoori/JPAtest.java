@@ -1,5 +1,7 @@
 package com.green.chodoori;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -7,6 +9,9 @@ import javax.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -26,7 +31,7 @@ import com.green.chodoori.resume.web.domain.SkillSetDto;
 @Rollback(value = false)
 
 @SpringBootTest
-public class JpaTest {
+public class JPAtest {
 
 	@Autowired
 	UserInfoRepo userRepo;
@@ -137,7 +142,7 @@ public class JpaTest {
 		
 	}
 	
-	@Test
+	//@Test
 	@Transactional
 	public void 이력서관리테스트() {
 		UserInfoDto user = userRepo.findById("kim123").get();
@@ -160,6 +165,29 @@ public class JpaTest {
 		System.out.println(resume.toString());
 		
 	}
+	
+	@Test
+	public void 페이징테스트() {
+		
+		List<String> lists = new ArrayList<>();
+		PageRequest pageRequest = 
+				 PageRequest.of(0,10, Sort.by(Sort.Direction.DESC,"id")); 
+		
+		Page<ResumeDto> results = resumeRepo.findByDisclosurestatus(1, pageRequest);
+		
+		
+		System.out.println(results.getSize());
+		System.out.println(results.getSize());
+		System.out.println(results.getTotalPages());
+		results.getContent().forEach(a->System.out.println(a.toString()));
+
+		
+		
+				
+		}
+	
+	
+	
 	
 	
 	

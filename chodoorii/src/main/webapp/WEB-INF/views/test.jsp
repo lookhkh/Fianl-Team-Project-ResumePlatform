@@ -17,12 +17,13 @@
   <img
     src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"
   />
+ </a>
       
 </body>
 </html>
 <script type="text/javascript">
    
-   Kakao.init("8752b44cb1ecb060fcef5c42962e4953");
+   Kakao.init("5126e1e9e4d4ae7e832bbe932d453119");
    console.log(Kakao.isInitialized());
 
    
@@ -31,12 +32,12 @@
 
     Kakao.Link.createScrapButton({
       container: '#create-kakao-link-btn',
-      requestUrl: 'https://developers.kakao.com',
+      requestUrl: 'http://192.168.219.104:8088/signup'
     }
 
     )
 }
 
-// SDK 초기화 여부를 판단합니다.
+
    
   </script>

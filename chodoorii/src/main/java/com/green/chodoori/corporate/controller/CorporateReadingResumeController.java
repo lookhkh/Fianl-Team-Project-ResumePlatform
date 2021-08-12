@@ -11,13 +11,13 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-@RequestMapping("/read")
+@RequestMapping("/resume")
 public class CorporateReadingResumeController {
 	
 	@Autowired
 	ExtractSessionInfoService sessionExtractor;
 	
-	@GetMapping("/resume")
+	@GetMapping("/lists")
 	public String ViewResume() {
 //		Optional<Dto> dto = Repo.findAll();
 		log.info("이력서 페이지 유청 수신");
