@@ -116,35 +116,35 @@
                         <h2>사용가능한 기술을 선택해주세요. 최대 8개까지 선택 가능합니다</h2>
                         <div class="check">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox1" value="/자바.png">
+                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox1" value="/publish/resume/img/자바.JPG">
                                 <label class="form-check-label" for="inlineCheckbox1">자바</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox2" value="python">
+                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox2" value="/publish/resume/img/파이썬.JPG">
                                 <label class="form-check-label" for="inlineCheckbox2">파이썬</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox3" value="html">
+                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox3" value="/publish/resume/img/HTML.JPG">
                                 <label class="form-check-label" for="inlineCheckbox3">HTML</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox3" value="css" >
+                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox3" value="/publish/resume/img/CSS.JPG" >
                                 <label class="form-check-label" for="inlineCheckbox3">CSS</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox3" value="javascript">
+                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox3" value="/publish/resume/img/자바스크립트.JPG">
                                 <label class="form-check-label" for="inlineCheckbox3">JavaScript</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox3" value="spring">
+                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox3" value="/publish/resume/img/스프링.JPG">
                                 <label class="form-check-label" for="inlineCheckbox3">Spring</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox3" value="oracle">
+                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox3" value="/publish/resume/img/오라클.JPG">
                                 <label class="form-check-label" for="inlineCheckbox3">Oracle</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox3" value="servlet">
+                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox3" value="/publish/resume/img/자바서블릿.JPG">
                                 <label class="form-check-label" for="inlineCheckbox3">JSP&Servlet</label>
                             </div>
                         </div>

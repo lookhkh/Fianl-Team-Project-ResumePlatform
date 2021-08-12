@@ -55,7 +55,7 @@ public class ResumeRegisterController {
 		return "/resume/resumeForm";
 	}
 	
-	@PostMapping({"/form"})
+	@PostMapping("/form")
 	public String templageFormInputCheck(HttpSession session,
 										@RequestParam(required = false) String template_kind, 
 										@RequestParam(required = false) String introduction_header,
@@ -92,6 +92,7 @@ public class ResumeRegisterController {
 														portfolio_third_img, portfolio_third_name, portfolio_third_github, 
 														portfolio_third_desc);
 										
+		resume.getSkill_dto().makeSkillSetList();
 		
 		
 		
@@ -101,15 +102,12 @@ public class ResumeRegisterController {
 
 		session.setAttribute("temp", resume);
 		
-		System.out.println(resumeRepo.findById(user.getId()).toString());
 		
 		model.addAttribute("resume",resume);
 		model.addAttribute("preview","on");
 		
 		String templateName = "/resume/template/templateSample"+template_kind;
-		
-		System.out.println(templateName);
-		
+				
 		return templateName;
 	}
 	
@@ -117,10 +115,7 @@ public class ResumeRegisterController {
 	public String confirmResume(HttpSession session) {
 		
 		userStatusService.changeStatus(0, session);
-		
 	
-				
-		
 		return "redirect:/resume?register=on";
 	}
 	
