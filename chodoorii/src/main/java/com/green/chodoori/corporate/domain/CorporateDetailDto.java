@@ -39,7 +39,7 @@ public class CorporateDetailDto {
 	}
 	
 	@Id //primary key를 가지는 변수를 선언하는 것을 뜻한다. 
-	String cid;
+	private String cid;
 	
 
 	@MapsId
