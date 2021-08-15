@@ -48,9 +48,11 @@ public class CorporateInfoController {
 	
 	
 	
+	
+	
 	//회사소개 상세보기
 	@GetMapping("/{cid}")//cid >> Corporate의 기본키 값으로 찾을 예정
-	public String DetailCorporateInfo(@PathVariable String cid,Model model) {
+	public String DetailCorporateInfo(@PathVariable Long cid,Model model) {
 		Optional<CorporateDetailDto> dto = corporateRepo.findById(cid);
 		model.addAttribute("cid",cid);
 		return "corporate/detail";
