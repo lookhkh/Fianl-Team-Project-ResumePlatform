@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.green.chodoori.main.Validator.SignValidator;
 import com.green.chodoori.main.domain.CorporateSignUpMetaDataFormVo;
 import com.green.chodoori.main.domain.UserInfoDto;
 import com.green.chodoori.main.service.SessionCreateService;
@@ -45,6 +46,10 @@ public class SignupController {
 	@Autowired
 	SignUpService signUpService;
 
+	@Autowired
+	SignValidator signvalidator;
+	
+	
 	@GetMapping
 	public String gettingSignupForm() {
 		
@@ -65,36 +70,33 @@ public class SignupController {
 
 	}
 	
-	
-	
 	@PostMapping
-	public String signupPhaseTwoRequireUserInfo(HttpServletRequest req ,@RequestParam("sort") Integer sort, @Valid @ModelAttribute SignUpFormVO vo, BindingResult error, Model model) throws IllegalStateException, IOException {
+	public String signupPhaseTwoRequireUserInfo(HttpServletRequest req ,@RequestParam("sort") Integer sort, @ModelAttribute @Valid SignUpFormVO vo, BindingResult error, Model model) throws IllegalStateException, IOException {
 		log.info("받은 인수 : {},{}",vo.getFile().getOriginalFilename(), vo.toString());
 		log.info("가입 유형  : {}",(sort==0?"일반회원":"기업회원"));
-
-
+		
+		new SignValidator().validate(vo, error);
+		
 		
 		if(!vo.checkPwWithConfirmPw()) {
-			error.addError(new ObjectError("pwError","비밀번호가 일치하지 않습니다"));
+			error.addError(new ObjectError("pwError","비밀번호가 일치하지 않습니다"));	
 		}
-		
-		if(!vo.checkExtensionOfImg()) {
+			if(!vo.checkExtensionOfImg()) {
 			error.addError(new ObjectError("fileExtError", "지원하지 않는 형식입니다"));
 		}
-				
-		if(error.hasErrors()) {
-			error.getAllErrors().forEach(a->{
-				log.info("에러 내용 : {}",a);
-			});
-			
-			return "index";
+		if(error.hasErrors()) {				// 왜? Validator에 있는 오를 읽어오지 못하는가?
+			if(sort==0) {
+				return "/main/signupRequired";
+			}else {
+				return "/main/signupForCorporateRequired";
+			}
 		}
 
 		UserInfoDto dto = new UserInfoDto();
 		
 		switch(sort) {
 			case 0:{
-				 String imgPath =  service.imgUploadAndGenerateSignUpDto(vo.getFile());
+				 String imgPath =  (String)service.imgUploadAndGenerateSignUpDto(vo.getFile());
 				
 				 dto.setBirth(vo.getBirth());
 				 dto.setCity(vo.getCity());
@@ -117,7 +119,7 @@ public class SignupController {
 				return "/main/signupMetaData";
 			}
 			case 1:{
-				 String imgPath =  service.imgUploadAndGenerateSignUpDto(vo.getFile());
+				 String imgPath =  (String)service.imgUploadAndGenerateSignUpDto(vo.getFile());
 				 
 				 dto.setContact_num(vo.getContact_num());
 				 dto.setEmail(vo.getEmail());
@@ -130,10 +132,10 @@ public class SignupController {
 				 
 				 
 				 	dto.setSort(1);
-					log.info("회원가입 정보 : {}",dto.toString());
+					log.info("회원가입 정보 : {}",dto.toString());//회원가입정보 dt로불러오기
 					signUpService.signUpProcessor(dto);
-					model.addAttribute("userId",dto.getId());
-					sessionService.sessionCreate(vo.getId(), req);
+					model.addAttribute("userId",dto.getId());//
+					sessionService.sessionCreate(vo.getId(), req);//세션생성
 
 					
 					return "/main/signupForCorporateMetadata";
