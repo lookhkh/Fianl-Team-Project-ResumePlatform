@@ -3,6 +3,7 @@ package com.green.chodoori.resume.controller;
 import java.io.UnsupportedEncodingException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
@@ -156,25 +157,28 @@ public class ResumeController {
 		return templateKind;
 	}
 
-	//@Scheduled(cron = "0 0 * * * ?")//1시간마다 실행
-	public void delete(@RequestParam Long id, @RequestBody SharedMyResumeInfoDto dto) {
-
-		Optional<SharedMyResumeInfoDto> smdto = smRepo.findById(id);
+//	@Scheduled(cron = "0 0 * * * ?")//1시간마다 실행
+	@Scheduled(cron = "*/5 * * * * *")
+	public void delete() {
+		List<SharedMyResumeInfoDto> smdto = smRepo.findAll();
 		// 유저 id값으로 조회
 		Calendar calender = Calendar.getInstance(); // 캘린더 객체 생성
 		long todayMil = calender.getTimeInMillis(); // 현재시간
 		long oneday = 24 * 60 * 60 * 1000; // 하루 단위
 		Calendar idcal = Calendar.getInstance();
 
-		smdto.ifPresent(userinfo -> {
-			idcal.setTime(userinfo.getRegisterDate()); // 현재 시간과 id생성일의 기록된 시간
+		for(int i=0;i<smdto.size();i++) {
+			SharedMyResumeInfoDto dto = smdto.get(i);
+			Date registerdate = dto.getRegisterDate(); 
+			
+			idcal.setTime(registerdate);
+			
 			long timediff = todayMil - idcal.getTimeInMillis();// 현재시간에서 regidate를 뺀 시간
 			int daydiff = (int) (timediff / oneday);
-			if (daydiff > 1) {
-				smRepo.delete(userinfo);
-				log.info("이력서 기간이 만료되어 삭제 되었습니다.");
+			if(daydiff > 1) {
+				log.info("{},이력서 기간이 만료되어 삭제 되었습니다.");
 			}
-		});
+		}
+		log.info("5초마다 작동중");
 	}
-
 }
