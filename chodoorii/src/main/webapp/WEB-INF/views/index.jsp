@@ -3,6 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     
 <jsp:include page="./header/header.jsp"></jsp:include>
+<style>
+
+	.row{
+		border : 1px solid;
+	}
+</style>
 <body>
 
 	
@@ -86,7 +92,7 @@
             </div>
 
     </div>
-            <div class="row first">
+           <div class="row first">
             <div class="content">
                 <h1 style="font-weight: 700;">당신의 처음을 응원합니다.</h1>
                 <span>지금 시작하세요</span>

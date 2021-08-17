@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.green.chodoori.corporate.domain.CorporateDetailDto;
 import com.green.chodoori.main.domain.UserInfoDto;
 import com.green.chodoori.main.domain.UserInfoRepo;
 import com.green.chodoori.main.web.domain.SessionUserInfo;
@@ -47,6 +48,7 @@ public class ChangeUsersResumeStatusService {
 		sessionUser.setCheck(check);
 		session.setAttribute("userInfo", sessionUser);
 	}
+	
 	
 	
 }

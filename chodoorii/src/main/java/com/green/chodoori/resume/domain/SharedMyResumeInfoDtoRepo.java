@@ -14,4 +14,6 @@ public interface SharedMyResumeInfoDtoRepo extends JpaRepository<SharedMyResumeI
 	//@Query("SELECT o from SharedMyResumeInfoDto o"
 	//	+  "join o.userInfoDto u where u.name=:userId")
 	//SharedMyResumeInfoDtoRepo findbyUserName(String userId);
+	
+	
 }

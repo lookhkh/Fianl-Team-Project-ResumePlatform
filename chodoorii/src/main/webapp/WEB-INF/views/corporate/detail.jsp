@@ -13,42 +13,35 @@
       <div class="Summary">
         <div class="content">
           <dl>
-            <Strong>SK하이닉스</Strong>
+            <h1><Strong>${detail.companayName}</Strong></h1>
           </dl>
           <dl>
             <dt>종업원 수</dt>
-            <dd>5,244명</dd>
+            <dd>${detail.staff_number}</dd>
           </dl>
           <dl>
             <dt>복지</dt>
+            
             <dd class="rest">
-              <div>
-              <img src="/publish/corporate/img/잠.jpg" alt="">
-              <p>유연근무제</p>
-              </div>
-              <div>
-              <img src="/publish/corporate/img/연차.jpg" alt="">
-              <p>자유로운 연차사용</p>
-            </div>
-            <div>
-              <img src="/publish/corporate/img/도서지원.png" alt="">
-              <p>자기계발 비용지원</p>
-            </div>
+              <c:forEach var="item" items="${welfare}">
+	              <div>
+	              <img src="/publish/corporate/img/${item}.jpg" alt="">
+	              <p>${item}</p>
+	              </div>
+              </c:forEach>
             </dd>
           </dl>
         </div>
           <div class="co-img">
-            <img src="/publish/corporate/img/자연.jpg" alt="자연">
+            <img src="${detail.logo_img }" width="500px" height="500px" alt="자연">
           </div>
         </div>
         <div class="SI">
           <div class="content">
           <dl>
             <dt>Summary</dt>
-            <dd>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat corporis magni, quod dicta libero eos totam illum aperiam. Quae, distinctio. Odit ducimus sit ipsa minima explicabo quia, dignissimos libero repudiandae!
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat corporis magni, quod dicta libero eos totam illum aperiam. Quae, distinctio. Odit ducimus sit ipsa minima explicabo quia, dignissimos libero repudiandae!
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat corporis magni, quod dicta libero eos totam illum aperiam. Quae, distinctio. Odit ducimus sit ipsa minima explicabo quia, dignissimos libero repudiandae!
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat corporis magni, quod dicta libero eos totam illum aperiam. Quae, distinctio. Odit ducimus sit ipsa minima explicabo quia, dignissimos libero repudiandae!
+            <dd>
+            	${detail.summary}
             </dd>
           </dl>
           </div>

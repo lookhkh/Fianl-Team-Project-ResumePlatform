@@ -3,7 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <link href="/publish/corporate/css/basic.css" rel="stylesheet">
 <jsp:include page="../header/header.jsp"></jsp:include>
-
+<style>
+	.selected{
+		color : red;
+	}
+</style>
 
 <body>
 
@@ -12,87 +16,37 @@
  <div class="list-wrap">
       <h2>회사 목록</h2>
        <div class="btn-list">
-        <a href="">등록하기</a>
+        <a href="/corporate/register">등록하기</a>
       </div>
         <ul>  
-          <li class="photo">
-            <img src="/publish/corporate/img/자연.jpg" alt="">
-              <div class="co-info">
-                <strong>${dto.userName}</strong>
-                <p>${dto.welare_first}
-                	${dto.welare_second}
-                	${dto.welare_third}
-                </p>
-                <a href="/corporate/detail">바로가기</a>
-              </div>
-          </li>
-          <li class="photo">
-            <img src="/publish/corporate/img/자연.jpg" alt="">
-              <div class="co-info">
-                <strong>회사명</strong>
-                <p>복지</p>
-                <a href="">바로가기</a>
-              </div>
-          </li>
-          <li class="photo">
-            <img src="/publish/corporate/img/자연.jpg" alt="">
-              <div class="co-info">
-                <strong>회사명</strong>
-                <p>복지</p>
-                <a href="">바로가기</a>
-              </div>
-          </li>
-          <li class="photo">
-            <img src="/publish/corporate/img/자연.jpg" alt="">
-              <div class="co-info">
-                <strong>회사명</strong>
-                <p>복지</p>
-                <a href="">바로가기</a>
-              </div>
-          </li>
-          <li class="photo">
-            <img src="/publish/corporate/img/자연.jpg" alt="">
-              <div class="co-info">
-                <strong>회사명</strong>
-                <p>복지</p>
-                <a href="">바로가기</a>
-              </div>
-          </li>
-          <li class="photo">
-            <img src="/publish/corporate/img/자연.jpg" alt="">
-              <div class="co-info">
-                <strong>회사명</strong>
-                <p>복지</p>
-                <a href="">바로가기</a>
-              </div>
-          </li>
-          <li class="photo">
-            <img src="/publish/corporate/img/자연.jpg" alt="">
-              <div class="co-info">
-                <strong>회사명</strong>
-                <p>복지</p>
-                <a href="">바로가기</a>
-              </div>
-          </li>
-          <li class="photo">
-            <img src="/publish/corporate/img/자연.jpg" alt="">
-              <div class="co-info">
-                <strong>회사명</strong>
-                <p>복지</p>
-                <a href="">바로가기</a>
-              </div>
-          </li>
+        	<c:forEach var="item" items="${pageable.getContent()}">
+	          <li class="photo">
+	            <img src="${item.logo_img}" alt="">
+	              <div class="co-info">
+	                <strong>${item.companayName}</strong>
+	                	<p>${item.welfare.welfare_first} ${item.welfare.welfare_second ==""?"":item.welfare.welfare_second}
+	                	 ${item.welfare.welfare_third} ${item.welfare.welfare_forth}</p>
+	          		
+	                <a href="/corporate/detail/${item.info_id}">바로가기</a>
+	              </div>
+	          </li>
+	         </c:forEach>
         </ul>
         <ol class="paging">
-      <li><a href="#"><<</a></li>
-      <li><a href="#"><</a></li>
-      <li><a href="#">1</a></li>
-      <li><a href="#">2</a></li>
-      <li><a href="#">3</a></li>
-      <li><a href="#">4</a></li>
-      <li><a href="#">5</a></li>
-      <li><a href="#">></a></li>
-      <li><a href="#">>></a></li>
+  
+         <li><a href="/corporate/cpinfo?page=0"><<</a></li>
+    	 <c:if test="${pageable.hasPrevious()}"><li><a href="#"><</a></li></c:if>
+     
+     <c:forEach var="i" begin="1" end="${pageable.getTotalPages()}">
+
+     	      	<li><a class="${(i-1)==pageable.getPageable().getPageNumber()?'selected':''}" href="/corporate/cpinfo?page=${i-1}">${i}</a></li>
+	     
+     </c:forEach>
+     
+	     <c:if test="${pageable.hasNext()}"><li><a href="#">></a></li></c:if>
+		 <li><a href="/corporate/cpinfo?page="${pageable.getTotalPages()}">>></a></li>
+
+    
     </ol>
     </div>    
 		
