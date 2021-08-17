@@ -41,7 +41,8 @@ public class IndexAndLoginController {
 	}
 	
 	@PostMapping("/login")
-	public String loginRequestedDataValidation(@ModelAttribute LoginForm form, HttpServletRequest req, Model model) {
+	public String loginRequestedDataValidation(@ModelAttribute LoginForm form, HttpServletRequest req,@RequestParam(required = false, name="type")String type,
+			@RequestParam(required = false, name="redirect")String redirect, Model model) {
 	
 		
 		log.info("새로운 유저가 로그인을 시도함 : {}",form.toString());
@@ -52,7 +53,14 @@ public class IndexAndLoginController {
 		
 		if(service.userInfoMationCheck(form)) {
 			
+			
+			
 			sessionService.sessionCreate(form.getId(), req);
+					
+			if(!type.isEmpty()&&type.equals("loginRedirect")) {
+						
+				return "redirect:"+redirect;
+					}
 
 			
 			return "redirect:/?login=true";

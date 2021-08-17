@@ -15,6 +15,7 @@
     <link href="/publish/main/css/footer.css" rel="stylesheet">    
     <script src="/publish/main/js/index.js" ></script>
     <script src="/publish/main/js/dropdown.js"></script>
+    <script src="/publish/main/js/LoginFormDetection.js"></script>
 
     <style>
 
