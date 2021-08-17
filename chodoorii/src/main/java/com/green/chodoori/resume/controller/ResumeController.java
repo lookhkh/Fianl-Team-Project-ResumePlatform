@@ -156,7 +156,7 @@ public class ResumeController {
 		return templateKind;
 	}
 
-	@Scheduled(cron = "0 0 * * * ?")//1시간마다 실행
+	//@Scheduled(cron = "0 0 * * * ?")//1시간마다 실행
 	public void delete(@RequestParam Long id, @RequestBody SharedMyResumeInfoDto dto) {
 
 		Optional<SharedMyResumeInfoDto> smdto = smRepo.findById(id);

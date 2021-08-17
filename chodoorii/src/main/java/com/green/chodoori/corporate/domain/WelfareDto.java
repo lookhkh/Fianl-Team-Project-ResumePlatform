@@ -1,5 +1,6 @@
 package com.green.chodoori.corporate.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Embeddable;
@@ -15,6 +16,7 @@ public class WelfareDto {
 
 	public WelfareDto() {
 		
+
 	}
 
 
@@ -48,11 +50,17 @@ public class WelfareDto {
 			
 			
 		}
-			
-
 
 		
-		
+	}
+	
+	public List<String> makeList() {
+		this.welfareLists = new ArrayList<>();
+		this.welfareLists.add(this.welfare_first);
+		this.welfareLists.add(this.welfare_second);
+		this.welfareLists.add(this.welfare_third);
+		this.welfareLists.add(this.welfare_forth);
+		return this.welfareLists;
 	}
 	
 }

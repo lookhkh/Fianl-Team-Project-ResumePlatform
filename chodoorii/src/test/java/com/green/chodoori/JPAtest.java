@@ -1,6 +1,5 @@
 package com.green.chodoori;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,11 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
+import com.green.chodoori.corporate.domain.CorporateDetailDto;
+import com.green.chodoori.corporate.domain.CorporateDetailDtoRepo;
 import com.green.chodoori.main.domain.CorporateSignUpMetaDataFormVo;
 import com.green.chodoori.main.domain.CorporateSignUpMetaDataFormVoRepo;
 import com.green.chodoori.main.domain.IndividualSginUpMetadataFormVo;
@@ -35,6 +35,9 @@ public class JPAtest {
 
 	@Autowired
 	UserInfoRepo userRepo;
+	
+	@Autowired
+	CorporateDetailDtoRepo corpRepo;
 	
 	@Autowired
 	CorporateSignUpMetaDataFormVoRepo metaRepo;
@@ -169,21 +172,18 @@ public class JPAtest {
 	@Test
 	public void 페이징테스트() {
 		
-		List<String> lists = new ArrayList<>();
-		PageRequest pageRequest = 
-				 PageRequest.of(0,10, Sort.by(Sort.Direction.DESC,"id")); 
+		PageRequest page = PageRequest.of(0, 3);
 		
-		Page<ResumeDto> results = resumeRepo.findByDisclosurestatus(1, pageRequest);
+		Page<CorporateDetailDto> dtos =corpRepo.findAll(page);
 		
+		System.out.println(dtos.getTotalElements());
 		
-		System.out.println(results.getSize());
-		System.out.println(results.getSize());
-		System.out.println(results.getTotalPages());
-		results.getContent().forEach(a->System.out.println(a.toString()));
-
+		List<CorporateDetailDto> lists = dtos.getContent();
+		System.out.println(dtos.getTotalPages());
 		
-		
-				
+		lists.forEach(a->System.out.println("정보 : "+a.toString()));
+		System.out.println(lists.size());
+		System.out.println(" **********************");
 		}
 	
 	
