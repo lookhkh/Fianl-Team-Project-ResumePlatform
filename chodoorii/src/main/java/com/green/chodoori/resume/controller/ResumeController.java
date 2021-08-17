@@ -157,8 +157,7 @@ public class ResumeController {
 		return templateKind;
 	}
 
-//	@Scheduled(cron = "0 0 * * * ?")//1시간마다 실행
-	@Scheduled(cron = "*/5 * * * * *")
+	@Scheduled(cron = "0 0 * * * ?")//1시간마다 실행
 	public void delete() {
 		List<SharedMyResumeInfoDto> smdto = smRepo.findAll();
 		// 유저 id값으로 조회
@@ -176,7 +175,8 @@ public class ResumeController {
 			long timediff = todayMil - idcal.getTimeInMillis();// 현재시간에서 regidate를 뺀 시간
 			int daydiff = (int) (timediff / oneday);
 			if(daydiff > 1) {
-				log.info("{},이력서 기간이 만료되어 삭제 되었습니다.");
+				smRepo.delete(dto);
+				log.info("{},이력서보내기 기간이 만료되어 삭제 되었습니다.",dto.getUserInfoDto());
 			}
 		}
 		log.info("5초마다 작동중");
