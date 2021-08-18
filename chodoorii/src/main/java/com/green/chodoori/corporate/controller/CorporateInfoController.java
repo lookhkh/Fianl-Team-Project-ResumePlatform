@@ -74,6 +74,7 @@ public class CorporateInfoController {
 		
 		WelfareDto welfare = dto.get().getWelfare();
 		List<String> lists = welfare.makeList();
+		
 		model.addAttribute("welfare",lists);
 		model.addAttribute("detail",dto.get());
 		return "corporate/detail";

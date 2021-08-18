@@ -49,7 +49,6 @@ public class IndexAndLoginController {
 		
 		//유저정보와 데이터베이스 정보 조회해서 비교하는 로직 넣기
 		
-		try {
 		
 		if(service.userInfoMationCheck(form)) {
 			
@@ -57,7 +56,7 @@ public class IndexAndLoginController {
 			
 			sessionService.sessionCreate(form.getId(), req);
 					
-			if(!type.isEmpty()&&type.equals("loginRedirect")) {
+			if(type!=null&&type.equals("loginRedirect")) {
 						
 				return "redirect:"+redirect;
 					}
@@ -65,23 +64,9 @@ public class IndexAndLoginController {
 			
 			return "redirect:/?login=true";
 		}
-			}
-		
-		catch(PasswordIsNotSameError | RequestedUserNotFound ex) {
-			log.info(ex.getMessage());
-			model.addAttribute("error",ex.getMessage());
-			return "redirect:/?error=true";
-		}
-		
-		catch(Exception e) {
-			log.info("알 수 없는 에러가 발생하였습니다");
-			model.addAttribute("error","알 수 없는 에러가 발생했습니다. 다시 시도해주세요");
 
-			return "redirect:/?error=true";
-
-		}
 		
-		return "redirect:/";
+		return "redirect:/?error=true";
 		
 		
 	}
