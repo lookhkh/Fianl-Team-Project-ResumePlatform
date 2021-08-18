@@ -48,6 +48,8 @@
                     </div>
 
                     <div class="password-set">
+                      
+                      <c:if test="${error.confirmedPw !=null }"><h3 style="color : red; position:relative; top:50px">비밀번호가 다릅니다	</h3></c:if>
                       <div class="input-group mb-3">
                         <input data-target="required"  type="password" class="form-control" placeholder="패스워드를 입력해주세요" aria-label="Username" aria-describedby="basic-addon1" name="pw">
                       </div>
@@ -55,6 +57,7 @@
                         <input data-target="required"  type="password" class="form-control" placeholder="패스워드를 확인해주세요" aria-label="Username" aria-describedby="basic-addon1" name="confirmedPw">
                       </div>
                     </div>
+                    
 
                       <div class="email-auth">
                         <div class="input-group mb-3">

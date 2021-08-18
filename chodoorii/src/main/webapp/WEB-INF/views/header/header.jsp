@@ -112,9 +112,12 @@
           <h5 class="modal-title" id="exampleModalLabel">MyResueme</h5>
         </div>
         <div class="modal-body">
+        
+        	<c:if test="${errors!=null}"><p style="color:red">${errors.error}</p></c:if>
+        	
                <form id="loginForm" method="POST" action="/login">
 	            <div class="form-floating mb-3">
-		                <input name="id" type="text" class="id-input form-control" id="floatingInput" placeholder="name@example.com">
+		                <input name="id" type="text" class="id-input form-control" id="floatingInput" placeholder="name@example.com" value="${errors.id==null?'':errors.id}">
 		                <label for="floatingInput">ID</label>
 		              </div>
 		              <div class="form-floating">
