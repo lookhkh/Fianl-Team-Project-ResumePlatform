@@ -1,5 +1,5 @@
-	<jsp:include page="./templateHeader.jsp"></jsp:include>
-
+	<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+		<jsp:include page="./templateHeader.jsp"></jsp:include>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
    
     <style>
@@ -156,13 +156,11 @@
                         <button id="skil-stack-btn" class="btn btn-secondary">Skill Stack</button>
                         <button id="portfolio-btn" class="btn btn-secondary">Portfolio</button>
                     </div>
-                        <img src="/publish/resume/img/defaultpic.png" alt="">
+                        <img src="${resume.intro_dto.introduction_img_path}" alt="">
                         <input type="file" name="introduction_img_path" style="display: none;">
                         <div class="self-desciption">
-                            <input placeholder="텍스트를 입력해주세요" style="font-size: 2rem; height: 150px; width: 600px; font-weight: 700;"; name="introduction_header">
-                            <textarea name="introduction_main" style="background-color: #F3F3F3;
-                            ;" rows="12" cols="80" placeholder="내용을 입력해주세요"></textarea>
-                    
+                             <h1>${resume.intro_dto.introduction_header}</h1>
+                             <p>${resume.intro_dto.introduction_main}</p>                         
                     </div>
                      
                 </section>
@@ -192,31 +190,33 @@
 
                     <div class="portfolios">
                         <div class="portfolio-description" style="display: flex; flex-direction: column; align-items: center;">
-                            <img src="/publish/resume/img/카카오톡.JPG" width="300px" height="280px">
-                            <input type="file" name="introduction_img_path" style="display: none;">
-                            <input placeholder="프로젝트 이름을 적어주세요" style="font-size: 1.3rem; height: 150px; overflow: hidden; width: 300px; font-weight: 700;"; name="introduction_header">
-                            <textarea name="introduction_main" style="background-color: #F3F3F3;;" rows="12" cols="47" placeholder="프로젝트에 대하여 설명해주세요"></textarea>
-                            <img onclick="" src="/publish/resume/img/20210727_143131.png" width="30px" height="30px">
-                        </div>
+                            <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_first_img}" alt="" width="400px" height="300px">
+            				<a href="${resume.portfolio_first_github}" target=_blank>
+           					 <p class="PORTFOLIO_FIRST_GITHUB">깃허브</p></a>
+           					 <p>${resume.portfolio_first_name }</p>
+        					   <p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_first_desc}</p>
+           				</div>
                     </div>
 
                     <div class="portfolios">
-                        <div class="portfolio-description" style="display: flex; flex-direction: column; align-items: center">
-                            <img src="/publish/resume/img/카카오톡.JPG" width="300px" height="280px">
-                            <input type="file" name="introduction_img_path" style="display: none;">
-                            <input placeholder="프로젝트 이름을 적어주세요" style="font-size: 1.3rem; height: 150px; overflow: hidden; width: 300px; font-weight: 700;"; name="introduction_header">
-                            <textarea name="introduction_main" style="background-color: #F3F3F3;;" rows="12" cols="47" placeholder="프로젝트에 대하여 설명해주세요"></textarea>
-                        </div>
+                        <div class="portfolio-description" style="display: flex; flex-direction: column; align-items: center;">
+                            <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_first_img}" alt="" width="400px" height="300px">
+            				<a href="${resume.portfolio_first_github}" target=_blank>
+           					 <p class="PORTFOLIO_FIRST_GITHUB">깃허브</p></a>
+           					 <p>${resume.portfolio_first_name }</p>
+        					   <p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_first_desc}</p>
+           				</div>
                     </div>
 
 
                     <div class="portfolios">
-                        <div class="portfolio-description" style="display: flex; flex-direction: column; align-items: center">
-                            <img src="/publish/resume/img/카카오톡.JPG" width="300px" height="280px">
-                            <input type="file" name="introduction_img_path" style="display: none;">
-                            <input placeholder="프로젝트 이름을 적어주세요" style="font-size: 1.3rem; height: 150px; overflow: hidden; width: 300px; font-weight: 700;"; name="introduction_header">
-                            <textarea name="introduction_main" style="background-color: #F3F3F3;;" rows="12" cols="47" placeholder="프로젝트에 대하여 설명해주세요"></textarea>
-                        </div>
+                        <div class="portfolio-description" style="display: flex; flex-direction: column; align-items: center;">
+                            <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_first_img}" alt="" width="400px" height="300px">
+            				<a href="${resume.portfolio_first_github}" target=_blank>
+           					 <p class="PORTFOLIO_FIRST_GITHUB">깃허브</p></a>
+           					 <p>${resume.portfolio_first_name }</p>
+        					   <p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_first_desc}</p>
+           				</div>
                     </div>
 
 
@@ -244,8 +244,8 @@
         </div>
               
        <div data-input="${preview=='on'?'on':'none'}" class="action_btn" style="position: fixed; top: 0px; left: 50%; display: none;">
-        <button class="btn btn-primary">진행하기</button>
-        <button class="btn btn-primary">뒤로가기</button>
+        <button class="btn btn-primary">등록하기</button>
+        <button class="btn btn-primary">돌아가기</button>
       </div>
 </body>
 </html>
@@ -253,7 +253,7 @@
 <script>
     window.addEventListener('load',function(){
 
- //버튼 클릭 시 이동하도록!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
+ //ë²í¼ í´ë¦­ ì ì´ëíëë¡!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
         const btn_area = document.querySelector(".btn-area");
 
         btn_area.addEventListener('click',(e)=>{
@@ -262,7 +262,7 @@
             const target_section_name = "."+target_name.substring(0,target_name.lastIndexOf("-"));
 
 
-             //버튼 클릭 시 이동하도록!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
+             //ë²í¼ í´ë¦­ ì ì´ëíëë¡!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
 
             if(target.nodeName==="BUTTON"){
 
@@ -274,10 +274,10 @@
             }
 
 
-             //버튼 클릭 시 이동하도록!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
+             //ë²í¼ í´ë¦­ ì ì´ëíëë¡!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
 
 
-             //이미지 업로드///////////////////////////////////////////////////////////////////
+             //ì´ë¯¸ì§ ìë¡ë///////////////////////////////////////////////////////////////////
 
 
             else if(target.nodeName==="IMG"){
@@ -298,7 +298,7 @@
                 console.log(target.src)
 
  
-            //이미지 업로드///////////////////////////////////////////////////////////////////
+            //ì´ë¯¸ì§ ìë¡ë///////////////////////////////////////////////////////////////////
 
 })
 
@@ -310,4 +310,4 @@
 
        
     })
-</script>l>
+</script>

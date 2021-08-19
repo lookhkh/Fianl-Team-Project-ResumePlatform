@@ -1,5 +1,5 @@
+	<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 	<jsp:include page="./templateHeader.jsp"></jsp:include>
-
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
     <style>
@@ -225,7 +225,7 @@
   </head>
   <body>
     
-      <!--메인 1페이지-->
+      <!--ë©ì¸ 1íì´ì§-->
       <div id="resumeTemBox1">
         <img id="INTRODUCTION_IMG_PATH" src="${resume.intro_dto.introduction_img_path}" width="556px" height="742px" alt="">
         <div id="INTRODUCTION_HEADER">
@@ -238,54 +238,62 @@
       </div>
 
 
-      <!--메인 2페이지-->
+      <!--ë©ì¸ 2íì´ì§-->
       <div id="resumeTemBox2">
-        <h1>이런 프로그램을 공부했어요. &#128154;</h1>
-        <div class="SKIL_SET">
-          <div class="SKIL_SET_BOX">
-            <img class="SKIL_SET_BOX_img" src="/publish/resume/img/스프링.JPG" alt="">    
-          </div>
-          <div class="SKIL_SET_BOX">
-            <img class="SKIL_SET_BOX_img" src="/publish/resume/img/오라클.JPG" alt="">
-          </div>
-          <div class="SKIL_SET_BOX">
-            <img class="SKIL_SET_BOX_img" src="/publish/resume/img/자바.JPG" alt="">
-          </div>
-          <div class="SKIL_SET_BOX">
-            <img class="SKIL_SET_BOX_img" src="/publish/resume/img/자바서블릿.JPG" alt="">    
-          </div>
-          <div class="SKIL_SET_BOX">
-            <img class="SKIL_SET_BOX_img" src="/publish/resume/img/자바스크립트.JPG" alt="">
-          </div>
-          <div class="SKIL_SET_BOX">
-            <img class="SKIL_SET_BOX_img" src="/publish/resume/img/파이썬.JPG" alt="">
-          </div>
-          <div class="SKIL_SET_BOX">
-            <img class="SKIL_SET_BOX_img" src="/publish/resume/img/HTML.JPG" alt="">    
-          </div>
-          <div class="SKIL_SET_BOX">
-            <img class="SKIL_SET_BOX_img" src="/publish/resume/img/CSS.JPG" alt="">
-          </div>
-        </div>
-      </div>
 
-      <!--메인 3페이지-->
+			<div class="SKIL_SET">
+				<div class="SKIL_SET_BOX">
+					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/스프링.JPG"
+						alt="">
+				</div>
+				<div class="SKIL_SET_BOX">
+					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/오라클.JPG"
+						alt="">
+				</div>
+				<div class="SKIL_SET_BOX">
+					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/자바.JPG"
+						alt="">
+				</div>
+				<div class="SKIL_SET_BOX">
+					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/자바서블릿.JPG"
+						alt="">
+				</div>
+				<div class="SKIL_SET_BOX">
+					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/자바스크립트.JPG"
+						alt="">
+				</div>
+				<div class="SKIL_SET_BOX">
+					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/파이썬.JPG"
+						alt="">
+				</div>
+				<div class="SKIL_SET_BOX">
+					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/HTML.JPG"
+						alt="">
+				</div>
+				<div class="SKIL_SET_BOX">
+					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/CSS.JPG"
+						alt="">
+				</div>
+			</div>
+		</div>
+
+      <!--ë©ì¸ 3íì´ì§-->
       <div id="resumeTemBox3">
-        <h1><span>필독항목</span>  &#128221;</h1>
+        <h1><span>My Self</span></h1>
         <div class="tmicontainer">
           <div class="tmilist">
-            <p id="tmi1">이름</p>     
+            <p id="tmi1">이름</p>     
             <p id="tmi2">전화번호</p>
             <p id="tmi3">메일</p>
             <p id="tmi4">생일</p>
-            <p id="tmi5">거주지</p>
+            <p id="tmi5">거주지</p>
           </div>
         </div>
       </div>
       
       
 
-      <!--메인 4페이지-->
+      <!--ë©ì¸ 4íì´ì§-->
       <div id="resumeTemBox5">
       <div class="PORTFOLIOTem">
         <h1>PORTFOLIO</h1>        
@@ -293,7 +301,7 @@
           <div class="PORTFOLIO">
             <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_first_img}" alt="" width="400px" height="300px">
             <a href="${resume.portfolio_first_github}" target=_blank>
-            <p class="PORTFOLIO_FIRST_GITHUB">깃허브 </p></a>
+            <p class="PORTFOLIO_FIRST_GITHUB">깃허브</p></a>
 			<p>${resume.portfolio_first_name }</p>
            <p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_first_desc}</p>
           </div>
@@ -302,7 +310,7 @@
           <div class="PORTFOLIO">
             <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_second_img}" alt="" width="400px" height="300px">
             <a href="${resume.portfolio_second_github}" target=_blank>
-            <p class="PORTFOLIO_FIRST_GITHUB">깃허브 </p></a>
+            <p class="PORTFOLIO_FIRST_GITHUB">깃허브</p></a>
 			<p>${resume.portfolio_second_name }</p>
            <p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_second_desc}</p>
           </div>
@@ -310,7 +318,7 @@
 		<c:if test="${!empty resume.portfolio_third_name&&resume.portfolio_third_name ne null}">
           <div class="PORTFOLIO">
             <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_third_img}" alt="" width="400px" height="300px">
-            <a href="${resume.portfolio_third_github}" target=_blank><p class="PORTFOLIO_FIRST_GITHUB">깃허브 </p></a>
+            <a href="${resume.portfolio_third_github}" target=_blank><p class="PORTFOLIO_FIRST_GITHUB">깃허브</p></a>
 			<p>${resume.portfolio_third_name }</p>
            <p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_third_desc}</p>
           </div>
@@ -319,24 +327,24 @@
       </div>
 
       
-      <!--메인 5페이지-->
-      <div id="resumeTemBox6">
-        <h1>저에 대해 더 궁금하시다면?&#129303;</h1>
+      <!--ë©ì¸ 5íì´ì§-->
+       <div id="resumeTemBox6">
+    
         <div class="imglist">
-          <a href="${resume.sns_dto.blog_address}" target=_blank>
+          <a href="${resume.sns_dto.blog_address}">
             <img src="/publish/resume/img/블로그.png" alt="">
           </a>
-          <a href="${resume.sns_dto.instagram_address}" target=_blank>
-            <img src="/publish/resume/img/인스타.png" alt="">
+          <a href="${resume.sns_dto.instagram_address}">
+            <img src="/publish/resume/img/인스타.png" alt="">
           </a>
-          <a href="${resume.sns_dto.facebook_address} target=_blank">
-            <img src="/publish/resume/img/깃허브.JPG" alt="">
+          <a href="${resume.sns_dto.facebook_address}">
+            <img src="/publish/resume/img/페이스북ㄴ.JPG" alt="">
           </a>
         </div>
       </div> 
        <div data-input="${preview=='on'?'on':'none'}" class="action_btn" style="position: fixed; top: 0px; left: 50%; display: none;">
-        <button class="btn btn-primary">진행하기</button>
-        <button class="btn btn-primary">뒤로가기</button>
+        <button class="btn btn-primary">ì§ííê¸°</button>
+        <button class="btn btn-primary">ë¤ë¡ê°ê¸°</button>
       </div>
   </body>
 </html>

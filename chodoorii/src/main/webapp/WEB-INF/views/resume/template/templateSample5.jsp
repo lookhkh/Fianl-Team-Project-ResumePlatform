@@ -1,10 +1,10 @@
+	<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 	<jsp:include page="./templateHeader.jsp"></jsp:include>
-
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     
     <style>
         
-        /*1페이지 메인 개발자를 꿈꾸는 나*/
+        /*1íì´ì§ ë©ì¸ ê°ë°ìë¥¼ ê¿ê¾¸ë ë*/
        .Header h1 {
       font-family: "Apple SD Gothic Neo", sans-serif;
       font-weight: 700;
@@ -195,7 +195,7 @@
         <div >
             <img class="circle" src="${resume.intro_dto.introduction_img_path}" height="200px" width="200px">
         </div>
-  <!--메인 1페이지-->
+  <!--ë©ì¸ 1íì´ì§-->
   <div id="resumeTemBox1">
         
     <div id="INTRODUCTION_HEADER">
@@ -208,38 +208,46 @@
   </div>
 
 
-  <!--메인 2페이지-->
+  <!--ë©ì¸ 2íì´ì§-->
   <div id="resumeTemBox2">
 
-    <div class="SKIL_SET">
-      <div class="SKIL_SET_BOX">
-        <img class="SKIL_SET_BOX_img" src="/publish/resume/img/스프링.JPG" alt="">    
-      </div>
-      <div class="SKIL_SET_BOX">
-        <img class="SKIL_SET_BOX_img" src="/publish/resume/img/오라클.JPG" alt="">
-      </div>
-      <div class="SKIL_SET_BOX">
-        <img class="SKIL_SET_BOX_img" src="/publish/resume/img/자바.JPG" alt="">
-      </div>
-      <div class="SKIL_SET_BOX">
-        <img class="SKIL_SET_BOX_img" src="/publish/resume/img/자바서블릿.JPG" alt="">    
-      </div>
-      <div class="SKIL_SET_BOX">
-        <img class="SKIL_SET_BOX_img" src="/publish/resume/img/자바스크립트.JPG" alt="">
-      </div>
-      <div class="SKIL_SET_BOX">
-        <img class="SKIL_SET_BOX_img" src="/publish/resume/img/파이썬.JPG" alt="">
-      </div>
-      <div class="SKIL_SET_BOX">
-        <img class="SKIL_SET_BOX_img" src="/publish/resume/img/HTML.JPG" alt="">    
-      </div>
-      <div class="SKIL_SET_BOX">
-        <img class="SKIL_SET_BOX_img" src="/publish/resume/img/CSS.JPG" alt="">
-      </div>
-    </div>
-  </div>
+			<div class="SKIL_SET">
+				<div class="SKIL_SET_BOX">
+					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/스프링.JPG"
+						alt="">
+				</div>
+				<div class="SKIL_SET_BOX">
+					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/오라클.JPG"
+						alt="">
+				</div>
+				<div class="SKIL_SET_BOX">
+					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/자바.JPG"
+						alt="">
+				</div>
+				<div class="SKIL_SET_BOX">
+					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/자바서블릿.JPG"
+						alt="">
+				</div>
+				<div class="SKIL_SET_BOX">
+					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/자바스크립트.JPG"
+						alt="">
+				</div>
+				<div class="SKIL_SET_BOX">
+					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/파이썬.JPG"
+						alt="">
+				</div>
+				<div class="SKIL_SET_BOX">
+					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/HTML.JPG"
+						alt="">
+				</div>
+				<div class="SKIL_SET_BOX">
+					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/CSS.JPG"
+						alt="">
+				</div>
+			</div>
+		</div>
 
-  <!--메인 3페이지-->
+  <!--ë©ì¸ 3íì´ì§-->
   <div id="resumeTemBox3">
  
     <div class="tmicontainer">
@@ -258,14 +266,14 @@
   
   
 
-  <!--메인 4페이지-->
+  <!--ë©ì¸ 4íì´ì§-->
   <div id="resumeTemBox5">
   <div class="PORTFOLIOTem">
       <c:if test="${!empty resume.portfolio_first_name&&resume.portfolio_first_name ne null}">
           <div class="PORTFOLIO">
             <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_first_img}" alt="" width="400px" height="300px">
             <a href="${resume.portfolio_first_github}" target=_blank>
-            <p class="PORTFOLIO_FIRST_GITHUB">깃허브 </p></a>
+            <p class="PORTFOLIO_FIRST_GITHUB">깃허브</p></a>
 			<p>${resume.portfolio_first_name }</p>
            <p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_first_desc}</p>
           </div>
@@ -274,7 +282,7 @@
           <div class="PORTFOLIO">
             <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_second_img}" alt="" width="400px" height="300px">
             <a href="${resume.portfolio_second_github}" target=_blank>
-            <p class="PORTFOLIO_FIRST_GITHUB">깃허브 </p></a>
+            <p class="PORTFOLIO_FIRST_GITHUB">깃허브</p></a>
 			<p>${resume.portfolio_second_name }</p>
            <p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_second_desc}</p>
           </div>
@@ -282,7 +290,7 @@
 		<c:if test="${!empty resume.portfolio_third_name&&resume.portfolio_third_name ne null}">
           <div class="PORTFOLIO">
             <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_third_img}" alt="" width="400px" height="300px">
-            <a href="${resume.portfolio_third_github}" target=_blank><p class="PORTFOLIO_FIRST_GITHUB">깃허브 </p></a>
+            <a href="${resume.portfolio_third_github}" target=_blank><p class="PORTFOLIO_FIRST_GITHUB">깃허브</p></a>
 			<p>${resume.portfolio_third_name }</p>
            <p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_third_desc}</p>
           </div>
@@ -291,7 +299,7 @@
   </div>
 
   
-  <!--메인 5페이지-->
+  <!--ë©ì¸ 5íì´ì§-->
   <div id="resumeTemBox6">
 
     <div class="imglist">
@@ -312,8 +320,8 @@
 
     </div>
        <div data-input="${preview=='on'?'on':'none'}" class="action_btn" style="position: fixed; top: 0px; left: 50%; display: none;">
-        <button class="btn btn-primary">진행하기</button>
-        <button class="btn btn-primary">뒤로가기</button>
+        <button class="btn btn-primary">등록하기</button>
+        <button class="btn btn-primary">돌아가기</button>
       </div>
     
 </body>

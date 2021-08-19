@@ -14,9 +14,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.green.chodoori.error.CompanayDetailNotFoundError;
 import com.green.chodoori.error.ResumeNotFoundError;
+import com.green.chodoori.main.domain.UserInfoRepo;
 import com.green.chodoori.main.service.ExtractSessionInfoService;
+import com.green.chodoori.main.service.LoginService;
 import com.green.chodoori.main.web.domain.SessionUserInfo;
 import com.green.chodoori.resume.domain.ResumeDto;
 import com.green.chodoori.resume.domain.ResumeDtoRepo;
@@ -34,20 +35,30 @@ public class CorporateReadingResumeController {
 	@Autowired
 	ResumeDtoRepo Repo;
 	
+	@Autowired
+	UserInfoRepo UserRepo;
+	
+	@Autowired
+	LoginService service;
 	
 	@GetMapping("/lists")
-	public String ViewResume(@PageableDefault(page = 0,size = 5)Pageable pageable, Model model) {
+	public String ViewResume(@PageableDefault(page = 0,size = 5)Pageable pageable, Model model,HttpSession session) {
 		Page<ResumeDto> dto = Repo.findAll(pageable);
-		
-		log.info("이력서 페이지 요청 수신");
-		
+		SessionUserInfo user = sessionExtractor.extractSessionUserInfo(session);
+		Integer Sort = user.getSort();
+		log.info("SortNum=={}",Sort);
 		model.addAttribute("dto",dto);
-		return "corporate/resume";
+		if(Sort.equals(0)) {
+			return "/resume/resumeList";
+		}else if(Sort.equals(1)) {
+			return "corporate/resume";
+		}else {
+		return "/resume/resumeRegistration";
+		}
 	}
 	@GetMapping("/display/{id}")
-	public String selectresume(@PathVariable String id,Model model) {
+	public String selectresume(@PathVariable String id,Model model,HttpSession session) {
 		Optional<ResumeDto> dto = Repo.findById(id);
-
 		
 		Optional<ResumeDto> resume = Repo.findById(id);
 		if(!dto.isPresent()) {
