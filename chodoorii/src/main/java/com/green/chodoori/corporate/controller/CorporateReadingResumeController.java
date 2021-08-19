@@ -45,12 +45,11 @@ public class CorporateReadingResumeController {
 		return "corporate/resume";
 	}
 	@GetMapping("/display/{id}")
-	public String selectresume(@PathVariable String id,Model model,HttpSession session) {
+	public String selectresume(@PathVariable String id,Model model) {
 		Optional<ResumeDto> dto = Repo.findById(id);
 
-		SessionUserInfo sessionInfo = sessionExtractor.extractSessionUserInfo(session);
 		
-		Optional<ResumeDto> resume = Repo.findById(sessionInfo.getId());
+		Optional<ResumeDto> resume = Repo.findById(id);
 		if(!dto.isPresent()) {
 			throw new ResumeNotFoundError("요청하신 이력서정보가 존재하지 않습니다");
 		}
