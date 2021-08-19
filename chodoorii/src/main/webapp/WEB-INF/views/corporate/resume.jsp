@@ -36,18 +36,19 @@
 		</div>
 		<ol class="paging">
 			
-			<li><a href="/corporate/resume?page=0"><<</a></li>
+			<li><a href="/resume/lists?page=0"><<</a></li>
 			<c:if test="${dto.hasPrevious()}"><li><a href="#"><</a></li></c:if>
 			
 			  <c:forEach var="i" begin="1" end="${dto.getTotalPages()}">
 
-     	      	<li><a class="${(i-1)==dto.getPageable().getPageNumber()?'selected':''}" href="/corporate/resume?page=${i-1}">${i}</a></li>
+     	      	<li><a class="${(i-1)==dto.getPageable().getPageNumber()?'selected':''}" href="/resume/lists?page=${i-1}">${i}</a></li>
 	     
     		 </c:forEach>
 			<c:if test="${dto.hasNext()}"><li><a href="#">></a></li></c:if>
 			<li><a href="/corporate/resume?page='${dto.getTotalPages()}'">>></a></li>
 		</ol>
 	</div>
+
 
 
 
