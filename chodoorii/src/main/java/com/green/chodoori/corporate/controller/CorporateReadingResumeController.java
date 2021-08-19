@@ -14,10 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.green.chodoori.error.CompanayDetailNotFoundError;
 import com.green.chodoori.error.ResumeNotFoundError;
 import com.green.chodoori.main.service.ExtractSessionInfoService;
-import com.green.chodoori.main.web.domain.SessionUserInfo;
 import com.green.chodoori.resume.domain.ResumeDto;
 import com.green.chodoori.resume.domain.ResumeDtoRepo;
 
@@ -45,9 +43,8 @@ public class CorporateReadingResumeController {
 		return "corporate/resume";
 	}
 	@GetMapping("/display/{id}")
-	public String selectresume(@PathVariable String id,Model model) {
+	public String selectresume(@PathVariable String id,Model model,HttpSession session) {
 		Optional<ResumeDto> dto = Repo.findById(id);
-
 		
 		Optional<ResumeDto> resume = Repo.findById(id);
 		if(!dto.isPresent()) {
