@@ -32,6 +32,10 @@ public class IndexController {
 		System.out.println(user.toString());
 		
 		
+		if(user.getSort().equals(1)) {
+			return "redirect:/resume/lists";
+		}
+		
 		if(user.getCheck().equals(0)) {
 			return "/resume/resumeList";
 

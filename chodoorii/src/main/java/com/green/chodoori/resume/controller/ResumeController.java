@@ -105,7 +105,7 @@ public class ResumeController {
 
 		userStatusService.changeStatus(1, session);
 
-		return "redirect:/resume/edit/template";
+		return "redirect:/resume/template";
 
 	}
 
