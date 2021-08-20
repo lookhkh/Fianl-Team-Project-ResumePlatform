@@ -13,9 +13,11 @@
     <script src="/publish/main/js/idCheckforduplicate.js"></script>
     <link href="/publish/main/css/signupRequired.css" rel="stylesheet">    
     <script src="/publish/main/js/imgChange.js"></script>
+    <script src="/publish/main/js/validator.js"></script>
 	<style>
+	
 		.fail{
-background-color: ;		}
+border-color:red;	}
 	</style>
     <title>회원가입</title>
     
@@ -65,7 +67,7 @@ background-color: ;		}
                       <div class="email-auth">
                         <div class="input-group mb-3">
                         <br>
-                            <input data-target="required"  type="email" class="fail form-control" placeholder="비밀번호가 틀렸습니다" name="email" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                            <input data-target="required"  type="email" class="form-control" placeholder="이메일을 입력해주세요" name="email" aria-label="Example text with button addon" aria-describedby="button-addon1">
                             <button class="emailAuth btn btn-outline-secondary" type="button" id="button-addon1">인증하기</button>    
                         </div>
                         <div style="display: none;" class="emailCheck input-group mb-3">
@@ -125,8 +127,9 @@ background-color: ;		}
         let array= Array.from(inputGroups)
         array = array.filter((a)=>a.dataset.target);
         const check = document.querySelector('input[class="check"]')
-
-        console.log(check)
+   		const pw = this.document.querySelector('input[name="pw"]')
+    	const confirmPw = this.document.querySelector('input[name="confirmedPw"]')
+        
 
         actionBtn.addEventListener('click',function(e){
             if(e.target.nodeName!=="BUTTON") return;
@@ -142,6 +145,13 @@ background-color: ;		}
                     }else{
                         array[i].classList.remove('required');
                     }
+                }
+                
+                if(pw.value!==confirmPw.value){
+                	 pw.classList.add('fail');
+                     confirmPw.classList.add('fail');
+                	alert("비밀번호를 확인해주세요");
+                	return;
                 }
 
                 if(check.value==='0'){
