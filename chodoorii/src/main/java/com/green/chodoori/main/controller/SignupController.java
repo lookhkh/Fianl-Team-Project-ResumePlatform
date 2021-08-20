@@ -78,6 +78,8 @@ public class SignupController {
 		new SignValidator().validate(vo, error);
 		
 		
+		
+		
 		if(!vo.checkPwWithConfirmPw()) {
 			error.addError(new ObjectError("pwError","비밀번호가 일치하지 않습니다"));	
 		}

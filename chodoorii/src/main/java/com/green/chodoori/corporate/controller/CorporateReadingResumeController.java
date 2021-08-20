@@ -42,20 +42,13 @@ public class CorporateReadingResumeController {
 	LoginService service;
 	
 	@GetMapping("/lists")
-	public String ViewResume(@PageableDefault(page = 0,size = 5)Pageable pageable, Model model,HttpSession session) {
-		Page<ResumeDto> dto = Repo.findAll(pageable);
-		SessionUserInfo user = sessionExtractor.extractSessionUserInfo(session);
-		Integer Sort = user.getSort();
-		log.info("SortNum=={}",Sort);
+	public String ViewResume(@PageableDefault(page = 0,size = 2)Pageable pageable, Model model) {
+		Page<ResumeDto> dto = Repo.findByDisclosurestatus(0, pageable);
+		
 		model.addAttribute("dto",dto);
-		if(Sort.equals(0)) {
-			return "/resume/resumeList";
-		}else if(Sort.equals(1)) {
 			return "corporate/resume";
-		}else {
-		return "/resume/resumeRegistration";
-		}
 	}
+	
 	@GetMapping("/display/{id}")
 	public String selectresume(@PathVariable String id,Model model,HttpSession session) {
 		Optional<ResumeDto> dto = Repo.findById(id);

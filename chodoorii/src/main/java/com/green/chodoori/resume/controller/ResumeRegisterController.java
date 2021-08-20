@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,6 +50,8 @@ public class ResumeRegisterController {
 		return "/resume/resumeChoice";
 	}
 	
+	
+	
 	@GetMapping("/form")
 	public String templateFormPage(@RequestParam("template")String template,Model model) {
 		model.addAttribute("template",template);
@@ -81,7 +84,8 @@ public class ResumeRegisterController {
 										@RequestParam(required = false) String portfolio_third_desc,
 										Model model) throws IllegalStateException, IOException {
 		
-
+		
+	
 
 		ResumeDto resume = resumeCreator.resumeDtoCreator(template_kind, introduction_header, introduction_main, 
 														introduction_img_path, skil_set, blog_address, 
@@ -102,7 +106,7 @@ public class ResumeRegisterController {
 
 		session.setAttribute("temp", resume);
 		
-		
+	
 		model.addAttribute("resume",resume);
 		model.addAttribute("preview","on");
 		

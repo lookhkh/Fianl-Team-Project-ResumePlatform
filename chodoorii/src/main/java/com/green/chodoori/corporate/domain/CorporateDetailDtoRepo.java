@@ -10,6 +10,7 @@ public interface CorporateDetailDtoRepo extends JpaRepository<CorporateDetailDto
 	@Query("SELECT o from CorporateDetailDto o join UserInfoDto u where u.id=:userId")
 	CorporateDetailDto findByUserid(String userId);
 	
+	
 	Page<CorporateDetailDto> findAll(Pageable page);
 	
 }

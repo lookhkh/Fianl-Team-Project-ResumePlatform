@@ -13,7 +13,10 @@
     <script src="/publish/main/js/idCheckforduplicate.js"></script>
     <link href="/publish/main/css/signupRequired.css" rel="stylesheet">    
     <script src="/publish/main/js/imgChange.js"></script>
-
+	<style>
+		.fail{
+background-color: ;		}
+	</style>
     <title>회원가입</title>
     
 </head>
@@ -61,7 +64,8 @@
 
                       <div class="email-auth">
                         <div class="input-group mb-3">
-                            <input data-target="required"  type="email" class="form-control" placeholder="이메일을 입력해주세요" name="email" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                        <br>
+                            <input data-target="required"  type="email" class="fail form-control" placeholder="비밀번호가 틀렸습니다" name="email" aria-label="Example text with button addon" aria-describedby="button-addon1">
                             <button class="emailAuth btn btn-outline-secondary" type="button" id="button-addon1">인증하기</button>    
                         </div>
                         <div style="display: none;" class="emailCheck input-group mb-3">
