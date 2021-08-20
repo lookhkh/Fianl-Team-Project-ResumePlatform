@@ -46,4 +46,6 @@ public class ExtractSessionInfoService {
 		UserInfoDto dto = userRepo.findById(sessionInfo.getId()).get();
 		return dto;
 	}
+	
+	
 }

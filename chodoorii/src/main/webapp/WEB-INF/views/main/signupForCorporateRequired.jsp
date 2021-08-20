@@ -16,10 +16,6 @@
 
     <title>회원가입</title>
     
-    <style>
-    		.fail{
-border-color:red;	}
-    </style>
 </head>
 <body>
     <div class="wrapper">
@@ -114,8 +110,6 @@ border-color:red;	}
         let array= Array.from(inputGroups)
         array = array.filter((a)=>a.dataset.target);
         const check = document.querySelector('input[class="check"]')
-        const pw = this.document.querySelector('input[name="pw"]')
-    	const confirmPw = this.document.querySelector('input[name="confirmedPw"]')
 
         console.log(check)
 
@@ -134,13 +128,6 @@ border-color:red;	}
                         array[i].classList.remove('required');
                     }
                 }
-                
-                if(pw.value!==confirmPw.value){
-               	 pw.classList.add('fail');
-                    confirmPw.classList.add('fail');
-               	alert("비밀번호를 확인해주세요");
-               	return;
-               }
 
                 if(check.value==='0'){
                     console.log(document.querySelector('form'))

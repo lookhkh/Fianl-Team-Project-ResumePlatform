@@ -3,6 +3,8 @@ package com.green.chodoori.corporate.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,6 +21,9 @@ import com.green.chodoori.corporate.domain.CorporateDetailDtoRepo;
 import com.green.chodoori.corporate.domain.WelfareDto;
 import com.green.chodoori.error.CompanayDetailNotFoundError;
 import com.green.chodoori.main.service.ExtractSessionInfoService;
+import com.green.chodoori.main.web.domain.SessionUserInfo;
+import com.green.chodoori.resume.domain.ResumeDto;
+import com.green.chodoori.resume.domain.ResumeDtoRepo;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -33,13 +38,12 @@ public class CorporateInfoController {
 	@Autowired
 	CorporateDetailDtoRepo corporateRepo;
 	
-
+	@Autowired
+	ResumeDtoRepo Repo;
+	
 	@GetMapping("/cpinfo")
-	public String ViewList(@PageableDefault(page = 0,size = 4)Pageable page, Model model) {
+	public String ViewList(@PageableDefault(page = 0,size = 8)Pageable page, Model model,HttpSession session) {
 		Page<CorporateDetailDto> pageable = corporateRepo.findAll(page);
-		
-		
-		
 		
 		model.addAttribute("pageable",pageable);
 		

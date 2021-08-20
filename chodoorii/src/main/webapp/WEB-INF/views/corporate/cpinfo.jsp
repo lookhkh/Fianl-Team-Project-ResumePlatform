@@ -12,12 +12,19 @@
 <body>
 
 
-
  <div class="list-wrap">
       <h2>회사 목록</h2>
+       <c:choose>
+       <c:when test="${userInfo.sort eq 1}">
        <div class="btn-list">
         <a href="/corporate/register">등록하기</a>
-      </div>
+        </div>
+      </c:when>
+      <c:otherwise>
+      </c:otherwise>
+      </c:choose>
+      
+
         <ul>  
         	<c:forEach var="item" items="${pageable.getContent()}">
 	          <li class="photo">

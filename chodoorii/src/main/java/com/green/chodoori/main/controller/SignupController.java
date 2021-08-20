@@ -78,8 +78,6 @@ public class SignupController {
 		new SignValidator().validate(vo, error);
 		
 		
-		
-		
 		if(!vo.checkPwWithConfirmPw()) {
 			error.addError(new ObjectError("pwError","비밀번호가 일치하지 않습니다"));	
 		}
@@ -87,7 +85,6 @@ public class SignupController {
 			error.addError(new ObjectError("fileExtError", "지원하지 않는 형식입니다"));
 		}
 		if(error.hasErrors()) {				// 왜? Validator에 있는 오를 읽어오지 못하는가?
-			
 			if(sort==0) {
 				return "/main/signupRequired";
 			}else {

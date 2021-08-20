@@ -8,6 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="../js/resumeform-pagejump.js"></script>
+    <script src="../js/addPortpolio.js"></script>
     <style>
 
         *{
@@ -184,59 +185,59 @@
             </section>
             <section class="third-form hidden">
                 <div class="form-section" style="padding-left: 100px;">
-
-                    <div class="portpolio-div" style="display: flex; width: 90%; margin-bottom: 10px; padding-left: 150px;">
-                        <img width="180px" height="180px" src="../img/defaultpic.png" class="img-pic img-thumbnail" alt="...">
-                        <input type="file" name ="portfolio_first_img" style="display: none;" />
-                        <div style="display: flex; flex-direction: column; justify-content: flex-start; margin-left: 0; width: 70%;">
-                            <div style="display: flex; flex-direction: column; width: 400px; margin-left: 0;">
-                                <input name="portfolio_first_name" style="margin-left: 0; margin-bottom: 20px;" placeholder="제목을 입력해주세요"/>
-                                <input name="portfolio_first_github" style="margin-left: 0; margin-bottom: 20px;" placeholder="github 주소를 입력해주세요"/>
-                            </div>
-                            <div style="width: 500px; margin-left :0">
-                                <textarea name="portfolio_first_desc" rows="5" cols="70" style="margin-left: 0;" placeholder="내용을 입력해주세요"></textarea>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="portpolio-div" style="display: flex; width: 90%; margin-bottom: 10px; padding-left: 150px;">
-                        <img width="180px" height="180px" src="../img/defaultpic.png" class="img-pic img-thumbnail" alt="...">
-                        <input type="file" name ="portfolio_second_img" style="display: none;" />
-                        <div style="display: flex; flex-direction: column; justify-content: flex-start; margin-left: 0; width: 70%;">
-                            <div style="display: flex; flex-direction: column; width: 400px; margin-left: 0;">
-                                <input name="portfolio_second_name" style="margin-left: 0; margin-bottom: 20px;" placeholder="제목을 입력해주세요"/>
-                                <input name="portfolio_second_github" style="margin-left: 0; margin-bottom: 20px;" placeholder="github 주소를 입력해주세요"/>
-                            </div>
-                            <div style="width: 500px; margin-left :0">
-                                <textarea name="portfolio_second_desc"  rows="5" cols="70" style="margin-left: 0;" placeholder="내용을 입력해주세요"></textarea>
+                    <div><button class="port1">+포트폴리오 추가</button>
+                        <button class="port2">+포트폴리오 추가</button></div>
+                    <div class="form-section" style="padding-left: 100px;">
+    
+                        <div class="portpolio-div" style="display: flex; width: 90%; margin-bottom: 10px; padding-left: 150px;">
+                            <img width="180px" height="180px" src="/publish/resume/img/defaultpic.png" class="img-pic img-thumbnail" alt="...">
+                            <input type="file" name ="portfolio_first_img" style="display: none;" />
+                            <div style="display: flex; flex-direction: column; justify-content: flex-start; margin-left: 0; width: 70%;">
+                                <div style="display: flex; flex-direction: column; width: 400px; margin-left: 0;">
+                                    <input name="portfolio_first_name" style="margin-left: 0; margin-bottom: 20px;" placeholder="제목을 입력해주세요"/>
+                                    <input name="portfolio_first_github" style="margin-left: 0; margin-bottom: 20px;" placeholder="github 주소를 입력해주세요"/>
+                                </div>
+                                <div style="width: 500px; margin-left :0">
+                                    <textarea name="portfolio_first_desc" rows="5" cols="70" style="margin-left: 0;" placeholder="내용을 입력해주세요"></textarea>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                        
-
-                    <div class="portpolio-div" style="display: flex; width: 90%; margin-bottom: 10px; padding-left: 150px;">
-                        <img width="180px" height="180px" src="../img/defaultpic.png" class="img-pic img-thumbnail" alt="...">
-                        <input type="file" name ="portfolio_third_img" style="display: none;" />
-                        <div style="display: flex; flex-direction: column; justify-content: flex-start; margin-left: 0; width: 70%;">
-                            <div style="display: flex; flex-direction: column; width: 400px; margin-left: 0;">
-                                <input name="portfolio_third_name" style="margin-left: 0; margin-bottom: 20px;" placeholder="제목을 입력해주세요"/>
-                                <input name="portfolio_third_github" style="margin-left: 0; margin-bottom: 20px;" placeholder="github 주소를 입력해주세요"/>
-                            </div>
-                            <div style="width: 500px; margin-left :0">
-                                <textarea name="portfolio_third_desc"  rows="5" cols="70" style="margin-left: 0;" placeholder="내용을 입력해주세요"></textarea>
+                        <div class="portpolio-div2" style="display: none; width: 90%; margin-bottom: 10px; padding-left: 150px;">
+                            <img width="180px" height="180px" src="/publish/resume/img/defaultpic.png" class="img-pic img-thumbnail" alt="...">
+                            <input type="file" name ="portfolio_second_img" style="display: none;" />
+                            <div style="display: flex; flex-direction: column; justify-content: flex-start; margin-left: 0; width: 70%;">
+                                <div style="display: flex; flex-direction: column; width: 400px; margin-left: 0;">
+                                    <input name="portfolio_second_name" style="margin-left: 0; margin-bottom: 20px;" placeholder="제목을 입력해주세요"/>
+                                    <input name="portfolio_second_github" style="margin-left: 0; margin-bottom: 20px;" placeholder="github 주소를 입력해주세요"/>
+                                </div>
+                                <div style="width: 500px; margin-left :0">
+                                    <textarea name="portfolio_second_desc"  rows="5" cols="70" style="margin-left: 0;" placeholder="내용을 입력해주세요"></textarea>
+                                </div>
                             </div>
                         </div>
-
-                        
-                    </div>   
-                    <div class="resume-openform" style="display: flex;  font-size: 20px;">
-                        <div class="form-check form-switch"  style="margin: 0 auto;">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                            <label class="form-check-label" for="flexSwitchCheckDefault">이력서 공개여부 체크</label>
-                          </div>
-                        </div>  
+                            
+    
+                        <div class="portpolio-div3" style="display: none; width: 90%; margin-bottom: 10px; padding-left: 150px;">
+                            <img width="180px" height="180px" src="/publish/resume/img/defaultpic.png" class="img-pic img-thumbnail" alt="...">
+                            <input type="file" name ="portfolio_third_img" style="display: none;" />
+                            <div style="display: flex; flex-direction: column; justify-content: flex-start; margin-left: 0; width: 70%;">
+                                <div style="display: flex; flex-direction: column; width: 400px; margin-left: 0;">
+                                    <input name="portfolio_third_name" style="margin-left: 0; margin-bottom: 20px;" placeholder="제목을 입력해주세요"/>
+                                    <input name="portfolio_third_github" style="margin-left: 0; margin-bottom: 20px;" placeholder="github 주소를 입력해주세요"/>
+                                </div>
+                                <div style="width: 500px; margin-left :0">
+                                    <textarea name="portfolio_third_desc"  rows="5" cols="70" style="margin-left: 0;" placeholder="내용을 입력해주세요"></textarea>
+                                </div>
+                            </div>
+                        </div> 
+       
+                        <div class="resume-openform" style="display: flex; font-size: 20px;">
+                            <div class="form-check form-switch"  style="margin: 0 auto;">
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="disclosure" >
+                                <label class="form-check-label" for="flexSwitchCheckDefault">이력서 공개</label>
+                              </div>
+                            </div>  
                     </div>
-                
                         
                     
                
@@ -258,6 +259,12 @@
 </html>
 <script>
     window.addEventListener('load',function(){
+        const query = location.href.substring(location.href.indexOf("=")+1)
+		const inputvalue= document.getElementsByName("template-kind");
+        inputvalue.value=query
+    	
+        console.log(inputvalue.value)
+        
         const form = document.querySelector('form');
         form.addEventListener('click',(e)=>{
             const target = e.target;
@@ -278,6 +285,7 @@
 
             })
         })
+
 
     })
  

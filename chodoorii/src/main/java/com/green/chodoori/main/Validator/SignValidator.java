@@ -40,23 +40,31 @@ public class SignValidator implements Validator {
 	public void validate(Object obj, Errors errors) {	//객체의 오류정보들을 저장하여
 													// errors에 에러정보를 담는 로직 구현
 		SignUpFormVO user = (SignUpFormVO) obj;	//
-
+		// 이미지 파일 업로드 체크
+		MultipartFile img = user.getFile();
+		if (img == null || img.isEmpty()) {
+			System.out.println("등록된 사진파일이 없습니다.");
+		}
 		// 아이디 유효성 체크 (아이디는 영어 또는 숫자만 한글은 받지않음)
 		String userid = user.getId();
 		if (userid == null || userid.trim().isEmpty()) {
-			errors.rejectValue("id", "require","아이디를 입력해주세요");
+			System.out.println("아이디를 입력해주세요.");
+			errors.rejectValue("id", "require");
 		} else if (userid.length() < 5) {
-			errors.rejectValue("id", "length","5글자 이상 입력해주세요");
+			System.out.println("아이디는 최소 5글자 이상 입력해주세요.");
+			errors.rejectValue("id", "requ");
 		} else {
 			Matcher matcher = idpattern.matcher(user.getId());
 			if (!matcher.matches()) {
-				errors.rejectValue("id","null","아이디는 영문,숫자로만 구성되어야합니다.");
+				System.out.println("아이디는 영문 ,숫자로만 구성가능합니다.");
+				errors.rejectValue("id", "아이디는 영문,숫자로만 구성되어야합니다.");
 			}
 		}
 		// 이름 입력
 		String name = user.getName();
 		if (name == null || name.trim().isEmpty()) {
-			errors.rejectValue("name", "require","이름을 입력해주세요");
+			System.out.println("이름을 입력해주세요.");
+			errors.rejectValue("name", "require");
 		}
 		// 패스워드 검증
 		String pw = user.getPw();
@@ -64,8 +72,10 @@ public class SignValidator implements Validator {
 		ValidationUtils.rejectIfEmpty(errors, "confirmedPw", "require", "패스워드를 확인해주세요");
 		if (!pw.isEmpty()) {
 			if (!user.checkPwWithConfirmPw()) {
+				System.out.println("패스워드가 다릅니다.");
 				errors.rejectValue("confirmedPw", "nomatch", "패스워드가 일치하지 않습니다.");
 			} else if (pw.length() < 6) {
+				System.out.println("패스워드는 최소 6자리입니다람쥐");
 				errors.rejectValue("pw", "패스워드는 최소 6자리입니다.");
 			}
 		}
@@ -76,6 +86,7 @@ public class SignValidator implements Validator {
 		} else {
 			Matcher matcher = emailpattern.matcher(user.getEmail());
 			if (!matcher.matches()) {
+				System.out.println("이메일 형식이 맞지않음");
 				errors.rejectValue("email", "bad");
 				
 			}

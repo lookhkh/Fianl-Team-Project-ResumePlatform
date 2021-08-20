@@ -68,19 +68,15 @@
              </button>        
           </div>    </c:when>
     <c:otherwise>
-        <div class="signupAndLogin">
-          <div class="infoBox">
-            <div class="infoImg">
-            <img src="${userInfo.imgPath}" width="50px" height="50px" flex: center;> 
-            </div>  
-            <div class="infoButton">
-            <button type="button" class="btn btn-primary">${userInfo.id}</button>
-            <button type="button" class="btn btn-primary" onclick="location.href='/logout'">로그아웃</button> 
-            </div>        
-           </div> 
-         </div>
-   
-    </c:otherwise>
+         <div class="mainTop">
+         
+          <img class="mainImg" src="${userInfo.imgPath}" alt="null">
+          <div class="mainSide">
+              <button type="button" class="btn btn-primary" style="margin-bottom: 10px;">내정보</button>
+              <button type="button" class="btn btn-primary" onclick="location.href='/logout'">로그아웃</button> 
+          </div>
+    </div>
+ </c:otherwise>
 </c:choose>
 	
 	    
