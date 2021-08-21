@@ -14,21 +14,6 @@ public class LoginForm {
 	private String id;
 	private String pw;
 	
-	public boolean isPwEqualWithCheckPw() {
-		
-	UserInfoDto dto = new UserInfoDto();
-	dto.setId("lookhkh");
-	dto.setPw("1234");
-		
-		if(dto.getId().equals(this.id)) {
-			if(dto.getPw().equals(this.pw)) {
-				return true;
-			}else {
-				throw new PasswordNotEqualWithConfirmedPwError("비밀번호가 다릅니다");
-			}
-		}else {
-			throw new RequestedUserNotFound("요청하신 아이디 "+ this.id+"는 존재하지 않습니다");
-		}
-	}
+	
 	
 }

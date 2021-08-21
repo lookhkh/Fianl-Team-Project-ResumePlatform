@@ -15,6 +15,7 @@
     <link href="/publish/main/css/footer.css" rel="stylesheet">    
     <script src="/publish/main/js/index.js" ></script>
     <script src="/publish/main/js/dropdown.js"></script>
+    <script src="/publish/main/js/LoginFormDetection.js"></script>
 
     <style>
 
@@ -45,7 +46,7 @@
               </div> 
 
               <div class="dropdown">
-                <li><a class="target-a" href="">기업홍보관</a></li>
+                <li><a class="target-a" href="/corporate/cpinfo">기업홍보관</a></li>
                 <div class="dropdown-content">
                   <a>MyResume란?</a>  
                   <a>MyResume란?</a>  
@@ -53,27 +54,41 @@
               </div>
 
               <div class="dropdown">
-                <li><a class="target-a" href="">이력서관리</a></li>
+                <li><a class="target-a" href="/resume">이력서관리</a></li>
                 <div class="dropdown-content">
-                  <a href="/resume">이력서관리</a>  
-                  <a href="/">MyResume란?</a>  
-                </div>
-              </div>
-
-              <div class="dropdown">
-                <li><a class="target-a" href="">자유게시판</a></li>
-                <div class="dropdown-content">
-                  <a>MyResume란?</a>  
-                  <a>MyResume란?</a>  
                 </div>
               </div>
             </ul>
         </nav>
-        <div class="signupAndLogin">
+	<c:choose>
+    <c:when test="${userInfo.id eq null}">
+    <div class="signupAndLogin">
             <button type="button" class="signup btn signupAndLoginBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 회원가입/로그인
-              </button>        </div>
-    	</div>
+             </button>        
+          </div>    </c:when>
+    <c:otherwise>
+        <div class="signupAndLogin">
+          <div class="infoBox">
+            <div class="infoImg">
+            <img src="${userInfo.imgPath}" width="50px" height="50px" flex: center;> 
+            </div>  
+            <div class="infoButton">
+            <button type="button" class="btn btn-primary">${userInfo.id}</button>
+            <button type="button" class="btn btn-primary" onclick="location.href='/logout'">로그아웃</button> 
+            </div>        
+           </div> 
+         </div>
+   
+    </c:otherwise>
+</c:choose>
+	
+	    
+          	
+          
+	
+
+
     <!--공통 헤더부분-->
     
     <!-- Button trigger modal -->
@@ -87,9 +102,12 @@
           <h5 class="modal-title" id="exampleModalLabel">MyResueme</h5>
         </div>
         <div class="modal-body">
+        
+        	<c:if test="${errors!=null}"><p style="color:red">${errors.error}</p></c:if>
+        	
                <form id="loginForm" method="POST" action="/login">
 	            <div class="form-floating mb-3">
-		                <input name="id" type="text" class="id-input form-control" id="floatingInput" placeholder="name@example.com">
+		                <input name="id" type="text" class="id-input form-control" id="floatingInput" placeholder="name@example.com" value="${errors.id==null?'':errors.id}">
 		                <label for="floatingInput">ID</label>
 		              </div>
 		              <div class="form-floating">

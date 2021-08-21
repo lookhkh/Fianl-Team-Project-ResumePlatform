@@ -16,6 +16,10 @@
 
     <title>회원가입</title>
     
+    <style>
+    		.fail{
+border-color:red;	}
+    </style>
 </head>
 <body>
     <div class="wrapper">
@@ -49,10 +53,10 @@
 
                     <div class="password-set">
                       <div class="input-group mb-3">
-                        <input data-target="required"  type="text" class="form-control" placeholder="패스워드를 입력해주세요" aria-label="Username" aria-describedby="basic-addon1" name="pw">
+                        <input data-target="required"  type="password" class="form-control" placeholder="패스워드를 입력해주세요" aria-label="Username" aria-describedby="basic-addon1" name="pw">
                       </div>
                       <div class="input-group mb-3">
-                        <input data-target="required"  type="text" class="form-control" placeholder="패스워드를 확인해주세요" aria-label="Username" aria-describedby="basic-addon1" name="confirmedPw">
+                        <input data-target="required"  type="password" class="form-control" placeholder="패스워드를 확인해주세요" aria-label="Username" aria-describedby="basic-addon1" name="confirmedPw">
                       </div>
                     </div>
 
@@ -68,7 +72,7 @@
                         </div>
                     </div>     
                     <div class="input-group mb-3">
-                        <input data-target="required"  type="tel" class="form-control" placeholder="대표 전화번호를 입력해주세요" name="contactInfo" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                        <input data-target="required"  type="tel" class="form-control" placeholder="대표 전화번호를 입력해주세요" name="contact_num" aria-label="Example text with button addon" aria-describedby="button-addon1">
                     </div>
                     
                     <input type="hidden" class="check" value="0" />
@@ -110,6 +114,8 @@
         let array= Array.from(inputGroups)
         array = array.filter((a)=>a.dataset.target);
         const check = document.querySelector('input[class="check"]')
+        const pw = this.document.querySelector('input[name="pw"]')
+    	const confirmPw = this.document.querySelector('input[name="confirmedPw"]')
 
         console.log(check)
 
@@ -128,6 +134,13 @@
                         array[i].classList.remove('required');
                     }
                 }
+                
+                if(pw.value!==confirmPw.value){
+               	 pw.classList.add('fail');
+                    confirmPw.classList.add('fail');
+               	alert("비밀번호를 확인해주세요");
+               	return;
+               }
 
                 if(check.value==='0'){
                     console.log(document.querySelector('form'))
@@ -141,7 +154,7 @@
             
 
             }else{
-                location.href="./signupSort.html"
+                if(confirm("가입을 중단하시겠습니까?"))location.href="/"
             }
         })
 

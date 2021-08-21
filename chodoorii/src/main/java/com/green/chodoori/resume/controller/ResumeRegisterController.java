@@ -1,21 +1,48 @@
 package com.green.chodoori.resume.controller;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.green.chodoori.resume.domain.SnsAddressDto;
+import com.green.chodoori.main.domain.UserInfoDto;
+import com.green.chodoori.main.domain.UserInfoRepo;
+import com.green.chodoori.main.web.domain.SessionUserInfo;
+import com.green.chodoori.resume.domain.ResumeDto;
+import com.green.chodoori.resume.domain.ResumeDtoRepo;
+import com.green.chodoori.resume.service.ChangeUsersResumeStatusService;
+import com.green.chodoori.resume.service.ResumeDtoCreator;
+import com.green.chodoori.util.fileUpload.ImgUploadAndGenerateSignUpDto;
 
 @Controller
 @RequestMapping("/resume")
 public class ResumeRegisterController {
+	
+	@Autowired
+	ImgUploadAndGenerateSignUpDto imgService;
+	
+	@Autowired
+	ResumeDtoCreator resumeCreator;
+	
+	
+	@Autowired
+	ResumeDtoRepo resumeRepo;
+	
+	@Autowired
+	UserInfoRepo userRepo;
+	
+	@Autowired
+	ChangeUsersResumeStatusService userStatusService;
+	
 	
 	@GetMapping("/template")
 	public String templateChoicePage() {
@@ -23,61 +50,80 @@ public class ResumeRegisterController {
 		return "/resume/resumeChoice";
 	}
 	
+	
+	
 	@GetMapping("/form")
-	public String templateFormPage() {
+	public String templateFormPage(@RequestParam("template")String template,Model model) {
+		model.addAttribute("template",template);
 		return "/resume/resumeForm";
 	}
 	
-	@ResponseBody
 	@PostMapping("/form")
 	public String templageFormInputCheck(HttpSession session,
-										@RequestParam String template_kind, 
-										@RequestParam String introduction_header,
-										@RequestParam String introduction_main,
-										@RequestParam MultipartFile introduction_img_path,
-										@RequestParam String[] skil_set,									
-										@ModelAttribute SnsAddressDto sns,
-										@RequestParam String disclosure,
-										@RequestParam MultipartFile portfolio_first_img,
-										@RequestParam String portfolio_first_name,
-										@RequestParam String portfolio_first_github,
-										@RequestParam String portfolio_first_desc,
-										@RequestParam MultipartFile portfolio_second_img,
-										@RequestParam String portfolio_second_name,
-										@RequestParam String portfolio_second_github,
-										@RequestParam String portfolio_second_desc,
-										@RequestParam MultipartFile portfolio_third_img,
-										@RequestParam String portfolio_third_name,
-										@RequestParam String portfolio_third_github,
-										@RequestParam String portfolio_third_desc) {
+										@RequestParam(required = false) String template_kind, 
+										@RequestParam(required = false) String introduction_header,
+										@RequestParam(required = false) String introduction_main,
+										@RequestParam(required = false) MultipartFile introduction_img_path,
+										@RequestParam(required = false) String[] skil_set,									
+										@RequestParam(required = false) String blog_address,
+										@RequestParam(required = false) String github_address,
+										@RequestParam(required = false) String instagram_address,
+										@RequestParam(required = false) String facebook_address,
+										@RequestParam(required = false, defaultValue = "off") String disclosure,
+										@RequestParam(required = false) MultipartFile portfolio_first_img,
+										@RequestParam(required = false) String portfolio_first_name,
+										@RequestParam(required = false) String portfolio_first_github,
+										@RequestParam(required = false) String portfolio_first_desc,
+										@RequestParam(required = false) MultipartFile portfolio_second_img,
+										@RequestParam(required = false) String portfolio_second_name,
+										@RequestParam(required = false) String portfolio_second_github,
+										@RequestParam(required = false) String portfolio_second_desc,
+										@RequestParam(required = false) MultipartFile portfolio_third_img,
+										@RequestParam(required = false) String portfolio_third_name,
+										@RequestParam(required = false) String portfolio_third_github,
+										@RequestParam(required = false) String portfolio_third_desc,
+										Model model) throws IllegalStateException, IOException {
 		
 		
-		System.out.println(template_kind+"  "+introduction_header+"  "+introduction_main);
-		System.out.println(introduction_img_path);
-		System.out.println(sns.toString());
-		System.out.println(disclosure);
+	
 
-		for(int i=0; i<skil_set.length; i++) {
-			System.out.println(skil_set[i]);
-		}
+		ResumeDto resume = resumeCreator.resumeDtoCreator(template_kind, introduction_header, introduction_main, 
+														introduction_img_path, skil_set, blog_address, 
+														github_address, instagram_address, facebook_address, 
+														disclosure, portfolio_first_img, portfolio_first_name, 
+														portfolio_first_github, portfolio_first_desc, portfolio_second_img, 
+														portfolio_second_name, portfolio_second_github, portfolio_second_desc, 
+														portfolio_third_img, portfolio_third_name, portfolio_third_github, 
+														portfolio_third_desc);
+										
+		resume.getSkill_dto().makeSkillSetList();
 		
-		System.out.println(portfolio_first_img);
-		System.out.println(portfolio_first_name);
-		System.out.println(portfolio_first_github);
-		System.out.println(portfolio_first_desc);
-		System.out.println(portfolio_second_img);
-		System.out.println(portfolio_second_name);
-		System.out.println(portfolio_second_github);
-		System.out.println(portfolio_second_desc);
-		System.out.println(portfolio_third_img);
-		System.out.println(portfolio_third_name);
-		System.out.println(portfolio_third_github);
-		System.out.println(portfolio_third_desc);
+		
+		
+		SessionUserInfo sessionUser = (SessionUserInfo) session.getAttribute("userInfo");
+		UserInfoDto user = userRepo.getById(sessionUser.getId());
+		
 
+		session.setAttribute("temp", resume);
 		
+	
+		model.addAttribute("resume",resume);
+		model.addAttribute("preview","on");
 		
-		return "hi";
+		String templateName = "/resume/template/templateSample"+template_kind;
+				
+		return templateName;
 	}
+	
+	@GetMapping("/form/confirm")
+	public String confirmResume(HttpSession session) {
+		
+		userStatusService.changeStatus(0, session);
+	
+		return "redirect:/resume?register=on";
+	}
+	
+	
 	
 
 }

@@ -1,5 +1,6 @@
 package com.green.chodoori;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -7,29 +8,36 @@ import javax.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
+import com.green.chodoori.corporate.domain.CorporateDetailDto;
+import com.green.chodoori.corporate.domain.CorporateDetailDtoRepo;
 import com.green.chodoori.main.domain.CorporateSignUpMetaDataFormVo;
 import com.green.chodoori.main.domain.CorporateSignUpMetaDataFormVoRepo;
 import com.green.chodoori.main.domain.IndividualSginUpMetadataFormVo;
 import com.green.chodoori.main.domain.IndividualSginUpMetadataFormVoRepo;
 import com.green.chodoori.main.domain.UserInfoDto;
 import com.green.chodoori.main.domain.UserInfoRepo;
-import com.green.chodoori.resume.domain.IntroductionDto;
+import com.green.chodoori.main.service.UserMetaDataSeparatorService;
 import com.green.chodoori.resume.domain.ResumeDto;
 import com.green.chodoori.resume.domain.ResumeDtoRepo;
-import com.green.chodoori.resume.domain.SkillSetDto;
-import com.green.chodoori.util.signup.UserMetaDataSeparatorService;
+import com.green.chodoori.resume.web.domain.IntroductionDto;
+import com.green.chodoori.resume.web.domain.SkillSetDto;
 
 @Rollback(value = false)
 
 @SpringBootTest
-public class JpaTest {
+public class JPAtest {
 
 	@Autowired
 	UserInfoRepo userRepo;
+	
+	@Autowired
+	CorporateDetailDtoRepo corpRepo;
 	
 	@Autowired
 	CorporateSignUpMetaDataFormVoRepo metaRepo;
@@ -137,7 +145,7 @@ public class JpaTest {
 		
 	}
 	
-	@Test
+	//@Test
 	@Transactional
 	public void 이력서관리테스트() {
 		UserInfoDto user = userRepo.findById("kim123").get();
@@ -160,6 +168,26 @@ public class JpaTest {
 		System.out.println(resume.toString());
 		
 	}
+	
+	@Test
+	public void 페이징테스트() {
+		
+		PageRequest page = PageRequest.of(0, 3);
+		
+		Page<CorporateDetailDto> dtos =corpRepo.findAll(page);
+		
+		System.out.println(dtos.getTotalElements());
+		
+		List<CorporateDetailDto> lists = dtos.getContent();
+		System.out.println(dtos.getTotalPages());
+		
+		lists.forEach(a->System.out.println("정보 : "+a.toString()));
+		System.out.println(lists.size());
+		System.out.println(" **********************");
+		}
+	
+	
+	
 	
 	
 	

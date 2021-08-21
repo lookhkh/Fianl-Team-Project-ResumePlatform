@@ -78,7 +78,13 @@
           </div>
         </div>
         <div class="SI-btn">
-        <button>이력서 보내기</button>
+          <c:when test="${userInfo.id eq null}">
+   			 <div class="signupAndLogin">
+            <button type="button" class="signup btn signupAndLoginBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                이력서보내기
+             </button>        
+          </div>    
+          </c:when>
       </div>
     </div>
         <!--공통 Footer-->

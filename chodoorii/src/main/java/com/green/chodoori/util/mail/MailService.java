@@ -1,5 +1,7 @@
 package com.green.chodoori.util.mail;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Random;
@@ -100,6 +102,29 @@ public class MailService {
 
 
 	   }
+	   
+	   public void sendMailForSharingMyResume(String to, String what, String userId) throws UnsupportedEncodingException {
+		   
+		   
+	
+		   
+		   userId = "http://localhost:8088/resume/share/mail/"+userId;
+		   
+		   SimpleMailMessage message = new SimpleMailMessage();
+	        
+		   
+		   message.setTo(to);
+	        message.setFrom(MailService.FROM_ADDRESS);
+	        message.setSubject("MyResume로부터 이력서 열람 요청이 도착하였습니다");
+	        message.setText(what+"/////"+userId);
+	        
+
+	        
+	        mailSender.send(message);
+
+
+	   }
+	   
 	    
 
 	    

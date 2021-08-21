@@ -29,17 +29,17 @@
           <div class="row first">
             <div class="resumebox">
                 <div class="resumeUp" style="float:center;"  >
-                   <input type="button" class="btn btn-primary" style="height: 100px; width: 300px; font-size:40px; margin-top: -10%;" value="이력서 보기">
+                   <button type="button" class="btn btn-primary" style="height: 100px; width: 300px; font-size:40px; margin-top: -10%;" onclick="location.href='/resume/display'">이력서 보기</button>
                 </div>
                 <div class="resumeTotal" style="padding-top: 20px;">
                   <div class="resumeEdit" style="display: inline;">
-                    <input type="button" class="btn btn-primary" value="수정">
+                    <input type="button" class="btn btn-primary" value="수정" onclick="location.href='/resume/edit'">
                   </div>
                   <div class="resumeDelete" style="display: inline;">
                   <input type="button"  class="btn btn-primary" value="삭제">
                    </div>
                    <div class="resumeShare" style="display: inline;">
-                    <input type="button" class="btn btn-primary" value="공유">
+                    <input type="button" class="btn btn-primary" value="공유" onclick="location.href='/resume/share'">
                     </div>
                   </div>     
         </div>
@@ -54,5 +54,20 @@
  
 </body>
 </html>
+<script>
+	window.addEventListener('load',function(){
+		
+		const removeBtn = document.querySelector("input[value='삭제']");
+		removeBtn.onclick=()=>{
+			if(confirm("정말로 삭제하시겠습니까?")){
+				location.href="/resume/remove";
+				alert("성공적으로 삭제하였습니다")
 
+			}
+		}
+		
+
+
+	});
+</script>
 

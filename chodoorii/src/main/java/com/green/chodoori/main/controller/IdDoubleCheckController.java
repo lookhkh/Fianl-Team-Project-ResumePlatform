@@ -1,6 +1,8 @@
 package com.green.chodoori.main.controller;
 
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +26,14 @@ public class IdDoubleCheckController {
 	@Autowired
 	UserInfoRepo repo;
 	
+	private static final String idRegExp = "^[0-9a-z]+$";
+	
+	private Pattern idpattern;		//아이디 패턴 변수
+	
+	public IdDoubleCheckController() {
+		idpattern = Pattern.compile(idRegExp);			//아이디 유효성 검사를 변수에 저장 
+	}
+	
 	@ResponseBody
 	@GetMapping
 	public ResponseEntity<String> idCheck(@RequestParam String id){
@@ -34,11 +44,13 @@ public class IdDoubleCheckController {
 		if(id.length()<5) {
 			return ResponseEntity.badRequest().body("아이디는 5글자 이상");
 		}
-		
 		if(dto.isPresent()) {
 		return ResponseEntity.badRequest().body("이미 존재하는 아이디입니다");
-	}
-		
+		}
+		Matcher matcher = idpattern.matcher(id);
+		if(!matcher.matches()) {
+			return ResponseEntity.badRequest().body("아이디는 영문,숫자로만 구성할수있습니다.");
+		}
 		return ResponseEntity.ok("사용 가능한 아이디입니다");
 }
 }

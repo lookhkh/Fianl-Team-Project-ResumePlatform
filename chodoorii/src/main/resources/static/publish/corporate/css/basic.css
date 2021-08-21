@@ -156,6 +156,17 @@ footer a{
 .pw-lookupForm.show{
     display: block;
 }
+/* @@@@@@@@@@@@@@@@@페이징버튼@@@@@@@@@@@@@@@@@ */
+ol.paging{
+  text-align: center;
+  display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    width: 400px;
+}
+.paging li{
+  display: inline-block;
+}
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 회사목록.html입니다.@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 ul, li{
   list-style: none;
@@ -168,7 +179,7 @@ a{
 }
 .list-wrap{
   width: 90%;
-  min-width: 1500px;
+  min-width: 1700px;
   max-width: 1700px;
   margin: 0 auto;
   padding: 100px;
@@ -226,6 +237,17 @@ a{
 .list-wrap .photo a:hover{
   background: #325cb2;
   color: #ddd;
+}
+.btn-list{
+  margin-left: 1350px;
+  display: inline-block;
+  margin-top: -10px;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 10%;
+  font-size: 13px;
+  letter-spacing: -1px;
+  transition: 0.2s ease;
 }
 /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 이력서.html @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
 /* 부분입니다 */

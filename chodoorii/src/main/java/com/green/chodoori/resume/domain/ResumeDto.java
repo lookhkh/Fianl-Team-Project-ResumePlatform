@@ -9,6 +9,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.green.chodoori.main.domain.UserInfoDto;
+import com.green.chodoori.resume.web.domain.IntroductionDto;
+import com.green.chodoori.resume.web.domain.SkillSetDto;
+import com.green.chodoori.resume.web.domain.SnsAddressDto;
 
 import lombok.Builder;
 import lombok.Data;
@@ -60,6 +63,7 @@ public class ResumeDto {
 	@OneToOne
 	@JoinColumn(name="RESUME_ID")
 	private UserInfoDto user;
+	// 변수로 user 의미를 둠으로써
 	
 	@Embedded
 	private SkillSetDto skill_dto;

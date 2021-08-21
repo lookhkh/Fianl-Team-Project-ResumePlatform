@@ -13,7 +13,12 @@
     <script src="/publish/main/js/idCheckforduplicate.js"></script>
     <link href="/publish/main/css/signupRequired.css" rel="stylesheet">    
     <script src="/publish/main/js/imgChange.js"></script>
-
+    <script src="/publish/main/js/validator.js"></script>
+	<style>
+	
+		.fail{
+border-color:red;	}
+	</style>
     <title>회원가입</title>
     
 </head>
@@ -48,16 +53,20 @@
                     </div>
 
                     <div class="password-set">
+                      
+                      <c:if test="${error.confirmedPw !=null }"><h3 style="color : red; position:relative; top:50px">비밀번호가 다릅니다	</h3></c:if>
                       <div class="input-group mb-3">
-                        <input data-target="required"  type="text" class="form-control" placeholder="패스워드를 입력해주세요" aria-label="Username" aria-describedby="basic-addon1" name="pw">
+                        <input data-target="required"  type="password" class="form-control" placeholder="패스워드를 입력해주세요" aria-label="Username" aria-describedby="basic-addon1" name="pw">
                       </div>
                       <div class="input-group mb-3">
-                        <input data-target="required"  type="text" class="form-control" placeholder="패스워드를 확인해주세요" aria-label="Username" aria-describedby="basic-addon1" name="confirmedPw">
+                        <input data-target="required"  type="password" class="form-control" placeholder="패스워드를 확인해주세요" aria-label="Username" aria-describedby="basic-addon1" name="confirmedPw">
                       </div>
                     </div>
+                    
 
                       <div class="email-auth">
                         <div class="input-group mb-3">
+                        <br>
                             <input data-target="required"  type="email" class="form-control" placeholder="이메일을 입력해주세요" name="email" aria-label="Example text with button addon" aria-describedby="button-addon1">
                             <button class="emailAuth btn btn-outline-secondary" type="button" id="button-addon1">인증하기</button>    
                         </div>
@@ -118,8 +127,9 @@
         let array= Array.from(inputGroups)
         array = array.filter((a)=>a.dataset.target);
         const check = document.querySelector('input[class="check"]')
-
-        console.log(check)
+   		const pw = this.document.querySelector('input[name="pw"]')
+    	const confirmPw = this.document.querySelector('input[name="confirmedPw"]')
+        
 
         actionBtn.addEventListener('click',function(e){
             if(e.target.nodeName!=="BUTTON") return;
@@ -136,6 +146,13 @@
                         array[i].classList.remove('required');
                     }
                 }
+                
+                if(pw.value!==confirmPw.value){
+                	 pw.classList.add('fail');
+                     confirmPw.classList.add('fail');
+                	alert("비밀번호를 확인해주세요");
+                	return;
+                }
 
                 if(check.value==='0'){
                     console.log(document.querySelector('form'))
@@ -149,7 +166,7 @@
             
 
             }else{
-                location.href="./signupSort.html"
+                if(confirm("가입을 중단하시겠습니까?"))location.href="/"
             }
         })
 
