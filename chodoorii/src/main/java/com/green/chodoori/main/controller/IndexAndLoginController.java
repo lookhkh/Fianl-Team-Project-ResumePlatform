@@ -76,12 +76,6 @@ public class IndexAndLoginController {
 		session.invalidate();
 		return "redirect:"+redirect;
 	}
-//	@GetMapping("/corporate/info")
-//	public String coperaterinfo() {
-//		log.info("회사소개 페이지 요청");
-//		return "corporate/cpinfo";
-//	}
-	
-	
-	
+
+
 }

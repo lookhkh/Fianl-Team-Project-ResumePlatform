@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.green.chodoori.main.domain.UserInfoRepo;
+import com.green.chodoori.main.repository.MainRepository;
 import com.green.chodoori.util.mail.MailAuthInfoDto;
 import com.green.chodoori.util.mail.MailService;
 
@@ -32,6 +33,9 @@ public class EmailAuthController {
 	@Autowired
 	UserInfoRepo repo;
 	
+	
+	@Autowired
+	MainRepository mainRepo;
 	
 	@PostMapping
 	public ResponseEntity<String> generateAuthNum(@RequestBody String email, HttpSession session){
@@ -73,7 +77,7 @@ public class EmailAuthController {
 		
 		try {
 		
-		String tempId = repo.findByEmail(email).getId();
+		String tempId = mainRepo.findByEmail(email).get().getId();
 		System.out.println(tempId);
 		if(tempId.equals(null)) {
 			return ResponseEntity.badRequest().body("가입된 이메일이 존재하지 않습니다. 다시 한 번 확인해주세요");
@@ -97,8 +101,8 @@ public class EmailAuthController {
 		try {
 		//아이디, 이메일로 검증로직 작성
 		System.out.println("비번찾기 요청됨");
-		String tempPw = repo.findById(id).get().getPw();
-		String pwByEmail = repo.findByEmail(email).getPw();
+		String tempPw = mainRepo.findById(id).get().getPw();
+		String pwByEmail = mainRepo.findByEmail(email).get().getPw();
 		
 		
 		

@@ -18,18 +18,13 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class ImgUploadAndGenerateSignUpDto {
 
-	private HashMap<String, UserInfoDto> tempStore = new HashMap(); //데이터베이스 사용 후 삭제 예정
-	
 	@Value("${upload.path}")
 	String path;
 	
 	public String imgUploadAndGenerateSignUpDto(MultipartFile fileVo) throws IllegalStateException, IOException {
 		String fileName = fileVo.getOriginalFilename();
 		String convertedItemName = UUID.randomUUID().toString()+"."+fileName.substring(fileName.lastIndexOf(".")+1);
-		
-		
-		
-		
+				
 		log.info(path+convertedItemName);
 		
 		
@@ -40,19 +35,11 @@ public class ImgUploadAndGenerateSignUpDto {
 		
 		fileVo.transferTo(file);
 		
-		
-		
-		
 			
 		return "/img/"+convertedItemName;
 		
 	}
 
-	//데이터 베이스 사용 시 삭제 예정
-	public HashMap<String, UserInfoDto> getTempStore() {
-		return tempStore;
-	}
-	
 	public String getPath() {
 		return this.path;
 	}

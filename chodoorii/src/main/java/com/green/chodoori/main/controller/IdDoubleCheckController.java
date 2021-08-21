@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.green.chodoori.main.domain.UserInfoDto;
 import com.green.chodoori.main.domain.UserInfoRepo;
+import com.green.chodoori.main.repository.MainRepository;
 
 @Controller
 @RequestMapping("/idcheck")
@@ -25,6 +26,9 @@ public class IdDoubleCheckController {
 	
 	@Autowired
 	UserInfoRepo repo;
+	
+	@Autowired
+	MainRepository mainRepo;
 	
 	private static final String idRegExp = "^[0-9a-z]+$";
 	
@@ -39,15 +43,18 @@ public class IdDoubleCheckController {
 	public ResponseEntity<String> idCheck(@RequestParam String id){
 		System.out.println("요청 아이디 정보 : "+id);
 		
-		Optional<UserInfoDto> dto = repo.findById(id);
+		Optional<UserInfoDto> dto = mainRepo.findById(id);
 		
 		if(id.length()<5) {
 			return ResponseEntity.badRequest().body("아이디는 5글자 이상");
 		}
+		
 		if(dto.isPresent()) {
 		return ResponseEntity.badRequest().body("이미 존재하는 아이디입니다");
 		}
+		
 		Matcher matcher = idpattern.matcher(id);
+		
 		if(!matcher.matches()) {
 			return ResponseEntity.badRequest().body("아이디는 영문,숫자로만 구성할수있습니다.");
 		}

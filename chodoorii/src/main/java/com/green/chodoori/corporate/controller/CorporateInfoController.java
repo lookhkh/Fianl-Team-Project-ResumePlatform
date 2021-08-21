@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.green.chodoori.corporate.domain.CorporateDetailDto;
 import com.green.chodoori.corporate.domain.CorporateDetailDtoRepo;
 import com.green.chodoori.corporate.domain.WelfareDto;
+import com.green.chodoori.corporate.repository.CorporateRepo;
 import com.green.chodoori.error.CompanayDetailNotFoundError;
 import com.green.chodoori.main.service.ExtractSessionInfoService;
 
@@ -29,21 +30,16 @@ public class CorporateInfoController {
 
 	@Autowired
 	ExtractSessionInfoService sessionExtractor;
-	
-	@Autowired
-	CorporateDetailDtoRepo corporateRepo;
-	
 
+	@Autowired
+	CorporateRepo corpRepo;
+	
 	@GetMapping("/cpinfo")
 	public String ViewList(@PageableDefault(page = 0,size = 4)Pageable page, Model model) {
-		Page<CorporateDetailDto> pageable = corporateRepo.findAll(page);
-		
-		
-		
+		Page<CorporateDetailDto> pageable = corpRepo.findAll(page);
 		
 		model.addAttribute("pageable",pageable);
 		
-		log.info("기업홍보관 페이지 요청 수신");
 		return "corporate/cpinfo";
 	}
 	
@@ -51,7 +47,7 @@ public class CorporateInfoController {
 	public String ViewCorporate(CorporateDetailDto dto) {
 		
 		log.info("기업홍보관 페이지 요청 수신");
-		corporateRepo.save(dto);
+		corpRepo.corporateDetailSave(dto);
 		return "corporate/cpinfo";
 	}
 	
@@ -66,7 +62,7 @@ public class CorporateInfoController {
 	//회사소개 상세보기
 	@GetMapping("/detail/{cid}")//cid >> Corporate의 기본키 값으로 찾을 예정
 	public String DetailCorporateInfo(@PathVariable Long cid,Model model) {
-		Optional<CorporateDetailDto> dto = corporateRepo.findById(cid);
+		Optional<CorporateDetailDto> dto = corpRepo.findByIdForCorporate(cid);
 		
 		
 		if(!dto.isPresent()) {
