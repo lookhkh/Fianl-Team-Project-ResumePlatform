@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.green.chodoori.main.service.ExtractSessionInfoService;
 import com.green.chodoori.main.web.domain.SessionUserInfo;
 import com.green.chodoori.resume.domain.ResumeDtoRepo;
+import com.green.chodoori.resume.repository.ResumeRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,9 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/resume")
 public class IndexController {
 	
-	@Autowired
-	ResumeDtoRepo resumeRepo;
-	
+
 	@Autowired
 	ExtractSessionInfoService sessionExtractor;
 	

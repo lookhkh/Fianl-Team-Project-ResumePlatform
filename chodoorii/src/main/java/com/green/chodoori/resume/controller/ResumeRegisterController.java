@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.green.chodoori.main.domain.UserInfoDto;
-import com.green.chodoori.main.domain.UserInfoRepo;
+import com.green.chodoori.main.repository.MainRepository;
 import com.green.chodoori.main.web.domain.SessionUserInfo;
 import com.green.chodoori.resume.domain.ResumeDto;
-import com.green.chodoori.resume.domain.ResumeDtoRepo;
+import com.green.chodoori.resume.repository.ResumeRepository;
 import com.green.chodoori.resume.service.ChangeUsersResumeStatusService;
 import com.green.chodoori.resume.service.ResumeDtoCreator;
 import com.green.chodoori.util.fileUpload.ImgUploadAndGenerateSignUpDto;
@@ -35,10 +34,10 @@ public class ResumeRegisterController {
 	
 	
 	@Autowired
-	ResumeDtoRepo resumeRepo;
+	ResumeRepository resumeRepo;
 	
 	@Autowired
-	UserInfoRepo userRepo;
+	MainRepository mainRepo;
 	
 	@Autowired
 	ChangeUsersResumeStatusService userStatusService;
@@ -101,7 +100,7 @@ public class ResumeRegisterController {
 		
 		
 		SessionUserInfo sessionUser = (SessionUserInfo) session.getAttribute("userInfo");
-		UserInfoDto user = userRepo.getById(sessionUser.getId());
+		UserInfoDto user = mainRepo.getById(sessionUser.getId());
 		
 
 		session.setAttribute("temp", resume);

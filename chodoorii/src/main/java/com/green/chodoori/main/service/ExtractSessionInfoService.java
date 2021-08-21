@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.green.chodoori.main.domain.UserInfoDto;
 import com.green.chodoori.main.domain.UserInfoRepo;
+import com.green.chodoori.main.repository.MainRepository;
 import com.green.chodoori.main.web.domain.SessionUserInfo;
 import com.green.chodoori.resume.domain.ResumeDtoRepo;
 
@@ -14,10 +15,8 @@ import com.green.chodoori.resume.domain.ResumeDtoRepo;
 public class ExtractSessionInfoService {
 
 	@Autowired
-	ResumeDtoRepo resumeRepo;
-	
-	@Autowired
-	UserInfoRepo userRepo;
+	MainRepository mainRepo;
+
 	
 	public SessionUserInfo extractSessionUserInfo(HttpSession session) {
 			
@@ -32,7 +31,7 @@ public class ExtractSessionInfoService {
 		
 		SessionUserInfo sessionInfo = extractSessionUserInfo(session);
 		
-		return userRepo.findById(sessionInfo.getId()).get().getName();
+		return mainRepo.findById(sessionInfo.getId()).get().getName();
 		
 	}
 	
@@ -43,7 +42,7 @@ public class ExtractSessionInfoService {
 	
 	public UserInfoDto extractUserInfoDtoFromSessionInfo(HttpSession session) {
 		SessionUserInfo sessionInfo = extractSessionUserInfo(session);
-		UserInfoDto dto = userRepo.findById(sessionInfo.getId()).get();
+		UserInfoDto dto = mainRepo.findById(sessionInfo.getId()).get();
 		return dto;
 	}
 }

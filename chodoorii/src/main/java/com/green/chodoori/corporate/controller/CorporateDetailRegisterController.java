@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.green.chodoori.corporate.domain.CorporateDetailDto;
 import com.green.chodoori.corporate.domain.CorporateDetailDtoRepo;
 import com.green.chodoori.corporate.domain.WelfareDto;
+import com.green.chodoori.corporate.repository.CorporateRepo;
 import com.green.chodoori.corporate.web.domain.CorporateDetailRegisterForm;
 import com.green.chodoori.main.domain.UserInfoDto;
 import com.green.chodoori.main.service.ExtractSessionInfoService;
@@ -24,12 +25,13 @@ import com.green.chodoori.resume.service.ChangeUsersResumeStatusService;
 @RequestMapping("/corporate")
 public class CorporateDetailRegisterController {
 
+
+	@Autowired
+	CorporateRepo corpRepo;
+	
 	@Autowired
 	ExtractSessionInfoService sessionExtractor;
-	
-	@Autowired
-	CorporateDetailDtoRepo corpRepo;
-	
+
 	@Autowired
 	ChangeUsersResumeStatusService statusService;
 	
@@ -83,7 +85,7 @@ public class CorporateDetailRegisterController {
 		System.out.println(corpDto.toString());
 		
 		
-		corpRepo.save(corpDto);
+		corpRepo.corporateDetailSave(corpDto);
 		sessinInfo.setCheck(0);
 		user.setCheck_detail(0);
 		

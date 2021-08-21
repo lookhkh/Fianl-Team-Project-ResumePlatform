@@ -9,6 +9,7 @@ import com.green.chodoori.error.PasswordIsNotSameError;
 import com.green.chodoori.error.RequestedUserNotFound;
 import com.green.chodoori.main.domain.UserInfoDto;
 import com.green.chodoori.main.domain.UserInfoRepo;
+import com.green.chodoori.main.repository.MainRepository;
 import com.green.chodoori.main.web.domain.LoginForm;
 import com.green.chodoori.main.web.domain.SessionUserInfo;
 
@@ -16,10 +17,14 @@ import com.green.chodoori.main.web.domain.SessionUserInfo;
 public class LoginService {
 
 	@Autowired
+	MainRepository mainRepo;
+
+	
+	@Autowired
 	UserInfoRepo repo;
 	
 	public boolean userInfoMationCheck(LoginForm form) {
-		Optional<UserInfoDto> check = repo.findById(form.getId());
+		Optional<UserInfoDto> check = mainRepo.findById(form.getId());
 		
 		if(!check.isPresent()) {
 			throw new RequestedUserNotFound("요청하신 유저 정보가 존재하지 않습니다");
@@ -36,7 +41,7 @@ public class LoginService {
 	}
 	
 	public SessionUserInfo createSessionUserInfoDto(String userId) {
-		UserInfoDto dto = repo.findById(userId).get();
+		UserInfoDto dto = mainRepo.findById(userId).get();
 		
 		return new SessionUserInfo(userId,dto.getImgPath(),dto.getSort(),dto.getCheck_detail());
 	}

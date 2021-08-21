@@ -24,12 +24,14 @@ import org.springframework.web.multipart.MultipartFile;
 import com.green.chodoori.error.ResumeNotFoundError;
 import com.green.chodoori.main.domain.UserInfoDto;
 import com.green.chodoori.main.domain.UserInfoRepo;
+import com.green.chodoori.main.repository.MainRepository;
 import com.green.chodoori.main.service.ExtractSessionInfoService;
 import com.green.chodoori.main.web.domain.SessionUserInfo;
 import com.green.chodoori.resume.domain.ResumeDto;
 import com.green.chodoori.resume.domain.ResumeDtoRepo;
 import com.green.chodoori.resume.domain.SharedMyResumeInfoDto;
 import com.green.chodoori.resume.domain.SharedMyResumeInfoDtoRepo;
+import com.green.chodoori.resume.repository.ResumeRepository;
 import com.green.chodoori.resume.service.ChangeUsersResumeStatusService;
 import com.green.chodoori.resume.service.ResumeDtoCreator;
 import com.green.chodoori.util.mail.MailService;
@@ -50,10 +52,11 @@ public class ResumeController {
 	ExtractSessionInfoService sessionExtractor;
 
 	@Autowired
-	UserInfoRepo userRepo;
-
+	MainRepository mainRepo;
+	
 	@Autowired
-	ResumeDtoRepo resumeRepo;
+	ResumeRepository resumeRepo;
+	
 
 	@Autowired
 	SharedMyResumeInfoDtoRepo smRepo; // 공유 레포지토리 의존성 주입
@@ -69,7 +72,7 @@ public class ResumeController {
 
 		SessionUserInfo sessionInfo = sessionExtractor.extractSessionUserInfo(session);
 
-		Optional<ResumeDto> resume = resumeRepo.findById(sessionInfo.getId());
+		Optional<ResumeDto> resume = resumeRepo.findByIdForResume(sessionInfo.getId());
 
 		if (resume.isPresent()) {
 
@@ -94,11 +97,11 @@ public class ResumeController {
 
 		SessionUserInfo sessionInfo = sessionExtractor.extractSessionUserInfo(session);
 
-		Optional<ResumeDto> resume = resumeRepo.findById(sessionInfo.getId());
+		Optional<ResumeDto> resume = resumeRepo.findByIdForResume(sessionInfo.getId());
 
-		resumeRepo.delete(resume.get());
+		resumeRepo.deleteResumeDto(resume.get());
 
-		userRepo.findById(sessionInfo.getId()).get().setCheck_detail(1);
+		mainRepo.findById(sessionInfo.getId()).get().setCheck_detail(1);
 
 		sessionInfo.setCheck(1);
 
@@ -119,7 +122,7 @@ public class ResumeController {
 	@GetMapping("/edit/form")
 	public String templateFormPage(@RequestParam("template")String template,Model model, HttpSession session) {
 		SessionUserInfo user = sessionExtractor.extractSessionUserInfo(session);
-		ResumeDto dto = resumeRepo.findById(user.getId()).get();
+		ResumeDto dto = resumeRepo.findByIdForResume(user.getId()).get();
 		
 		model.addAttribute("template",template);
 		model.addAttribute("resume",dto);
@@ -171,7 +174,7 @@ public class ResumeController {
 		
 		
 		SessionUserInfo sessionUser = (SessionUserInfo) session.getAttribute("userInfo");
-		UserInfoDto user = userRepo.getById(sessionUser.getId());
+		UserInfoDto user = mainRepo.getById(sessionUser.getId());
 		
 
 		session.setAttribute("temp", resume);
@@ -218,7 +221,7 @@ public class ResumeController {
 
 		myInfo.setRegisterDate(new Date());
 		// 현재 시간을 새로 넣고
-		myInfo.setUserInfoDto(userRepo.getById(sessionInfo.getId()));
+		myInfo.setUserInfoDto(mainRepo.getById(sessionInfo.getId()));
 		// 유저 세션으로 id값을 불러와서
 		mail.sendMailForSharingMyResume(to, what, sessionInfo.getId());
 		// 잘 모르겠음
@@ -236,7 +239,7 @@ public class ResumeController {
 	public String displayMyResumeByEmail(@PathVariable String userId, Model model) throws UnsupportedEncodingException {
 		// 불러온 유저 아이디를 consol창을 통해 확인
 
-		ResumeDto myInfo = resumeRepo.findById(userId).get();
+		ResumeDto myInfo = resumeRepo.findByIdForResume(userId).get();
 		// 테스트용 아이디를 불러옴
 		String templateKind = "/resume/template/templateSample" + myInfo.getTemplate_kind();
 		// 내 이력서를 저장한 템플릿 종류를 가져옴
