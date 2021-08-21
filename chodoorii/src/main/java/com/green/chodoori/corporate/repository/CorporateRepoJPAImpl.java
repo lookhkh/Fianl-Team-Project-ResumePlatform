@@ -45,4 +45,12 @@ public class CorporateRepoJPAImpl implements CorporateRepo {
 	public Optional<CorporateDetailDto> findByIdForCorporate(Long cid){
 		return corpRepo.findById(cid);
 	}
+
+	@Override
+	public void deleteCorporDetail(String id) {
+		CorporateDetailDto dto = corpRepo.findByUserid(id);
+		corpRepo.delete(dto);
+		
+	}
+
 }

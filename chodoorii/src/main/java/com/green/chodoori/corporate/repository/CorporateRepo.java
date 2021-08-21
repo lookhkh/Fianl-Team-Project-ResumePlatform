@@ -26,4 +26,6 @@ public interface CorporateRepo {
 	public void corporateDetailSave(CorporateDetailDto dto);
 	
 	public Optional<CorporateDetailDto> findByIdForCorporate(Long cid);
+	
+	public void deleteCorporDetail(String id);
 }

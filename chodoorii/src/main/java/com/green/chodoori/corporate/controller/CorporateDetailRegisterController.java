@@ -1,18 +1,22 @@
 package com.green.chodoori.corporate.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.green.chodoori.corporate.domain.CorporateDetailDto;
-import com.green.chodoori.corporate.domain.CorporateDetailDtoRepo;
 import com.green.chodoori.corporate.domain.WelfareDto;
 import com.green.chodoori.corporate.repository.CorporateRepo;
 import com.green.chodoori.corporate.web.domain.CorporateDetailRegisterForm;
@@ -38,9 +42,6 @@ public class CorporateDetailRegisterController {
 	@GetMapping("/register")
 	public String registerForm(HttpSession session, Model model) {
 		
-		
-		
-		
 		SessionUserInfo user = sessionExtractor.extractSessionUserInfo(session);
 		String userId = user.getId();
 		
@@ -57,14 +58,48 @@ public class CorporateDetailRegisterController {
 		return "/corporate/corporateIntroduction";
 	}
 	
+	@GetMapping("/delete")
+	public String deleteDetail(HttpSession session) {
+		SessionUserInfo sessinInfo = sessionExtractor.extractSessionUserInfo(session);
+		
+		System.out.println(sessinInfo.getCheck()+" 세션 정보 중 체크 여부");
+
+		
+		UserInfoDto user = sessionExtractor.extractUserInfoDtoFromSessionInfo(session);
+		
+		sessinInfo.setCheck(1);
+		user.setCheck_detail(1);
+		session.setAttribute("userInfo", sessinInfo);
+
+		//리팩토링하기
+		corpRepo.deleteCorporDetail(sessinInfo.getId());
+		
+		
+		
+		
+		return "redirect: /corporate/cpinfo";
+		
+		
+	}
+	
 	@PostMapping("/register")
 	@Transactional
-	public String registerCorporateDetail(@ModelAttribute CorporateDetailRegisterForm dto, HttpSession session) {
-		
-		System.out.println(dto.toString());
-		
+	public String registerCorporateDetail(@Validated @ModelAttribute CorporateDetailRegisterForm dto, BindingResult error, HttpSession session, Model model) {
 		SessionUserInfo sessinInfo = sessionExtractor.extractSessionUserInfo(session);
 		UserInfoDto user = sessionExtractor.extractUserInfoDtoFromSessionInfo(session);
+
+				
+		if(error.hasErrors()) {
+			model.addAttribute("userName",user.getName());
+			model.addAttribute("detail",dto);
+			model.addAttribute("error",error);
+			List<ObjectError> lists = error.getAllErrors();
+			for(ObjectError err : lists) {
+				System.out.println(err);
+			}
+
+			return "/corporate/corporateIntroduction";
+		}
 		WelfareDto welfare = new WelfareDto();
 		
 		welfare.makeDto(dto.getWlfare());
@@ -82,7 +117,6 @@ public class CorporateDetailRegisterController {
 		
 		
 											
-		System.out.println(corpDto.toString());
 		
 		
 		corpRepo.corporateDetailSave(corpDto);

@@ -31,6 +31,10 @@ public class WelfareDto {
 	
 	public void makeDto(List<String> lists) {
 		
+		if(lists==null) {
+			return;
+		}
+		
 		String[] index = {"first","second","third","forth"};
 		
 		for(int i=0; i<lists.size(); i++) {

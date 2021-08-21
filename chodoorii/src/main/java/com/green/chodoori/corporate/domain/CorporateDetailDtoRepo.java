@@ -7,9 +7,9 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface CorporateDetailDtoRepo extends JpaRepository<CorporateDetailDto, Long>{
 
-	@Query("SELECT o from CorporateDetailDto o join UserInfoDto u where u.id=:userId")
+	@Query("SELECT o from CorporateDetailDto o join o.userid u where u.id=:userId")
 	CorporateDetailDto findByUserid(String userId);
-	
+
 	
 	Page<CorporateDetailDto> findAll(Pageable page);
 	
