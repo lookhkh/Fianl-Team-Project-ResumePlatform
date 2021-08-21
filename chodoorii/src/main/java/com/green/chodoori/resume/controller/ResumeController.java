@@ -180,12 +180,12 @@ public class ResumeController {
 		model.addAttribute("resume",resume);
 		model.addAttribute("preview","on");
 		
-		String templateName = "/resume/template/templateSample"+template_kind;
+		String templateName = "/resume/edit/template/templateSample"+template_kind;
 				
 		return templateName;
 	}
 	
-	@GetMapping("/form/edit/confirm")
+	@GetMapping("/edit/form/confirm")
 	public String confirmResume(HttpSession session) {
 		
 		userStatusService.changeStatus(1, session);
