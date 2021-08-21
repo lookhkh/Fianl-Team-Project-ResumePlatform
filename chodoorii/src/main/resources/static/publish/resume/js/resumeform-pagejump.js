@@ -34,9 +34,6 @@ window.addEventListener('load',()=>{
                 if(confirm("이력서를 미리 보시겠습니까?")) formTag.submit();
             }
 
-            if(target.classList.contains("preview-btn")){
-                alert("미리보기 기능 구현해야 함")
-            }
 
             let current_section = document.querySelector(current_page);
                 

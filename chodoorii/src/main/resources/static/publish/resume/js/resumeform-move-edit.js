@@ -11,7 +11,7 @@ window.addEventListener('load',e=>{
 
     nextBtn.onclick=()=>{
       if(confirm("이력서를 최종 저장하시겠습니까?")){
-        location.href="/resume/form/confirm?register=on"
+        location.href="/resume/edit/form/confirm?register=on"
       }
     }
 

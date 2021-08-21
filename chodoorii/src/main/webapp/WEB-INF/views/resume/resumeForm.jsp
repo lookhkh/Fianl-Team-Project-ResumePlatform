@@ -104,7 +104,7 @@
                 </div>
                 
                 <div class="button-wrapper">
-                    <button class="backtolist-btn btn btn-primary">목록으로</button>
+                    <button class="backtolist-btn btn btn-primary" onclick="location.href='/resume'">목록으로</button>
                     <button class="next-btn btn btn-primary">다음으로</button>
                 </div>
 

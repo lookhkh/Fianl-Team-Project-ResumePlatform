@@ -82,7 +82,7 @@
             <span data-target="second-form" style="width: 200px; height: 50px; display: flex; justify-content: center; align-items: center; font-size: 1.2rem;"class="badge rounded-pill bg-secondary ">기술스택 및 SNS</span>
             <span data-target="third-form" style="width: 200px; height: 50px; display: flex; justify-content: center; align-items: center; font-size: 1.2rem;" class="badge rounded-pill bg-secondary ">포트폴리오</span>
         </header>
-        <form method="POST" enctype="multipart/form-data" action="/resume/form" >
+        <form method="POST" enctype="multipart/form-data" action="/resume/edit/form" >
             
             <section class="first-form">
 				<div class="meta-data-set" style="display: none;">
@@ -104,7 +104,7 @@
                 </div>
                 
                 <div class="button-wrapper">
-                    <button class="backtolist-btn btn btn-primary">목록으로</button>
+                    <button class="backtolist-btn btn btn-primary" onclick="location.href='/resume'">목록으로</button>
                     <button class="next-btn btn btn-primary">다음으로</button>
                 </div>
 
