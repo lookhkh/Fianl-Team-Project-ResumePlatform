@@ -15,14 +15,6 @@ public class ChodooriApplication {
 		SpringApplication.run(ChodooriApplication.class, args);
 	
 	}
-	
-	@Bean 
-	public MessageSource messageSource() { 
-		ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource(); 
-		messageSource.setBasenames("messages","errors"); 
-		messageSource.setDefaultEncoding("UTF-8"); 
-		return messageSource;  
 
-}
 
 }

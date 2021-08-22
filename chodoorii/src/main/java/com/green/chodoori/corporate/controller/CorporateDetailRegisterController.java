@@ -88,11 +88,12 @@ public class CorporateDetailRegisterController {
 		SessionUserInfo sessinInfo = sessionExtractor.extractSessionUserInfo(session);
 		UserInfoDto user = sessionExtractor.extractUserInfoDtoFromSessionInfo(session);
 
-				
+		
 		if(error.hasErrors()) {
 			model.addAttribute("userName",user.getName());
 			model.addAttribute("detail",dto);
 			model.addAttribute("error",error);
+			
 			List<ObjectError> lists = error.getAllErrors();
 			for(ObjectError err : lists) {
 				System.out.println(err);
