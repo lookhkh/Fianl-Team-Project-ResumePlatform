@@ -21,7 +21,6 @@ import com.green.chodoori.main.web.domain.SignUpFormVO;
 
 import lombok.extern.slf4j.Slf4j;
 
-
 @Slf4j
 public class ValidationTest {
 	
@@ -62,7 +61,7 @@ public class ValidationTest {
 	public void corporateDetailValidationTest() {
 		CorporateDetailRegisterForm test = new CorporateDetailRegisterForm();
 		
-		test.setSalary("5000");
+		test.setSalary("ㅋ");
 		test.setStaffNumber(3000);
 		test.setSummary(null);
 		test.setWlfare(null);
@@ -75,6 +74,11 @@ public class ValidationTest {
 		}
 		
 
+	}
+	
+	@Test
+	public void test() {
+		//System.out.println(ms.getMessage("typeMismatch.corporateDetailRegisterForm.staffNumber", null,null));
 	}
 	
 	

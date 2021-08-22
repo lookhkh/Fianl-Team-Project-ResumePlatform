@@ -52,6 +52,21 @@
  
 </body>
 </html>
+<script>
+window.addEventListener('load',()=>{
 
+  const amoutinput = document.querySelector('input[name="staffNumber"]');
+  amoutinput.addEventListener('input',(e)=>{
+    if(e.data.charCodeAt(0)>=48 && e.data.charCodeAt(0)<=57){
 
+    }else{
+      alert("숫자만 입력해주세요");
+      amoutinput.value="";
+    }
+    
+  })
+
+})
+
+</script>
 
