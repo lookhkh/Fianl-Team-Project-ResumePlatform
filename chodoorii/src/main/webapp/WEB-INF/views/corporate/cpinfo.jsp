@@ -35,7 +35,6 @@
         <ol class="paging">
   
          <li><a href="/corporate/cpinfo?page=0"><<</a></li>
-    	 <c:if test="${pageable.hasPrevious()}"><li><a href="#"><</a></li></c:if>
      
      <c:forEach var="i" begin="1" end="${pageable.getTotalPages()}">
 
@@ -43,7 +42,6 @@
 	     
      </c:forEach>
      
-	     <c:if test="${pageable.hasNext()}"><li><a href="#">></a></li></c:if>
 		 <li><a href="/corporate/cpinfo?page="${pageable.getTotalPages()}">>></a></li>
 
     

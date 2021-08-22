@@ -12,15 +12,15 @@ import lombok.Data;
 @Data
 public class CorporateDetailRegisterForm {
 
-	@NotNull
-	@Range(max = 300)
+	@NotNull(message = "필수 입력값입니다.")
+	@Range(max = 300, message = "최대 300명입니다")
 	private Integer staffNumber;
-	@NotNull
+	@NotNull(message="필수 입력값입니다.")
 	private String salary;
-	@NotNull
+	@NotNull(message="필수 입력값입니다.")
 	private List<String> wlfare;
-	@NotNull
-	@NotBlank
+	@NotNull(message="필수 입력값입니다.")
+	@NotBlank(message = "필수 입력값입니다.")
 	private String summary;
 	
 

@@ -35,7 +35,7 @@ public class CorporateInfoController {
 	CorporateRepo corpRepo;
 	
 	@GetMapping("/cpinfo")
-	public String ViewList(@PageableDefault(page = 0,size = 4)Pageable page, Model model) {
+	public String ViewList(@PageableDefault(page = 0,size = 8)Pageable page, Model model) {
 		Page<CorporateDetailDto> pageable = corpRepo.findAll(page);
 		
 		model.addAttribute("pageable",pageable);
