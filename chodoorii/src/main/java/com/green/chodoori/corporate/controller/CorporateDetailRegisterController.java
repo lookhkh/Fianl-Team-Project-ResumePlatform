@@ -77,7 +77,7 @@ public class CorporateDetailRegisterController {
 		
 		
 		
-		return "redirect: /corporate/cpinfo";
+		return "redirect:/corporate/cpinfo";
 		
 		
 	}

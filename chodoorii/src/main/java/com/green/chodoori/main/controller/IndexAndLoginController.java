@@ -76,6 +76,11 @@ public class IndexAndLoginController {
 		session.invalidate();
 		return "redirect:"+redirect;
 	}
+	
+	@GetMapping("/abouus")
+	public String getAboutUs() {
+		return "main/aboutus/aboutus";
+	}
 
 
 }
