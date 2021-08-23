@@ -39,7 +39,7 @@
                   <input type="button"  class="btn btn-primary" value="삭제">
                    </div>
                    <div class="resumeShare" style="display: inline;">
-                    <input type="button" class="btn btn-primary" value="공유" onclick="location.href='/resume/share">
+                    <input type="button" class="btn btn-primary" value="공유" onclick="location.href='/resume/share'">
                     </div>
                   </div>     
         </div>
