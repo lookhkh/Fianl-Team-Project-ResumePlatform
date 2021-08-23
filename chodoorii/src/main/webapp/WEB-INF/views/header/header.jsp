@@ -61,12 +61,14 @@
             </ul>
         </nav>
 	<c:choose>
-    <c:when test="${userInfo.id eq null}">
-    <div class="signupAndLogin">
-            <button type="button" class="signup btn signupAndLoginBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                회원가입/로그인
-             </button>        
-          </div>    </c:when>
+	    <c:when test="${userInfo.id eq null}">
+	    <div class="signupAndLogin">
+	            <button type="button" class="signup btn signupAndLoginBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+	                회원가입/로그인
+	             </button>        
+	          </div>    
+	     </c:when>
+   
     <c:otherwise>
         <div class="signupAndLogin">
           <div class="infoBox">
@@ -79,7 +81,6 @@
             </div>        
            </div> 
          </div>
-   
     </c:otherwise>
 </c:choose>
 	

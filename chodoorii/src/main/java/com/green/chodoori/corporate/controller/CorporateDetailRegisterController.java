@@ -167,6 +167,7 @@ public class CorporateDetailRegisterController {
 			
 			CorporateDetailDto update = corpRepo.findByIdForCorporate(cid).get();
 			
+			
 				WelfareDto welfare = new WelfareDto();
 				welfare.makeDto(dto.getWlfare());
 				

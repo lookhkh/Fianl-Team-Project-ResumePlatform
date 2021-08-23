@@ -121,7 +121,7 @@
 
     
                 <div class="actions">
-                    <button class="next btn btn-primary" >다음으로</button>
+                    <button class="next btn btn-primary" >등록하기</button>
                     <button class="back btn btn-primary" onclick="location.href='index.html'">메인으로</button>
                 </div>
         

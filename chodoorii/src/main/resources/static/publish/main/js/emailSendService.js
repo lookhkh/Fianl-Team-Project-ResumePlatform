@@ -7,13 +7,23 @@ window.addEventListener('load',function(){
 
 
     emailAuthBtn.addEventListener('click',function(){
+    
+            let address = emailInput[0].value;
+    
+    
+    
+      	  let regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; 
+    		if (!address.match(regExp)){
+    			alert("이메일 형식을 확인해주세요");
+    			return;
+   				 }
+    
         alert('인터넷 상황에 따라 인증번호 수신에 수 분이 걸릴 수 있습니다')
         const emailCheck = document.querySelector('.emailCheck');
         emailCheck.style.display = '';
         emailAuthBtn.style.backgroundColor = 'blue'
         emailAuthBtn.style.color ='white';
 
-        let address = emailInput[0].value;
     
         requestEmailSend(address);
 
@@ -21,6 +31,8 @@ window.addEventListener('load',function(){
 
 
     function requestEmailSend(address){
+    
+
     
         const url = "http://localhost:8088/email";
 
@@ -63,7 +75,9 @@ window.addEventListener('load',function(){
                 emailInput.forEach(a=>
                     a.readOnly = true);
 
-            }
+            }else if(xhr.readyState===XMLHttpRequest.DONE&&xhr.status===400){
+				alert("인증번호를 확인해주세요");
+	}
         }
 
     })
