@@ -31,7 +31,7 @@ public class CorporateDetailDto {
 	
 	@Builder
 	public CorporateDetailDto(UserInfoDto userid, String logo_img, Integer staff_number,
-			WelfareDto welfare, String summary, String companayName) {
+			WelfareDto welfare, String summary, String companayName,String salary) {
 		super();
 		this.userid = userid;
 		this.logo_img = logo_img;
@@ -39,6 +39,7 @@ public class CorporateDetailDto {
 		this.welfare = welfare;
 		this.summary = summary;
 		this.companayName = companayName;
+		this.salary = salary;
 	}
 
 
@@ -58,5 +59,7 @@ public class CorporateDetailDto {
 	private String summary;
 	@Column(name = "COMPANY_NAME")
 	private String companayName;
+	
+	private String salary;
 	
 }

@@ -9,7 +9,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -73,40 +75,5 @@ public class CorporateInfoController {
 		return "corporate/detail";
 	}
 
-	// 회사 소개 수정하는 페이지불러오기
-	@GetMapping("/update/{cid}") // cid >> Corporate의 기본키 값으로 찾을 예정
-	public String updatePage(@PathVariable Long cid,Model model) {
-		Optional<CorporateDetailDto> dto = Repo.findById(cid);
-		
-		model.addAttribute("user", dto.get());
-//	public String update(HttpSession session, Model model) {
-//		SessionUserInfo user = sessionExtractor.extractSessionUserInfo(session);
-//		String userId = user.getId();
-//
-//		String userName = sessionExtractor.extractUserNameFromSessionInfo(session);
-//
-//		model.addAttribute("userName", userName);
-//
-//		return "corporate/cpUpdate";
-		return "corporate/cpUpdate";
-	}
-
-	// 회사 소개 수정하기
-	@PostMapping("/update/{cid}")
-	public String changeInfo(@PathVariable Long cid,@RequestBody CorporateDetailDto dto) {
-		
-		Optional<CorporateDetailDto> update = Repo.findById(cid);
-		
-		update.ifPresent(user->{
-//			user.setUserid(dto.getUserid());
-//			user.setCompanayName(dto.getCompanayName());
-//			user.setLogo_img(dto.getLogo_img());
-			user.setSummary(dto.getSummary());
-			user.setStaff_number(dto.getStaff_number());
-			user.setWelfare(dto.getWelfare());
-			
-		});
-		
-		return "corporate/cpinfo";
-	}
+	
 }

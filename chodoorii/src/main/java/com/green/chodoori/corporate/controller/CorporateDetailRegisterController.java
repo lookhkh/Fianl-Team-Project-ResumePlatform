@@ -1,6 +1,7 @@
 package com.green.chodoori.corporate.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
@@ -13,6 +14,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -114,6 +116,7 @@ public class CorporateDetailRegisterController {
 											.staff_number(dto.getStaffNumber())
 											.summary(dto.getSummary())
 											.welfare(welfare)
+											.salary(dto.getSalary())
 											.build();
 		
 		
@@ -133,6 +136,61 @@ public class CorporateDetailRegisterController {
 		return "redirect:/corporate/cpinfo?register=on";
 	}
 	
+	// 회사 소개 수정하는 페이지불러오기
+		@GetMapping("/update/{cid}") // cid >> Corporate의 기본키 값으로 찾을 예정
+		public String updatePage(@PathVariable Long cid,Model model) {
+			Optional<CorporateDetailDto> dto = corpRepo.findByIdForCorporate(cid);
+			
+			model.addAttribute("user", dto.get());
+//		public String update(HttpSession session, Model model) {
+//			SessionUserInfo user = sessionExtractor.extractSessionUserInfo(session);
+//			String userId = user.getId();
+	//
+//			String userName = sessionExtractor.extractUserNameFromSessionInfo(session);
+	//
+//			model.addAttribute("userName", userName);
+	//
+//			return "corporate/cpUpdate";
+			return "corporate/cpUpdate";
+		}
+
+		// 회사 소개 수정하기
+		@PostMapping("/update/{cid}")
+		@Transactional
+		public String changeInfo(@PathVariable Long cid, @Validated @ModelAttribute CorporateDetailRegisterForm dto, BindingResult error, Model model) {
+			
+			if(error.hasErrors()) {
+				model.addAttribute("error",error);
+				return "redirect: /corporate/cpUpdate";
+
+			}
+			
+			CorporateDetailDto update = corpRepo.findByIdForCorporate(cid).get();
+			
+				WelfareDto welfare = new WelfareDto();
+				welfare.makeDto(dto.getWlfare());
+				
+				
+				update.setStaff_number(dto.getStaffNumber());
+				update.setWelfare(welfare);
+				update.setSummary(dto.getSummary());
+				update.setSalary(dto.getSalary());
+				
+				corpRepo.update(update);
+			
+//			
+//			update.ifPresent(user->{
+////				user.setUserid(dto.getUserid());
+////				user.setCompanayName(dto.getCompanayName());
+////				user.setLogo_img(dto.getLogo_img());
+//				user.setSummary(dto.getSummary());
+//				user.setStaff_number(dto.getStaff_number());
+//				user.setWelfare(dto.getWelfare());
+//				
+//			});
+			
+			return "redirect:/corporate/cpinfo?edit=on";
+		}
 
 
 }
