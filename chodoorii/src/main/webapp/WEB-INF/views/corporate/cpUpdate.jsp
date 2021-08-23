@@ -12,7 +12,7 @@
 
  <div class="wrapper">
         <div class="introduce" style="text-align: center;">
-            <form action="/corporate/register" method="POST">
+            <form action="/corporate/update/${user.info_id}" method="POST">
                 <h3>${user.userid.name}</h3><br>
                 <c:if test=""><p style="color : red">${error.getFieldError('summary').getDefaultMessage()}</p></c:if>
                 <textarea  id="" cols="80" rows="10" style="resize: none;" maxlength="500" name="summary" value="${detail.summary}"></textarea>

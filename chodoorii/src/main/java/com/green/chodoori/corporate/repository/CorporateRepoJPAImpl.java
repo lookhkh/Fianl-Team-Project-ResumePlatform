@@ -52,5 +52,12 @@ public class CorporateRepoJPAImpl implements CorporateRepo {
 		corpRepo.delete(dto);
 		
 	}
+	
+	@Override
+	public void update(CorporateDetailDto corpDetail) {
+		corpRepo.save(corpDetail);
+
+		
+	}
 
 }

@@ -28,4 +28,6 @@ public interface CorporateRepo {
 	public Optional<CorporateDetailDto> findByIdForCorporate(Long cid);
 	
 	public void deleteCorporDetail(String id);
+
+	public void update(CorporateDetailDto corpDetail);
 }

@@ -18,6 +18,10 @@
             <h1><Strong>${detail.companayName}</Strong></h1>
           </dl>
           <dl>
+            <dt>평균연봉</dt>
+            <dd>${detail.salary}</dd>
+          </dl>
+          <dl>
             <dt>종업원 수</dt>
             <dd>${detail.staff_number}</dd>
           </dl>
@@ -26,10 +30,10 @@
             
             <dd class="rest">
               <c:forEach var="item" items="${welfare}">
-	              <div>
-	              <img src="/publish/corporate/img/${item}.jpg" alt="">
-	              <p>${item}</p>
-	              </div>
+                 <div>
+                 <img src="/publish/corporate/img/${item}.jpg" alt="">
+                 <p>${item}</p>
+                 </div>
               </c:forEach>
             </dd>
           </dl>
@@ -43,7 +47,7 @@
           <dl>
             <dt>Summary</dt>
             <dd>
-            	${detail.summary}
+               ${detail.summary}
             </dd>
           </dl>
           </div>
@@ -51,14 +55,14 @@
         <div class="SI-btn">
       <c:choose>
          <c:when test="${userInfo.id eq null}">
-   			 <div class="signupAndLogin">
+             <div class="signupAndLogin">
             <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 이력서보내기
              </button>        
           </div>    
           </c:when>
           <c:when test="${userInfo.id eq detail.userid.id}">
-   			 <div class="signupAndLogin">
+             <div class="signupAndLogin">
             <button type="button" onclick="location.href='/corporate/update/${detail.info_id}'">
                 수정하기
              </button>        

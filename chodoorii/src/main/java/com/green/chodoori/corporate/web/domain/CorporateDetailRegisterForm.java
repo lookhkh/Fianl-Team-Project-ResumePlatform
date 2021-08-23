@@ -7,6 +7,8 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Range;
 
+import com.green.chodoori.corporate.domain.WelfareDto;
+
 import lombok.Data;
 
 @Data
@@ -22,5 +24,7 @@ public class CorporateDetailRegisterForm {
 	@NotNull(message="필수 입력값입니다.")
 	@NotBlank(message = "필수 입력값입니다.")
 	private String summary;
+	
+
 
 }
