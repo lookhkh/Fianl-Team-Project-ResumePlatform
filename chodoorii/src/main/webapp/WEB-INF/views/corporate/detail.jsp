@@ -13,6 +13,8 @@
       <div class="Summary">
         <div class="content">
           <dl>
+          <h1>${userInfo.id}</h1>
+          <h1>${detail.userid.id}</h1>
             <h1><Strong>${detail.companayName}</Strong></h1>
           </dl>
           <dl>
@@ -47,7 +49,7 @@
           </div>
         </div>
         <div class="SI-btn">
-        <c:choose>
+      <c:choose>
          <c:when test="${userInfo.id eq null}">
    			 <div class="signupAndLogin">
             <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -55,15 +57,21 @@
              </button>        
           </div>    
           </c:when>
+          <c:when test="${userInfo.id eq detail.userid.id}">
+   			 <div class="signupAndLogin">
+            <button type="button" onclick="location.href='/corporate/update/${detail.info_id}'">
+                수정하기
+             </button>        
+          </div>    
+          </c:when>
           <c:otherwise>
         <div class="signupAndLogin">
-           <button type="button" onclick="resumesubmission()">이력서 보내기</button>
+           <button type="button"  onclick="location.href='/resume/share'">이력서 보내기</button>
             </div>        
            </div> 
          </div>
     </c:otherwise>
-</c:choose>  
-		
+</c:choose>
 
      
 
@@ -73,8 +81,3 @@
  
 </body>
 </html>
-<script>
-	function resumesubmission(){
-		alert("이력서보내기 성공");
-	}
-</script>
