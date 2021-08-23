@@ -6,21 +6,22 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.DynamicUpdate;
 
 import com.green.chodoori.main.domain.UserInfoDto;
 
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
 
 @SequenceGenerator(name = "company_detail_seq",allocationSize = 1)
 @Data
 @Entity//데이터베이스에 저장하기 위해 유저가 정의한 클래스
 @Table(name="COMPANY_INTRO_DETAIL")//별도의 이름을 가진 데이터베이스 테이블과 매핑한다
+@DynamicUpdate
 public class CorporateDetailDto {
 //	회사 상세보기 게시판
 	public CorporateDetailDto() {

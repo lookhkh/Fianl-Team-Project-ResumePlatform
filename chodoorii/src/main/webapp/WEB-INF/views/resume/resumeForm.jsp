@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="/publish/resume/js/resumeform-pagejump.js"></script>
+    <script src="/publish/resume/js/addPortpolio.js"></script>
     <style>
 
         *{
@@ -69,7 +70,15 @@
         button.checked{
             background-color: red;
         }
-
+        .port-btn .port1,.port2{
+            height: 30px;
+            background-color: #0d6efd;
+            color: white;
+            font-size:16px;
+            font-weight: bold;
+            border-radius: 20px;
+            border-style: none;
+        }
        
         
     </style>
@@ -94,11 +103,12 @@
                     <input type="file" name="introduction_img_path" style="display: none;">
                     <div class="input-group" style="width: 800px; margin-top: 50px;">
                         <span class="input-group-text" id="inputGroup-sizing-sm">제목</span>
-                        <input name="introduction_header" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                        <input name="introduction_header" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+                        maxlength="10" placeholder="이력서 제목은 10자까지 가능합니다.">
                       </div>
                       <div class="input-group" style="width: 800px; margin-top: 50px;">
                         <span class="input-group-text">자기소개</span>
-                        <textarea name="introduction_main" class="form-control" aria-label="With textarea" rows="10"></textarea>
+                        <textarea name="introduction_main" class="form-control" aria-label="With textarea" rows="10" maxlength="500" placeholder="자기소개서 내용은 500자까지 가능합니다."></textarea>
                       </div>
 
                 </div>
@@ -178,9 +188,12 @@
             </section>
             <section class="third-form hidden">
                 <div class="form-section" style="padding-left: 100px;">
-
-                    <div class="portpolio-div" style="display: flex; width: 90%; margin-bottom: 10px; padding-left: 150px;">
-                        <img width="180px" height="180px" src="/publish/resume/img/defaultpic.png" class="img-pic img-thumbnail" alt="...">
+                    <div class="port-btn" style="height: 50px;text-align: right;">
+                    <button class="port1">추가</button>
+                    <button class="port2">삭제</button></div>
+                    <div class="form-section" style="padding-left: 100px;">
+                        
+                        <div class="portpolio-div" style="display: flex; width: 90%; margin-bottom: 10px; padding-left: 150px;">  <img width="180px" height="180px" src="/publish/resume/img/defaultpic.png" class="img-pic img-thumbnail" alt="...">
                         <input type="file" name ="portfolio_first_img" style="display: none;" />
                         <div style="display: flex; flex-direction: column; justify-content: flex-start; margin-left: 0; width: 70%;">
                             <div style="display: flex; flex-direction: column; width: 400px; margin-left: 0;">
@@ -193,7 +206,7 @@
                         </div>
                     </div>
 
-                    <div class="portpolio-div" style="display: flex; width: 90%; margin-bottom: 10px; padding-left: 150px;">
+                    <div class="portpolio-div2" style="display: none; width: 90%; margin-bottom: 10px; padding-left: 150px;">
                         <img width="180px" height="180px" src="/publish/resume/img/defaultpic.png" class="img-pic img-thumbnail" alt="...">
                         <input type="file" name ="portfolio_second_img" style="display: none;" />
                         <div style="display: flex; flex-direction: column; justify-content: flex-start; margin-left: 0; width: 70%;">
@@ -208,7 +221,7 @@
                     </div>
                         
 
-                    <div class="portpolio-div" style="display: flex; width: 90%; margin-bottom: 10px; padding-left: 150px;">
+                    <div class="portpolio-div3" style="display: none; width: 90%; margin-bottom: 10px; padding-left: 150px;">
                         <img width="180px" height="180px" src="/publish/resume/img/defaultpic.png" class="img-pic img-thumbnail" alt="...">
                         <input type="file" name ="portfolio_third_img" style="display: none;" />
                         <div style="display: flex; flex-direction: column; justify-content: flex-start; margin-left: 0; width: 70%;">
