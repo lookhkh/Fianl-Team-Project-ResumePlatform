@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.green.chodoori.main.domain.UserInfoDto;
-import com.green.chodoori.main.domain.UserInfoRepo;
+import com.green.chodoori.main.repository.MainRepository;
 import com.green.chodoori.main.web.domain.SessionUserInfo;
 import com.green.chodoori.resume.domain.ResumeDto;
-import com.green.chodoori.resume.domain.ResumeDtoRepo;
+import com.green.chodoori.resume.repository.ResumeRepository;
 import com.green.chodoori.resume.service.ChangeUsersResumeStatusService;
 import com.green.chodoori.resume.service.ResumeDtoCreator;
 import com.green.chodoori.util.fileUpload.ImgUploadAndGenerateSignUpDto;
@@ -34,10 +34,10 @@ public class ResumeRegisterController {
 	
 	
 	@Autowired
-	ResumeDtoRepo resumeRepo;
+	ResumeRepository resumeRepo;
 	
 	@Autowired
-	UserInfoRepo userRepo;
+	MainRepository mainRepo;
 	
 	@Autowired
 	ChangeUsersResumeStatusService userStatusService;
@@ -48,6 +48,8 @@ public class ResumeRegisterController {
 		
 		return "/resume/resumeChoice";
 	}
+	
+	
 	
 	@GetMapping("/form")
 	public String templateFormPage(@RequestParam("template")String template,Model model) {
@@ -81,7 +83,8 @@ public class ResumeRegisterController {
 										@RequestParam(required = false) String portfolio_third_desc,
 										Model model) throws IllegalStateException, IOException {
 		
-
+		
+	
 
 		ResumeDto resume = resumeCreator.resumeDtoCreator(template_kind, introduction_header, introduction_main, 
 														introduction_img_path, skil_set, blog_address, 
@@ -97,12 +100,12 @@ public class ResumeRegisterController {
 		
 		
 		SessionUserInfo sessionUser = (SessionUserInfo) session.getAttribute("userInfo");
-		UserInfoDto user = userRepo.getById(sessionUser.getId());
+		UserInfoDto user = mainRepo.getById(sessionUser.getId());
 		
 
 		session.setAttribute("temp", resume);
 		
-		
+	
 		model.addAttribute("resume",resume);
 		model.addAttribute("preview","on");
 		

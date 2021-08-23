@@ -82,7 +82,7 @@
             <span data-target="second-form" style="width: 200px; height: 50px; display: flex; justify-content: center; align-items: center; font-size: 1.2rem;"class="badge rounded-pill bg-secondary ">기술스택 및 SNS</span>
             <span data-target="third-form" style="width: 200px; height: 50px; display: flex; justify-content: center; align-items: center; font-size: 1.2rem;" class="badge rounded-pill bg-secondary ">포트폴리오</span>
         </header>
-        <form method="POST" enctype="multipart/form-data" action="/resume/form" >
+        <form method="POST" enctype="multipart/form-data" action="/resume/edit/form" >
             
             <section class="first-form">
 				<div class="meta-data-set" style="display: none;">
@@ -94,11 +94,11 @@
                     <input type="file" name="introduction_img_path" style="display: none;">
                     <div class="input-group" style="width: 800px; margin-top: 50px;">
                         <span class="input-group-text" id="inputGroup-sizing-sm">제목</span>
-                        <input name="introduction_header" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                        <input name="introduction_header" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="${resume.intro_dto.introduction_header}">
                       </div>
                       <div class="input-group" style="width: 800px; margin-top: 50px;">
                         <span class="input-group-text">자기소개</span>
-                        <textarea name="introduction_main" class="form-control" aria-label="With textarea" rows="10"></textarea>
+                        <textarea name="introduction_main" class="form-control" aria-label="With textarea" rows="10" value="${resume.intro_dto.introduction_main}">${resume.intro_dto.introduction_main}</textarea>
                       </div>
 
                 </div>
@@ -153,19 +153,19 @@
                         <h2>SNS 주소를 입력해주세요.</h2>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><img src="/publish/resume/img/블로그.png" width="40px" height="40px"></span>
-                            <input type="text" class="form-control" name="blog_address" placeholder="블로그 주소를 적어주세요" aria-label="Username" name="blog_address" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" name="blog_address" placeholder="블로그 주소를 적어주세요" aria-label="Username" name="blog_address" aria-describedby="basic-addon1" value="${resume.sns_dto.blog_address}">
                           </div>
                           <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><img src="/publish/resume/img/20210727_143131.png" width="40px" height="40px"></span>
-                            <input type="text" class="form-control" placeholder="깃허브 주소를 적어주세요" name="github_address" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" placeholder="깃허브 주소를 적어주세요" name="github_address" aria-label="Username" aria-describedby="basic-addon1" value="${resume.sns_dto.github_address}">
                           </div>
                           <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><img src="/publish/resume/img/인스타.png" width="40px" height="40px"></span>
-                            <input type="text" class="form-control" placeholder="인스타 주소를 적어주세요" name="instagram_address" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" placeholder="인스타 주소를 적어주세요" name="instagram_address" aria-label="Username" aria-describedby="basic-addon1" value="${resume.sns_dto.facebook_address}">
                           </div>
                           <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><img src="/publish/resume/img/페이스북.png" width="40px" height="40px"></span>
-                            <input type="text" class="form-control" placeholder="페이스북 주소를 적어주세요" name="facebook_address" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" placeholder="페이스북 주소를 적어주세요" name="facebook_address" aria-label="Username" aria-describedby="basic-addon1" value="${resume.sns_dto.instagram_address}">
                           </div>
                     </div>
 
@@ -184,25 +184,25 @@
                         <input type="file" name ="portfolio_first_img" style="display: none;" />
                         <div style="display: flex; flex-direction: column; justify-content: flex-start; margin-left: 0; width: 70%;">
                             <div style="display: flex; flex-direction: column; width: 400px; margin-left: 0;">
-                                <input name="portfolio_first_name" style="margin-left: 0; margin-bottom: 20px;" placeholder="제목을 입력해주세요"/>
-                                <input name="portfolio_first_github" style="margin-left: 0; margin-bottom: 20px;" placeholder="github 주소를 입력해주세요"/>
+                                <input name="portfolio_first_name" style="margin-left: 0; margin-bottom: 20px;" placeholder="제목을 입력해주세요" value="${resume.portfolio_first_name}"/>
+                                <input name="portfolio_first_github" style="margin-left: 0; margin-bottom: 20px;" placeholder="github 주소를 입력해주세요" value="${resume.portfolio_first_github }"/>
                             </div>
                             <div style="width: 500px; margin-left :0">
-                                <textarea name="portfolio_first_desc" rows="5" cols="70" style="margin-left: 0;" placeholder="내용을 입력해주세요"></textarea>
+                                <textarea name="portfolio_first_desc" rows="5" cols="70" style="margin-left: 0;" placeholder="내용을 입력해주세요" value="${resume.portfolio_first_desc}">${resume.portfolio_first_desc}</textarea>
                             </div>
                         </div>
                     </div>
 
                     <div class="portpolio-div" style="display: flex; width: 90%; margin-bottom: 10px; padding-left: 150px;">
                         <img width="180px" height="180px" src="/publish/resume/img/defaultpic.png" class="img-pic img-thumbnail" alt="...">
-                        <input type="file" name ="portfolio_second_img" style="display: none;" />
+                        <input type="file" name ="portfolio_second_img" style="display: none;"  />
                         <div style="display: flex; flex-direction: column; justify-content: flex-start; margin-left: 0; width: 70%;">
                             <div style="display: flex; flex-direction: column; width: 400px; margin-left: 0;">
-                                <input name="portfolio_second_name" style="margin-left: 0; margin-bottom: 20px;" placeholder="제목을 입력해주세요"/>
-                                <input name="portfolio_second_github" style="margin-left: 0; margin-bottom: 20px;" placeholder="github 주소를 입력해주세요"/>
+                                <input name="portfolio_second_name" style="margin-left: 0; margin-bottom: 20px;" placeholder="제목을 입력해주세요" value="${resume.portfolio_second_name}"/>
+                                <input name="portfolio_second_github" style="margin-left: 0; margin-bottom: 20px;" placeholder="github 주소를 입력해주세요" value="${resume.portfolio_second_github}"/>
                             </div>
                             <div style="width: 500px; margin-left :0">
-                                <textarea name="portfolio_second_desc"  rows="5" cols="70" style="margin-left: 0;" placeholder="내용을 입력해주세요"></textarea>
+                                <textarea name="portfolio_second_desc"  rows="5" cols="70" style="margin-left: 0;" placeholder="내용을 입력해주세요" value="${resume.portfolio_second_desc}">${resume.portfolio_second_desc}</textarea>
                             </div>
                         </div>
                     </div>
@@ -210,14 +210,14 @@
 
                     <div class="portpolio-div" style="display: flex; width: 90%; margin-bottom: 10px; padding-left: 150px;">
                         <img width="180px" height="180px" src="/publish/resume/img/defaultpic.png" class="img-pic img-thumbnail" alt="...">
-                        <input type="file" name ="portfolio_third_img" style="display: none;" />
+                        <input type="file" name ="portfolio_third_img" style="display: none;"/>
                         <div style="display: flex; flex-direction: column; justify-content: flex-start; margin-left: 0; width: 70%;">
                             <div style="display: flex; flex-direction: column; width: 400px; margin-left: 0;">
-                                <input name="portfolio_third_name" style="margin-left: 0; margin-bottom: 20px;" placeholder="제목을 입력해주세요"/>
-                                <input name="portfolio_third_github" style="margin-left: 0; margin-bottom: 20px;" placeholder="github 주소를 입력해주세요"/>
+                                <input name="portfolio_third_name" style="margin-left: 0; margin-bottom: 20px;" placeholder="제목을 입력해주세요" value="${resume.portfolio_third_name}"/>
+                                <input name="portfolio_third_github" style="margin-left: 0; margin-bottom: 20px;" placeholder="github 주소를 입력해주세요" value="${resume.portfolio_third_github}"/>
                             </div>
                             <div style="width: 500px; margin-left :0">
-                                <textarea name="portfolio_third_desc"  rows="5" cols="70" style="margin-left: 0;" placeholder="내용을 입력해주세요"></textarea>
+                                <textarea name="portfolio_third_desc"  rows="5" cols="70" style="margin-left: 0;" placeholder="내용을 입력해주세요" value="${resume.portfolio_third_desc}">${resume.portfolio_third_desc}</textarea>
                             </div>
                         </div>
                     </div>   

@@ -12,6 +12,7 @@ import com.green.chodoori.main.domain.IndividualSginUpMetadataFormVo;
 import com.green.chodoori.main.domain.IndividualSginUpMetadataFormVoRepo;
 import com.green.chodoori.main.domain.UserInfoDto;
 import com.green.chodoori.main.domain.UserInfoRepo;
+import com.green.chodoori.main.repository.MainRepository;
 import com.green.chodoori.util.fileUpload.ImgUploadAndGenerateSignUpDto;
 
 import lombok.extern.slf4j.Slf4j;
@@ -20,21 +21,15 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class SignUpService {
 
+	@Autowired
+	MainRepository mainRepo;
 
 	@Autowired
 	ImgUploadAndGenerateSignUpDto service;
 	
 	@Autowired
 	UserMetaDataSeparatorService separator;
-	
-	@Autowired
-	IndividualSginUpMetadataFormVoRepo individualRepo;
-	
-	@Autowired
-	CorporateSignUpMetaDataFormVoRepo corpRepo;
-	
-	@Autowired
-	UserInfoRepo userRepo;
+
 	
 	public void corporateMetaDataService(CorporateSignUpMetaDataFormVo dto) {
 	System.out.println("----------------------"+dto.toString()+"------------------------------------");
@@ -42,13 +37,13 @@ public class SignUpService {
 		
 		System.out.println(dto.getId());
 		String user_id = dto.getId();
-		UserInfoDto userDto = userRepo.findById(user_id).get();
+		UserInfoDto userDto = mainRepo.findById(user_id).get();
 		
 		System.out.println(userDto.toString());
 		
 		dto.setUser_info_corp(userDto);
 		dto.setId(null);
-		corpRepo.save(dto);
+		mainRepo.saveCorporateMetaData(dto);
 		
 		
 	}
@@ -59,21 +54,19 @@ public class SignUpService {
 		log.info("메타데이터 객체 정보 : {}",vo.toString());
 		
 		String userId=map.get("id").get(0);
-		UserInfoDto userDto = userRepo.findById(userId).get();
+		UserInfoDto userDto = mainRepo.findById(userId).get();
 		
 		log.info("유저 정보 : {}",userDto.toString());
 		vo.setUser_info_ind(userDto);
 		
 		System.out.println(vo.toString());
 		
-		individualRepo.save(vo);
+		mainRepo.saveIndividualMetaData(vo);
 		
-		System.out.println(individualRepo.findById(userId).toString());
 		
-		System.out.println("완료");
 	}
 	
 	public void signUpProcessor(UserInfoDto dto) {
-		userRepo.save(dto);
+		mainRepo.saveUserInfo(dto);
 	}
 }
