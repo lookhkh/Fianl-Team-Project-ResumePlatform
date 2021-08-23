@@ -7,23 +7,23 @@
     <title>My Resume developer</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <link href="../css/index.css" rel="stylesheet">
-    <link href="../css/header.css" rel="stylesheet">
-    <link href="../css/footer.css" rel="stylesheet">    
+    <link href="../css/소개페이지index.css" rel="stylesheet">
+    <link href="../css/소개페이지header.css" rel="stylesheet">
+    <link href="../css/소개페이지footer.css" rel="stylesheet">    
     <script src="../js/index.js" ></script>
     <script src="../js/dropdown.js"></script>
 
     <style>
      
-     .wrapper{width: 100vw;height: 900px;}
+    .wrapper{ height: 900px;}
     .video-con {font-size:0;max-width:1000px;margin:0 auto;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);}
     .video-con > h3 {font-size:40px;text-align:center;padding:30px;font-size:50px;font-weight:900;}
     .video-con > li {font-size:20px;display:inline-block;width:33.3%;vertical-align:top;}
-    .textbox {max-width:350px;cursor:pointer;text-align:center;margin:10px; margin-left: 50px;}
+    .textbox {width: 300px; height: 600px;cursor:pointer;text-align:center;margin:10px; margin-left: 50px;}
     .thumb {width:auto;overflow:hidden;padding-bottom:56.25%;position:relative;}
     .thumb img {position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);max-width:100%;transition: .35s ease-in-out;}
-    .thumb:before {content:'';display:block;width:100%;height:100%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.6) url('./img/eye.png') center center no-repeat;transition: .35s ease-in-out;z-index:20;opacity:0;}
-    .title {display:inline-block;background-size: 200%;background-position: 0 0;transition: .35s ease-in-out;padding:10px;margin:10px auto;}
+    .thumb:before {content:'';display:block;width:100%;height:100%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.6) center center no-repeat;transition: .35s ease-in-out;z-index:20;opacity:0;}
+    .title {display:inline-block;background-size: 100%;background-position: 0 0;transition: .35s ease-in-out;padding:10px;margin:10px auto;}
     .desc {display:inline;background: linear-gradient(to right, rgba(255,255,255,0) 50%, #f3ca00 50%);background-size: 200%;background-position: 0 0;transition: .35s ease-in-out;font-size:11px;line-height:1.6;color:#666;word-break:keep-all;}
     .textbox:hover .desc {background-position: -100% 0;}
     .textbox:hover .thumb img {max-width:105%;}
@@ -78,15 +78,9 @@
         </nav>
 
         <div class="signupAndLogin">
-          <div class="infoBox">
-            <div class="infoImg">
-            <img src="../img/파이썬.JPG" width="50px" height="50px" flex: center;> 
-            </div>  
-            <div class="infoButton">
-            <button type="button" class="btn btn-primary">이미숙</button>
-            <button type="button" class="btn btn-primary">로그아웃</button> 
-            </div>        
-           </div> </div>
+            <button type="button" class="signup btn signupAndLoginBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                회원가입/로그인
+              </button>        </div>
     </div>
     <!--공통 헤더부분-->
     <div class="wrapper">
@@ -232,6 +226,3 @@
 </html>
 </body>
 </html>
-    
-    
-    
