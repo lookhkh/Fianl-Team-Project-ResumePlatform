@@ -16,6 +16,8 @@
     <script src="/publish/main/js/index.js" ></script>
     <script src="/publish/main/js/dropdown.js"></script>
     <script src="/publish/main/js/LoginFormDetection.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 
     <style>
 
@@ -60,6 +62,9 @@
               </div>
             </ul>
         </nav>
+        <div><a class="dropdown-item" href="chat" data-bs-toggle="modal" data-bs-target="#moaModal">
+	<i class="fas fa-arrow-right">모달</i>
+	</a></div>
 	<c:choose>
 	    <c:when test="${userInfo.id eq null}">
 	    <div class="signupAndLogin">
@@ -68,7 +73,6 @@
 	             </button>        
 	          </div>    
 	     </c:when>
-   
     <c:otherwise>
         <div class="signupAndLogin">
           <div class="infoBox">
@@ -93,7 +97,40 @@
     <!--공통 헤더부분-->
     
     <!-- Button trigger modal -->
-
+ <!-- Moa Modal-->
+  <div class="modal fade" id="moaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">알림</h5>
+        </div>
+        <body>
+	<th:block th:replace="~{/layout/basic :: setContent(~{this :: content})}">
+		<th:block th:fragment="content">
+		
+		<div class="container">
+			<div class="col-6">
+				<label><b>채팅방</b></label>
+			</div>
+		</div>
+			<div id="msgArea" class="col"></div>
+			<div class="col-6">
+				<div class="input-group mb-3">
+					<input type="text" id="msg" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
+					<div class="input-group-append">
+						<button class="btn btn-outline-secondary" type="button" id="button-send">전송</button>
+					</div>
+				</div>
+			</div>
+		</th:block>
+	</th:block>
+</body>
+        <div class="modal-footer">
+          <button class="btn btn-primary" type="button" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
   
   <!-- Login Modal -->
   <div class="loginModal modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -200,3 +237,102 @@
              		})
              	})
              </script>
+<!--              <script>
+             	var ws = new WebSocket("ws://localhost:8088/chat");
+             	
+             	ws.onopen = function(){
+             		console.log('Info : connectrion opened.');
+             		setTimeout( function(){ connect(); },1000);	//1초마다 다시 연결
+             	};
+             	
+             	ws.onmessage = function(event){
+             		console.log(event.data+'\n');
+             	};
+             	
+             	ws.onclose = function (event) {console.log('Info: connection closed.');};
+             	ws.onerror = function (err) {console.log('Error:',err);};
+             	
+             	$('#btn.Send').on('click', function(evt){//send버튼 클릭 이벤트
+             		evt.preventDefault();	//속성 중단 
+             		if(socket.readyState !== 1) return;
+             		let msg = ${'input#msg'}.val();
+             		ws.send(msg);
+             	});
+
+             </script>
+ -->            
+ <script th:inline="javascript">
+
+	$(document).ready(function(){
+
+		const username = "<c:out value='${userInfo.id}'/>";
+
+		$("#disconn").on("click",(e) =>{
+			disconnect();
+		})
+		$("#button-send").on("click", (e) =>{
+			send();
+		});
+
+		const websocket = new WebSocket("ws://localhost:8088/ws/chat");
+
+		websocket.onmessage = onMessage;
+		websocket.onopen = onOpen;
+		websocket.onclose = onClose;
+
+		function send(){
+			let msg = document.getElementById("msg");
+
+			console.log(username + ":" +msg.value);
+			websocket.send(username + ":" +msg.value);
+			msg.value = '';
+		}
+		
+		//채팅창 퇴장
+		function onClose(evt){
+			var str = username + " : 님이 퇴장하셨습니다.";
+			websocket.send(str);
+		}
+		//채팅창 입장
+		function onOpen(evt){
+			var str = username +" : 님이 입장하셨습니다."
+			websocket.send(str);
+		}
+		//
+		function onMessage(msg){
+			var data = msg.data;
+			var sessionId = null;
+			//데이터를 보낸 사람
+			var message = null;
+			var arr = data.split(":");// 여기 공백주면 undifiend뜸
+
+			for(var i=0;i<arr.length;i++){
+				console.log('arr['+i+']: ' + arr[i]);
+			}	
+			
+			var cur_session = username;
+			//현재 세션에 로그인 한 사람
+			console.log("cur_session : " + cur_session);
+			sessionId = arr[0];
+			message = arr[1];
+
+			console.log("sessionID : "+sessionId);
+			console.log("cur_session : "+cur_session);
+
+			//로그인 한 클라이언트와 타 클라이언트를 분류하기 위함
+			if(sessionId == cur_session){
+				var str = "<div class='col-6'>";
+				str += "<div class='alert alert-secondary'>";
+				str += "<b>" + sessionId + " : " + message + "</b>";
+				str += "</div></div>";
+				$("#msgArea").append(str);
+			}else{
+				var str = "<div class='col-6'>";
+				str += "<div class='alert alert-warning'>";
+				str += "<b>" + sessionId + " : " + message + "</b>";
+				str += "</div></div>";
+				$("#msgArea").append(str);
+			}
+		}
+	})
+</script>
