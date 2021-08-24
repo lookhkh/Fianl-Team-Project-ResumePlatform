@@ -1,4 +1,4 @@
-package com.green.chodoori.resume.domain;
+package com.green.chodoori.nonCorporate.domain;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -9,9 +9,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.green.chodoori.main.domain.UserInfoDto;
-import com.green.chodoori.resume.web.domain.IntroductionDto;
-import com.green.chodoori.resume.web.domain.SkillSetDto;
-import com.green.chodoori.resume.web.domain.SnsAddressDto;
+import com.green.chodoori.nonCorporate.web.domain.IntroductionDto;
+import com.green.chodoori.nonCorporate.web.domain.SkillSetDto;
+import com.green.chodoori.nonCorporate.web.domain.SnsAddressDto;
 
 import lombok.Builder;
 import lombok.Data;

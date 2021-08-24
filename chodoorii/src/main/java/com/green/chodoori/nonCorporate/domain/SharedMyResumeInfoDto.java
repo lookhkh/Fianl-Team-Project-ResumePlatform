@@ -1,4 +1,4 @@
-package com.green.chodoori.resume.domain;
+package com.green.chodoori.nonCorporate.domain;
 
 import java.util.Date;
 

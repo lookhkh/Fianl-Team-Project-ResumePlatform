@@ -23,10 +23,10 @@ import com.green.chodoori.main.domain.IndividualSginUpMetadataFormVoRepo;
 import com.green.chodoori.main.domain.UserInfoDto;
 import com.green.chodoori.main.domain.UserInfoRepo;
 import com.green.chodoori.main.service.UserMetaDataSeparatorService;
-import com.green.chodoori.resume.domain.ResumeDto;
-import com.green.chodoori.resume.domain.ResumeDtoRepo;
-import com.green.chodoori.resume.web.domain.IntroductionDto;
-import com.green.chodoori.resume.web.domain.SkillSetDto;
+import com.green.chodoori.nonCorporate.domain.ResumeDto;
+import com.green.chodoori.nonCorporate.domain.ResumeDtoRepo;
+import com.green.chodoori.nonCorporate.web.domain.IntroductionDto;
+import com.green.chodoori.nonCorporate.web.domain.SkillSetDto;
 
 @Rollback(value = false)
 

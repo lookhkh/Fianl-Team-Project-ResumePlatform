@@ -19,13 +19,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.green.chodoori.corporate.domain.CorporateDetailDto;
-import com.green.chodoori.corporate.domain.WelfareDto;
 import com.green.chodoori.corporate.repository.CorporateRepo;
 import com.green.chodoori.corporate.web.domain.CorporateDetailRegisterForm;
+import com.green.chodoori.corporate.web.domain.WelfareDto;
 import com.green.chodoori.main.domain.UserInfoDto;
 import com.green.chodoori.main.service.ExtractSessionInfoService;
 import com.green.chodoori.main.web.domain.SessionUserInfo;
-import com.green.chodoori.resume.service.ChangeUsersResumeStatusService;
+import com.green.chodoori.nonCorporate.service.ChangeUsersResumeStatusService;
 
 @Controller
 @RequestMapping("/corporate")
@@ -42,7 +42,7 @@ public class CorporateDetailRegisterController {
 	ChangeUsersResumeStatusService statusService;
 	
 	@GetMapping("/register")
-	public String registerForm(HttpSession session, Model model) {
+	public String getRegisterForm(HttpSession session, Model model) {
 		
 		SessionUserInfo user = sessionExtractor.extractSessionUserInfo(session);
 		String userId = user.getId();
@@ -61,11 +61,9 @@ public class CorporateDetailRegisterController {
 	}
 	
 	@GetMapping("/delete")
-	public String deleteDetail(HttpSession session) {
+	public String deleteCorporateDetail(HttpSession session) {
 		SessionUserInfo sessinInfo = sessionExtractor.extractSessionUserInfo(session);
 		
-		System.out.println(sessinInfo.getCheck()+" 세션 정보 중 체크 여부");
-
 		
 		UserInfoDto user = sessionExtractor.extractUserInfoDtoFromSessionInfo(session);
 		
@@ -118,11 +116,7 @@ public class CorporateDetailRegisterController {
 											.welfare(welfare)
 											.salary(dto.getSalary())
 											.build();
-		
-		
-											
-		
-		
+																	
 		corpRepo.corporateDetailSave(corpDto);
 		sessinInfo.setCheck(0);
 		user.setCheck_detail(0);
@@ -136,28 +130,18 @@ public class CorporateDetailRegisterController {
 		return "redirect:/corporate/cpinfo?register=on";
 	}
 	
-	// 회사 소개 수정하는 페이지불러오기
-		@GetMapping("/update/{cid}") // cid >> Corporate의 기본키 값으로 찾을 예정
-		public String updatePage(@PathVariable Long cid,Model model) {
+		@GetMapping("/update/{cid}") 
+		public String getUpdatePageForCorporate(@PathVariable Long cid,Model model) {
 			Optional<CorporateDetailDto> dto = corpRepo.findByIdForCorporate(cid);
 			
 			model.addAttribute("user", dto.get());
-//		public String update(HttpSession session, Model model) {
-//			SessionUserInfo user = sessionExtractor.extractSessionUserInfo(session);
-//			String userId = user.getId();
-	//
-//			String userName = sessionExtractor.extractUserNameFromSessionInfo(session);
-	//
-//			model.addAttribute("userName", userName);
-	//
-//			return "corporate/cpUpdate";
+
 			return "corporate/cpUpdate";
 		}
 
-		// 회사 소개 수정하기
 		@PostMapping("/update/{cid}")
 		@Transactional
-		public String changeInfo(@PathVariable Long cid, @Validated @ModelAttribute CorporateDetailRegisterForm dto, BindingResult error, Model model) {
+		public String updateCorporateDetail(@PathVariable Long cid, @Validated @ModelAttribute CorporateDetailRegisterForm dto, BindingResult error, Model model) {
 			
 			if(error.hasErrors()) {
 				model.addAttribute("error",error);
@@ -179,16 +163,7 @@ public class CorporateDetailRegisterController {
 				
 				corpRepo.update(update);
 			
-//			
-//			update.ifPresent(user->{
-////				user.setUserid(dto.getUserid());
-////				user.setCompanayName(dto.getCompanayName());
-////				user.setLogo_img(dto.getLogo_img());
-//				user.setSummary(dto.getSummary());
-//				user.setStaff_number(dto.getStaff_number());
-//				user.setWelfare(dto.getWelfare());
-//				
-//			});
+
 			
 			return "redirect:/corporate/cpinfo?edit=on";
 		}

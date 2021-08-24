@@ -1,4 +1,4 @@
-package com.green.chodoori.resume.controller;
+package com.green.chodoori.nonCorporate.controller;
 
 import java.io.IOException;
 
@@ -16,10 +16,10 @@ import org.springframework.web.multipart.MultipartFile;
 import com.green.chodoori.main.domain.UserInfoDto;
 import com.green.chodoori.main.repository.MainRepository;
 import com.green.chodoori.main.web.domain.SessionUserInfo;
-import com.green.chodoori.resume.domain.ResumeDto;
-import com.green.chodoori.resume.repository.ResumeRepository;
-import com.green.chodoori.resume.service.ChangeUsersResumeStatusService;
-import com.green.chodoori.resume.service.ResumeDtoCreator;
+import com.green.chodoori.nonCorporate.domain.ResumeDto;
+import com.green.chodoori.nonCorporate.repository.ResumeRepository;
+import com.green.chodoori.nonCorporate.service.ChangeUsersResumeStatusService;
+import com.green.chodoori.nonCorporate.service.ResumeDtoCreator;
 import com.green.chodoori.util.fileUpload.ImgUploadAndGenerateSignUpDto;
 
 @Controller

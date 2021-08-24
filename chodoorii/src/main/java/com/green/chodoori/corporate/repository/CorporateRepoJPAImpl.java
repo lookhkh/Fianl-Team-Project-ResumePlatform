@@ -10,8 +10,8 @@ import org.springframework.stereotype.Repository;
 import com.green.chodoori.corporate.domain.CorporateDetailDto;
 import com.green.chodoori.corporate.domain.CorporateDetailDtoRepo;
 import com.green.chodoori.main.domain.UserInfoRepo;
-import com.green.chodoori.resume.domain.ResumeDto;
-import com.green.chodoori.resume.domain.ResumeDtoRepo;
+import com.green.chodoori.nonCorporate.domain.ResumeDto;
+import com.green.chodoori.nonCorporate.domain.ResumeDtoRepo;
 
 @Repository
 public class CorporateRepoJPAImpl implements CorporateRepo {

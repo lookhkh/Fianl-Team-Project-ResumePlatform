@@ -1,4 +1,4 @@
-package com.green.chodoori.resume.controller;
+package com.green.chodoori.nonCorporate.controller;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -27,13 +27,13 @@ import com.green.chodoori.main.domain.UserInfoRepo;
 import com.green.chodoori.main.repository.MainRepository;
 import com.green.chodoori.main.service.ExtractSessionInfoService;
 import com.green.chodoori.main.web.domain.SessionUserInfo;
-import com.green.chodoori.resume.domain.ResumeDto;
-import com.green.chodoori.resume.domain.ResumeDtoRepo;
-import com.green.chodoori.resume.domain.SharedMyResumeInfoDto;
-import com.green.chodoori.resume.domain.SharedMyResumeInfoDtoRepo;
-import com.green.chodoori.resume.repository.ResumeRepository;
-import com.green.chodoori.resume.service.ChangeUsersResumeStatusService;
-import com.green.chodoori.resume.service.ResumeDtoCreator;
+import com.green.chodoori.nonCorporate.domain.ResumeDto;
+import com.green.chodoori.nonCorporate.domain.ResumeDtoRepo;
+import com.green.chodoori.nonCorporate.domain.SharedMyResumeInfoDto;
+import com.green.chodoori.nonCorporate.domain.SharedMyResumeInfoDtoRepo;
+import com.green.chodoori.nonCorporate.repository.ResumeRepository;
+import com.green.chodoori.nonCorporate.service.ChangeUsersResumeStatusService;
+import com.green.chodoori.nonCorporate.service.ResumeDtoCreator;
 import com.green.chodoori.util.mail.MailService;
 
 import lombok.extern.slf4j.Slf4j;

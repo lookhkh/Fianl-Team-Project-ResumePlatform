@@ -12,6 +12,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicUpdate;
 
+import com.green.chodoori.corporate.web.domain.WelfareDto;
 import com.green.chodoori.main.domain.UserInfoDto;
 
 import lombok.Builder;

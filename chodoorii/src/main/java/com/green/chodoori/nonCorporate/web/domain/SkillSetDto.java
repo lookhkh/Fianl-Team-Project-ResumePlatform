@@ -1,4 +1,4 @@
-package com.green.chodoori.resume.web.domain;
+package com.green.chodoori.nonCorporate.web.domain;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -11,7 +11,7 @@ import com.green.chodoori.main.domain.IndividualSginUpMetadataFormVo;
 import com.green.chodoori.main.domain.IndividualSginUpMetadataFormVoRepo;
 import com.green.chodoori.main.domain.UserInfoDto;
 import com.green.chodoori.main.domain.UserInfoRepo;
-import com.green.chodoori.resume.domain.ResumeDto;
+import com.green.chodoori.nonCorporate.domain.ResumeDto;
 
 public interface MainRepository {
 

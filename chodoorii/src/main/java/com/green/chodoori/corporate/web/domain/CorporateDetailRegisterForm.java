@@ -7,8 +7,6 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Range;
 
-import com.green.chodoori.corporate.domain.WelfareDto;
-
 import lombok.Data;
 
 @Data

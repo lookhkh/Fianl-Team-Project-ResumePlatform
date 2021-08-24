@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.green.chodoori.corporate.domain.CorporateDetailDto;
 import com.green.chodoori.corporate.domain.CorporateDetailDtoRepo;
-import com.green.chodoori.corporate.domain.WelfareDto;
 import com.green.chodoori.corporate.repository.CorporateRepo;
+import com.green.chodoori.corporate.web.domain.WelfareDto;
 import com.green.chodoori.error.CompanayDetailNotFoundError;
 import com.green.chodoori.main.service.ExtractSessionInfoService;
 

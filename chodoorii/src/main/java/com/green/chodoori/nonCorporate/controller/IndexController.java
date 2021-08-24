@@ -1,4 +1,4 @@
-package com.green.chodoori.resume.controller;
+package com.green.chodoori.nonCorporate.controller;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.green.chodoori.main.service.ExtractSessionInfoService;
 import com.green.chodoori.main.web.domain.SessionUserInfo;
-import com.green.chodoori.resume.domain.ResumeDtoRepo;
-import com.green.chodoori.resume.repository.ResumeRepository;
+import com.green.chodoori.nonCorporate.domain.ResumeDtoRepo;
+import com.green.chodoori.nonCorporate.repository.ResumeRepository;
 
 import lombok.extern.slf4j.Slf4j;
 

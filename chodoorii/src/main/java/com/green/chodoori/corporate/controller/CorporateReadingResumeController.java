@@ -19,8 +19,8 @@ import com.green.chodoori.error.ResumeNotFoundError;
 import com.green.chodoori.main.domain.UserInfoRepo;
 import com.green.chodoori.main.service.ExtractSessionInfoService;
 import com.green.chodoori.main.service.LoginService;
-import com.green.chodoori.resume.domain.ResumeDto;
-import com.green.chodoori.resume.domain.ResumeDtoRepo;
+import com.green.chodoori.nonCorporate.domain.ResumeDto;
+import com.green.chodoori.nonCorporate.domain.ResumeDtoRepo;
 
 import lombok.extern.slf4j.Slf4j;
 
