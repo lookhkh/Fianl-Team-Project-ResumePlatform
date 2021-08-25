@@ -8,7 +8,6 @@
 <body>
 
 
-
 	<div class="ResuemeBoard" style="height:800px; margin-top : 60px">
 		<div class="resueme">
 			<c:forEach var="dto" items="${dto.getContent()}">
@@ -21,11 +20,13 @@
 						<hr>
 					</div>
 					<div class="btn-res">
-						<button type="button" class="btn btn-primary"
-							onclick="location.href='/resume/display/${dto.id}'">열람하기</button>
+						<button type="button" class="btn btn-primary" onclick="location.href='/resume/display/${dto.id}'">
+							열람하기
+						</button>
 					</div>
 				</div>
 			</c:forEach>
+			
 		</div>
 		<ol class="paging" style="position:absolute; top : 900px; left : 750px">
 			
@@ -44,14 +45,14 @@
 
 
 
-
-
-
-
 	<jsp:include page="../header/footer.jsp"></jsp:include>
 
 
 </body>
 </html>
 
+<script>
+	window.add
+
+</script>
 

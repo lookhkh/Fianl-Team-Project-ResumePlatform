@@ -68,16 +68,19 @@
              </button>        
           </div>    
           </c:when>
+          <c:when test="${userInfo.sort eq 1}">
+             <div class="signupAndLogin">
+          </div>    
+          </c:when>
           <c:otherwise>
         <div class="signupAndLogin">
            <button type="button" data-bs-toggle="modal" data-bs-target="#shareModal" data-bs-whatever="@mdo">공유하기</button>
 
             </div>        
            </div> 
-         </div>
     </c:otherwise>
 </c:choose>
-
+</div>
      
 
  

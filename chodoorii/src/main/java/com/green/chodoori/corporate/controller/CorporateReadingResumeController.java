@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.green.chodoori.corporate.repository.CorporateRepo;
+import com.green.chodoori.corporate.web.domain.PageableVo;
 import com.green.chodoori.corporate.web.domain.UserMetadataAndUserResumeVo;
 import com.green.chodoori.developer.domain.ResumeDto;
 import com.green.chodoori.error.ResumeNotFoundError;
@@ -43,22 +44,7 @@ public class CorporateReadingResumeController {
 		List<IndividualSginUpMetadataFormVo> metadataLists = new ArrayList<>();
 		List<ResumeDto> resumeLists = dto.getContent();
 		
-		
-		//변경 여지 많음
-		for(int i=0; i<resumeLists.size(); i++) {
-			String userId = resumeLists.get(i).getId();
-			IndividualSginUpMetadataFormVo metadata = corpRepo.findUserMetadataById(userId);
-			metadataLists.add(metadata);
-		}
-		
-		UserMetadataAndUserResumeVo metadata = new UserMetadataAndUserResumeVo();
-		metadata.setMetadata(metadataLists);
-		metadata.setResume(resumeLists);
-		
 
-		
-		
-		model.addAttribute("metadata", metadata);
 		model.addAttribute("dto",dto);
 		return "corporate/resume";
 	}
