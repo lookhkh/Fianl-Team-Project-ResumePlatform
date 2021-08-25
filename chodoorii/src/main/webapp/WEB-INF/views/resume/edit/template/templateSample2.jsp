@@ -224,7 +224,7 @@
   
   </head>
   <body>
-    
+    <h1>hihihihi</h1>
       <!--ë©ì¸ 1íì´ì§-->
       <div id="resumeTemBox1">
         <img id="INTRODUCTION_IMG_PATH" src="${resume.intro_dto.introduction_img_path}" width="556px" height="742px" alt="">
@@ -236,7 +236,6 @@
         
         </div>
       </div>
-
 
          <div id="resumeTemBox2">
 

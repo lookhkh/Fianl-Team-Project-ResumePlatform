@@ -122,39 +122,39 @@
             <section class="second-form hidden">
                 <div class="form-section">
                   
-                    <div class="language" style="margin-bottom: 150px;width: 100%; height: 100px; display: flex; flex-direction: column; justify-content: center;align-items: center;">
+                       <div class="language" style="margin-bottom: 150px;width: 100%; height: 100px; display: flex; flex-direction: column; justify-content: center;align-items: center;">
                         <h2>사용가능한 기술을 선택해주세요. 최대 8개까지 선택 가능합니다</h2>
                         <div class="check">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox1" value="/publish/resume/img/자바.JPG">
+                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox1" value="/publish/resume/img/자바.svg">
                                 <label class="form-check-label" for="inlineCheckbox1">자바</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox2" value="/publish/resume/img/파이썬.JPG">
+                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox2" value="/publish/resume/img/파이썬.svg">
                                 <label class="form-check-label" for="inlineCheckbox2">파이썬</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox3" value="/publish/resume/img/HTML.JPG">
+                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox3" value="/publish/resume/img/HTML.png">
                                 <label class="form-check-label" for="inlineCheckbox3">HTML</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox3" value="/publish/resume/img/CSS.JPG" >
+                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox3" value="/publish/resume/img/CSS.png" >
                                 <label class="form-check-label" for="inlineCheckbox3">CSS</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox3" value="/publish/resume/img/자바스크립트.JPG">
+                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox3" value="/publish/resume/img/자바스크립트.png">
                                 <label class="form-check-label" for="inlineCheckbox3">JavaScript</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox3" value="/publish/resume/img/스프링.JPG">
+                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox3" value="/publish/resume/img/스프링.png">
                                 <label class="form-check-label" for="inlineCheckbox3">Spring</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox3" value="/publish/resume/img/오라클.JPG">
+                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox3" value="/publish/resume/img/오라클.png">
                                 <label class="form-check-label" for="inlineCheckbox3">Oracle</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox3" value="/publish/resume/img/자바서블릿.JPG">
+                                <input class="form-check-input" name="skil_set" type="checkbox" id="inlineCheckbox3" value="/publish/resume/img/자바서블릿.svg">
                                 <label class="form-check-label" for="inlineCheckbox3">JSP&Servlet</label>
                             </div>
                         </div>

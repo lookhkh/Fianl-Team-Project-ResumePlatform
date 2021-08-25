@@ -70,4 +70,24 @@ public class IndividualSginUpMetadataFormVo implements Serializable {
 	private String exp; //0 신입, 1 경력
 	private String period;
 	
+	public List<String> makePositionArray(){
+		if(position_1!=null) {
+			this.position.add(this.position_1);
+		};
+		if(position_2!=null) {
+			this.position.add(this.position_2);
+		};
+		if(position_3!=null) {
+			this.position.add(this.position_3);
+		};
+		if(position_4!=null) {
+			this.position.add(this.position_4);
+		};
+		if(position_5!=null) {
+			this.position.add(this.position_5);
+		};
+		
+		return this.position;
+	}
+	
 }

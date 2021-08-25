@@ -290,7 +290,7 @@
             <img src="/publish/resume/img/인스타.png" alt="">
           </a>
           <a href="${resume.sns_dto.facebook_address}">
-            <img src="/publish/resume/img/페이스북ㄴ.JPG" alt="">
+            <img src="/publish/resume/img/페이스북.JPG" alt="">
           </a>
         </div>
       </div> 

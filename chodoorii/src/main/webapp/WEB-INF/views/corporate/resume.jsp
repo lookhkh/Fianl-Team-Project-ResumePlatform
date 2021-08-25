@@ -10,19 +10,26 @@
 
 	<div class="ResuemeBoard" style="height:800px; margin-top : 60px">
 		<div class="resueme">
-			<c:forEach var="dto" items="${dto.getContent()}">
+			<c:forEach var="dto" items="${dto.getContent()}" varStatus="status">
 				<div class="one">
 							<img src="${dto.user.imgPath}" style="height: 130px;"
 								width="130px">	
 					<div class="info">
 						<span style="font-size: 20px;">${dto.user.name}</span><br>
 						<h3>${dto.intro_dto.introduction_header}</h3>
-						<hr>
+					<c:forEach var="metadata" items="${metadatas.get(status.index).makePositionArray()}">
+						<span style="color : blue;">#${metadata }</span>
+					</c:forEach>
+					
+						<span style="color : blue;">#${metadatas.get(status.index).exp}</span>
+						<c:if test="${metadatas.get(status.index).period !=null }"><span style="color : blue;">#${metadatas.get(status.index).period}</span></c:if>
+						
 					</div>
 					<div class="btn-res">
 						<button type="button" class="btn btn-primary" onclick="location.href='/resume/display/${dto.id}'">
 							열람하기
 						</button>
+					
 					</div>
 				</div>
 			</c:forEach>

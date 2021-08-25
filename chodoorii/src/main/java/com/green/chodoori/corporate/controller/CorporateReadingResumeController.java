@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.green.chodoori.corporate.repository.CorporateRepo;
-import com.green.chodoori.corporate.web.domain.PageableVo;
-import com.green.chodoori.corporate.web.domain.UserMetadataAndUserResumeVo;
 import com.green.chodoori.developer.domain.ResumeDto;
 import com.green.chodoori.error.ResumeNotFoundError;
 import com.green.chodoori.main.domain.IndividualSginUpMetadataFormVo;
@@ -41,11 +39,16 @@ public class CorporateReadingResumeController {
 	@GetMapping("/lists")
 	public String ViewResume(@PageableDefault(page = 0,size = 4)Pageable pageable, Model model) {
 		Page<ResumeDto> dto = corpRepo.findByDisclosurestatus(0, pageable);
-		List<IndividualSginUpMetadataFormVo> metadataLists = new ArrayList<>();
 		List<ResumeDto> resumeLists = dto.getContent();
+		List<IndividualSginUpMetadataFormVo> metadatas = new ArrayList<>();
 		
+		for(int i=0; i<resumeLists.size(); i++) {
+			IndividualSginUpMetadataFormVo temp = corpRepo.findUserMetadataById(resumeLists.get(i).getId());
+			metadatas.add(temp);
+		}
 
 		model.addAttribute("dto",dto);
+		model.addAttribute("metadatas",metadatas);
 		return "corporate/resume";
 	}
 	
@@ -60,7 +63,7 @@ public class CorporateReadingResumeController {
 		String templateNumber = dto.get().getTemplate_kind();
 		String template = "/resume/template/templateSample" + templateNumber;
 
-		model.addAttribute("dto",dto);
+		model.addAttribute("resume",dto.get());
 		return template;
 	}
 }	
