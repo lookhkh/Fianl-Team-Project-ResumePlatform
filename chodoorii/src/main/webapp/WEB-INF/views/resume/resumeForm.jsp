@@ -99,7 +99,7 @@
 				</div>
                 <div class="form-section">
                     <h2 style="text-align: center;">자기소개에 사용될 사진을 올려주세요</h2>
-                    <img src="/publish/resume/img/defaultpic.png" class="img-pic rounded mx-auto d-block" alt="...">
+                    <img src="/publish/resume/img/defaultpic.png" class="img-pic rounded mx-auto d-block" alt="..." width="300px" height ="300px">
                     <input type="file" name="introduction_img_path" style="display: none;">
                     <div class="input-group" style="width: 800px; margin-top: 50px;">
                         <span class="input-group-text" id="inputGroup-sizing-sm">제목</span>
@@ -163,19 +163,19 @@
                         <h2>SNS 주소를 입력해주세요.</h2>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><img src="/publish/resume/img/블로그.png" width="40px" height="40px"></span>
-                            <input type="text" class="form-control" name="blog_address" placeholder="블로그 주소를 적어주세요" aria-label="Username" name="blog_address" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" name="blog_address" placeholder="블로그 전체 주소를 적어주세요" aria-label="Username" name="blog_address" aria-describedby="basic-addon1">
                           </div>
                           <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><img src="/publish/resume/img/20210727_143131.png" width="40px" height="40px"></span>
-                            <input type="text" class="form-control" placeholder="깃허브 주소를 적어주세요" name="github_address" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" placeholder="깃허브 전체 주소를 적어주세요" name="github_address" aria-label="Username" aria-describedby="basic-addon1">
                           </div>
                           <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><img src="/publish/resume/img/인스타.png" width="40px" height="40px"></span>
-                            <input type="text" class="form-control" placeholder="인스타 주소를 적어주세요" name="instagram_address" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" placeholder="인스타 전체 주소를 적어주세요" name="instagram_address" aria-label="Username" aria-describedby="basic-addon1">
                           </div>
                           <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><img src="/publish/resume/img/페이스북.png" width="40px" height="40px"></span>
-                            <input type="text" class="form-control" placeholder="페이스북 주소를 적어주세요" name="facebook_address" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" placeholder="페이스북 전체 주소를 적어주세요" name="facebook_address" aria-label="Username" aria-describedby="basic-addon1">
                           </div>
                     </div>
 
@@ -198,7 +198,7 @@
                         <div style="display: flex; flex-direction: column; justify-content: flex-start; margin-left: 0; width: 70%;">
                             <div style="display: flex; flex-direction: column; width: 400px; margin-left: 0;">
                                 <input name="portfolio_first_name" style="margin-left: 0; margin-bottom: 20px;" placeholder="제목을 입력해주세요"/>
-                                <input name="portfolio_first_github" style="margin-left: 0; margin-bottom: 20px;" placeholder="github 주소를 입력해주세요"/>
+                                <input name="portfolio_first_github" style="margin-left: 0; margin-bottom: 20px;" placeholder="github 전체 주소를 입력해주세요"/>
                             </div>
                             <div style="width: 500px; margin-left :0">
                                 <textarea name="portfolio_first_desc" rows="5" cols="70" style="margin-left: 0;" placeholder="내용을 입력해주세요"></textarea>
@@ -212,7 +212,7 @@
                         <div style="display: flex; flex-direction: column; justify-content: flex-start; margin-left: 0; width: 70%;">
                             <div style="display: flex; flex-direction: column; width: 400px; margin-left: 0;">
                                 <input name="portfolio_second_name" style="margin-left: 0; margin-bottom: 20px;" placeholder="제목을 입력해주세요"/>
-                                <input name="portfolio_second_github" style="margin-left: 0; margin-bottom: 20px;" placeholder="github 주소를 입력해주세요"/>
+                                <input name="portfolio_second_github" style="margin-left: 0; margin-bottom: 20px;" placeholder="github 전체 주소를 입력해주세요"/>
                             </div>
                             <div style="width: 500px; margin-left :0">
                                 <textarea name="portfolio_second_desc"  rows="5" cols="70" style="margin-left: 0;" placeholder="내용을 입력해주세요"></textarea>

@@ -1,4 +1,4 @@
-package com.green.chodoori.nonCorporate.web.domain;
+package com.green.chodoori.developer.web.domain;
 
 import javax.persistence.Embeddable;
 

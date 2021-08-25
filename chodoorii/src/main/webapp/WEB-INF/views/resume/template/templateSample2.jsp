@@ -225,7 +225,6 @@
   </head>
   <body>
     
-      <!--ë©ì¸ 1íì´ì§-->
       <div id="resumeTemBox1">
         <img id="INTRODUCTION_IMG_PATH" src="${resume.intro_dto.introduction_img_path}" width="556px" height="742px" alt="">
         <div id="INTRODUCTION_HEADER">
@@ -242,51 +241,23 @@
       <div id="resumeTemBox2">
 
 			<div class="SKIL_SET">
+				<c:forEach var="i" items="${resume.skill_dto.makeSkillSetList()}">
 				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/스프링.JPG"
-						alt="">
+					<img class="SKIL_SET_BOX_img" src="${i}" alt="">
 				</div>
-				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/오라클.JPG"
-						alt="">
-				</div>
-				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/자바.JPG"
-						alt="">
-				</div>
-				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/자바서블릿.JPG"
-						alt="">
-				</div>
-				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/자바스크립트.JPG"
-						alt="">
-				</div>
-				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/파이썬.JPG"
-						alt="">
-				</div>
-				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/HTML.JPG"
-						alt="">
-				</div>
-				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/CSS.JPG"
-						alt="">
-				</div>
+				</c:forEach>
 			</div>
 		</div>
 
-      <!--ë©ì¸ 3íì´ì§-->
       <div id="resumeTemBox3">
         <h1><span>My Self</span></h1>
         <div class="tmicontainer">
           <div class="tmilist">
-            <p id="tmi1">이름</p>     
-            <p id="tmi2">전화번호</p>
-            <p id="tmi3">메일</p>
-            <p id="tmi4">생일</p>
-            <p id="tmi5">거주지</p>
+            <p id="tmi1">이름 : ${resume.user.name} </p>     
+            <p id="tmi2">전화번호 : ${resume.user.contact_num}</p>
+            <p id="tmi3">메일 : ${resume.user.email}</p>
+            <p id="tmi4">생일 : ${resume.user.birth}</p>
+            <p id="tmi5">거주지 : ${resume.user.city}</p>
           </div>
         </div>
       </div>
@@ -343,8 +314,8 @@
         </div>
       </div> 
        <div data-input="${preview=='on'?'on':'none'}" class="action_btn" style="position: fixed; top: 0px; left: 50%; display: none;">
-        <button class="btn btn-primary">ì§ííê¸°</button>
-        <button class="btn btn-primary">ë¤ë¡ê°ê¸°</button>
+        <button class="btn btn-primary">등록하기</button>
+        <button class="btn btn-primary">뒤로가기</button>
       </div>
   </body>
 </html>

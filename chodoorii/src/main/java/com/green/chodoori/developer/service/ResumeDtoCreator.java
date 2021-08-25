@@ -1,4 +1,4 @@
-package com.green.chodoori.nonCorporate.service;
+package com.green.chodoori.developer.service;
 
 import java.io.IOException;
 
@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.green.chodoori.nonCorporate.domain.ResumeDto;
-import com.green.chodoori.nonCorporate.web.domain.IntroductionDto;
-import com.green.chodoori.nonCorporate.web.domain.SkillSetDto;
-import com.green.chodoori.nonCorporate.web.domain.SnsAddressDto;
+import com.green.chodoori.developer.domain.ResumeDto;
+import com.green.chodoori.developer.web.domain.IntroductionDto;
+import com.green.chodoori.developer.web.domain.SkillSetDto;
+import com.green.chodoori.developer.web.domain.SnsAddressDto;
 import com.green.chodoori.util.fileUpload.ImgUploadAndGenerateSignUpDto;
 
 @Service

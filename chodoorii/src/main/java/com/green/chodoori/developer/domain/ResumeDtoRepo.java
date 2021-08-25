@@ -1,4 +1,4 @@
-package com.green.chodoori.nonCorporate.domain;
+package com.green.chodoori.developer.domain;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

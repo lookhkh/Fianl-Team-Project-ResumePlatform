@@ -57,6 +57,8 @@ public class IndexAndLoginController {
 			sessionService.sessionCreate(form.getId(), req);
 					
 			if(type!=null&&type.equals("loginRedirect")) {
+				
+				System.out.println(redirect);
 						
 				return "redirect:"+redirect;
 					}

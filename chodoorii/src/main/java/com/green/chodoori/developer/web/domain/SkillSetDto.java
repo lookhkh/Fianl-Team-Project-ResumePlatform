@@ -1,4 +1,4 @@
-package com.green.chodoori.nonCorporate.web.domain;
+package com.green.chodoori.developer.web.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +33,7 @@ public class SkillSetDto {
 	private List<String> skills;
 	
 	
-	public void makeSkillSetList() {
+	public List<String> makeSkillSetList() {
 		
 		skills = new ArrayList<>();
 		
@@ -68,6 +68,8 @@ public class SkillSetDto {
 		if(StringUtils.hasLength(skill_set_eieth)) {
 			skills.add(skill_set_eieth);
 		}
+		
+		return skills;
 	}
 
 	

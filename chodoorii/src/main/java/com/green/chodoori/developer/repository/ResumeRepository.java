@@ -1,12 +1,12 @@
-package com.green.chodoori.nonCorporate.repository;
+package com.green.chodoori.developer.repository;
 
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.green.chodoori.nonCorporate.domain.ResumeDto;
-import com.green.chodoori.nonCorporate.domain.ResumeDtoRepo;
+import com.green.chodoori.developer.domain.ResumeDto;
+import com.green.chodoori.developer.domain.ResumeDtoRepo;
 
 @Repository
 public class ResumeRepository {

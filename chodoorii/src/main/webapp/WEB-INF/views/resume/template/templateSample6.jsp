@@ -320,19 +320,19 @@ p:hover span::after {
 			<div id="INTRODUCTION_HEADER"></div>
 			<div id="INTRODUCTION_MAIN">
 				<p>
-					이름<span></span>
+					이름 : <span>${resume.user.name}</span>
 				</p>
 				<p>
-					전화번호<span></span>
+					전화번호 : <span>${resume.user.contact_num}</span>
 				</p>
 				<p>
-					메일<span></span>
+					메일 : <span>${resume.user.email}</span>
 				</p>
 				<p>
-					생일 <span></span>
+					생일 : <span>${resume.user.birth}</span>
 				</p>
 				<p>
-					거주지 <span></span>
+					거주지 : <span>${resume.user.city}</span>
 				</p>
 
 
@@ -342,41 +342,14 @@ p:hover span::after {
 
 
 		<!--ë©ì¸ 2íì´ì§-->
-		<div id="resumeTemBox2">
+		 <div id="resumeTemBox2">
 
 			<div class="SKIL_SET">
+				<c:forEach var="i" items="${resume.skill_dto.makeSkillSetList()}">
 				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/스프링.JPG"
-						alt="">
+					<img class="SKIL_SET_BOX_img" src="${i}" alt="">
 				</div>
-				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/오라클.JPG"
-						alt="">
-				</div>
-				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/자바.JPG"
-						alt="">
-				</div>
-				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/자바서블릿.JPG"
-						alt="">
-				</div>
-				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/자바스크립트.JPG"
-						alt="">
-				</div>
-				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/파이썬.JPG"
-						alt="">
-				</div>
-				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/HTML.JPG"
-						alt="">
-				</div>
-				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/CSS.JPG"
-						alt="">
-				</div>
+				</c:forEach>
 			</div>
 		</div>
 

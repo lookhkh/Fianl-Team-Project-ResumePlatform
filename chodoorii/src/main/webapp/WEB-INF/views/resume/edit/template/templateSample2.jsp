@@ -238,62 +238,34 @@
       </div>
 
 
-      <!--ë©ì¸ 2íì´ì§-->
-      <div id="resumeTemBox2">
+         <div id="resumeTemBox2">
 
 			<div class="SKIL_SET">
+				<c:forEach var="i" items="${resume.skill_dto.makeSkillSetList()}">
 				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/스프링.JPG"
-						alt="">
+					<img class="SKIL_SET_BOX_img" src="${i}" alt="">
 				</div>
-				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/오라클.JPG"
-						alt="">
-				</div>
-				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/자바.JPG"
-						alt="">
-				</div>
-				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/자바서블릿.JPG"
-						alt="">
-				</div>
-				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/자바스크립트.JPG"
-						alt="">
-				</div>
-				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/파이썬.JPG"
-						alt="">
-				</div>
-				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/HTML.JPG"
-						alt="">
-				</div>
-				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/CSS.JPG"
-						alt="">
-				</div>
+				</c:forEach>
 			</div>
 		</div>
-
+		
+		
       <!--ë©ì¸ 3íì´ì§-->
       <div id="resumeTemBox3">
         <h1><span>My Self</span></h1>
         <div class="tmicontainer">
           <div class="tmilist">
-            <p id="tmi1">이름</p>     
-            <p id="tmi2">전화번호</p>
-            <p id="tmi3">메일</p>
-            <p id="tmi4">생일</p>
-            <p id="tmi5">거주지</p>
+            <p id="tmi1">이름 : ${resume.user.name} </p>     
+            <p id="tmi2">전화번호 : ${resume.user.contact_num}</p>
+            <p id="tmi3">메일 : ${resume.user.email}</p>
+            <p id="tmi4">생일 : ${resume.user.birth}</p>
+            <p id="tmi5">거주지 : ${resume.user.city}</p>
           </div>
         </div>
       </div>
       
       
 
-      <!--ë©ì¸ 4íì´ì§-->
       <div id="resumeTemBox5">
       <div class="PORTFOLIOTem">
         <h1>PORTFOLIO</h1>        
@@ -327,7 +299,6 @@
       </div>
 
       
-      <!--ë©ì¸ 5íì´ì§-->
        <div id="resumeTemBox6">
     
         <div class="imglist">

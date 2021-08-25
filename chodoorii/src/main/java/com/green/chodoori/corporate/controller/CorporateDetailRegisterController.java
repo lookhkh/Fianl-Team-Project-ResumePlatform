@@ -22,10 +22,10 @@ import com.green.chodoori.corporate.domain.CorporateDetailDto;
 import com.green.chodoori.corporate.repository.CorporateRepo;
 import com.green.chodoori.corporate.web.domain.CorporateDetailRegisterForm;
 import com.green.chodoori.corporate.web.domain.WelfareDto;
+import com.green.chodoori.developer.service.ChangeUsersResumeStatusService;
 import com.green.chodoori.main.domain.UserInfoDto;
 import com.green.chodoori.main.service.ExtractSessionInfoService;
 import com.green.chodoori.main.web.domain.SessionUserInfo;
-import com.green.chodoori.nonCorporate.service.ChangeUsersResumeStatusService;
 
 @Controller
 @RequestMapping("/corporate")

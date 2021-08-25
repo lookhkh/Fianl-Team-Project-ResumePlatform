@@ -13,6 +13,7 @@
     <script src="/publish/main/js/idCheckforduplicate.js"></script>
     <link href="/publish/main/css/signupRequired.css" rel="stylesheet">    
     <script src="/publish/main/js/imgChange.js"></script>
+    <script src="/publish/main/js/validator.js"></script>
 
     <title>회원가입</title>
     
@@ -32,7 +33,7 @@ border-color:red;	}
                 <span data-target="metadata"><img src="../img/2025986.svg" style="visibility: hidden;" width="30px" height="10px" alt="">메타정보입력</span>
             </div>
 
-                <div class="form sort show ">
+                <div class="form sort show"style=" height: 1020px;">
 
                 <form method="POST" enctype="multipart/form-data" action="http://localhost:8088/signup?sort=1">
                      <div class="input-group" style="display: flex; flex-direction: row;">

@@ -1,5 +1,7 @@
 package com.green.chodoori.corporate.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
@@ -15,12 +17,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.green.chodoori.corporate.repository.CorporateRepo;
+import com.green.chodoori.corporate.web.domain.UserMetadataAndUserResumeVo;
+import com.green.chodoori.developer.domain.ResumeDto;
 import com.green.chodoori.error.ResumeNotFoundError;
-import com.green.chodoori.main.domain.UserInfoRepo;
+import com.green.chodoori.main.domain.IndividualSginUpMetadataFormVo;
 import com.green.chodoori.main.service.ExtractSessionInfoService;
-import com.green.chodoori.main.service.LoginService;
-import com.green.chodoori.nonCorporate.domain.ResumeDto;
-import com.green.chodoori.nonCorporate.domain.ResumeDtoRepo;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -37,9 +38,27 @@ public class CorporateReadingResumeController {
 	
 	
 	@GetMapping("/lists")
-	public String ViewResume(@PageableDefault(page = 0,size = 2)Pageable pageable, Model model) {
+	public String ViewResume(@PageableDefault(page = 0,size = 4)Pageable pageable, Model model) {
 		Page<ResumeDto> dto = corpRepo.findByDisclosurestatus(0, pageable);
+		List<IndividualSginUpMetadataFormVo> metadataLists = new ArrayList<>();
+		List<ResumeDto> resumeLists = dto.getContent();
 		
+		
+		//변경 여지 많음
+		for(int i=0; i<resumeLists.size(); i++) {
+			String userId = resumeLists.get(i).getId();
+			IndividualSginUpMetadataFormVo metadata = corpRepo.findUserMetadataById(userId);
+			metadataLists.add(metadata);
+		}
+		
+		UserMetadataAndUserResumeVo metadata = new UserMetadataAndUserResumeVo();
+		metadata.setMetadata(metadataLists);
+		metadata.setResume(resumeLists);
+		
+
+		
+		
+		model.addAttribute("metadata", metadata);
 		model.addAttribute("dto",dto);
 		return "corporate/resume";
 	}

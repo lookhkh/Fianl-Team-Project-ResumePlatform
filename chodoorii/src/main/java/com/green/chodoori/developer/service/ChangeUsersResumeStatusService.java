@@ -1,15 +1,15 @@
-package com.green.chodoori.nonCorporate.service;
+package com.green.chodoori.developer.service;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.green.chodoori.developer.domain.ResumeDto;
+import com.green.chodoori.developer.repository.ResumeRepository;
 import com.green.chodoori.main.domain.UserInfoDto;
 import com.green.chodoori.main.repository.MainRepository;
 import com.green.chodoori.main.web.domain.SessionUserInfo;
-import com.green.chodoori.nonCorporate.domain.ResumeDto;
-import com.green.chodoori.nonCorporate.repository.ResumeRepository;
 
 @Service
 public class ChangeUsersResumeStatusService {

@@ -70,7 +70,8 @@
           </c:when>
           <c:otherwise>
         <div class="signupAndLogin">
-           <button type="button"  onclick="location.href='/resume/share'">이력서 보내기</button>
+           <button type="button" data-bs-toggle="modal" data-bs-target="#shareModal" data-bs-whatever="@mdo">공유하기</button>
+
             </div>        
            </div> 
          </div>
@@ -82,6 +83,44 @@
  
 <jsp:include page="../header/footer.jsp"></jsp:include>
 
- 
+ <div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="height : 500px">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">공유하기</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form style="width:500px" method="post" action="/resume/share/mail">
+      <div class="  modal-body">
+            <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">받으시는 분 메일</label>
+            <input type="text" class="form-control" id="recipient-name" name="to">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">소개</label>
+            <input class="form-control" id="message-text" name="what"></input>
+          </div>
+		
+          <div class="modal-footer" style="margin-top : 50px">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <input type="submit" class="btn btn-primary" value="Send message"/>
+          </div>
+      </div>
+      </form>
+     
+    </div>
+  </div>
+</div>
 </body>
 </html>
+
+<script>
+window.addEventListener('load',function(){
+
+	const loginForm = document.querySelector("#loginForm");                    
+    const presentPath = location.pathname;
+
+    loginForm.action = "/login?type=loginRedirect&redirect="+presentPath;
+    
+});
+</script>

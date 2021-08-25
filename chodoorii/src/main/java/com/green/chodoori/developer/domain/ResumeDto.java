@@ -1,17 +1,18 @@
-package com.green.chodoori.nonCorporate.domain;
+package com.green.chodoori.developer.domain;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.green.chodoori.developer.web.domain.IntroductionDto;
+import com.green.chodoori.developer.web.domain.SkillSetDto;
+import com.green.chodoori.developer.web.domain.SnsAddressDto;
 import com.green.chodoori.main.domain.UserInfoDto;
-import com.green.chodoori.nonCorporate.web.domain.IntroductionDto;
-import com.green.chodoori.nonCorporate.web.domain.SkillSetDto;
-import com.green.chodoori.nonCorporate.web.domain.SnsAddressDto;
 
 import lombok.Builder;
 import lombok.Data;
@@ -63,7 +64,6 @@ public class ResumeDto {
 	@OneToOne
 	@JoinColumn(name="RESUME_ID")
 	private UserInfoDto user;
-	// 변수로 user 의미를 둠으로써
 	
 	@Embedded
 	private SkillSetDto skill_dto;

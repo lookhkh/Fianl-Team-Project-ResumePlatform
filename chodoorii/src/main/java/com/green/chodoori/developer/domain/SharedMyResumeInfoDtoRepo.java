@@ -1,4 +1,4 @@
-package com.green.chodoori.nonCorporate.domain;
+package com.green.chodoori.developer.domain;
 
 import java.util.Date;
 import java.util.List;

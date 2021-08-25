@@ -31,9 +31,17 @@
                         <div class="textbox">
                           <h3>My Resueme</h3>
                           <p>다양한 템플릿으로 만드는 이력서</p>
-                          <button type="button" class="signup btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            시작하기
-                        </button>
+                          <c:choose>
+	   						 <c:when test="${userInfo.id eq null}">
+	                          	<button type="button" class="signup btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+	                            	시작하기
+	                        	</button>
+	                        </c:when>
+                        <c:otherwise>
+                          
+                        </c:otherwise>
+                       </c:choose>
+                        
                         </div>
                         <img src="/publish/main/img/메인사진1.png">
                       </a>
@@ -44,9 +52,16 @@
                         <div class="textbox">
                           <h3>링크 형태의 이력서</h3>
                           <p>이력서 공개여부 설정으로 더 많은 기회를</p>
-                          <button type="button" class="signup btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            시작하기
-                        </button>
+                           <c:choose>
+	   						 <c:when test="${userInfo.id eq null}">
+	                          	<button type="button" class="signup btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+	                            	시작하기
+	                        	</button>
+	                        </c:when>
+                        <c:otherwise>
+    
+                        </c:otherwise>
+                       </c:choose>
                         </div>
                         <img src="/publish/main/img/메인사진2.png">
                       </a>
@@ -56,9 +71,16 @@
                         
                         <div class="textbox3">
                           <h3>당신의 처음을 응원합니다.</h3>
-                          <button type="button" class="signup btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            시작하기
-                        </button>
+                                  <c:choose>
+	   						 <c:when test="${userInfo.id eq null}">
+	                          	<button type="button" class="signup btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+	                            	시작하기
+	                        	</button>
+	                        </c:when>
+                        <c:otherwise>
+                           
+                        </c:otherwise>
+                       </c:choose>
                         </div>
                         <img src="/publish/main/img/메인사진3.png">
                       </a>
@@ -96,9 +118,16 @@
             <div class="content">
                 <h1 style="font-weight: 700;">당신의 처음을 응원합니다.</h1>
                 <span>지금 시작하세요</span>
-                <button type="button" class="signup btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    시작하기
-                </button>
+                  <c:choose>
+	   						 <c:when test="${userInfo.id eq null}">
+	                          	<button type="button" class="signup btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+	                            	시작하기
+	                        	</button>
+	                        </c:when>
+                        <c:otherwise>
+                        
+                        </c:otherwise>
+                       </c:choose>
             </div>
         </div>
     

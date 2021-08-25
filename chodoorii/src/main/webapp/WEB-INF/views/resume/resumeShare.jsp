@@ -23,73 +23,8 @@
      
     </style>
 </head>
-
+<jsp:include page="../header/header.jsp"></jsp:include>
 <body>
-
-
-    <!--공통 헤더부분-->
-    <div id="header">
-        <div class="logo">
-            <a href="/"><h3 class="name">MyResueme</h3></a>
-        </div>
-
-        <nav>
-            <ul class="nav">
-              <div class="dropdown">
-                <li><a class="target-a" href="">About Us</a></li>
-                <div class="dropdown-content">
-                  <a>MyResume란?</a>  
-                  <a>MyResume란?</a>
-                  <a>MyResume란?</a>  
-                  <a>MyResume란?</a>  
-  
-                </div>
-              </div> 
-
-              <div class="dropdown">
-                <li><a class="target-a" href="/corporate/cpinfo">기업홍보관</a></li>
-                <div class="dropdown-content">
-                  <a>MyResume란?</a>  
-                  <a>MyResume란?</a>  
-                </div>
-              </div>
-
-              <div class="dropdown">
-                <li><a class="target-a" href="/resume">이력서관리</a></li>
-                <div class="dropdown-content">
-                </div>
-              </div>
-            </ul>
-        </nav>
-	<c:choose>
-	    <c:when test="${userInfo.id eq null}">
-	    <div class="signupAndLogin">
-	            <button type="button" class="signup btn signupAndLoginBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-	                회원가입/로그인
-	             </button>        
-	          </div>    
-	     </c:when>
-   
-    <c:otherwise>
-        <div class="signupAndLogin">
-          <div class="infoBox">
-            <div class="infoImg">
-            <img src="${userInfo.imgPath}" width="50px" height="50px" flex: center;> 
-            </div>  
-            <div class="infoButton">
-            <button type="button" class="btn btn-primary">${userInfo.id}</button>
-            <button type="button" class="btn btn-primary" onclick="location.href='/logout'">로그아웃</button> 
-            </div>        
-           </div> 
-         </div>
-    </c:otherwise>
-</c:choose>
-
-     
-        </div>
-      </div>
-    </div>
-  </div> 
    <style>
 
      *{
@@ -133,7 +68,7 @@
                 <img src="/publish/resume/Img/메일.JPG" alt="이메일로공유" onclick>
                 <p>이메일로 공유하기<br>
                   웹사이트링크 형태로 간단하게 이메일 보내기가 가능합니다.</p>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">공유하기</button>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#shareModal" data-bs-whatever="@mdo">공유하기</button>
 <button type="button" class="btn btn-primary" onclick="history.go(-1)">목록으로</button>
 
                   
@@ -151,7 +86,7 @@
  
 <jsp:include page="../header/footer.jsp"></jsp:include>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content" style="height : 500px">
       <div class="modal-header">

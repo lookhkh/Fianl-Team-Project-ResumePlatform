@@ -174,15 +174,14 @@
                         <button id="portfolio-btn" class="btn btn-secondary">Portfolio</button>
 
                     </div>
-                    <div class="skill-stack-set">
-                        <img src="/publish/resume/img/스프링.JPG">
-                        <img src="/publish/resume/img/오라클.JPG">
-                        <img src="/publish/resume/img/자바.JPG">
-                        <img src="/publish/resume/img/자바스크립트.JPG">
-                        <img src="/publish/resume/img/파이썬.JPG">
-                        <img src="/publish/resume/img/HTML.JPG">
-                        <img src="/publish/resume/img/css.JPG">
-                    </div>
+                    
+                    <c:forEach var="i" items="${resume.skill_dto.makeSkillSetList()}">
+                    
+	                    <div class="skill-stack-set">
+	                        <img src="${i}">
+	                    </div>
+	                    
+                    </c:forEach>
                  </section>
 
 

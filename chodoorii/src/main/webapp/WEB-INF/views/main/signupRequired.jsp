@@ -33,7 +33,7 @@ border-color:red;	}
                 <span data-target="metadata"><img src="/publish/main/img/2025986.svg" style="visibility: hidden;" width="30px" height="10px" alt="">메타정보입력</span>
             </div>
 
-                <div class="form sort show ">
+                <div class="form sort show"style=" height: 1020px;">
 
                 <form method="POST" enctype="multipart/form-data" action="http://localhost:8088/signup?sort=0">
                      <div class="input-group" style="display: flex; flex-direction: row;">
@@ -85,7 +85,7 @@ border-color:red;	}
                     </div>
 
                     <div class="input-group mb-3">
-                        <input data-target="required"  type="text" class="form-control" placeholder="생년월일을 입력해주세요(ex 92년 5월)" name="birth" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                        <input data-target="required"  type="text" class="form-control" placeholder="생년월일 6자리를 입력해주세요" name="birth" aria-label="Example text with button addon" aria-describedby="button-addon1">
                     </div>
                     
                     <input type="hidden" class="check" value="0" />
@@ -140,7 +140,9 @@ border-color:red;	}
                 
                 for(let i=0; i<array.length; i++){
                     if(array[i].value===''){
-                        array[i].classList.add('required');
+                    	
+                    	
+                       array[i].classList.add('required');
                         check.value=1;
                     }else{
                         array[i].classList.remove('required');

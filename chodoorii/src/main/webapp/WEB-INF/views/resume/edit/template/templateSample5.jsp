@@ -209,55 +209,28 @@
 
 
   <!--ë©ì¸ 2íì´ì§-->
-  <div id="resumeTemBox2">
+     <div id="resumeTemBox2">
 
 			<div class="SKIL_SET">
+				<c:forEach var="i" items="${resume.skill_dto.makeSkillSetList()}">
 				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/스프링.JPG"
-						alt="">
+					<img class="SKIL_SET_BOX_img" src="${i}" alt="">
 				</div>
-				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/오라클.JPG"
-						alt="">
-				</div>
-				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/자바.JPG"
-						alt="">
-				</div>
-				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/자바서블릿.JPG"
-						alt="">
-				</div>
-				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/자바스크립트.JPG"
-						alt="">
-				</div>
-				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/파이썬.JPG"
-						alt="">
-				</div>
-				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/HTML.JPG"
-						alt="">
-				</div>
-				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="/publish/resume/img/CSS.JPG"
-						alt="">
-				</div>
+				</c:forEach>
 			</div>
 		</div>
 
-  <!--ë©ì¸ 3íì´ì§-->
+ 
   <div id="resumeTemBox3">
  
     <div class="tmicontainer">
         <div class="tmilist">
           <ul>
-              <li id="tmi1">이름</li>
-              <li id="tmi2">전화번호</li>
-              <li id="tmi3">메일</li>
-              <li id="tmi4">생일</li>
-              <li id="tmi5">거주지</li>
+              <li id="tmi1">이름 : ${resume.user.name}</li>
+              <li id="tmi2">전화번호 : ${resume.user.contact_num}</li>
+              <li id="tmi3">메일 : ${resume.user.email}</li>
+              <li id="tmi4">생일 : ${resume.user.birth}</li>
+              <li id="tmi5">거주지 : ${resume.user.city}</li>
           </ul>
         </div>
       </div>

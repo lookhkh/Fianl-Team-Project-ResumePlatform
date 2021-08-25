@@ -1,4 +1,4 @@
-package com.green.chodoori.nonCorporate.controller;
+package com.green.chodoori.developer.controller;
 
 import java.io.IOException;
 
@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.green.chodoori.developer.domain.ResumeDto;
+import com.green.chodoori.developer.repository.ResumeRepository;
+import com.green.chodoori.developer.service.ChangeUsersResumeStatusService;
+import com.green.chodoori.developer.service.ResumeDtoCreator;
 import com.green.chodoori.main.domain.UserInfoDto;
 import com.green.chodoori.main.repository.MainRepository;
 import com.green.chodoori.main.web.domain.SessionUserInfo;
-import com.green.chodoori.nonCorporate.domain.ResumeDto;
-import com.green.chodoori.nonCorporate.repository.ResumeRepository;
-import com.green.chodoori.nonCorporate.service.ChangeUsersResumeStatusService;
-import com.green.chodoori.nonCorporate.service.ResumeDtoCreator;
 import com.green.chodoori.util.fileUpload.ImgUploadAndGenerateSignUpDto;
 
 @Controller
@@ -100,7 +100,7 @@ public class ResumeRegisterController {
 		
 		
 		SessionUserInfo sessionUser = (SessionUserInfo) session.getAttribute("userInfo");
-		UserInfoDto user = mainRepo.getById(sessionUser.getId());
+		UserInfoDto user = mainRepo.findById(sessionUser.getId()).get();
 		
 
 		session.setAttribute("temp", resume);

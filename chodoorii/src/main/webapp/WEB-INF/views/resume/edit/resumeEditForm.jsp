@@ -90,11 +90,11 @@
 				</div>
                 <div class="form-section">
                     <h2 style="text-align: center;">자기소개에 사용될 사진을 올려주세요</h2>
-                    <img src="/publish/resume/img/defaultpic.png" class="img-pic rounded mx-auto d-block" alt="...">
+                    <img src="/publish/resume/img/defaultpic.png" class="img-pic rounded mx-auto d-block" alt="..."  width="300px" height ="300px">
                     <input type="file" name="introduction_img_path" style="display: none;">
                     <div class="input-group" style="width: 800px; margin-top: 50px;">
                         <span class="input-group-text" id="inputGroup-sizing-sm">제목</span>
-                        <input name="introduction_header" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="${resume.intro_dto.introduction_header}">
+                        <input name="introduction_header" type="text" maxlength="10" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="${resume.intro_dto.introduction_header}">
                       </div>
                       <div class="input-group" style="width: 800px; margin-top: 50px;">
                         <span class="input-group-text">자기소개</span>

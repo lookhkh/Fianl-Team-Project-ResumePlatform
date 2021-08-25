@@ -4,6 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.green.chodoori.main.web.domain.SessionUserInfo;
@@ -11,7 +13,8 @@ import com.green.chodoori.main.web.domain.SessionUserInfo;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class LoginInterceptor extends HandlerInterceptorAdapter {
+@Component
+public class LoginInterceptor implements HandlerInterceptor {
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
@@ -29,6 +32,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			response.sendRedirect("/?loginRedirect="+requestedUrl);
 			return false;
 		}
-		return super.preHandle(request, response, handler);
+		return true;
 	}
 }

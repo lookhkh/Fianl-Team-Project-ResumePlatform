@@ -81,7 +81,7 @@
 
                 const form = document.querySelector('form');
 
-                if(e.target.textContent ==="다음으로"){
+                if(e.target.textContent ==="등록하기"){
                 document.querySelector('form').submit();
                 }
             })
