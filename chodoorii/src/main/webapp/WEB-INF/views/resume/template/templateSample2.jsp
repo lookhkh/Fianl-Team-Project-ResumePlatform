@@ -243,7 +243,7 @@
 			<div class="SKIL_SET">
 				<c:forEach var="i" items="${resume.skill_dto.makeSkillSetList()}">
 				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="${i}" alt="">
+					<c:if test="${i!=null }"><img class="SKIL_SET_BOX_img" src="${i}" alt=""></c:if>
 				</div>
 				</c:forEach>
 			</div>
