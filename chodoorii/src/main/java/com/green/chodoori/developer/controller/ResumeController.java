@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
@@ -34,6 +35,7 @@ import com.green.chodoori.main.domain.UserInfoRepo;
 import com.green.chodoori.main.repository.MainRepository;
 import com.green.chodoori.main.service.ExtractSessionInfoService;
 import com.green.chodoori.main.web.domain.SessionUserInfo;
+import com.green.chodoori.temp.MimeTypeMailService;
 import com.green.chodoori.util.mail.MailService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -62,7 +64,7 @@ public class ResumeController {
 	SharedMyResumeInfoDtoRepo smRepo; // 공유 레포지토리 의존성 주입
 
 	@Autowired
-	MailService mail;
+	MimeTypeMailService mail;
 
 	@Autowired
 	ChangeUsersResumeStatusService userStatusService;
@@ -211,7 +213,7 @@ public class ResumeController {
 
 	@PostMapping("/share/mail")
 	public String shareMyResumeByEmail(@RequestParam("to") String to, @RequestParam("what") String what,
-			HttpSession session) throws UnsupportedEncodingException {
+			HttpSession session) throws UnsupportedEncodingException, MessagingException {
 
 		SessionUserInfo sessionInfo = sessionExtractor.extractSessionUserInfo(session);
 		// 현재 접속되어있는 세션?
