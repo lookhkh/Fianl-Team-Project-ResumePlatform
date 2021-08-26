@@ -19,6 +19,8 @@ public class LoginInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
+		
+		System.out.println("세션 인터셉터 실행");
 
 		HttpSession session = request.getSession();
 		

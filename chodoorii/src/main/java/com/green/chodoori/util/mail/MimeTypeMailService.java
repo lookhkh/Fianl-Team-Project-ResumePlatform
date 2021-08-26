@@ -1,4 +1,4 @@
-package com.green.chodoori.temp;
+package com.green.chodoori.util.mail;
 
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
@@ -16,16 +16,14 @@ import org.springframework.stereotype.Service;
 
 import com.green.chodoori.main.domain.UserInfoRepo;
 import com.green.chodoori.main.repository.MainRepository;
-import com.green.chodoori.util.mail.MailAuthInfoDto;
-import com.green.chodoori.util.mail.MailService;
-import com.green.chodoori.util.mail.MailServiceType;
 
 import lombok.Data;
 
 @Service
 @Data
-public class MimeTypeMailService {
-    private final JavaMailSender mailSender;
+public class MimeTypeMailService implements MailServiceInterface  {
+   
+	private final JavaMailSender mailSender;
 	private final String FROM_ADDRESS = "lookhkh37@gmail.com";
 	private final HashMap<String, MailAuthInfoDto> store;
 	private final UserInfoRepo repo;
@@ -46,7 +44,7 @@ public class MimeTypeMailService {
         
     	String random = randomNumberGenerator();
 
-    	String content = contentMaker(MailServiceType.인증정보,random);
+    	String content = contentMaker(MailServiceType.인증정보.toString(),random);
 
 
     	((JavaMailSenderImpl) mailSender).setHost("smtp.gmail.com");
@@ -65,7 +63,7 @@ public class MimeTypeMailService {
     
 	   public void sendMailForIdLookUp(String address, String id) throws MessagingException {
 
-		   String content = contentMaker(MailServiceType.아이디찾기, id);
+		   String content = contentMaker(MailServiceType.아이디찾기.toString(), id);
 		   
 		 	((JavaMailSenderImpl) mailSender).setHost("smtp.gmail.com");
 	    	MimeMessage message = mailSender.createMimeMessage();
@@ -83,7 +81,7 @@ public class MimeTypeMailService {
 	   
 	   public void sendMailForPasswordLookUp(String address,String pw) throws MessagingException {
 		   
-		   String content = contentMaker(MailServiceType.비밀번호찾기,pw);
+		   String content = contentMaker(MailServiceType.비밀번호찾기.toString(),pw);
 
 		   ((JavaMailSenderImpl) mailSender).setHost("smtp.gmail.com");
 	    	MimeMessage message = mailSender.createMimeMessage();
@@ -106,7 +104,7 @@ public class MimeTypeMailService {
 		   
 		   userId = "<a href=http://localhost:8088/resume/share/mail/"+userId+">확인하기</a>";
 		   
-		   String content = contentMaker(MailServiceType.이력서공유하기, userId);
+		   String content = contentMaker(what, userId);
 	        
 		   
 		   ((JavaMailSenderImpl) mailSender).setHost("smtp.gmail.com");
@@ -115,13 +113,13 @@ public class MimeTypeMailService {
 	    	helper.setFrom(FROM_ADDRESS);
 	    	helper.setTo(to);
 	    	helper.setText(content, true);
-	    	helper.setSubject(MailServiceType.이력서공유하기.toString()+" "+what);
+	    	helper.setSubject(MailServiceType.이력서공유하기.toString());
 
 	    	mailSender.send(message);
 
 	   }
     
-    public String randomNumberGenerator() {
+    protected String randomNumberGenerator() {
     	Random rd = new Random();
     	String randomNum = "";
     	
@@ -132,7 +130,7 @@ public class MimeTypeMailService {
     	return randomNum;
     }
     
-    public String contentMaker(MailServiceType type, String data) {
+    protected String contentMaker(String type, String data) {
     	
     	return  "<!DOCTYPE html>\r\n" + 
     			"<html lang=\"kr\">\r\n" + 
@@ -196,7 +194,7 @@ public class MimeTypeMailService {
     			"    </div>\r\n" + 
     			"    <div class=\"mailcontent\">\r\n" + 
     			"        <div class=\"mailSend\">\r\n" + 
-    			"            <h1>"+type.toString()+"</h1>\r\n" + 
+    			"            <h1>"+type+"</h1>\r\n" + 
     			"            <div class=\"mailSendCodeBox\">\r\n" + 
     			"                <h1>"+data+"</h1>\r\n" + 
     			"            </div>\r\n" + 

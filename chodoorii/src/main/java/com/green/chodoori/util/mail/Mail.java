@@ -1,4 +1,4 @@
-package com.green.chodoori.temp;
+package com.green.chodoori.util.mail;
 
 import lombok.Data;
 

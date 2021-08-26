@@ -1,7 +1,5 @@
 package com.green.chodoori.main.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,8 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.green.chodoori.main.domain.UserInfoRepo;
 import com.green.chodoori.main.repository.MainRepository;
-import com.green.chodoori.temp.MimeTypeMailService;
 import com.green.chodoori.util.mail.MailAuthInfoDto;
+import com.green.chodoori.util.mail.MailServiceInterface;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -28,7 +26,7 @@ import lombok.extern.slf4j.Slf4j;
 public class EmailAuthController {
 	
 	@Autowired
-	MimeTypeMailService service;
+	MailServiceInterface service;
 	
 	@Autowired
 	UserInfoRepo repo;
