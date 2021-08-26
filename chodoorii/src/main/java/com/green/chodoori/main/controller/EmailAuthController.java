@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.green.chodoori.main.domain.UserInfoRepo;
 import com.green.chodoori.main.repository.MainRepository;
+import com.green.chodoori.temp.MimeTypeMailService;
 import com.green.chodoori.util.mail.MailAuthInfoDto;
-import com.green.chodoori.util.mail.MailService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -28,7 +28,7 @@ import lombok.extern.slf4j.Slf4j;
 public class EmailAuthController {
 	
 	@Autowired
-	MailService service;
+	MimeTypeMailService service;
 	
 	@Autowired
 	UserInfoRepo repo;
@@ -38,11 +38,11 @@ public class EmailAuthController {
 	MainRepository mainRepo;
 	
 	@PostMapping
-	public ResponseEntity<String> generateAuthNum(@RequestBody String email, HttpSession session){
+	public ResponseEntity<String> generateAuthNum(@RequestBody String email){
 		log.info(" 메일 서비스 호출");
 		
 		try {
-		service.mailSend(email, session);
+		service.mailSend(email);
 
 		
 		return new ResponseEntity<String>(HttpStatus.OK);
@@ -112,7 +112,7 @@ public class EmailAuthController {
 		}
 		
 		
-			service.sendMailForPasswordLookUp(email,id ,tempPw);
+			service.sendMailForPasswordLookUp(email, tempPw);
 			return ResponseEntity.ok("요청이 성공적으로 접수되었습니다");
 		}catch(Exception e) {
 			return ResponseEntity.internalServerError().body("요청에 실패하였습니다");
