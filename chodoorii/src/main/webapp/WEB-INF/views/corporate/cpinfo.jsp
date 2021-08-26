@@ -13,7 +13,7 @@
 
 
 
- <div class="list-wrap">
+ <div class="list-wrap" style="height:760px">
       <h2>회사 목록</h2>
        <div class="btn-list">
         <a href="/corporate/register">등록하기</a>
@@ -32,7 +32,7 @@
 	          </li>
 	         </c:forEach>
         </ul>
-        <ol class="paging">
+        <ol class="paging" style="position:absolute; top:830px; left:750px">
   
          <li><a href="/corporate/cpinfo?page=0"><<</a></li>
      
