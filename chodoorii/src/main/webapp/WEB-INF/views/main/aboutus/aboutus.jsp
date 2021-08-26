@@ -32,7 +32,8 @@
     .textbox:hover .desc {background-position: -100% 0;}
     .textbox:hover .thumb img {max-width:105%;}
     .textbox:hover .thumb:before {opacity:1;}
-    
+
+
     </style>
 </head>
 <body>
@@ -47,14 +48,14 @@
             <ul class="nav">
               <div class="dropdown">
                 <li><a class="target-a" href="">About Us</a></li>
-                <div class="dropdown-content">
-                  <a>MyResume란?</a>  
-                  <a>MyResume란?</a>
-                  <a>MyResume란?</a>  
-                  <a>MyResume란?</a>  
-  
+                         <div class="dropdown-content">
+                  <a href="/aboutus">AboutUs</a>              
+                  <a href="/aboutMyResumeForCorp">기업회원 이용방법</a>
+                  <a href="/aboutMyResumeForDev">일반회원 이용방법</a>  
                 </div>
               </div> 
+              
+              
 
               <div class="dropdown">
                 <li><a class="target-a" href="/corporate/cpinfo">기업홍보관</a></li>

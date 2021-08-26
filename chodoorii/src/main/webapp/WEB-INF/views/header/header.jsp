@@ -37,10 +37,9 @@
               <div class="dropdown">
                 <li><a class="target-a" href="">About Us</a></li>
                 <div class="dropdown-content">
-                  <a>MyResume란?</a>  
-                  <a>MyResume란?</a>
-                  <a>MyResume란?</a>  
-                  <a>MyResume란?</a>  
+                  <a href="/aboutus">AboutUs</a>              
+                  <a href="/aboutMyResumeForCorp">기업회원 이용방법</a>
+                  <a href="/aboutMyResumeForDev">일반회원 이용방법</a>  
   
                 </div>
               </div> 

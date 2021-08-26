@@ -79,10 +79,21 @@ public class IndexAndLoginController {
 		return "redirect:"+redirect;
 	}
 	
-	@GetMapping("/abouus")
+	@GetMapping("/aboutus")
 	public String getAboutUs() {
 		return "main/aboutus/aboutus";
 	}
 
+	@GetMapping("/aboutMyResumeForDev")
+	public String getAboutMyResumeForDev() {
+		return "main/aboutus/aboutMyResumeForDev";
+	}
+	
+	@GetMapping("/aboutMyResumeForCorp")
+	public String getAboutMyResumeForCorp() {
+		return "main/aboutus/aboutMyResumeForCorp";
+	}
+	
+	
 
 }
