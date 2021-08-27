@@ -53,35 +53,34 @@
           </div>
         </div>
         <div class="SI-btn">
-      <c:choose>
-         <c:when test="${userInfo.id eq null}">
-             <div class="signupAndLogin">
-            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                이력서보내기
-             </button>        
-          </div>    
-          </c:when>
-          <c:when test="${userInfo.id eq detail.userid.id}">
-             <div class="signupAndLogin">
-            <button type="button" onclick="location.href='/corporate/update/${detail.info_id}'">
-                수정하기
-             </button>        
-          </div>    
-          </c:when>
-          <c:when test="${userInfo.sort eq 1}">
-             <div class="signupAndLogin">
-          </div>    
-          </c:when>
-          <c:otherwise>
-        <div class="signupAndLogin">
-           <button type="button" data-bs-toggle="modal" data-bs-target="#shareModal" data-bs-whatever="@mdo">공유하기</button>
-
-            </div>        
-           </div> 
-    </c:otherwise>
-</c:choose>
-</div>
-     
+		      <c:choose>
+		         <c:when test="${userInfo.id eq null}">
+		             <div class="signupAndLogin">
+			            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+			                이력서보내기
+			             </button>        
+		             </div>    
+		          </c:when>
+		          
+		          <c:when test="${userInfo.id eq detail.userid.id}">
+		             <div class="signupAndLogin">
+			            <button type="button" onclick="location.href='/corporate/update/${detail.info_id}'">
+			                수정하기
+			             </button>        
+		          	</div>    
+		          </c:when>
+		          
+			          <c:when test="${userInfo.sort eq 1}">
+				      </c:when>
+			         
+		          <c:otherwise>
+		        		<div class="signupAndLogin">
+		           			<button type="button" data-bs-toggle="modal" data-bs-target="#shareModal" data-bs-whatever="@mdo">공유하기</button>
+		            	</div>        
+		    	</c:otherwise>
+			</c:choose>
+		</div>
+     </div>
 
  
 <jsp:include page="../header/footer.jsp"></jsp:include>
