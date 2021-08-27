@@ -59,28 +59,19 @@
 
     
 		
-         <div class="wrapper">
+     <div class="wrapper">
         <div class="row first">
-            <div class="content">
-              
-            
+            <div class="content">             
               <div class="ResuemeShare">
-                <img src="/publish/resume/Img/메일.JPG" alt="이메일로공유" onclick>
+                <img src="/publish/resume/Img/메일.JPG" alt="이메일로공유">
                 <p>이메일로 공유하기<br>
                   웹사이트링크 형태로 간단하게 이메일 보내기가 가능합니다.</p>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#shareModal" data-bs-whatever="@mdo">공유하기</button>
-<button type="button" class="btn btn-primary" onclick="history.go(-1)">목록으로</button>
-
-                  
-              </div>  
-              <div class="button">   
-             
-                	
-              </div>      
-            </div>
-            
-    </div>
-
+					<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#shareModal" data-bs-whatever="@mdo">공유하기</button>
+					<button type="button" class="btn btn-primary" onclick="history.go(-1)">목록으로</button>        
+              </div>            		                  
+            </div>      
+   		 </div>
+   		</div>
      
 
  
@@ -89,28 +80,32 @@
 <div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content" style="height : 500px">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">공유하기</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <form style="width:500px" method="post" action="/resume/share/mail">
-      <div class="  modal-body">
-            <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">받으시는 분 메일</label>
-            <input type="text" class="form-control" id="recipient-name" name="to">
-          </div>
-          <div class="mb-3">
-            <label for="message-text" class="col-form-label">소개</label>
-            <input class="form-control" id="message-text" name="what"></input>
-          </div>
-		
-          <div class="modal-footer" style="margin-top : 50px">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <input type="submit" class="btn btn-primary" value="Send message"/>
-          </div>
-      </div>
-      </form>
-     
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">공유하기</h5>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	  <form style="width:500px" method="post" action="/resume/share/mail">
+	         <div class="spinner-border" role="status" style="margin-top:100px; display:none;">
+	  			<span class="visually-hidden">Loading...</span>
+			</div>
+		      
+		    <div class="modal-body email">
+		         <div class="mb-3">
+		            <label for="recipient-name" class="col-form-label">받으시는 분 메일</label>
+		            <input type="text" class="form-control" id="recipient-name" name="to">
+		         </div>
+		          
+		         <div class="mb-3">
+		            <label for="message-text" class="col-form-label">소개</label>
+		            <input class="form-control" id="message-text" name="what"></input>
+		         </div>
+		         
+		          <div class="modal-footer" style="margin-top : 50px">
+		            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+		            <input type="submit" class="btn btn-primary" value="Send message"/>
+		          </div>
+		      </div>	         
+      	</form>
     </div>
   </div>
 </div>
@@ -118,20 +113,21 @@
  
 </body>
 </html>
+
 <script>
 	window.addEventListener('load',function(){
 		
-		const removeBtn = document.querySelector("input[value='삭제']");
-		removeBtn.onclick=()=>{
-			if(confirm("정말로 삭제하시겠습니까?")){
-				location.href="/resume/remove";
-				alert("성공적으로 삭제하였습니다")
-
-			}
-		}
+		const sendBtn = document.querySelector('input[type="submit"]');
+		const modalBody = document.querySelector(".modal-body.email");
+		const spinner = document.querySelector('.spinner-border');
 		
+		console.log(modalBody);
+		console.log(spinner);
 
-
+		sendBtn.addEventListener('click',()=>{
+			modalBody.style.display = 'none';
+			spinner.style.display = 'flex';
+		})
 	});
 </script>
 

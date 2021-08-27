@@ -210,28 +210,20 @@ public class ResumeController {
 	public String shareMyResumeByEmail(@RequestParam("to") String to, @RequestParam("what") String what,
 			HttpSession session) throws UnsupportedEncodingException, MessagingException {
 
-		System.out.println("이놈이 실행되면 안됨");
 		
 		SessionUserInfo sessionInfo = sessionExtractor.extractSessionUserInfo(session);
-		// 현재 접속되어있는 세션?
 
 		SharedMyResumeInfoDto myInfo = new SharedMyResumeInfoDto();
-		// 유저 정보 DTO
 
 		myInfo.setRegisterDate(new Date());
-		// 현재 시간을 새로 넣고
 		myInfo.setUserInfoDto(mainRepo.getById(sessionInfo.getId()));
-		// 유저 세션으로 id값을 불러와서
 		mail.sendMailForSharingMyResume(to, what, sessionInfo.getId());
-		// 잘 모르겠음
+
 
 		smRepo.save(myInfo);
-		// SharedMyResumeInfoDto 에 저장
 		return "redirect:/resume?share=on";
 
-		// 메일 보내기 기능 넣기.
 
-		// id값과 registerDate 생성
 	}
 
 	@GetMapping("/share/mail/{userId}")
