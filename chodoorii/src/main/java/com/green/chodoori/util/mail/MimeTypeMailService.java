@@ -33,7 +33,7 @@ public class MimeTypeMailService implements MailServiceInterface  {
 	public MimeTypeMailService(JavaMailSender mailSender,UserInfoRepo userInfo, MainRepository mainRepository) {
 		super();
 		this.mailSender = mailSender;
-		this.store = new HashMap();
+		this.store = new HashMap<String, MailAuthInfoDto>();
 		this.repo = userInfo;
 		this.mainRepo = mainRepository;
 	}
@@ -46,14 +46,13 @@ public class MimeTypeMailService implements MailServiceInterface  {
 
     	String content = contentMaker(MailServiceType.인증정보.toString(),random);
 
-
-    	((JavaMailSenderImpl) mailSender).setHost("smtp.gmail.com");
     	MimeMessage message = mailSender.createMimeMessage();
-    	MimeMessageHelper helper = new MimeMessageHelper(message, true);
-    	helper.setFrom(FROM_ADDRESS);
-    	helper.setTo(address);
-    	helper.setText(content, true);
-    	helper.setSubject(MailServiceType.인증정보.toString());
+
+    	MimeMessageHelper helper =  msgHelperCreator(message);
+    	
+    	mailSetter(address, content, helper, MailServiceType.인증정보);
+    	
+
         MailAuthInfoDto dto = new MailAuthInfoDto(random);
         store.put("auth", dto);
         
@@ -61,35 +60,37 @@ public class MimeTypeMailService implements MailServiceInterface  {
     	
     }
     
+
 	   public void sendMailForIdLookUp(String address, String id) throws MessagingException {
 
 		   String content = contentMaker(MailServiceType.아이디찾기.toString(), id);
 		   
 		 	((JavaMailSenderImpl) mailSender).setHost("smtp.gmail.com");
-	    	MimeMessage message = mailSender.createMimeMessage();
-	    	MimeMessageHelper helper = new MimeMessageHelper(message, true);
-	    	helper.setFrom(FROM_ADDRESS);
-	    	helper.setTo(address);
-	    	helper.setText(content, true);
-	    	helper.setSubject(MailServiceType.아이디찾기.toString());
+		 	MimeMessage message = mailSender.createMimeMessage();
+
+	    	MimeMessageHelper helper =  msgHelperCreator(message);
+	    	mailSetter(address, content, helper, MailServiceType.아이디찾기);
 	    	
 	    	System.out.println("실행");
 	    	
 	    	mailSender.send(message);
 	    	
 	   }
+
+
+
+
 	   
 	   public void sendMailForPasswordLookUp(String address,String pw) throws MessagingException {
 		   
 		   String content = contentMaker(MailServiceType.비밀번호찾기.toString(),pw);
 
 		   ((JavaMailSenderImpl) mailSender).setHost("smtp.gmail.com");
-	    	MimeMessage message = mailSender.createMimeMessage();
-	    	MimeMessageHelper helper = new MimeMessageHelper(message, true);
-	    	helper.setFrom(FROM_ADDRESS);
-	    	helper.setTo(address);
-	    	helper.setText(content, true);
-	    	helper.setSubject(MailServiceType.비밀번호찾기.toString());
+		   MimeMessage message = mailSender.createMimeMessage();
+
+	    	MimeMessageHelper helper =  msgHelperCreator(message);
+	    	
+	    	mailSetter(address, content, helper , MailServiceType.비밀번호찾기);
 
 	    	mailSender.send(message);
 	    	
@@ -108,18 +109,31 @@ public class MimeTypeMailService implements MailServiceInterface  {
 	        
 		   
 		   ((JavaMailSenderImpl) mailSender).setHost("smtp.gmail.com");
-	    	MimeMessage message = mailSender.createMimeMessage();
-	    	MimeMessageHelper helper = new MimeMessageHelper(message, true);
-	    	helper.setFrom(FROM_ADDRESS);
-	    	helper.setTo(to);
-	    	helper.setText(content, true);
-	    	helper.setSubject(MailServiceType.이력서공유하기.toString());
+		   MimeMessage message = mailSender.createMimeMessage();
+
+	    	MimeMessageHelper helper =  msgHelperCreator(message);
+	    	
+	    	mailSetter(to, content, helper, MailServiceType.이력서공유하기);
+
 
 	    	mailSender.send(message);
 
 	   }
+ 
+	private void mailSetter(String address, String content, MimeMessageHelper helper, MailServiceType type) throws MessagingException {
+		helper.setFrom(FROM_ADDRESS);
+		helper.setTo(address);
+		helper.setText(content, true);
+		helper.setSubject(subjectCreator(type));
+	}
+	
+    private MimeMessageHelper msgHelperCreator(MimeMessage message) throws MessagingException {
+    	((JavaMailSenderImpl) mailSender).setHost("smtp.gmail.com");
+    	return new MimeMessageHelper(message, true);
+    }
     
-    protected String randomNumberGenerator() {
+    
+	private String randomNumberGenerator() {
     	Random rd = new Random();
     	String randomNum = "";
     	
@@ -130,7 +144,7 @@ public class MimeTypeMailService implements MailServiceInterface  {
     	return randomNum;
     }
     
-    protected String contentMaker(String type, String data) {
+	private String contentMaker(String type, String data) {
     	
     	return  "<!DOCTYPE html>\r\n" + 
     			"<html lang=\"kr\">\r\n" + 
@@ -216,6 +230,10 @@ public class MimeTypeMailService implements MailServiceInterface  {
     			"</html>";
 
     	
+    }
+    
+	private String subjectCreator(MailServiceType type) {
+    	return "My Resume에서 당신을 위한 "+type.subname()+"가 도착했어요:)";
     }
 
 

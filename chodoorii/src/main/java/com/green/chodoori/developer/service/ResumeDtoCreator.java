@@ -67,6 +67,8 @@ public class ResumeDtoCreator {
 	
 	SkillSetDto skill = new SkillSetDto();
 	
+	
+	if(skil_set != null) {
 	if(skil_set.length>=1&&skil_set[0]!=null) {
 		skill.setSkill_set_first(skil_set[0]);
 	}
@@ -90,6 +92,7 @@ public class ResumeDtoCreator {
 	}
 	if(skil_set.length>=8&&skil_set[7]!=null) {
 		skill.setSkill_set_eieth(skil_set[7]);
+	}
 	}
 	
 	
