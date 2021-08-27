@@ -2,7 +2,6 @@ package com.green.chodoori.util.mail;
 
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
-import java.util.Random;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -13,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
@@ -21,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 //@Service
-public class MailService {
+public class MailService implements MailServiceInterface {
 	
 	   @Autowired
 	   private JavaMailSender mailSender;
@@ -50,7 +48,7 @@ public class MailService {
 	   	}
 	   
 	   
-	    public void mailSend(String address, HttpSession session) throws MessagingException {
+	    public void mailSend(String address) throws MessagingException {
 	    	MimeMessage message = mailSender.createMimeMessage();
 	    	MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
@@ -209,6 +207,19 @@ public class MailService {
 
 
 	   }
+
+
+
+
+
+
+
+
+	@Override
+	public void sendMailForPasswordLookUp(String address, String pw) throws MessagingException {
+		// TODO Auto-generated method stub
+		
+	}
 	   
 	    
 

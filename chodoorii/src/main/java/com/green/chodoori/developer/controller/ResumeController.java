@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.green.chodoori.developer.domain.ResumeDto;
-import com.green.chodoori.developer.domain.ResumeDtoRepo;
 import com.green.chodoori.developer.domain.SharedMyResumeInfoDto;
 import com.green.chodoori.developer.domain.SharedMyResumeInfoDtoRepo;
 import com.green.chodoori.developer.repository.ResumeRepository;
@@ -31,12 +30,10 @@ import com.green.chodoori.developer.service.ChangeUsersResumeStatusService;
 import com.green.chodoori.developer.service.ResumeDtoCreator;
 import com.green.chodoori.error.ResumeNotFoundError;
 import com.green.chodoori.main.domain.UserInfoDto;
-import com.green.chodoori.main.domain.UserInfoRepo;
 import com.green.chodoori.main.repository.MainRepository;
 import com.green.chodoori.main.service.ExtractSessionInfoService;
 import com.green.chodoori.main.web.domain.SessionUserInfo;
-import com.green.chodoori.temp.MimeTypeMailService;
-import com.green.chodoori.util.mail.MailService;
+import com.green.chodoori.util.mail.MailServiceInterface;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -47,8 +44,6 @@ public class ResumeController {
 
 	@Autowired
 	ResumeDtoCreator resumeCreator;
-	
-	
 	
 	@Autowired
 	ExtractSessionInfoService sessionExtractor;
@@ -64,7 +59,7 @@ public class ResumeController {
 	SharedMyResumeInfoDtoRepo smRepo; // 공유 레포지토리 의존성 주입
 
 	@Autowired
-	MimeTypeMailService mail;
+	MailServiceInterface mail;
 
 	@Autowired
 	ChangeUsersResumeStatusService userStatusService;
@@ -215,6 +210,8 @@ public class ResumeController {
 	public String shareMyResumeByEmail(@RequestParam("to") String to, @RequestParam("what") String what,
 			HttpSession session) throws UnsupportedEncodingException, MessagingException {
 
+		System.out.println("이놈이 실행되면 안됨");
+		
 		SessionUserInfo sessionInfo = sessionExtractor.extractSessionUserInfo(session);
 		// 현재 접속되어있는 세션?
 
@@ -238,13 +235,12 @@ public class ResumeController {
 	}
 
 	@GetMapping("/share/mail/{userId}")
-	public String displayMyResumeByEmail(@PathVariable String userId, Model model) throws UnsupportedEncodingException {
-		// 불러온 유저 아이디를 consol창을 통해 확인
+	public String displayMyResumeByEmail(@PathVariable String userId, Model model) {
 
+		System.out.println("실행되어야 함");
+		
 		ResumeDto myInfo = resumeRepo.findByIdForResume(userId).get();
-		// 테스트용 아이디를 불러옴
 		String templateKind = "/resume/template/templateSample" + myInfo.getTemplate_kind();
-		// 내 이력서를 저장한 템플릿 종류를 가져옴
 		model.addAttribute("resume", myInfo);
 
 		return templateKind;
