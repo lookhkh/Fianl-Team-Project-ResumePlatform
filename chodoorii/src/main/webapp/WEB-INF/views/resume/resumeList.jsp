@@ -21,7 +21,7 @@
     </style>
 <body>
 
-
+	<input id="director" type="hidden" value="${director}">
 
     
 		
@@ -65,6 +65,30 @@
 
 			}
 		}
+		
+		window.onpopstate = function(event) { 
+
+			history.back(); 
+			console.log('뒤로가기 체크'); };
+
+
+		
+		const director = document.querySelector('#director').value
+	
+			if(director === "register"){
+				alert("등록이 완료되었습니다");
+			}else if(director === "share"){
+				alert("이력서 공유를 완료하였습니다")
+			}else if(director=== "edit"){
+				alert("이력서 수정을 완료하였습니다");
+			}
+		    
+		
+	
+		
+
+
+	    
 		
 
 

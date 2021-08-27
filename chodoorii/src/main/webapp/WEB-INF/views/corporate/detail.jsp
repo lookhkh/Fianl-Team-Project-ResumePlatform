@@ -13,8 +13,7 @@
       <div class="Summary">
         <div class="content">
           <dl>
-          <h1>${userInfo.id}</h1>
-          <h1>${detail.userid.id}</h1>
+ 
             <h1><Strong>${detail.companayName}</Strong></h1>
           </dl>
           <dl>
@@ -44,7 +43,7 @@
         </div>
         <div class="SI">
           <div class="content">
-          <dl>
+          <dl style="position : absolute; top : 660px; left : 205px">
             <dt>Summary</dt>
             <dd>
                ${detail.summary}

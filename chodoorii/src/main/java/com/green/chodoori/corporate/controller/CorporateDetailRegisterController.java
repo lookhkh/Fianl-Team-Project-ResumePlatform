@@ -49,6 +49,7 @@ public class CorporateDetailRegisterController {
 		
 		
 		if(user.getCheck()==0) {
+			model.addAttribute("director","duplicate");
 			return "redirect:/corporate/cpinfo?error=duplicate";
 		}
 		
@@ -131,8 +132,9 @@ public class CorporateDetailRegisterController {
 	}
 	
 		@GetMapping("/update/{cid}") 
-		public String getUpdatePageForCorporate(@PathVariable Long cid,Model model) {
+		public String getUpdatePageForCorporate(@PathVariable Long cid,Model model, HttpSession session) {
 			Optional<CorporateDetailDto> dto = corpRepo.findByIdForCorporate(cid);
+			
 			
 			model.addAttribute("user", dto.get());
 

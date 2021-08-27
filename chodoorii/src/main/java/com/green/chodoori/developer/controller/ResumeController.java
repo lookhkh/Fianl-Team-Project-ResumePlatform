@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.green.chodoori.developer.domain.ResumeDto;
 import com.green.chodoori.developer.domain.SharedMyResumeInfoDto;
@@ -186,13 +187,13 @@ public class ResumeController {
 	}
 	
 	@GetMapping("/edit/form/confirm")
-	public String confirmResume(HttpSession session) {
-		
+	public String confirmResume(HttpSession session,RedirectAttributes rttr) {
+		rttr.addFlashAttribute("director", "edit");
 		userStatusService.changeStatus(1, session);
 		
 		userStatusService.changeStatus(0, session);
 	
-		return "redirect:/resume?register=on";
+		return "redirect:/resume";
 	}
 	
 	
@@ -208,7 +209,7 @@ public class ResumeController {
 
 	@PostMapping("/share/mail")
 	public String shareMyResumeByEmail(@RequestParam("to") String to, @RequestParam("what") String what,
-			HttpSession session) throws UnsupportedEncodingException, MessagingException {
+			HttpSession session, RedirectAttributes rttr) throws UnsupportedEncodingException, MessagingException {
 
 		
 		SessionUserInfo sessionInfo = sessionExtractor.extractSessionUserInfo(session);
@@ -219,9 +220,10 @@ public class ResumeController {
 		myInfo.setUserInfoDto(mainRepo.getById(sessionInfo.getId()));
 		mail.sendMailForSharingMyResume(to, what, sessionInfo.getId());
 
+		rttr.addFlashAttribute("director", "share");
 
 		smRepo.save(myInfo);
-		return "redirect:/resume?share=on";
+		return "redirect:/resume";
 
 
 	}
