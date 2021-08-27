@@ -11,13 +11,19 @@
 
 <body>
 
+	<input id="director" type="hidden" value="${director}">
 
 
  <div class="list-wrap" style="height:760px">
       <h2>회사 목록</h2>
-       <div class="btn-list">
-        <a href="/corporate/register">등록하기</a>
+     <c:if test="${userInfo != null&&userInfo.sort==1}">
+       <div class="btn-list">      
+        	<c:if test="${userInfo.check==1}"><a href="/corporate/register">등록하기</a></c:if>
+            <c:if test="${userInfo.check==0}"><a href="/corporate/register">수정하기</a></c:if>        
+        	        
       </div>
+     </c:if>
+      
         <ul>  
         	<c:forEach var="item" items="${pageable.getContent()}">
 	          <li class="photo">
@@ -57,5 +63,4 @@
  
 </body>
 </html>
-
 

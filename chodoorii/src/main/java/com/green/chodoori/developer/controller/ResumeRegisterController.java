@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.green.chodoori.developer.domain.ResumeDto;
 import com.green.chodoori.developer.repository.ResumeRepository;
@@ -115,11 +116,13 @@ public class ResumeRegisterController {
 	}
 	
 	@GetMapping("/form/confirm")
-	public String confirmResume(HttpSession session) {
+	public String confirmResume(HttpSession session, RedirectAttributes rttr) {
+		
+		rttr.addFlashAttribute("director","register");
 		
 		userStatusService.changeStatus(0, session);
 	
-		return "redirect:/resume?register=on";
+		return "redirect:/resume";
 	}
 	
 	
