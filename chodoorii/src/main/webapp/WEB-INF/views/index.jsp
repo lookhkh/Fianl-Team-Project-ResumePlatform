@@ -13,10 +13,10 @@
 
 	
 
-    <div class="wrapper">
+    <div class="wrapper" style="height : 670px">
 
 
-        <div class="row second">
+        <div class="row second" style="border-style:none; padding:0px">
             <div class="content">
               <div class="section">
                 <input type="radio" name="slide" id="slide01" checked>
@@ -114,29 +114,21 @@
             </div>
 
     </div>
-           <div class="row first">
-            <div class="content">
-                <h1 style="font-weight: 700;">당신의 처음을 응원합니다.</h1>
-                <span>지금 시작하세요</span>
-                  <c:choose>
-	   						 <c:when test="${userInfo.id eq null}">
-	                          	<button type="button" class="signup btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-	                            	시작하기
-	                        	</button>
-	                        </c:when>
-                        <c:otherwise>
-                        
-                        </c:otherwise>
-                       </c:choose>
-            </div>
-        </div>
+           
     
 	
 
         <!--공통 Footer-->
 
  
-<jsp:include page="./header/footer.jsp"></jsp:include>
+    <footer style="margin-top : 0px">
+        <span>프로젝트 깃허브 주소 : <a href="https://github.com/lookhkh/project">깃허브</a> </span>
+        <div class="contributor">
+            <span>제작자 : 이홍섭   이미숙   조현일</span>
+        </div>
+    </footer>
+
+        <!--공통 Footer-->
 
  
 </body>
