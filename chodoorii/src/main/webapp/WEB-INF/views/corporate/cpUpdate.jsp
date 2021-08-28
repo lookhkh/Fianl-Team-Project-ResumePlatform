@@ -10,7 +10,7 @@
 <body>
 
 
- <div class="wrapper">
+ <div class="wrapper" style="height:700px; margin-top : 30px">
         <div class="introduce" style="text-align: center;">
             <form action="/corporate/update/${user.info_id}" method="POST">
                 <h3>${user.userid.name}</h3><br>
@@ -42,7 +42,8 @@
               <input type="submit" class="btn btn-primary" value="등록하기"/>
             </form>
         </div>
-		
+	</div>	
+    
     
      
 
@@ -52,6 +53,24 @@
  
 </body>
 </html>
+<script>
+window.addEventListener('load',()=>{
+
+  const amoutinput = document.querySelector('input[name="staffNumber"]');
+  amoutinput.addEventListener('input',(e)=>{
+    if(e.data.charCodeAt(0)>=48 && e.data.charCodeAt(0)<=57){
+
+    }else{
+      alert("숫자만 입력해주세요");
+      amoutinput.value="";
+    }
+    
+  })
+
+})
+
+</script>
+
 
 
 

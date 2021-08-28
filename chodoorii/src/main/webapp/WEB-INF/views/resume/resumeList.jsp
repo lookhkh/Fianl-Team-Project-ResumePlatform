@@ -44,6 +44,7 @@
                   </div>     
         </div>
     </div>
+    </div>
 
 
      
@@ -62,17 +63,9 @@
 			if(confirm("정말로 삭제하시겠습니까?")){
 				location.href="/resume/remove";
 				alert("성공적으로 삭제하였습니다")
-
 			}
 		}
-		
-		window.onpopstate = function(event) { 
-
-			history.back(); 
-			console.log('뒤로가기 체크'); };
-
-
-		
+				
 		const director = document.querySelector('#director').value
 	
 			if(director === "register"){
@@ -82,16 +75,6 @@
 			}else if(director=== "edit"){
 				alert("이력서 수정을 완료하였습니다");
 			}
-		    
-		
-	
-		
-
-
-	    
-		
-
-
 	});
 </script>
 
