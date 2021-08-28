@@ -19,7 +19,6 @@
      <c:if test="${userInfo != null&&userInfo.sort==1}">
        <div class="btn-list">      
         	<c:if test="${userInfo.check==1}"><a href="/corporate/register">등록하기</a></c:if>
-            <c:if test="${userInfo.check==0}"><a href="/corporate/register">수정하기</a></c:if>        
         	        
       </div>
      </c:if>
