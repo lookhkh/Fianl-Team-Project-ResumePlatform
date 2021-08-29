@@ -66,7 +66,10 @@
 			}
 		}
 				
-		const director = document.querySelector('#director').value
+		if(history.state !== null){
+			return;
+		}
+		const director = document.querySelector('#director').value;
 	
 			if(director === "register"){
 				alert("등록이 완료되었습니다");
@@ -75,6 +78,8 @@
 			}else if(director=== "edit"){
 				alert("이력서 수정을 완료하였습니다");
 			}
+			
+		history.replaceState({},null,null);
 	});
 </script>
 

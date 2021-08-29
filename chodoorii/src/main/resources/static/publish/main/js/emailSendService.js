@@ -48,10 +48,7 @@ window.addEventListener('load',function(){
             }
         }
 
-        xhr.ontimeout=()=>{
-            alert("서버의 이상으로 인하여 요청에 실패하였습니다");
-        }
-
+    
     }
 
     const emailAuthCheckBtn = document.querySelector('.emailAuthCheck');
