@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.green.chodoori.error.PasswordIsNotSameError;
 import com.green.chodoori.error.RequestedUserNotFound;
+import com.green.chodoori.main.domain.AlramDto;
+import com.green.chodoori.main.domain.AlramDtoRepo;
 import com.green.chodoori.main.domain.UserInfoDto;
 import com.green.chodoori.main.domain.UserInfoRepo;
 import com.green.chodoori.main.repository.MainRepository;
@@ -23,6 +25,8 @@ public class LoginService {
 	@Autowired
 	UserInfoRepo repo;
 	
+	@Autowired
+	AlramDtoRepo Alramrepo;
 	public boolean userInfoMationCheck(LoginForm form) {
 		Optional<UserInfoDto> check = mainRepo.findById(form.getId());
 		

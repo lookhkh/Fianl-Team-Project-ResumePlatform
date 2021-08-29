@@ -13,16 +13,7 @@
 		<div class="resueme">
 			<c:forEach var="dto" items="${dto.getContent()}">
 				<div class="one">
-					<c:choose>
-						<c:when test="${empty dto.user.imgPath}">
-						<!-- style="height: 130px;"width="130px" -->
-							<img src="#">
-						</c:when>
-						<c:otherwise>
-							<img src="${dto.user.imgPath}" style="height: 130px;"
-								width="130px">
-						</c:otherwise>
-					</c:choose>
+					<img src="${dto.user.imgPath}" style="height: 130px;" width="130px">
 					<div class="info">
 						<span style="font-size: 20px;">${dto.user.name}</span><br>
 						<h3>${dto.intro_dto.introduction_header}</h3>
@@ -35,16 +26,22 @@
 			</c:forEach>
 		</div>
 		<ol class="paging">
-			
-			<li><a href="/resume/lists?page=0"><<</a></li>
-			<c:if test="${dto.hasPrevious()}"><li><a href="#"><</a></li></c:if>
-			
-			  <c:forEach var="i" begin="1" end="${dto.getTotalPages()}">
 
-     	      	<li><a class="${(i-1)==dto.getPageable().getPageNumber()?'selected':''}" href="/resume/lists?page=${i-1}">${i}</a></li>
-	     
-    		 </c:forEach>
-			<c:if test="${dto.hasNext()}"><li><a href="#">></a></li></c:if>
+			<li><a href="/resume/lists?page=0"><<</a></li>
+			<c:if test="${dto.hasPrevious()}">
+				<li><a href="#"><</a></li>
+			</c:if>
+
+			<c:forEach var="i" begin="1" end="${dto.getTotalPages()}">
+
+				<li><a
+					class="${(i-1)==dto.getPageable().getPageNumber()?'selected':''}"
+					href="/resume/lists?page=${i-1}">${i}</a></li>
+
+			</c:forEach>
+			<c:if test="${dto.hasNext()}">
+				<li><a href="#">></a></li>
+			</c:if>
 			<li><a href="/corporate/resume?page='${dto.getTotalPages()}'">>></a></li>
 		</ol>
 	</div>

@@ -1,106 +1,104 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
-
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <title>Hello WebSocket</title>
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/main.css" rel="stylesheet">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
 </head>
 <body>
-	<th:block th:replace="~{/layout/basic :: setContent(~{this :: content})}">
-		<th:block th:fragment="content">
-		
-		<div class="container">
-			<div class="col-6">
-				<label><b>채팅방</b></label>
-			</div>
-		</div>
-			<div id="msgArea" class="col"></div>
-			<div class="col-6">
-				<div class="input-group mb-3">
-					<input type="text" id="msg" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
-					<div class="input-group-append">
-						<button class="btn btn-outline-secondary" type="button" id="button-send">전송</button>
-					</div>
-				</div>
-			</div>
-		</th:block>
-	</th:block>
+<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
+    enabled. Please enable
+    Javascript and reload this page!</h2></noscript>
+<div id="main-content" class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="connect">WebSocket connection:</label>
+                    <button id="connect" class="btn btn-default" type="submit">Connect</button>
+                    <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="name">What is your name?</label>
+                    <input type="text" id="name" class="form-control" placeholder="Your name here...">
+                </div>
+                <button id="send" class="btn btn-default" type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table id="conversation" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Greetings</th>
+                </tr>
+                </thead>
+                <tbody id="greetings">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 </body>
 </html>
-<script th:inline="javascript">
+<script>
+var stompClient = null;
 
-	$(document).ready(function(){
+function setConnected(connected) {
+    $("#connect").prop("disabled", connected);
+    $("#disconnect").prop("disabled", !connected);
+    if (connected) {
+        $("#conversation").show();
+    }
+    else {
+        $("#conversation").hide();
+    }
+    $("#greetings").html("");
+}
 
-		const username = [[${userInfo.id}]];
+function connect() {
+    var socket = new SockJS('/chat');
+    stompClient = Stomp.over(socket);
+    stompClient.connect({}, function (frame) {
+        setConnected(true);
+        console.log('Connected: ' + frame);
+        stompClient.subscribe('/topic/greetings', function (greeting) {
+            showGreeting(JSON.parse(greeting.body).content);
+        });
+    });
+}
 
-		$("#disconn").on("click",(e) =>{
-			disconnect();
-		})
-		$("#button-send").on("click", (e) =>{
-			send();
-		})
+function disconnect() {
+    if (stompClient !== null) {
+        stompClient.disconnect();
+    }
+    setConnected(false);
+    console.log("Disconnected");
+}
 
-		const websocket = new WebSocket("ws://localhost:8088/ws/chat");
+function sendName() {
+    stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#name").val()}));
+}
 
-		websocket.onmessage = onMessage;
-		websocket.onopen = onOpen;
-		websocket.onclose = onClose;
+function showGreeting(message) {
+    $("#greetings").append("<tr><td>" + message + "</td></tr>");
+}
 
-		function send(){
-			let msg = document.getElementById("msg");
-
-			console.log(username + ":" +msg.value);
-			websocket.send(username + ":" +msg.value);
-			msg.value = '';
-		}
-		//채팅창 입장
-		function onOpen(evt){
-			var str = username +" : 님이 입장하셨습니다."
-			websocket.send(str);
-		}
-		//채팅창 퇴장
-		function onClose(evt){
-			var str = username + " : 님이 퇴장하셨습니다.";
-			websocket.send(str);
-		}
-		//
-		function onMessage(msg){
-			var data = msg.data;
-			var sessionId = null;
-			//데이터를 보낸 사람
-			var message = null;
-			var arr = data.split(" : ");
-
-			for(var i=0;i<arr.length;i++){
-				console.log('arr['+i+'[:' + arr[i]);
-			}	
-			var cur_session = username;
-			//현재 세션에 로그인 한 사람
-			console.log("cur_session : " + cur_session);
-			sessionId = arr[0];
-			message = arr[1];
-
-			console.log("sessionID : "+sessionId);
-			console.log("cur_session : "+cur_session);
-
-			//로그인 한 클라이언트와 타 클라이언트를 분류하기 위함
-			if(sessionId == cur_session){
-				var str = "<div class='col-6'>";
-				str += "<div class='alert alert-secondary'>";
-				str += "<b>" + sessionId + " : " + message + "</b>";
-				str += "</div></div>";
-				$("#msgArea").append(str);
-			}else{
-				var str = "<div class='col-6'>";
-				str += "<div class='alert alert-warning'>";
-				str += "<b>" + sessionId + " : " + message + "</b>";
-				str += "</div></div>";
-				$("#msgArea").append(str);
-			}
-		}
-	})
+$(function () {
+    $("form").on('submit', function (e) {
+        e.preventDefault();
+    });
+    $( "#connect" ).click(function() { connect(); });
+    $( "#disconnect" ).click(function() { disconnect(); });
+    $( "#send" ).click(function() { sendName(); });
+});
 </script>

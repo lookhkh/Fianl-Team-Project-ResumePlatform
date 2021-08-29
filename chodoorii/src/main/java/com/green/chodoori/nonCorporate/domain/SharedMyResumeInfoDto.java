@@ -38,5 +38,5 @@ public class SharedMyResumeInfoDto {
 	@Temporal(TemporalType.DATE)
 	Date registerDate;
 	
-	
+
 }
