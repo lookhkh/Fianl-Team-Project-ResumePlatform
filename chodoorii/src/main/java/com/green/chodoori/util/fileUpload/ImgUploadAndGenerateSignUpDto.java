@@ -35,7 +35,6 @@ public class ImgUploadAndGenerateSignUpDto {
 		
 		fileVo.transferTo(file);
 		
-			
 		return "/img/"+convertedItemName;
 		
 	}
@@ -43,7 +42,5 @@ public class ImgUploadAndGenerateSignUpDto {
 	public String getPath() {
 		return this.path;
 	}
-	
-	
 	
 }

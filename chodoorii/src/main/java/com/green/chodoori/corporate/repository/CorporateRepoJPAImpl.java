@@ -9,9 +9,11 @@ import org.springframework.stereotype.Repository;
 
 import com.green.chodoori.corporate.domain.CorporateDetailDto;
 import com.green.chodoori.corporate.domain.CorporateDetailDtoRepo;
+import com.green.chodoori.developer.domain.ResumeDto;
+import com.green.chodoori.developer.domain.ResumeDtoRepo;
+import com.green.chodoori.main.domain.IndividualSginUpMetadataFormVo;
+import com.green.chodoori.main.domain.IndividualSginUpMetadataFormVoRepo;
 import com.green.chodoori.main.domain.UserInfoRepo;
-import com.green.chodoori.nonCorporate.domain.ResumeDto;
-import com.green.chodoori.nonCorporate.domain.ResumeDtoRepo;
 
 @Repository
 public class CorporateRepoJPAImpl implements CorporateRepo {
@@ -24,6 +26,9 @@ public class CorporateRepoJPAImpl implements CorporateRepo {
 	
 	@Autowired
 	CorporateDetailDtoRepo corpRepo;
+	
+	@Autowired
+	IndividualSginUpMetadataFormVoRepo individualRepo;
 	
 	public Page<ResumeDto> findByDisclosurestatus(Integer disclosureStatus, Pageable pageable){
 		return repo.findByDisclosurestatus(disclosureStatus, pageable);
@@ -59,5 +64,9 @@ public class CorporateRepoJPAImpl implements CorporateRepo {
 
 		
 	}
-
+	@Override
+	public IndividualSginUpMetadataFormVo findUserMetadataById(String userId) {
+		
+		return individualRepo.findById(userId).get();
+	}
 }

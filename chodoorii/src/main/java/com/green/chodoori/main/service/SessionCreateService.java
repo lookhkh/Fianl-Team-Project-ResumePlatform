@@ -24,12 +24,15 @@ public class SessionCreateService {
 	AlramDtoRepo repo;
 	
 	public void sessionCreate(String userId, HttpServletRequest req) {
+		
 		HttpSession session = req.getSession();
 		
 		session.setMaxInactiveInterval(60*30);
 		//세션 생성 및, 세션에 로그인 정보 삽입.
 		
-		log.info("{}가 로그인 시도에 성공함.",userId);		
+		log.info("{}가 로그인 시도에 성공함.",userId);
+		
+		
 
 		SessionUserInfo sessionDto = service.createSessionUserInfoDto(userId);
 		
@@ -39,8 +42,6 @@ public class SessionCreateService {
 		
 		List<AlramDto> dto = repo.findByTowhom(userId);
 		
-		session.setAttribute("dto", dto);
-		
-		
+		session.setAttribute("Aldto", dto);
 	}
 }
