@@ -147,7 +147,7 @@ public class CorporateDetailRegisterController {
 			
 			if(error.hasErrors()) {
 				model.addAttribute("error",error);
-				return "redirect: /corporate/cpUpdate";
+				return "/corporate/cpUpdate";
 
 			}
 			
@@ -165,7 +165,7 @@ public class CorporateDetailRegisterController {
 				
 				corpRepo.update(update);
 			
-
+				
 			
 			return "redirect:/corporate/cpinfo?edit=on";
 		}

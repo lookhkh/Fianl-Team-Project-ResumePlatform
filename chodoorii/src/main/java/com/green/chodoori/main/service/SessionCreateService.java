@@ -1,11 +1,15 @@
 package com.green.chodoori.main.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.green.chodoori.main.domain.AlramDto;
+import com.green.chodoori.main.domain.AlramDtoRepo;
 import com.green.chodoori.main.web.domain.SessionUserInfo;
 
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +20,8 @@ public class SessionCreateService {
 	@Autowired
 	LoginService service;
 	
+	@Autowired
+	AlramDtoRepo repo;
 	
 	public void sessionCreate(String userId, HttpServletRequest req) {
 		
@@ -33,5 +39,9 @@ public class SessionCreateService {
 		session.setAttribute("userInfo", sessionDto);
 		
 		log.info("session 생성 완료 // 세션 아이디 : {}",session.getId());
+		
+		List<AlramDto> dto = repo.findByTowhom(userId);
+		
+		session.setAttribute("Aldto", dto);
 	}
 }

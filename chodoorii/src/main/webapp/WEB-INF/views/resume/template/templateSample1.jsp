@@ -189,32 +189,31 @@
 
                     <div class="portfolios">
                         <div class="portfolio-description" style="display: flex; flex-direction: column; align-items: center;">
-                            <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_first_img}" alt="" width="400px" height="300px">
             				<a href="${resume.portfolio_first_github}" target=_blank>
-           					 <p class="PORTFOLIO_FIRST_GITHUB">깃허브</p></a>
+           					 <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_first_img}" alt="" width="400px" height="300px"></a>
            					 <p>${resume.portfolio_first_name }</p>
         					   <p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_first_desc}</p>
-           				</div>
+           				</div>     				
                     </div>
 
                     <div class="portfolios">
                         <div class="portfolio-description" style="display: flex; flex-direction: column; align-items: center;">
-                            <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_first_img}" alt="" width="400px" height="300px">
-            				<a href="${resume.portfolio_first_github}" target=_blank>
-           					 <p class="PORTFOLIO_FIRST_GITHUB">깃허브</p></a>
+                            
+            				<a href="${resume.portfolio_second_github}" target=_blank>
+           					 
+           					 </a>
            					 <p>${resume.portfolio_first_name }</p>
-        					   <p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_first_desc}</p>
+        					   <p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_second_desc}</p>
            				</div>
                     </div>
 
 
                     <div class="portfolios">
                         <div class="portfolio-description" style="display: flex; flex-direction: column; align-items: center;">
-                            <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_first_img}" alt="" width="400px" height="300px">
             				<a href="${resume.portfolio_first_github}" target=_blank>
-           					 <p class="PORTFOLIO_FIRST_GITHUB">깃허브</p></a>
+           					 <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_third_img}" alt="" width="400px" height="300px"></a>
            					 <p>${resume.portfolio_first_name }</p>
-        					   <p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_first_desc}</p>
+        					   <p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_third_desc}</p>
            				</div>
                     </div>
 

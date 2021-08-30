@@ -2,6 +2,7 @@
 	<jsp:include page="./templateHeader.jsp"></jsp:include>
 
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
     
     <style>
 
@@ -154,19 +155,19 @@
       
     }
      .tmilist #tmi1:hover:before {    
-      content: "${resume.user.name}";
+      content: "${user.name}";
     }
     .tmilist #tmi2:hover:before {
-      content: '${resume.user.contact_num}';
+      content: '${user.contact_num}';
     }
     .tmilist #tmi3:hover:before {
-      content: '${resume.user.email}';
+      content: '${user.email}';
     }
     .tmilist #tmi4:hover:before {
-      content: '${resume.user.birth}';
+      content: '${user.birth}';
     }
     .tmilist #tmi5:hover:before {
-      content: '${resume.user.city}';
+      content: '${user.city}';
     }
 
 
@@ -193,7 +194,13 @@
     }
 
     /* resumeTemBox6 */
-
+    #resumeTemBox6 {
+   	
+      height: 100%;
+          display : flex;
+      justify-content: center;
+            padding : 20px;
+    }
    
     .imglist {
       text-align: center;
@@ -264,18 +271,18 @@
           <div class="PORTFOLIO">
             <c:if test="${!empty resume.portfolio_first_name&&resume.portfolio_first_name ne null}">
           <div class="PORTFOLIO">
-            <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_first_img}" alt="" width="400px" height="300px">
             <a href="${resume.portfolio_first_github}" target=_blank>
-            <p class="PORTFOLIO_FIRST_GITHUB">깃허브</p></a>
+            <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_first_img}" alt="" width="400px" height="300px">
+            </a>
 			<p>${resume.portfolio_first_name }</p>
            <p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_first_desc}</p>
           </div>
         </c:if>
 		<c:if test="${!empty resume.portfolio_second_name&&resume.portfolio_second_name ne null}">
           <div class="PORTFOLIO">
-            <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_second_img}" alt="" width="400px" height="300px">
             <a href="${resume.portfolio_second_github}" target=_blank>
-            <p class="PORTFOLIO_FIRST_GITHUB">깃허브</p></a>
+            <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_second_img}" alt="" width="400px" height="300px">
+            </a>
 			<p>${resume.portfolio_second_name }</p>
            <p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_second_desc}</p>
           </div>
@@ -283,7 +290,8 @@
 		<c:if test="${!empty resume.portfolio_third_name&&resume.portfolio_third_name ne null}">
           <div class="PORTFOLIO">
             <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_third_img}" alt="" width="400px" height="300px">
-            <a href="${resume.portfolio_third_github}" target=_blank><p class="PORTFOLIO_FIRST_GITHUB">깃허브</p></a>
+            <a href="${resume.portfolio_third_github}" target=_blank><img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_third_img}" alt="" width="400px" height="300px">
+            </a>
 			<p>${resume.portfolio_third_name }</p>
            <p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_third_desc}</p>
           </div>
@@ -294,20 +302,14 @@
 
       
       <!--ë©ì¸ 5íì´ì§-->
-      <div id="resumeTemBox6">
-    
-        <div class="imglist">
-          <a href="${resume.sns_dto.blog_address}">
-            <img src="/publish/resume/img/블로그.png" alt="">
-          </a>
-          <a href="${resume.sns_dto.instagram_address}">
-            <img src="/publish/resume/img/인스타.png" alt="">
-          </a>
-          <a href="${resume.sns_dto.facebook_address}">
-            <img src="/publish/resume/img/페이스북ㄴ.JPG" alt="">
-          </a>
-        </div>
+  <div id="resumeTemBox6" style="position:relative">
+                        <c:if test="${fn:length(resume.sns_dto.blog_address)>1}"><img src="/publish/resume/img/블로그.png" alt="" onclick = "location.href='${resume.sns_dto.blog_address}'" width="90px" height = "90px"></c:if>
+             <c:if test="${fn:length(resume.sns_dto.instagram_address)>1}"><img src="/publish/resume/img/insta.png" alt="" onclick = "location.href='${resume.sns_dto.instagram_address}'" width="90px" height = "90px"></c:if>
+             <c:if test="${fn:length(resume.sns_dto.facebook_address)>1}"><img src="/publish/resume/img/페이스북.png" alt="" onclick = "location.href='${resume.sns_dto.facebook_address}'" width="90px" height = "90px"></c:if>
+             <c:if test="${fn:length(resume.sns_dto.github_address)>1}"><img src="/publish/resume/img/깃허브.png" alt="" onclick = "location.href='${resume.sns_dto.github_address}'" width="90px" height = "90px"></c:if>
       </div> 
+      
+      
        <div data-input="${preview=='on'?'on':'none'}" class="action_btn" style="position: fixed; top: 0px; left: 50%; display: none;">
         <button class="btn btn-primary">등록하기</button>
         <button class="btn btn-primary">돌아가기</button>

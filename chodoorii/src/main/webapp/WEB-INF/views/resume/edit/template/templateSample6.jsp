@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <jsp:include page="./templateHeaderForEdit.jsp"></jsp:include>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 
 
@@ -262,11 +264,10 @@ p:hover span::after {
 		<div id="resumeTemBox6">
 
 			<div class="imglist">
-				<a href="${resume.sns_dto.blog_address}"> <img src="/publish/resume/img/블로그.png" alt="">
-				</a> <a href="${resume.sns_dto.instagram_address}"> <img src="/publish/resume/img/인스타.png" alt="">
-				</a> <a href="#"> <img src="/publish/resume/img/ì¹´ì¹´ì¤í¡.JPG" alt="">
-				</a> <a href="${resume.sns_dto.facebook_address}"> <img src="/publish/resume/img/페이스북.JPG" alt="">
-				</a>
+				 <c:if test="${fn:length(resume.sns_dto.blog_address)>1}"><img src="/publish/resume/img/블로그.png" alt="" onclick = "location.href='${resume.sns_dto.blog_address}'" width="90px" height = "90px"></c:if>
+             <c:if test="${fn:length(resume.sns_dto.instagram_address)>1}"><img src="/publish/resume/img/insta.png" alt="" onclick = "location.href='${resume.sns_dto.instagram_address}'" width="90px" height = "90px"></c:if>
+             <c:if test="${fn:length(resume.sns_dto.facebook_address)>1}"><img src="/publish/resume/img/페이스북.png" alt="" onclick = "location.href='${resume.sns_dto.facebook_address}'" width="90px" height = "90px"></c:if>
+             <c:if test="${fn:length(resume.sns_dto.github_address)>1}"><img src="/publish/resume/img/깃허브.png" alt="" onclick = "location.href='${resume.sns_dto.github_address}'" width="90px" height = "90px"></c:if>
 			</div>
 		</div>
 
@@ -278,11 +279,9 @@ p:hover span::after {
 				<c:if
 					test="${!empty resume.portfolio_first_name&&resume.portfolio_first_name ne null}">
 					<div class="PORTFOLIO">
-						<img class="PORTFOLIO_FIRST_IMG"
-							src="${resume.portfolio_first_img}" alt="" width="400px"
-							height="300px"> <a href="${resume.portfolio_first_github}"
-							target=_blank>
-							<p class="PORTFOLIO_FIRST_GITHUB">깃허브</p>
+						<a href="${resume.portfolio_first_github}" target=_blank> <img
+							class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_first_img}"
+							alt="" width="400px" height="300px">
 						</a>
 						<p>${resume.portfolio_first_name }</p>
 						<p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_first_desc}</p>
@@ -291,11 +290,9 @@ p:hover span::after {
 				<c:if
 					test="${!empty resume.portfolio_second_name&&resume.portfolio_second_name ne null}">
 					<div class="PORTFOLIO">
-						<img class="PORTFOLIO_FIRST_IMG"
-							src="${resume.portfolio_second_img}" alt="" width="400px"
-							height="300px"> <a href="${resume.portfolio_second_github}"
-							target=_blank>
-							<p class="PORTFOLIO_FIRST_GITHUB">깃허브</p>
+						<a href="${resume.portfolio_second_github}" target=_blank> <img
+							class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_second_img}"
+							alt="" width="400px" height="300px">
 						</a>
 						<p>${resume.portfolio_second_name }</p>
 						<p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_second_desc}</p>
@@ -304,10 +301,9 @@ p:hover span::after {
 				<c:if
 					test="${!empty resume.portfolio_third_name&&resume.portfolio_third_name ne null}">
 					<div class="PORTFOLIO">
-						<img class="PORTFOLIO_FIRST_IMG"
-							src="${resume.portfolio_third_img}" alt="" width="400px"
-							height="300px"> <a href="${resume.portfolio_third_github}"
-							target=_blank><p class="PORTFOLIO_FIRST_GITHUB">깃허브</p></a>
+						<a href="${resume.portfolio_third_github}" target=_blank><img
+							class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_third_img}"
+							alt="" width="400px" height="300px"></a>
 						<p>${resume.portfolio_third_name }</p>
 						<p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_third_desc}</p>
 					</div>
@@ -320,19 +316,19 @@ p:hover span::after {
 			<div id="INTRODUCTION_HEADER"></div>
 			<div id="INTRODUCTION_MAIN">
 				<p>
-					이름 : <span>${resume.user.name}</span>
+					이름 : <span>${user.name}</span>
 				</p>
 				<p>
-					전화번호 : <span>${resume.user.contact_num}</span>
+					전화번호 : <span>${user.contact_num}</span>
 				</p>
 				<p>
-					메일 : <span>${resume.user.email}</span>
+					메일 : <span>${user.email}</span>
 				</p>
 				<p>
-					생일 : <span>${resume.user.birth}</span>
+					생일 : <span>${user.birth}</span>
 				</p>
 				<p>
-					거주지 :<span>${resume.user.city}</span>
+					거주지 :<span>${user.city}</span>
 				</p>
 
 
@@ -342,22 +338,23 @@ p:hover span::after {
 
 
 		<!--ë©ì¸ 2íì´ì§-->
-	 <div id="resumeTemBox2">
+		<div id="resumeTemBox2">
 
 			<div class="SKIL_SET">
 				<c:forEach var="i" items="${resume.skill_dto.makeSkillSetList()}">
-				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="${i}" alt="">
-				</div>
+					<div class="SKIL_SET_BOX">
+						<img class="SKIL_SET_BOX_img" src="${i}" alt="">
+					</div>
 				</c:forEach>
 			</div>
 		</div>
 
 	</div>
-       <div data-input="${preview=='on'?'on':'none'}" class="action_btn" style="position: fixed; top: 0px; left: 50%; display: none;">
-        <button class="btn btn-primary">등록하기</button>
-        <button class="btn btn-primary">돌아가기</button>
-      </div>
+	<div data-input="${preview=='on'?'on':'none'}" class="action_btn"
+		style="position: fixed; top: 0px; left: 50%; display: none;">
+		<button class="btn btn-primary">등록하기</button>
+		<button class="btn btn-primary">돌아가기</button>
+	</div>
 
 </body>
 </html>

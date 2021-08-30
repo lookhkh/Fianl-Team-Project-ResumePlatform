@@ -139,19 +139,19 @@
       color: #7319F3;
     }
     .tmilist #tmi1:hover:before {    
-      content: '${resume.user.name}';
+      content: '${user.name}';
     }
     .tmilist #tmi2:hover:before {
-      content: '${resume.user.contact_num}';
+      content: '${user.contact_num}';
     }
     .tmilist #tmi3:hover:before {
-      content: '${resume.user.email}';
+      content: '${user.email}';
     }
     .tmilist #tmi4:hover:before {
-      content: '${resume.user.birth}';
+      content: '${user.birth}';
     }
     .tmilist #tmi5:hover:before {
-      content: '${resume.user.city}';
+      content: '${user.city}';
     }
     
  
@@ -199,6 +199,9 @@
       background: -webkit-linear-gradient(to right, #8CA6DB, #B993D6);
       background: linear-gradient(to right, #8CA6DB, #B993D6);
       height: 100%;
+        display : flex;
+      justify-content: center;
+            padding : 20px;
     }
     #resumeTemBox6 h1 {
       padding-top: 140px;
@@ -224,7 +227,6 @@
   
   </head>
   <body>
-    <h1>hihihihi</h1>
       <!--ë©ì¸ 1íì´ì§-->
       <div id="resumeTemBox1">
         <img id="INTRODUCTION_IMG_PATH" src="${resume.intro_dto.introduction_img_path}" width="556px" height="742px" alt="">
@@ -237,28 +239,27 @@
         </div>
       </div>
 
-         <div id="resumeTemBox2">
-
+   <div id="resumeTemBox2">
+		<h1>Skil Stack</h1>
 			<div class="SKIL_SET">
 				<c:forEach var="i" items="${resume.skill_dto.makeSkillSetList()}">
 				<div class="SKIL_SET_BOX">
-					<img class="SKIL_SET_BOX_img" src="${i}" alt="">
+					<c:if test="${i!=null }"><img class="SKIL_SET_BOX_img" src="${i}" alt=""></c:if>
 				</div>
 				</c:forEach>
 			</div>
 		</div>
 		
 		
-      <!--ë©ì¸ 3íì´ì§-->
       <div id="resumeTemBox3">
         <h1><span>My Self</span></h1>
         <div class="tmicontainer">
           <div class="tmilist">
-            <p id="tmi1">이름 : ${resume.user.name} </p>     
-            <p id="tmi2">전화번호 : ${resume.user.contact_num}</p>
-            <p id="tmi3">메일 : ${resume.user.email}</p>
-            <p id="tmi4">생일 : ${resume.user.birth}</p>
-            <p id="tmi5">거주지 : ${resume.user.city}</p>
+            <p id="tmi1">이름</p>     
+            <p id="tmi2">전화번호</p>
+            <p id="tmi3">메일</p>
+            <p id="tmi4">생일</p>
+            <p id="tmi5">거주지</p>
           </div>
         </div>
       </div>
@@ -270,26 +271,29 @@
         <h1>PORTFOLIO</h1>        
 		<c:if test="${!empty resume.portfolio_first_name&&resume.portfolio_first_name ne null}">
           <div class="PORTFOLIO">
-            <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_first_img}" alt="" width="400px" height="300px">
             <a href="${resume.portfolio_first_github}" target=_blank>
-            <p class="PORTFOLIO_FIRST_GITHUB">깃허브</p></a>
+            <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_first_img}" alt="" width="400px" height="300px">
+            </a>
 			<p>${resume.portfolio_first_name }</p>
            <p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_first_desc}</p>
           </div>
         </c:if>
+        
 		<c:if test="${!empty resume.portfolio_second_name&&resume.portfolio_second_name ne null}">
           <div class="PORTFOLIO">
-            <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_second_img}" alt="" width="400px" height="300px">
             <a href="${resume.portfolio_second_github}" target=_blank>
-            <p class="PORTFOLIO_FIRST_GITHUB">깃허브</p></a>
+            <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_second_img}" alt="" width="400px" height="300px">
+            </a>
 			<p>${resume.portfolio_second_name }</p>
            <p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_second_desc}</p>
           </div>
          </c:if>
+         
 		<c:if test="${!empty resume.portfolio_third_name&&resume.portfolio_third_name ne null}">
           <div class="PORTFOLIO">
             <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_third_img}" alt="" width="400px" height="300px">
-            <a href="${resume.portfolio_third_github}" target=_blank><p class="PORTFOLIO_FIRST_GITHUB">깃허브</p></a>
+            <a href="${resume.portfolio_third_github}" target=_blank><img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_third_img}" alt="" width="400px" height="300px">
+            </a>
 			<p>${resume.portfolio_third_name }</p>
            <p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_third_desc}</p>
           </div>
@@ -298,20 +302,13 @@
       </div>
 
       
-       <div id="resumeTemBox6">
-    
-        <div class="imglist">
-          <a href="${resume.sns_dto.blog_address}">
-            <img src="/publish/resume/img/블로그.png" alt="">
-          </a>
-          <a href="${resume.sns_dto.instagram_address}">
-            <img src="/publish/resume/img/인스타.png" alt="">
-          </a>
-          <a href="${resume.sns_dto.facebook_address}">
-            <img src="/publish/resume/img/페이스북ㄴ.JPG" alt="">
-          </a>
-        </div>
+      <div id="resumeTemBox6" style="position:relative">
+             <c:if test="${fn:length(resume.sns_dto.blog_address)>1}"><img src="/publish/resume/img/블로그.png" alt="" onclick = "location.href='${resume.sns_dto.blog_address}'" width="90px" height = "90px"></c:if>
+             <c:if test="${fn:length(resume.sns_dto.instagram_address)>1}"><img src="/publish/resume/img/insta.png" alt="" onclick = "location.href='${resume.sns_dto.instagram_address}'" width="90px" height = "90px"></c:if>
+             <c:if test="${fn:length(resume.sns_dto.facebook_address)>1}"><img src="/publish/resume/img/페이스북.png" alt="" onclick = "location.href='${resume.sns_dto.facebook_address}'" width="90px" height = "90px"></c:if>
+             <c:if test="${fn:length(resume.sns_dto.github_address)>1}"><img src="/publish/resume/img/깃허브.png" alt="" onclick = "location.href='${resume.sns_dto.github_address}'" width="90px" height = "90px"></c:if>
       </div> 
+      
        <div data-input="${preview=='on'?'on':'none'}" class="action_btn" style="position: fixed; top: 0px; left: 50%; display: none;">
         <button class="btn btn-primary">등록하기</button>
         <button class="btn btn-primary">돌아가기</button>

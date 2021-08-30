@@ -47,7 +47,7 @@
         <nav>
             <ul class="nav">
               <div class="dropdown">
-                <li><a class="target-a" href="">About Us</a></li>
+                <li><a class="target-a" href="/aboutus">About Us</a></li>
                          <div class="dropdown-content">
                   <a href="/aboutus">AboutUs</a>              
                   <a href="/aboutMyResumeForCorp">기업회원 이용방법</a>

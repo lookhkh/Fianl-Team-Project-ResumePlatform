@@ -2,6 +2,7 @@
 	<jsp:include page="./templateHeader.jsp"></jsp:include>
 
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
     
     <style>
 
@@ -115,7 +116,7 @@
       justify-content: center;
     }
     .SKIL_SET_BOX_img {
-      max-width: 50px;
+      max-width: 120px;
       display : inline;
     }
     
@@ -168,8 +169,11 @@
 
     /* resumeTemBox6 */
     #resumeTemBox6 {
-   
+   	
       height: 100%;
+          display : flex;
+      justify-content: center;
+            padding : 20px;
     }
     
     .imglist {
@@ -230,11 +234,11 @@
         <h1><span>My Self</span></h1>
         <div class="tmicontainer">
           <div class="tmilist">
-            <p class="CONTACT_INFO_NAME">이름 : ${resume.user.name} </p> 
-            <p class="CONTACT_INFO_NUMBER">전화번호 : ${resume.user.contact_num}</p>   
-            <p class="CONTACT_INFO_EMAIL">메일 : ${resume.user.email}</p>  
-            <p class="CONTACT_INFO_BIRTH">생일 : ${resume.user.birth}</p> 
-            <p class="CONTACT_INFO_CITY">거주지 : ${resume.user.city}</p>
+            <p class="CONTACT_INFO_NAME">이름 : ${user.name} </p> 
+            <p class="CONTACT_INFO_NUMBER">전화번호 : ${user.contact_num}</p>   
+            <p class="CONTACT_INFO_EMAIL">메일 : ${user.email}</p>  
+            <p class="CONTACT_INFO_BIRTH">생일 : ${user.birth}</p> 
+            <p class="CONTACT_INFO_CITY">거주지 : ${user.city}</p>
             <br><br>  
           </div>
           
@@ -249,27 +253,26 @@
         <h1>PORTFOLIO</h1>
         <c:if test="${!empty resume.portfolio_first_name&&resume.portfolio_first_name ne null}">
           <div class="PORTFOLIO">
+           <a href="${resume.portfolio_first_github}">
             <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_first_img}" alt="">
-            <a href="${resume.portfolio_first_github}">
-            <p class="PORTFOLIO_FIRST_GITHUB">깃허브</p></a>
+            </a>
             <p>${resume.portfolio_first_name }</p>
             <p class="PORTFOLIO_FIRST_NAME"> ${resume.portfolio_first_desc}</p>
           </div>
           </c:if>
           <c:if test="${!empty resume.portfolio_second_name&&resume.portfolio_second_name ne null}">
           <div class="PORTFOLIO">
-            <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_second_img}" alt="">
-            <a href="${resume.portfolio_second_github}">
-            <a href="#"><p class="PORTFOLIO_FIRST_GITHUB">깃허브</p></a>
+            <a href="${resume.portfolio_second_github}"><img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_second_img}" alt="">
+            </a>
             <p>${resume.portfolio_second_name }</p>
             <p class="PORTFOLIO_FIRST_NAME"> ${resume.portfolio_second_desc}</p>
           </div>
           </c:if>
            <c:if test="${!empty resume.portfolio_third_name&&resume.portfolio_third_name ne null}">
           <div class="PORTFOLIO">
-            <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_third_img}" alt="">
             <a href="${resume.portfolio_third_github}">
-            <a href="#"><p class="PORTFOLIO_FIRST_GITHUB">깃허브</p></a>
+            <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_third_img}" alt="">
+            </a>
             <p>${resume.portfolio_third_name }</p>
             <p class="PORTFOLIO_FIRST_NAME"> ${resume.portfolio_third_desc}</p>
           </div>
@@ -279,20 +282,13 @@
 
       
       <!--ë©ì¸ 6íì´ì§-->
-      <div id="resumeTemBox6">
-    
-        <div class="imglist">
-          <a href="${resume.sns_dto.blog_address}">
-            <img src="/publish/resume/img/블로그.png" alt="">
-          </a>
-          <a href="${resume.sns_dto.instagram_address}">
-            <img src="/publish/resume/img/인스타.png" alt="">
-          </a>
-          <a href="${resume.sns_dto.facebook_address}">
-            <img src="/publish/resume/img/페이스북ㄴ.JPG" alt="">
-          </a>
-        </div>
+      <div id="resumeTemBox6" style="position:relative">
+             <c:if test="${fn:length(resume.sns_dto.blog_address)>1}"><img src="/publish/resume/img/블로그.png" alt="" onclick = "location.href='${resume.sns_dto.blog_address}'" width="90px" height = "90px"></c:if>
+             <c:if test="${fn:length(resume.sns_dto.instagram_address)>1}"><img src="/publish/resume/img/insta.png" alt="" onclick = "location.href='${resume.sns_dto.instagram_address}'" width="90px" height = "90px"></c:if>
+             <c:if test="${fn:length(resume.sns_dto.facebook_address)>1}"><img src="/publish/resume/img/페이스북.png" alt="" onclick = "location.href='${resume.sns_dto.facebook_address}'" width="90px" height = "90px"></c:if>
+             <c:if test="${fn:length(resume.sns_dto.github_address)>1}"><img src="/publish/resume/img/깃허브.png" alt="" onclick = "location.href='${resume.sns_dto.github_address}'" width="90px" height = "90px"></c:if>
       </div> 
+      
        <div data-input="${preview=='on'?'on':'none'}" class="action_btn" style="position: fixed; top: 0px; left: 50%; display: none;">
         <button class="btn btn-primary">등록하기</button>
         <button class="btn btn-primary">돌아가기</button>

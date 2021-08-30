@@ -106,7 +106,7 @@ public class ResumeRegisterController {
 
 		session.setAttribute("temp", resume);
 		
-	
+		model.addAttribute("user",user);
 		model.addAttribute("resume",resume);
 		model.addAttribute("preview","on");
 		

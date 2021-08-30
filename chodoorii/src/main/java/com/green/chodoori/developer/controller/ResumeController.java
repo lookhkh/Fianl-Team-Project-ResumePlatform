@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
@@ -30,6 +31,8 @@ import com.green.chodoori.developer.repository.ResumeRepository;
 import com.green.chodoori.developer.service.ChangeUsersResumeStatusService;
 import com.green.chodoori.developer.service.ResumeDtoCreator;
 import com.green.chodoori.error.ResumeNotFoundError;
+import com.green.chodoori.main.domain.AlramDto;
+import com.green.chodoori.main.domain.AlramDtoRepo;
 import com.green.chodoori.main.domain.UserInfoDto;
 import com.green.chodoori.main.repository.MainRepository;
 import com.green.chodoori.main.service.ExtractSessionInfoService;
@@ -55,6 +58,8 @@ public class ResumeController {
 	@Autowired
 	ResumeRepository resumeRepo;
 	
+	@Autowired
+	AlramDtoRepo alramRepo;
 
 	@Autowired
 	SharedMyResumeInfoDtoRepo smRepo; // 공유 레포지토리 의존성 주입
@@ -69,7 +74,7 @@ public class ResumeController {
 	public String displayMyResume(HttpSession session, Model model) {
 
 		SessionUserInfo sessionInfo = sessionExtractor.extractSessionUserInfo(session);
-
+		UserInfoDto user = sessionExtractor.extractUserInfoDtoFromSessionInfo(session);
 		Optional<ResumeDto> resume = resumeRepo.findByIdForResume(sessionInfo.getId());
 
 		if (resume.isPresent()) {
@@ -79,6 +84,7 @@ public class ResumeController {
 
 			log.info("템플릿 종류 : {}", template);
 
+			model.addAttribute("user",user);
 			model.addAttribute("resume", resume.get());
 
 			return template;
@@ -180,6 +186,7 @@ public class ResumeController {
 	
 		model.addAttribute("resume",resume);
 		model.addAttribute("preview","on");
+		model.addAttribute("user",user);
 		
 		String templateName = "/resume/edit/template/templateSample"+template_kind;
 				
@@ -208,20 +215,30 @@ public class ResumeController {
 	}
 
 	@PostMapping("/share/mail")
-	public String shareMyResumeByEmail(@RequestParam("to") String to, @RequestParam("what") String what,
+	public String shareMyResumeByEmail(HttpServletRequest req,@RequestParam("to") String to, @RequestParam("what") String what,
 			HttpSession session, RedirectAttributes rttr) throws UnsupportedEncodingException, MessagingException {
 
 		
 		SessionUserInfo sessionInfo = sessionExtractor.extractSessionUserInfo(session);
 
+		String towhom = req.getParameter("toUser");
+		String fromwhom = req.getParameter("fromUser");
+		AlramDto alram = new AlramDto();
+		
 		SharedMyResumeInfoDto myInfo = new SharedMyResumeInfoDto();
 
+		alram.setFromwhom(fromwhom);
+		alram.setTowhom(towhom);
+		alram.setRegisterDate(new Date());
+		alram.setMessage(fromwhom+"님이 이력서를 보냈습니다.");
+		
 		myInfo.setRegisterDate(new Date());
 		myInfo.setUserInfoDto(mainRepo.getById(sessionInfo.getId()));
 		mail.sendMailForSharingMyResume(to, what, sessionInfo.getId());
 
 		rttr.addFlashAttribute("director", "share");
-
+		
+		alramRepo.save(alram);
 		smRepo.save(myInfo);
 		return "redirect:/resume";
 
@@ -234,7 +251,10 @@ public class ResumeController {
 		System.out.println("실행되어야 함");
 		
 		ResumeDto myInfo = resumeRepo.findByIdForResume(userId).get();
+		UserInfoDto user = mainRepo.findById(userId).get();
 		String templateKind = "/resume/template/templateSample" + myInfo.getTemplate_kind();
+		
+		model.addAttribute("user",user);
 		model.addAttribute("resume", myInfo);
 
 		return templateKind;

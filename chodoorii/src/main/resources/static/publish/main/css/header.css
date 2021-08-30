@@ -1,95 +1,107 @@
- *{
-    padding: 0;
-    margin: 0 auto;
-  }
+* {
+	padding: 0;
+	margin: 0 auto;
+}
 
-#header{
-    width: 100vw;
-    height: 100px;
-    border-bottom: 0.3px groove;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    }
+#header {
+	width: 100vw;
+	height: 100px;
+	border-bottom: 0.3px groove;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	min-width: 1700px;
+}
 
-li{
-    list-style: none;
+.mainTop {
+	display: flex;
+}
+
+.mainSide {
+	display: flex;
+	flex-direction: column;
+}
+
+.mainImg {
+	display: block;
+	margin: 5px;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+}
+
+li {
+	list-style: none;
 }
 
 a {
-    text-decoration: none;
-    color: black;
-    margin: 0;
+	text-decoration: none;
+	color: black;
+	margin: 0;
 }
 
-a:hover{
-    cursor: pointer;
-
+a:hover {
+	cursor: pointer;
 }
 
-
-#header ul{
-
-    display: flex;
-    flex-direction: row;
-
-     }
-     
-#header li{
-    margin-right: 40px;
+#header ul {
+	display: flex;
+	flex-direction: row;
 }
 
-
-
-#header .logo{
-    position: relative;
-    left: 200px;
+#header li {
+	margin-right: 40px;
 }
 
-#header .signupAndLogin{
-    position: relative;
-    left: -230px;
-}
-#header .signupAndLoginBtn{
-    transition: 0.8s;
-}
-#header .signupAndLoginBtn:hover{
-    transform: scale(1.3);
+#header .logo {
+	position: relative;
+	left: 200px;
 }
 
+#header .signupAndLogin {
+	position: relative;
+	left: -230px;
+}
+
+#header .signupAndLoginBtn {
+	transition: 0.8s;
+}
+
+#header .signupAndLoginBtn:hover {
+	transform: scale(1.3);
+}
 
 .dropdown {
-    position: relative;
-    display: inline-block;
-  }
-.dropdown .dropdown-content{
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-    position: absolute;
-    margin-top: 13px;
-    z-index: 1;
-    background-color: grey;
-    color: white;
-    opacity: 0;
-    transition: 0.2s;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	position: relative;
+	display: inline-block;
 }
 
-
-.dropdown .dropdown-content.show{
-    opacity: 1;
+.dropdown .dropdown-content {
+	display: flex;
+	flex-direction: column;
+	width: 200px;
+	position: absolute;
+	margin-top: 13px;
+	z-index: 1;
+	background-color: grey;
+	color: white;
+	opacity: 0;
+	transition: 0.2s;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
-.dropdown .dropdown-content.show a{
-    margin-top: 10px;
-    margin-left: 5px;
-
+.dropdown .dropdown-content.show {
+	opacity: 1;
 }
 
-.dropdown .dropdown-content.show a:last-child{
-    margin-top: 10px;
-    margin-bottom: 10px;
+.dropdown .dropdown-content.show a {
+	margin-top: 10px;
+	margin-left: 5px;
+}
+
+.dropdown .dropdown-content.show a:last-child {
+	margin-top: 10px;
+	margin-bottom: 10px;
 }

@@ -170,7 +170,7 @@
                             <input type="text" class="form-control" placeholder="깃허브 전체 주소를 적어주세요" name="github_address" aria-label="Username" aria-describedby="basic-addon1">
                           </div>
                           <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon1"><img src="/publish/resume/img/인스타.png" width="40px" height="40px"></span>
+                            <span class="input-group-text" id="basic-addon1"><img src="/publish/resume/img/insta.png" width="40px" height="40px"></span>
                             <input type="text" class="form-control" placeholder="인스타 전체 주소를 적어주세요" name="instagram_address" aria-label="Username" aria-describedby="basic-addon1">
                           </div>
                           <div class="input-group mb-3">
