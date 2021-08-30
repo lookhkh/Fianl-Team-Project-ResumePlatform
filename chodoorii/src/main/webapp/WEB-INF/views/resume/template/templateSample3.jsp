@@ -127,6 +127,7 @@
       text-align: center;
     }
     #resumeTemBox3 h1 {
+    	
       padding-top: 200px;
       font-family: "Apple SD Gothic Neo", sans-serif;
       font-weight: 700;

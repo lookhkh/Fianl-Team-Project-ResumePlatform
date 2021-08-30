@@ -98,7 +98,7 @@
       background: #eee;
     }
     #resumeTemBox3 h1 {
-      padding-top: 80px;
+      padding-top: 30px;
       font-family: "Apple SD Gothic Neo", sans-serif;
       font-weight: 700;
       font-size: 64px;
@@ -282,9 +282,9 @@
            <p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_first_desc}</p>
           </div>
         </c:if>
+        
 		<c:if test="${!empty resume.portfolio_second_name&&resume.portfolio_second_name ne null}">
           <div class="PORTFOLIO">
-            <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_second_img}" alt="" width="400px" height="300px">
             <a href="${resume.portfolio_second_github}" target=_blank>
              <img class="PORTFOLIO_FIRST_IMG" src="${resume.portfolio_second_img}" alt="" width="400px" height="300px">
       		</a>
@@ -292,6 +292,7 @@
            <p class="PORTFOLIO_FIRST_NAME">${resume.portfolio_second_desc}</p>
           </div>
          </c:if>
+         
 		<c:if test="${!empty resume.portfolio_third_name&&resume.portfolio_third_name ne null}">
           <div class="PORTFOLIO">
            <a href="${resume.portfolio_third_github}" target=_blank>

@@ -155,7 +155,7 @@
       
     }
      .tmilist #tmi1:hover:before {    
-      content: "${user.name}";
+      content: "${user.name}" ;
     }
     .tmilist #tmi2:hover:before {
       content: '${user.contact_num}';
@@ -233,7 +233,7 @@
         </div>
         
       </div>
-
+	
 
       <!--ë©ì¸ 2íì´ì§-->
          <div id="resumeTemBox2">
@@ -246,7 +246,7 @@
 				</c:forEach>
 			</div>
 		</div>
-
+	
       <!--ë©ì¸ 3íì´ì§-->
       <div id="resumeTemBox3">
      

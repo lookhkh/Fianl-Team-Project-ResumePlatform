@@ -4,9 +4,11 @@
 <link href="/publish/corporate/css/basic.css" rel="stylesheet">
 
 <jsp:include page="../header/header.jsp"></jsp:include>
-
+<style>
+.selected {
+color : red;}
+</style>
 <body>
-
 
 	<div class="ResuemeBoard" style="height:800px; margin-top : 60px">
 		<div class="resueme">
@@ -14,7 +16,7 @@
 				<div class="one">
 							<img src="${dto.user.imgPath}" style="height: 130px;"
 								width="130px">	
-					<div class="info">
+					<div class="info" style="width:370px">
 						<span style="font-size: 20px;">${dto.user.name}</span><br>
 						<h3>${dto.intro_dto.introduction_header}</h3>
 					<c:forEach var="metadata" items="${metadatas.get(status.index).makePositionArray()}">

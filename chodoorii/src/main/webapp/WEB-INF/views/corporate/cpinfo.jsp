@@ -14,7 +14,7 @@
 	<input id="director" type="hidden" value="${director}">
 
 
- <div class="list-wrap" style="height:760px">
+ <div class="list-wrap" style="height:900px">
       <h2>회사 목록</h2>
      <c:if test="${userInfo != null&&userInfo.sort==1}">
        <div class="btn-list">      
@@ -37,7 +37,7 @@
 	          </li>
 	         </c:forEach>
         </ul>
-        <ol class="paging" style="position:absolute; top:830px; left:750px">
+        <ol class="paging" style="position:absolute; top:950px; left:730px"">
   
          <li><a href="/corporate/cpinfo?page=0"><<</a></li>
      

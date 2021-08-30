@@ -211,7 +211,7 @@
         <h3>My Resume developer</h3> 
         <li>
             <div class="textbox">
-                <div class="thumb"><img src="../img/회사.JPG"></div>
+                <div class="thumb"><img src="/publish/main/img/단체사진1.jpg"></div>
                 <h3 class="title">조현일</h3><br>
  				<p class="desc">팀 프로젝트의 시작은 한 마디로 '오리무중'이었습니다.<br> 
                     경험이 없었던 탓에 불안해했고, 설렘보다는 걱정이 앞섰습니다. 하지만 팀원분들과 만나고 의견을 교환하면서, 이 사람들과 함께 라면 할 수 있겠다는 생각이 들었습니다.<br>
@@ -223,7 +223,7 @@
         </li>
         <li>
             <div class="textbox">
-                <div class="thumb"><img src="../img/회사.JPG"></div>
+                <div class="thumb"><img src="/publish/main/img/단체사진2.jpg"></div>
                 <h3 class="title">이홍섭</h3><br>
 <p class="desc">처음 2달간의 프로젝트를 준비하며 생각했던것은 '2달이면 너무 길지않나? 저렇게 까지 시간이 필요할까’ 였습니다.<br>
                     하지만 여러 팀원이 소통하며 프로젝트를 진행하는점에 있어 많은 어려움이 있었고 여러조원이 함께 프로젝트를 진행하다보니 오는 각각의 방법 또는 생각의 차이에서 여러가지 벽에 부딪혔던것 같습니다.<br>
@@ -234,7 +234,7 @@
         </li>
         <li>
             <div class="textbox">
-                <div class="thumb"><img src="../img/회사.JPG"></div>
+                <div class="thumb"><img src="/publish/main/img/단체사진3.jpg"></div>
                 <h3 class="title">이미숙</h3><br>
                 <p class="desc">약 5개월이라는 시간 배운 웹 개발 과정 Java, HTML 등을 이용해서 프로젝트를 진행하면서 스스로의 부족함을 느꼈습니다.<br> 
                     하지만 ‘조둘이’ 라는 이름으로 My Resume의 프로젝트를 진행하며 협업 과정을 겪으며 한층 성장할 수 있는 기회였습니다.<br> 

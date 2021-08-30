@@ -8,7 +8,6 @@
 
 <style>
 
-/*ë©ì¸ ì¼ìª½ ê³ ì  ì´ë¯¸ì§ ë°ì¤*/
 * {
 	margin: 0;
 }
@@ -162,10 +161,9 @@ ul {
 }
 
 .tmilist #tmi1:hover:before {
-	content: "${user.name
+	content: "${user.name}"
 }
 
-;
 }
 .tmilist #tmi2:hover:before {
 	content: '${user.contact_num}';
@@ -250,9 +248,9 @@ ul {
 			</div>
 
 		</div>
+		</div>
 
 
-		<!--ë©ì¸ 2íì´ì§-->
 		<div id="resumeTemBox2">
 
 			<div class="SKIL_SET">

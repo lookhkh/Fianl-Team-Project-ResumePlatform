@@ -97,7 +97,8 @@
       background: #eee;
     }
     #resumeTemBox3 h1 {
-      padding-top: 80px;
+    
+      padding-top: 30px;
       font-family: "Apple SD Gothic Neo", sans-serif;
       font-weight: 700;
       font-size: 64px;

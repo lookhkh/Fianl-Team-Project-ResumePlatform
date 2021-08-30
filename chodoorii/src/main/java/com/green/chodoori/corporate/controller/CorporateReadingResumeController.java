@@ -20,6 +20,7 @@ import com.green.chodoori.corporate.repository.CorporateRepo;
 import com.green.chodoori.developer.domain.ResumeDto;
 import com.green.chodoori.error.ResumeNotFoundError;
 import com.green.chodoori.main.domain.IndividualSginUpMetadataFormVo;
+import com.green.chodoori.main.domain.UserInfoDto;
 import com.green.chodoori.main.service.ExtractSessionInfoService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -56,6 +57,7 @@ public class CorporateReadingResumeController {
 	@GetMapping("/display/{id}")
 	public String selectresume(@PathVariable String id,Model model,HttpSession session) {
 		Optional<ResumeDto> dto = corpRepo.findById(id);
+		UserInfoDto user = dto.get().getUser();
 		
 		if(!dto.isPresent()) {
 			throw new ResumeNotFoundError("요청하신 이력서정보가 존재하지 않습니다");
@@ -63,6 +65,8 @@ public class CorporateReadingResumeController {
 		String templateNumber = dto.get().getTemplate_kind();
 		String template = "/resume/template/templateSample" + templateNumber;
 
+	
+		model.addAttribute("user",user);
 		model.addAttribute("resume",dto.get());
 		return template;
 	}

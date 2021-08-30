@@ -77,6 +77,8 @@ public class ResumeController {
 		UserInfoDto user = sessionExtractor.extractUserInfoDtoFromSessionInfo(session);
 		Optional<ResumeDto> resume = resumeRepo.findByIdForResume(sessionInfo.getId());
 
+		System.out.println(user.getName());
+		
 		if (resume.isPresent()) {
 
 			String templateNumber = resume.get().getTemplate_kind();
