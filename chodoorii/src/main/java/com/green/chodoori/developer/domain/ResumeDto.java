@@ -30,11 +30,18 @@ public class ResumeDto {
 	}
 	@Builder
 	public ResumeDto(String id, UserInfoDto user, SkillSetDto skill_dto, IntroductionDto intro_dto,
-			SnsAddressDto sns_dto, Integer disclosurestatus, String template_kind, String portfolio_first_img,
-			String portfolio_first_github, String portfolio_first_name, String portfolio_first_desc,
-			String portfolio_second_img, String portfolio_second_github, String portfolio_second_name,
-			String portfolio_second_desc, String portfolio_third_img, String portfolio_third_github,
-			String portfolio_third_name, String portfolio_third_desc) {
+			SnsAddressDto sns_dto, 
+			 Integer disclosurestatus,
+			 String template_kind, 
+			 String portfolio_first_img,
+			String portfolio_first_github, 
+			 String portfolio_first_name, String portfolio_first_desc,
+			String portfolio_second_img, 
+			 String portfolio_second_github, String portfolio_second_name,
+			String portfolio_second_desc,
+			 String portfolio_third_img, String portfolio_third_github,
+			String portfolio_third_name,
+			 String portfolio_third_desc) {
 		super();
 		this.id = id;
 		this.user = user;
